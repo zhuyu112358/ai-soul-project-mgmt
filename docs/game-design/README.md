@@ -106,6 +106,8 @@
 | assets/art/concept_world_forest.png | - | ✅ 已生成 | 世界探索森林概念图（1920×1080，茂密森林/斑驳阳光/小径/萤火虫/蘑菇/神秘石碑/灵魂绿色好奇光芒），AI生成 |
 | assets/art/concept_soul_advanced_forms.png | - | ✅ 已生成 | 灵魂进阶形态设计图（1024×1024，战士/法师/辅助/刺客/坦克5种形态），AI生成 |
 | assets/art/concept_ui_social.png | - | ✅ 已生成 | 社交界面UI mockup（1920×1080，好友列表/聊天窗口/公会信息/标签页导航），AI生成 |
+| assets/art/concept_world_town.png | - | ✅ 已生成 | 世界探索城镇概念图（1920×1080，温馨小镇/石质小路/木质房屋/中央广场喷泉/商店/NPC/灵魂金色光芒），AI生成 |
+| assets/art/concept_arena_advanced.png | - | ✅ 已生成 | 对战竞技场进阶场景概念图（1920×1080，3主题并排：熔岩/冰霜/森林竞技场），AI生成 |
 
 ### 🔊 音效资源（生产中）
 
@@ -140,6 +142,12 @@
 | assets/audio/bat_defeat.wav | - | ✅ 已生成 | 战斗失败音效（~2秒），AI生成 |
 | assets/audio/soul_communication_blip.wav | - | ✅ 已生成 | 灵魂说话提示音（~1秒，需后期裁剪到0.2秒），AI生成 |
 | assets/audio/soul_sleep_breath.wav | - | ✅ 已生成 | 灵魂睡眠呼吸声（~2秒，可循环），AI生成 |
+| assets/audio/bgm_home_main.wav | - | ✅ 已生成 | 灵魂之家主房间BGM（~10秒，可循环，钢琴+木吉他温暖轻松），AI生成 |
+| assets/audio/bgm_explore.wav | - | ✅ 已生成 | 世界探索BGM（~10秒，可循环，长笛+弦乐冒险感），AI生成 |
+| assets/audio/env_rain.wav | - | ✅ 已生成 | 雨声环境音（~5秒，可循环），AI生成 |
+| assets/audio/env_wind.wav | - | ✅ 已生成 | 风声环境音（~5秒，可循环），AI生成 |
+| assets/audio/act_harvest.wav | - | ✅ 已生成 | 采集音效（~1秒，需后期裁剪到0.4秒），AI生成 |
+| assets/audio/act_craft.wav | - | ✅ 已生成 | 合成音效（~2秒，需后期裁剪到1.5秒），AI生成 |
 
 ---
 
@@ -248,6 +256,7 @@
 | 美术音效第3轮 | 2026-09-06 | BUG_TRACKER无新更新（第二十三轮监控后无变化）；生成6个音效资源（act_walk_wood.wav木地板行走/act_interact.wav互动触发/act_door_open.wav门打开/act_pickup.wav物品拾取/soul_spawn.wav灵魂诞生/soul_affinity_heart.wav亲密度提升，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_home_garden.png 1920×1080花园大树+喷泉+花坛+长椅+蝴蝶+灵魂绿色平静光芒/concept_ui_mockup.png 1920×1080灵魂之家主界面UI mockup完整布局，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计15音效+6概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 | 美术音效第4轮 | 2026-09-06 | 第二十四轮监控：BUG-010+011全部修复（SoulGame Godot 4.7.2兼容性0错误，M1全部解除阻塞），SoulArena M4完成（v5.00/105子系统/363测试，多灵魂协作+灵魂间通信）→M5启动（情感深度+长期记忆+个性演化），Seed M3完成（SDK v1.2.0，663测试，完整资源系统）→M4进行中（~40%，WorldSerializer+WorldSaveManager），游戏设计美术音效资源评估PASS（4概念图+9音效，全部AI生成无版权，风格一致质量高），活跃bug降至0个；生成6个音效资源（ui_error.wav错误提示/ui_levelup.wav升级辉煌/soul_excited_sparkle.wav灵魂兴奋/soul_curious_blip.wav灵魂好奇/env_home_indoor.wav室内环境底噪/env_garden_birds.wav花园鸟鸣，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_arena_basic.png 1920×1080对战竞技场双灵魂对峙+魔法阵+火把/concept_world_forest.png 1920×1080世界探索森林+萤火虫+神秘石碑+灵魂绿色好奇光芒，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计21音效+8概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 | 美术音效第5轮 | 2026-09-06 | BUG_TRACKER无新更新（第二十四轮监控后无变化，活跃bug 0个）；生成6个音效资源（bat_attack_hit.wav战斗攻击命中/bat_skill_cast.wav技能释放/bat_victory.wav战斗胜利/bat_defeat.wav战斗失败/soul_communication_blip.wav灵魂说话提示/soul_sleep_breath.wav灵魂睡眠呼吸，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_soul_advanced_forms.png 1024×1024灵魂进阶形态5种职业战士/法师/辅助/刺客/坦克/concept_ui_social.png 1920×1080社交界面UI mockup好友列表+聊天窗口+公会信息+标签页导航，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计27音效+10概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
+| 美术音效第6轮 | 2026-09-06 | 第二十五轮监控发现BUG-011回归（未提交修复导致22→71错误，AudioManager sfx_playing移除+SoulGrowthData类型找不到，与监控声称0错误存在差异），SoulArena v5.02 M4 CollectiveCognition（421测试），Seed M4（793测试），引擎1114全绿，集成连续3轮PASS，Vex 19ms历史最佳；生成6个音效资源（bgm_home_main.wav主房间BGM钢琴+木吉他温暖轻松/bgm_explore.wav探索BGM长笛+弦乐冒险感/env_rain.wav雨声/env_wind.wav风声/act_harvest.wav采集/act_craft.wav合成，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_town.png 1920×1080世界探索城镇温馨小镇+喷泉+商店+NPC/concept_arena_advanced.png 1920×1080对战竞技场进阶3主题并排熔岩+冰霜+森林，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计33音效+12概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 
 ---
 

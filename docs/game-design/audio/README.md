@@ -49,6 +49,12 @@ assets/audio/
 | bat_defeat.wav | ~2秒 | 44100Hz/16bit/WAV | 战斗失败音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_communication_blip.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂说话提示音（配合TTS） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_sleep_breath.wav | ~2秒 | 44100Hz/16bit/WAV | 灵魂睡眠呼吸声（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bgm_home_main.wav | ~10秒 | 44100Hz/16bit/WAV | 灵魂之家主房间BGM（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bgm_explore.wav | ~10秒 | 44100Hz/16bit/WAV | 世界探索BGM（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_rain.wav | ~5秒 | 44100Hz/16bit/WAV | 雨声环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_wind.wav | ~5秒 | 44100Hz/16bit/WAV | 风声环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| act_harvest.wav | ~1秒 | 44100Hz/16bit/WAV | 采集音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| act_craft.wav | ~2秒 | 44100Hz/16bit/WAV | 合成音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
