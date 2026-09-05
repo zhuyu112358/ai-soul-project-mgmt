@@ -12,7 +12,7 @@
 | 待确认 | 0 |
 | 已派发/修复中 | 0 |
 | 待回归 | 0 |
-| 已关闭 | 11 |
+| 已关闭 | 12 |
 | **总计活跃** | **0** |
 
 ---
@@ -364,8 +364,19 @@
   3. 字典语法错误检查大括号匹配
   4. Variant警告通过显式类型或project.godot配置解决
   5. 目标：`--check-only` 0错误
-- **开发任务状态：** commit 340fb0b已标记"fix(BUG-011)"并部分修复，但不完整（仍22错误）
-- **回归验证：** （待验证）
+- **开发任务状态：** commit 340fb0b修复了主要兼容性问题，commit a2bf2c7（BUG-012）修复了剩余编码损坏和API变更。**全部修复完成。**
+- **回归验证：** 第二十五轮监控（2026-09-06 03:32）`Godot --headless --check-only` → **0错误，exit code 0**。M1全部游戏功能解除阻塞。
+
+### BUG-012: SoulGame编码损坏+方法名冲突+Godot 4.7.2 API不匹配
+- **严重程度：** P2（M1游戏功能阻塞）
+- **发现时间：** 2026-09-06
+- **发现者：** SoulGame应用实现任务（BUG-011修复后发现新问题）
+- **负责方：** SoulGame
+- **状态：** ✅ **已修复**（SoulGame a2bf2c7，第二十五轮监控验证0错误）
+- **问题描述：** BUG-011修复后仍存在批量问题：①编码损坏（LocalizationManager/SoulManager/WorldManager/SoulHomeController中中文字符串乱码，改为英文防止未来编码问题）；②ResourceManager方法名与Godot内置冲突（load/get/preload→load_resource/get_resource/preload_resources）；③Godot 4.7.2 API变更（is_bus_muted→is_bus_mute，load_threaded_request需type_hint参数）；④ErrorHandler变量作用域（attempt在for循环内声明）；⑤InputManager bool用作数组索引；⑥WorldManager SaveSystem方法名错误（get_value/set_value→get_setting/set_setting）。
+- **修复commit：** SoulGame a2bf2c7
+- **回归验证：** 第二十五轮监控（2026-09-06 03:32）`Godot --headless --check-only` → **0错误，exit code 0**。
+- **剩余：** 类型推断警告（DebugOverlay/PerformanceMonitor/ErrorHandler/TimeManager/AudioManager/AnimationManager）不影响运行，SaveSystem集成待M1开发中完成。
 
 ---
 
