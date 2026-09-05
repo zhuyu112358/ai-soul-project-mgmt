@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-05（集成测试第8轮，BUG-006 Guardian启动循环恶化P1（8次连续EADDRINUSE），BUG-008连续4轮未修复，SoulArena 111测试/Seed 522测试全绿）
+**最后更新：** 2026-09-05（第十六轮监控，BUG-006 Guardian v3已修复并验证崩溃恢复+内存优化修复49个无界数组，BUG-008已修复(discoverSouls增加status过滤)，BUG-009稳定(530测试全绿)，SoulArena v4.85/96子系统/111测试，Seed 530测试/碰撞触发器生命周期事件感知，服务器Guardian v3运行7.6分钟稳定）
 **维护者：** 总体监控任务
 
 ---
@@ -81,7 +81,7 @@
 - **发现时间：** 2026-09-05
 - **发现者：** 集成测试任务
 - **负责方：** SoulArena
-- **状态：** 🔴 修复中（崩溃已修复，退化改善62%，**Guardian v2修复本身有严重bug导致启动循环恶化P1**，干净服务器绕过Guardian运行正常，2026-09-05 第十五轮监控）
+- **状态：** 🟡 待回归（崩溃已修复v4.77，退化改善62%v4.80，**Guardian v3已修复并验证v4.85**，**内存优化已修复v4.84（49个无界历史数组）**，服务器Guardian v3运行7.6分钟稳定，待30分钟稳定性验证，2026-09-05 第十六轮监控）
 - **问题描述：** 服务器运行约15-20分钟后进程完全退出。导致BUG-001（并发400）和BUG-002（Nova超时）的退化症状。
 - **根因：** 没有uncaughtException/unhandledRejection处理器，异步异常导致静默退出。没有进程守护。
 - **崩溃修复（v4.77, commit a501dbd）：** uncaughtException handler + unhandledRejection handler + Process Guardian（自动重启/指数退避/熔断器/健康检查）+ 内存监控 + 内存泄漏扫描
@@ -153,7 +153,7 @@
 - **发现时间：** 2026-09-05
 - **发现者：** 集成测试任务
 - **负责方：** Seed
-- **状态：** 🔴 已派发Seed（2026-09-05 第十四轮监控确认——监控第十二轮过早关闭，实际未修复，连续3轮回归失败）
+- **状态：** 🟡 待回归（Seed第44轮已修复ac0069c——discoverSouls()增加`.filter(s => s.status === 'active')`，代码已验证第52行，待集成测试回归验证，2026-09-05 第十六轮监控）
 - **问题描述：** 集成测试discoverSouls()仅按current_game_id过滤，无status==='active'过滤。所有Vex/Nova灵魂current_game_id非空（历史测试残留），只有PersistTest（status=sleeping）被选中，sleeping灵魂无法perceive，导致0感知/12失败。
 - **第6轮回归验证（2026-09-05 22:05）：❌ 失败**
   - 代码审查：`examples/integration-test.ts`中discoverSouls()仅有`.filter((s) => !s.current_game_id)`，**无status过滤**
@@ -179,7 +179,7 @@
 - **发现时间：** 2026-09-05
 - **发现者：** 集成测试任务
 - **负责方：** Seed
-- **状态：** 🔴 已派发Seed（2026-09-05 第十四轮监控确认）
+- **状态：** 🟡 待回归（Seed第44轮已验证稳定——530测试全通过无波动，连续多轮无flakiness，待连续5次运行确认后关闭，2026-09-05 第十六轮监控）
 - **复现步骤：**
   1. cd D:\Seed && npm test（连续运行3次）
   2. 第1次：508测试，507通过，1失败
