@@ -91,6 +91,12 @@ assets/audio/
 | soul_lonely_whisper.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂孤独情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_number_input.wav | ~1秒 | 44100Hz/16bit/WAV | UI数字输入音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_color_picker.wav | ~1秒 | 44100Hz/16bit/WAV | UI颜色选择音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_snow.wav | ~5秒 | 44100Hz/16bit/WAV | 雪地环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_desert.wav | ~5秒 | 44100Hz/16bit/WAV | 沙漠环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_excited_bounce.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂兴奋情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_calm_meditation.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂平静情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_toggle_switch.wav | ~1秒 | 44100Hz/16bit/WAV | UI开关切换音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_progress_loading.wav | ~1秒 | 44100Hz/16bit/WAV | UI进度条加载音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
