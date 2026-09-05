@@ -55,6 +55,12 @@ assets/audio/
 | env_wind.wav | ~5秒 | 44100Hz/16bit/WAV | 风声环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | act_harvest.wav | ~1秒 | 44100Hz/16bit/WAV | 采集音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | act_craft.wav | ~2秒 | 44100Hz/16bit/WAV | 合成音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bgm_battle.wav | ~10秒 | 44100Hz/16bit/WAV | 战斗BGM（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bgm_menu.wav | ~10秒 | 44100Hz/16bit/WAV | 菜单BGM（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_angry_roar.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达愤怒情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_fear_tremble.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达恐惧情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_achievement.wav | ~2秒 | 44100Hz/16bit/WAV | 成就解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_item_get.wav | ~1秒 | 44100Hz/16bit/WAV | 物品获得音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
