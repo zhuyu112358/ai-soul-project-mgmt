@@ -331,9 +331,9 @@
 
 1. **应用实现**：🔄 **全功能开发M1**——灵魂之家场景+灵魂成长基础系统+玩家交互界面（CLI）+灵魂管理+世界管理，依赖双SDK v1.1.0
 2. **集成测试**：🔄 **游戏功能测试期**——灵魂之家/成长系统/SDK集成测试+引擎回归+30分钟稳定性持续监控
-3. **SoulArena开发**：🔄 **M7里程碑进行中**——高级认知+元认知深化+意识理论（M6已完成SDK v1.5.0，v5.15/118子系统/811测试；M7启动v5.16 MemoryConsolidationEngine记忆整合引擎，119子系统/845测试）
-4. **Seed开发**：🔄 **M7里程碑三阶段完成**——多人交互系统+社交关系+交易组队（social relationship graph+trading system+social/trade event perception，910测试）
-5. **SoulGame M1**：🚨 **BUG-018 P1阻断**——LocalizationManager.tr()与Godot原生Object.tr()冲突导致58编译错误，整个项目无法构建（commit 573b746引入）。已派发给SoulGame修复（P0最高优先级），修复方案：重命名tr()为translate()/localize()。BUG-016/017修复commit无效（4个fix(M1): commit未真正解决问题）。M1视觉效果已完成（像素精灵+粒子光照+成长可视化），M2竞技场UI已有基础（保留不扩展）
+3. **SoulArena开发**：🔄 **M7里程碑进行中**——高级认知+元认知深化+意识理论（M6已完成SDK v1.5.0；M7 v5.16 MemoryConsolidationEngine记忆整合+v5.17 AutobiographicalMemory自传体记忆/生活叙事/闪光灯记忆，120子系统/881测试）
+4. **Seed开发**：✅ **M7完成→M8待启动**——多人交互+社交关系+交易组队（SDK v2.3.0已发布，社交关系图谱+交易系统+社交交易事件感知+组队系统四阶段完整，910测试）
+5. **SoulGame M1**：✅ **BUG-018已修复**（LocalizationManager.tr()冲突解决，编译0错误，f00d1e2）。🔄BUG-017部分修复但TestRunner.gd:27 GameLog标识符未找到需继续修复。M1视觉效果已完成（像素精灵+粒子光照+成长可视化），M2竞技场UI已有基础（保留不扩展）
 5. **游戏设计**：维护模式，跟踪设计修订项+M1设计细化支持
 6. **监控任务**：每轮执行10项合规检查+文档完整性检查+里程碑进度检查，发现违规立即纠正
 7. **用户待办**：①注册Steam开发者账号（$100） ②安装Godot 4（godotengine.org） ③设置电脑"从不休眠" ④确认M1最小可玩原型后是否进入M2（RTS对战竞技场）
