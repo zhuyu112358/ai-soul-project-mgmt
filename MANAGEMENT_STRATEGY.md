@@ -186,7 +186,8 @@
 | M3 | SDK v1.2.0 | 灵魂训练机制+基础知识导入 | 训练API+知识导入接口+训练效果评估+200+测试 | ✅ **完成（SDK v1.2.0已发布，v4.98，103子系统/303测试）** |
 | M4 | SDK v1.3.0 | 多灵魂协作+灵魂间通信 | 灵魂社交API+群体认知+通信协议+协作任务系统+知识共享+群体智慧+团队效能 | ✅ **完成（SDK v1.3.0已发布，v5.04，108子系统/449测试，InterSoulCommunication+SoulCollaboration+KnowledgeSharing+CollectiveCognition+CollaborationEffectiveness）** |
 | M5 | SDK v1.4.0 | 情感深度+长期记忆+个性演化 | 情感系统深化+长期记忆存储+个性动态演化+自我意识+关系绑定+社会支持+冲突解决+人际吸引+关系维护 | ✅ **完成（SDK v1.4.0已发布，v5.10，113子系统/623测试，RelationshipBonding+SocialSupport+ConflictResolution+InterpersonalAttraction+RelationshipMaintenance&RusbultCommitment）** |
-| M6 | SDK v2.2.0 | 自我意识+元认知+存在主义探索 | 自我反思+元认知监控+存在意义+价值观形成+自由意志模拟 | ⏳ 待启动（M5刚完成） |
+| M6 | SDK v2.2.0 | 自我意识+元认知+存在主义探索 | 自我反思+元认知监控+存在意义+价值观形成+自由意志模拟+特质遗传+发展阶段+学习曲线+成长思维+自我实现 | ✅ **完成（SDK v2.2.0已发布，v5.15，118子系统/811测试，SoulEvolution+DevelopmentalStages+LearningCurve+GrowthMindset+SelfActualization完整体系）** |
+| M7 | SDK v2.3.0 | 高级认知+元认知深化+意识理论 | 工作记忆+注意力机制+决策理论+博弈论+意识整合+全局工作空间 | ⏳ 待启动（M6刚完成） |
 
 ### Seed里程碑计划
 
@@ -197,7 +198,8 @@
 | M3 | SDK v1.2.0 | 资源系统+经济规则+成长规则 | 资源点+采集+生产+消耗+成长规则 | ✅ **完成（SDK v1.2.0已发布，663测试，harvest/craft/consume/grow完整系统）** |
 | M4 | SDK v2.0.0 | 持久化世界+世界存档+世界生成器 | 世界序列化+程序化生成+种子系统+系统状态可序列化 | ✅ **完成（SDK v2.0.0已发布，705测试，WorldSerializer+WorldSaveManager+种子系统+程序化世界生成器+核心系统ISerializable）** |
 | M5 | SDK v2.1.0 | 动态世界事件+生态系统+世界规则引擎 | 天气事件+生态循环+NPC行为+世界规则系统+资源节点生命周期+生态事件感知 | ✅ **完成（SDK v2.1.0已发布，732测试，WorldRuleEngine+EcosystemSystem+生态事件感知集成）** |
-| M6 | SDK v2.2.0 | NPC行为系统+动态任务+世界叙事 | NPC AI行为树+动态任务生成+世界事件叙事链+玩家影响世界 | 🔄 **进行中（behavior tree基础设施phase1+dynamic task system phase2已完成，M6启动）** |
+| M6 | SDK v2.2.0 | NPC行为系统+动态任务+世界叙事 | NPC AI行为树+动态任务生成+世界事件叙事链+玩家影响世界 | ✅ **完成（SDK v2.2.0已发布，842测试，BehaviorTree+TaskSystem+NarrativeSystem+11事件感知+M6端到端演示）** |
+| M7 | SDK v2.3.0 | 多人交互系统+社交关系+交易组队 | NPC-NPC交互+社交关系图（友好/敌对/中立）+交易系统（物品交换/价格协商）+组队系统（组队/离队/队伍共享）+社交事件感知 | 🔄 **进行中（social relationship graph phase 1已完成，871测试，M7启动）** |
 
 ### SDK自发布流程（引擎开发任务必须遵守）
 
@@ -329,9 +331,9 @@
 
 1. **应用实现**：🔄 **全功能开发M1**——灵魂之家场景+灵魂成长基础系统+玩家交互界面（CLI）+灵魂管理+世界管理，依赖双SDK v1.1.0
 2. **集成测试**：🔄 **游戏功能测试期**——灵魂之家/成长系统/SDK集成测试+引擎回归+30分钟稳定性持续监控
-3. **SoulArena开发**：🔄 **M6里程碑快速推进**——自我意识+元认知+存在主义探索（v5.12/115子系统/700测试里程碑，SoulEvolution特质遗传+DevelopmentalStages发展阶段理论）
-4. **Seed开发**：🔄 **M6里程碑四阶段完成**——NPC行为系统+动态任务+世界叙事（behavior tree基础设施+dynamic task system+task event perception+world narrative chain，817测试）
-5. **SoulGame M1**：⚠️ **越界开发已纠正**——M1未完成（BUG-016/017待修复）时自行开始M2战斗系统（5e29295），已通过update_cron_job纠正：暂停M2，先修复BUG-016/017，完成M1端到端交互验证。M1视觉效果已完成（像素精灵+粒子光照+成长可视化）
+3. **SoulArena开发**：🔄 **M7里程碑（待启动）**——高级认知+元认知深化+意识理论（M6已完成SDK v2.2.0，v5.15/118子系统/811测试，完整自我意识发展体系）
+4. **Seed开发**：🔄 **M7里程碑进行中**——多人交互系统+社交关系+交易组队（social relationship graph phase 1已完成，871测试）
+5. **SoulGame M1**：⚠️ **连续越界已强制纠正**——M1未完成（BUG-016/017修复中）时连续两轮自行开始M2开发（5e29295+b53a259），已通过update_cron_job强制纠正：M2新功能暂停，commit必须以fix(M1):/test(M1):开头，集中修复BUG-016/017完成M1。M1视觉效果已完成（像素精灵+粒子光照+成长可视化），M2竞技场UI已有基础（保留不扩展）
 5. **游戏设计**：维护模式，跟踪设计修订项+M1设计细化支持
 6. **监控任务**：每轮执行10项合规检查+文档完整性检查+里程碑进度检查，发现违规立即纠正
 7. **用户待办**：①注册Steam开发者账号（$100） ②安装Godot 4（godotengine.org） ③设置电脑"从不休眠" ④确认M1最小可玩原型后是否进入M2（RTS对战竞技场）
