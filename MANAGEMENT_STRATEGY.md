@@ -113,8 +113,8 @@
 ### 版本清单
 | 组件 | 版本策略 | 当前版本 | 发布者 |
 |------|----------|----------|--------|
-| SoulArena 引擎 | 每轮迭代递增(v4.x) | v4.68（50轮优化） | SoulArena开发任务 |
-| Seed 引擎 | DEVLOG记录+commit | 27轮迭代 | Seed开发任务 |
+| SoulArena 引擎 | 每轮迭代递增(v4.x) | v4.73（55轮优化，91子系统） | SoulArena开发任务 |
+| Seed 引擎 | DEVLOG记录+commit | 32轮迭代（414测试） | Seed开发任务 |
 | SoulArena SDK | SemVer | 待发布v1.0.0 | 监控任务确认后打tag |
 | Seed SDK | SemVer | 待发布v1.0.0 | 监控任务确认后打tag |
 | SoulGame 应用 | SemVer | 待启动 | 应用实现任务 |
