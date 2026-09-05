@@ -1,19 +1,19 @@
 # AI灵魂项目 — 总体进展报告
 
-**报告日期：** 2026-09-06（第十七轮监控）
+**报告日期：** 2026-09-06（第十八轮监控）
 **项目愿景：** 打造跨游戏、跨平台的AI灵魂系统，从数字伙伴到智能载体进化平台
-**当前阶段：** 应用实现基础架构期（设计v1.1已冻结，**BUG-006未完全解决——服务器每12-13分钟RUNTIME_CRASH(code=1)无crash日志，Guardian v3自动重启正常但根因未找到，30分钟稳定性验证未通过**，BUG-008/009已关闭）
+**当前阶段：** 应用实现基础架构期（设计v1.1已冻结，**BUG-006根因已找到并修复v4.90——uncaughtException null-err静默崩溃，待30分钟稳定性验证**）
 
 ---
 
 ## 一、项目总览
 
-| 灵魂系统 | SoulArena | zhuyu112358/SoulArena | v4.87 | 核心引擎高度成熟，**98认知子系统，69轮优化**，**154个持久化单元测试**，SDK v1.0.0已发布，Guardian v3+内存优化已修复，**周期性RUNTIME_CRASH待排查** | ⚠️ 2 commit待推送 |
-| 虚拟世界平台 | Seed | zhuyu112358/Seed | v1.0.0 | 引擎完善，**542测试全通过**，SDK v1.0.0已发布，**动态障碍局部重规划+path_replanned事件感知** | ⚠️ 2 commit待推送 |
-| 项目管理 | ai-soul-project-mgmt | zhuyu112358/ai-soul-project-mgmt | — | 管理体系完善，设计v1.1冻结，bug跟踪7关闭/2活跃 | ⚠️ 1 commit待推送 |
-| 游戏应用 | SoulGame | zhuyu112358/SoulGame | 基础架构完成 | **30+文件，音频总线+项目图标+存档版本迁移+get_stats()重构** | ⚠️ 2 commit待推送 |
+| 灵魂系统 | SoulArena | zhuyu112358/SoulArena | v4.90 | 核心引擎高度成熟，**100认知子系统里程碑，71轮优化**，**197个持久化单元测试**，SDK v1.0.0已发布，**BUG-006根因已修复(null-err静默崩溃)** | ⚠️ 1 commit待推送 |
+| 虚拟世界平台 | Seed | zhuyu112358/Seed | v1.0.0 | 引擎完善，**550测试全通过**，SDK v1.0.0已发布，**天气事件感知+集成测试自动清理** | ⚠️ 2 commit待推送 |
+| 项目管理 | ai-soul-project-mgmt | zhuyu112358/ai-soul-project-mgmt | — | 管理体系完善，设计v1.1冻结，bug跟踪7关闭/2活跃 | ⚠️ 2 commit待推送 |
+| 游戏应用 | SoulGame | zhuyu112358/SoulGame | 基础架构完成 | **30+文件，音频总线+存档版本迁移+get_stats()重构** | ⚠️ 2 commit待推送 |
 
-**整体进度评估：** 第十七轮——**BUG-006未完全解决：Guardian v3日志分析发现服务器每12-13分钟RUNTIME_CRASH(code=1)且无crash日志，根因未找到。** Guardian v3自动重启正常（三次崩溃均成功重启），但30分钟稳定性验证未通过。根因推测：①uncaughtException处理器写crash日志后调用shutdown()，若engine.stop()抛出异常则`.catch(() => process.exit(1))`静默退出；②SoulArena开发任务每轮"重启服务器验证"可能触发Guardian误报；③内存监控可能触发退出。服务器在监控时已停止（电脑休眠导致Guardian进程终止），已手动重启（pid=31740）。其他进展：SoulArena夜间新增v4.86认知评价理论（Lazarus，97子系统）+v4.87调节定向理论（Higgins，98子系统），154测试（+43）；Seed新增动态障碍局部重规划+path_replanned事件感知，542测试（+12）；SoulGame新增音频总线+项目图标+存档版本迁移+get_stats()重构。BUG-008/009已被集成测试关闭。GitHub 443端口不可用，所有仓库commit保留本地。当前活跃bug 2个（BUG-006周期性crash、BUG-005接口文档），7个已关闭。
+**整体进度评估：** 第十八轮——**🎉 BUG-006根因找到并修复！** SoulArena v4.90（commit 591a05c）定位到困扰多轮的周期性静默崩溃根因：uncaughtException处理器在任何try-catch之前调用`err.message`，当err为null/undefined时（如EventEmitter 'error'事件不带error对象），`err.message`在处理器**内部**抛出TypeError，Node.js立即以code=1退出——**在crash日志写入之前**。这完美解释了每5-13分钟code=1退出且无crash日志的现象。修复：①null-err保护`safeErr = err || new Error(...)`；②crash日志在处理器最前面写入；③process.exit monkey-patch捕获所有退出栈追踪；④process warning监听器。同时修复CounterfactualThinking测试flaky（Math.random依赖20-30%失败率）。**197测试全部通过。** 服务器当前运行pre-v4.90代码，下次重启自动部署。Seed新增天气事件感知（WeatherSimulator→SoulPerceptionSystem）+集成测试前自动清理灵魂状态，550测试（+8）。当前活跃bug 2个（BUG-006待30分钟验证、BUG-005接口文档），7个已关闭。GitHub 443不可用，所有commit保留本地。
 
 ---
 
@@ -275,7 +275,7 @@
 | 集成测试报告 | SDK连通性+基础架构测试 | ✅ **8轮报告，9bug发现（5关闭/4活跃）** | ✅ 已完成 |
 | SoulArena SDK v1.0.0 | API稳定+打包 | ✅ **已发布**（tag已打） | 🏆 已发布 |
 | Seed SDK v1.0.0 | API稳定+打包 | ✅ **已发布**（tag `seed-sdk-v1.0.0`已打） | 🏆 已发布 |
-| 服务器稳定性 | 持续运行不崩溃+不退化 | 🔴 **Guardian v3自动重启正常，但服务器每12-13分钟RUNTIME_CRASH(code=1)无crash日志，根因未找到，30分钟稳定性验证未通过** | 🔴 根因排查中 |
+| 服务器稳定性 | 持续运行不崩溃+不退化 | 🟡 **BUG-006根因已修复v4.90(null-err静默崩溃)，待30分钟稳定性验证。当前服务器运行pre-v4.90代码，下次重启自动部署修复** | 🟡 30分钟验证待执行 |
 | GitHub同步 | 三仓库均推送 | ✅ 全部已同步 | ✅ 已完成 |
 | 用户测试 | 10-20人 | 0人 | 未开始 |
 
@@ -283,24 +283,22 @@
 
 ## 七、结论
 
-**第十七轮监控核心发现：**
+**第十八轮监控核心发现：**
 
-1. **🔴 BUG-006未完全解决：服务器每12-13分钟RUNTIME_CRASH(code=1)且无crash日志，根因未找到。** Guardian v3日志分析（23:21-23:49）发现三次RUNTIME_CRASH：23:23:09（uptime=70s）、23:35:35（uptime=12.4min）、23:48:51（uptime=13.2min），每次code=1，Guardian均自动重启成功。但所有crash-*.log均为Guardian v3之前的EADDRINUSE（最新23:03:26），三次RUNTIME_CRASH均未产生crash日志。**根因推测：** ①uncaughtException处理器写crash日志后调用shutdown()，若engine.stop()抛出异常则`.catch(() => process.exit(1))`静默退出（crash日志可能写入失败被catch吞掉）；②SoulArena开发任务每轮"重启服务器验证"可能触发Guardian误报crash；③内存监控可能触发退出。**30分钟稳定性验证未通过。**
+1. **🎉 BUG-006根因找到并修复！** SoulArena v4.90（commit 591a05c）定位到困扰多轮的周期性静默崩溃根因：**uncaughtException处理器在任何try-catch之前调用`err.message`，当err为null/undefined时（如EventEmitter 'error'事件不带error对象的边缘情况），`err.message`在处理器内部抛出TypeError，Node.js立即以code=1退出——在crash日志写入之前。** 这完美解释了每5-13分钟code=1退出且无crash日志的现象。修复：①null-err保护`safeErr = err || new Error(...)`；②crash日志在处理器最前面写入；③process.exit monkey-patch捕获所有退出栈追踪；④process warning监听器。
 
-2. **服务器已手动重启。** 监控时服务器已停止（无node进程，电脑休眠导致Guardian进程终止），已通过Guardian v3手动重启（pid=31740，healthz=ok，uptime=9s）。
+2. **同时修复CounterfactualThinking测试flaky。** 6个测试依赖Math.random()进行方向选择（20-30%失败率），添加withMockedRandom()辅助函数实现确定性测试。+1个新的长期不作为后悔测试。22测试，连续5次运行全部通过。
 
-3. **SoulArena夜间进展：v4.86+v4.87（98子系统/154测试）。** v4.86认知评价理论（Lazarus初级/次级评价/应对策略/重评/适应负荷，21测试），v4.87调节定向理论（Higgins促进/预防定向/调节匹配/策略倾向，22测试）。测试从111→154（+43）。动机理论三部曲完成：Vroom期望(v4.82)+Adams公平(v4.83)+Higgins调节定向(v4.87)。
+3. **SoulArena v4.90：100子系统里程碑，197测试全通过。** 从v4.87的98子系统/154测试增长到100子系统/197测试。服务器验证：cognition=88, total=46.6，Guardian v3自动重启确认正常。
 
-4. **Seed夜间进展：动态障碍局部重规划+path_replanned事件（542测试）。** PathFollowerSystem新增动态障碍检测和局部重规划，SoulPerceptionSystem集成path_replanned事件感知。测试从530→542（+12）。
+4. **Seed进展：天气事件感知+集成测试自动清理（550测试）。** WeatherSimulator发射天气事件→SoulPerceptionSystem集成感知；集成测试前自动清理stale灵魂游戏状态。测试从542→550（+8）。
 
-5. **SoulGame夜间进展：音频总线+项目图标+存档版本迁移+get_stats()重构。** 新增audio bus layout、project icon、save version migration、所有核心系统添加get_stats()方法。
+5. **服务器当前状态：** pid=34404，运行pre-v4.90代码（00:29启动），下次崩溃/重启后自动部署v4.90修复。Guardian进程pid=12076持续运行。
 
-6. **BUG-008/009已关闭。** 集成测试第9轮验证：BUG-008选中Vex(active)，12 perceptions sent，0 failed，11 actions executed；BUG-009连续多轮稳定530测试。
+6. **Bug生命周期：7关闭/2活跃。** 活跃：BUG-006（根因已修复待30分钟验证P1）、BUG-005（接口文档过时P3，已8轮未修复）。关闭：BUG-001/002/003/004/007/008/009。
 
-7. **Bug生命周期：7关闭/2活跃。** 活跃：BUG-006（周期性RUNTIME_CRASH根因排查P1）、BUG-005（接口文档过时P3，已7轮未修复）。关闭：BUG-001/002/003/004/007/008/009。
+**🟡 门控状态：设计v1.1已冻结✓ 基础架构已完成✓ 双SDK已发布✓ Guardian v3✓ 内存优化✓ BUG-008/009关闭✓ BUG-006根因已修复✓。仅剩30分钟稳定性验证（v4.90部署后持续运行30分钟不崩溃）。** 验证通过后即可建议用户确认切换全功能开发。
 
-**🔴 门控状态：设计v1.1已冻结✓ 基础架构已完成✓ 双SDK已发布✓ Guardian v3自动重启✓ 内存优化✓ BUG-008/009已关闭✓。但服务器稳定性未达标——每12-13分钟RUNTIME_CRASH，30分钟稳定性验证未通过。** 需SoulArena排查周期性crash根因并修复后，才能建议切换全功能开发。
+**管理建议：** ①集成测试下一轮执行v4.90部署后的30分钟稳定性验证（需确保服务器运行v4.90代码，避免电脑休眠）；②SoulArena开发任务prompt需更新——根因已修复，优先级转为验证修复+运行时退化优化（Nova 5秒→<100ms），可恢复新功能开发但退化优化应保持高优先级；③BUG-005接口文档已8轮未修复，建议分配专门任务或降级；④GitHub 443端口间歇性不可用，所有仓库commit保留本地（SoulArena 1个、Seed 2个、SoulGame 2个、mgmt 2个），网络恢复时推送；⑤建议设置电脑电源选项为"从不休眠"，避免Guardian进程终止导致服务器停止。
 
-**管理建议：** ①SoulArena最高优先级转为排查周期性RUNTIME_CRASH根因——添加process.exit调用栈日志、检查engine.stop()在uncaughtException时是否抛出异常、确认开发任务"重启服务器"操作是否触发Guardian误报；②集成测试任务下一轮执行30分钟稳定性验证（需服务器持续运行）；③BUG-005接口文档已7轮未修复，建议分配专门任务或降级；④GitHub 443端口间歇性不可用，所有仓库commit保留本地，网络恢复时推送；⑤开发任务prompt需更新——当前prompt仍标记Guardian v2 bug为最高优先级（已过时），应转为周期性crash排查。
-
-**下一阶段核心任务：** SoulArena排查并修复周期性RUNTIME_CRASH → 30分钟稳定性验证通过 → 用户确认 → 应用实现切换全功能开发（M1：灵魂之家+灵魂成长基础）→ 集成测试切换游戏功能测试 → 首个可玩原型 → 用户测试。
+**下一阶段核心任务：** v4.90部署 → 30分钟稳定性验证通过 → 用户确认 → 应用实现切换全功能开发（M1：灵魂之家+灵魂成长基础）→ 集成测试切换游戏功能测试 → 首个可玩原型 → 用户测试。
