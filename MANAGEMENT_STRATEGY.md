@@ -74,6 +74,7 @@
 | D:\ai-soul-project-mgmt | 监控/游戏设计/集成测试 | 读写 | 各任务写自己负责的文档，避免同时修改同一文件 |
 | D:\SoulGame 仓库 | 应用实现 | 读写 | 唯一可修改的任务 |
 | localhost:3000 SoulArena服务 | 集成测试/应用实现 | 调用 | 测试前确保服务运行，测试后不关闭 |
+| **Guardian进程（server-guard.js）** | **仅监控任务** | **启停** | **P0：仅监控任务可启动/停止/重启Guardian。其他任务禁止kill任何node进程，禁止执行taskkill /f /im node.exe。如需重启服务器，通知监控任务或使用不同端口。违反此规则视为P0违规。** |
 | GitHub 推送 | 所有任务 | 推送 | 推送前先git pull --rebase，如失败则commit保留本地 |
 
 ### 防冲突规则
@@ -82,6 +83,7 @@
 3. **推送串行化**：推送前先pull --rebase，冲突则保留本地commit下轮重试
 4. **文档分区**：各任务只修改自己负责的文档
 5. **服务共享**：SoulArena服务器是共享资源，测试后不关闭
+6. **🔴 P0：禁止kill node进程**：除监控任务外，任何任务不得执行`taskkill /f /im node.exe`、`Stop-Process -Name node`或类似操作。Guardian（server-guard.js）和SoulArena服务器由监控任务统一管理。如需重启服务器，在任务prompt中记录并由监控任务下一轮处理。违反此规则导致服务器中断的，视为P0违规，立即在报告中标注并下发纠正指令。
 
 ---
 

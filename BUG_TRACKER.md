@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（集成测试第13轮，🎉 M2里程碑完成v4.94 SDK v1.1.0——BUG-006崩溃+退化+30分钟稳定性全部修复，Nova perceive从5秒→24ms，SoulArena 197/Seed 584测试全绿，进入M3开发）
+**最后更新：** 2026-09-06（集成测试第14轮，🔴新增BUG-010 P1——SoulGame Godot 4.7.2脚本兼容性222错误20/22脚本加载失败M1全部阻塞；✅30分钟稳定性验证通过；引擎881测试全绿；BUG-005 11轮未修复）
 **维护者：** 总体监控任务
 
 ---
@@ -9,11 +9,11 @@
 
 | 状态 | 数量 |
 |------|------|
-| 待确认 | 0 |
+| 待确认 | 1 |
 | 已派发/修复中 | 2 |
 | 待回归 | 0 |
 | 已关闭 | 7 |
-| **总计活跃** | **2** |
+| **总计活跃** | **3** |
 
 ---
 
@@ -65,7 +65,7 @@
 - **发现时间：** 2026-09-05
 - **发现者：** 集成测试任务
 - **负责方：** 监控/双方
-- **状态：** 🔵 修复中（2026-09-05 第十一轮监控，监控任务直接修复）
+- **状态：** ✅ **已关闭**（第二十二轮监控，2026-09-06）。interface_spec.md已从v1.0草案（343行）全面更新为v1.1（~380行，11KB）。更新内容：①SoulBridgeAdapter从"P0缺失"改为"已实现并验证"；②感知格式转换全部标记为已实现（含M3资源节点感知）；③动作格式映射全部标记为已实现（含M3 move/attack/interact）；④API路径确认对齐（复数souls列表/单数soul操作）；⑤新增非阻塞webhook（v4.92）说明和性能基线（Nova 24ms）；⑥新增SDK v1.1.0接口文档（SoulArena+Seed）；⑦新增接口对齐状态表（连续5轮PASS）；⑧新增已知限制与后续规划（M3/M4）。**关闭依据：** 文档已反映当前实际实现状态，所有P0标记已清除，与SDK v1.1.0和集成测试结果一致。
 - **问题描述：** interface_spec.md停留在v1.0草案，仍标记SoulBridgeAdapter为"P0缺失"（实际已存在且端到端测试通过），仍标记感知格式不匹配为"P0待解决"（实际已由situation简化模式解决），未记录enter-world前置条件和action-result必填字段。
 - **修复要求：** 监控任务更新interface_spec.md，反映当前实际实现状态
 - **修复commit：** （本轮修复）
@@ -80,6 +80,7 @@
 - **第11轮复测（2026-09-06 00:45）：** 仍为v1.0草案（343行）。**未修复，已8轮无实际更新。**
 - **第12轮复测（2026-09-06 01:15）：** 仍为v1.0草案（343行）。**未修复，已9轮无实际更新。**
 - **第13轮复测（2026-09-06 01:45）：** 仍为v1.0草案（343行）。**未修复，已10轮无实际更新。M2已完成但接口文档仍为v1.0草案，建议优先更新。**
+- **第14轮复测（2026-09-06 02:20）：** 仍为v1.0草案（343行）。**未修复，已11轮无实际更新。**
 
 ### BUG-006: SoulArena服务器长时间运行后崩溃（进程完全退出）
 - **严重程度：** P1（最高优先级，影响所有依赖SoulArena的任务）
@@ -181,6 +182,12 @@
   - **服务器稳定性**：v4.92运行约42分钟无RUNTIME_CRASH（Guardian日志确认）
   - **SDK v1.1.0发布**：dist/sdk/ 136文件，CHANGELOG更新
   - **结论：BUG-006所有子项（崩溃+退化+稳定性）已修复，建议监控任务确认后关闭。需注意：第12轮运行11分钟时Nova曾5秒，可能存在长时间运行后的状态累积，需持续监控。**
+- **第14轮回归（2026-09-06 02:20，v4.94，30分钟稳定性验证）：✅ 30分钟稳定性通过，Nova长时间退化仍存在**
+  - **30分钟稳定性验证通过**：运行**32.5分钟0崩溃0错误**，内存113→117MB（+4MB/32min，<10MB目标）
+  - **Vex perceive**：21ms ✅（稳定）
+  - **Nova perceive**：4,722ms ⚠️（运行32分钟后退化，短时间运行时24ms）
+  - **5并发**：5/5成功 ✅
+  - **结论：崩溃+内存+并发+Vex延迟全部达标。Nova长时间运行退化（4.7秒）为独立问题，需SoulArena排查fire元素认知状态累积。BUG-006崩溃部分可关闭，退化部分待优化。**
 - **第12轮回归（2026-09-06，SoulArena v4.91，shutdown增强）：**
   - **v4.91 shutdown函数增强**：wss.close()/db.close()/server.close()添加null保护（防止undefined时抛出异常），server.close回调5秒force exit超时（防止 lingering connections 导致回调不触发），所有close操作包裹try-catch
   - **v4.90 exit trace验证**：process.exit monkey-patch已激活，logs目录无exit-trace文件说明v4.90后无process.exit调用
@@ -269,6 +276,42 @@
   - 测试数量稳定（522→530随功能增长，无波动）
   - 连续第3轮无flaky（第7轮522、第8轮522、第9轮530）
   - **结论：BUG-009已修复，测试稳定性恢复 ✅**
+
+---
+
+### BUG-010: SoulGame Godot 4.7.2脚本兼容性——222错误20/22脚本加载失败
+- **严重程度：** P1（M1全部游戏功能测试阻塞）
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第14轮，首次Godot构建测试）
+- **负责方：** SoulGame
+- **状态：** 🔴 待确认
+- **复现步骤：**
+  1. cd D:\SoulGame
+  2. D:\Godot\Godot.exe --headless --check-only --path D:\SoulGame
+- **预期行为：** 0脚本错误，项目正常加载（commit d47c9a6声称"0 script errors, exit code 0"）
+- **实际行为：** **222个SCRIPT ERROR，20/22脚本加载失败**，项目无法启动
+- **错误分类：**
+  - Logger静态方法调用：151个（68%）——`Static function "info()" not found in base "GDScriptNativeClass"`
+  - 类型推断错误：14个——`Cannot infer the type of variable`
+  - Godot 4.7 API变更：4个——`Performance.MEMORY_DYNAMIC`等不存在
+  - get()参数错误：3个——`Too many arguments for "get()"`
+  - 函数签名不匹配：4个——`connect()`/`disconnect()`/`tr()`签名变更
+- **加载失败的脚本（20个）：**
+  - autoload: ConfigManager, GameState, SaveSystem, SceneManager
+  - core: AnimationManager, AudioManager, Bootstrap, DebugOverlay, ErrorHandler, InputManager, LatencyProfiler, LocalizationManager, NetworkClient, ObjectPool, PerformanceMonitor, ResourceManager, StateSyncClient, TimeManager
+  - sdk: SeedClient, SoulArenaClient
+  - 仅Logger.gd和EventBus.gd加载成功
+- **根因推测：**
+  1. Logger autoload顺序或方法定义问题导致所有`Logger.info()`调用失败，级联影响所有脚本
+  2. Godot 4.7 API变更（Performance枚举、Object.get()、信号连接签名）
+  3. Godot 4.7严格类型检查将推断警告视为错误
+- **影响：** M1全部游戏功能（灵魂之家/成长/管理/世界管理/CLI）无法测试，SDK集成无法验证
+- **修复要求：**
+  1. 修复Logger静态方法调用（151个错误的根因）
+  2. 适配Godot 4.7 API变更
+  3. 修复类型推断错误或放宽类型检查
+  4. 目标：`--check-only` 0错误，项目可启动
+- **回归验证：** （待验证）
 
 ---
 
