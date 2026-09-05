@@ -43,6 +43,12 @@ assets/audio/
 | soul_curious_blip.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达好奇情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_home_indoor.wav | ~3秒 | 44100Hz/16bit/WAV | 室内环境底噪（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_garden_birds.wav | ~3秒 | 44100Hz/16bit/WAV | 花园鸟鸣环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_attack_hit.wav | ~1秒 | 44100Hz/16bit/WAV | 战斗攻击命中音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_skill_cast.wav | ~1秒 | 44100Hz/16bit/WAV | 技能释放音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_victory.wav | ~2秒 | 44100Hz/16bit/WAV | 战斗胜利音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_defeat.wav | ~2秒 | 44100Hz/16bit/WAV | 战斗失败音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_communication_blip.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂说话提示音（配合TTS） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_sleep_breath.wav | ~2秒 | 44100Hz/16bit/WAV | 灵魂睡眠呼吸声（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
