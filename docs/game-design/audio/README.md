@@ -85,6 +85,12 @@ assets/audio/
 | soul_proud_pose.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂骄傲情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_checkbox.wav | ~1秒 | 44100Hz/16bit/WAV | UI复选框勾选音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_radio.wav | ~1秒 | 44100Hz/16bit/WAV | UI单选按钮选择音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_waterfall.wav | ~5秒 | 44100Hz/16bit/WAV | 瀑布环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_thunderstorm.wav | ~5秒 | 44100Hz/16bit/WAV | 雷暴环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_trust_warm.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂信任情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_lonely_whisper.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂孤独情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_number_input.wav | ~1秒 | 44100Hz/16bit/WAV | UI数字输入音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_color_picker.wav | ~1秒 | 44100Hz/16bit/WAV | UI颜色选择音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
