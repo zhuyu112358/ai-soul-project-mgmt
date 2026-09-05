@@ -97,6 +97,12 @@ assets/audio/
 | soul_calm_meditation.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂平静情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_toggle_switch.wav | ~1秒 | 44100Hz/16bit/WAV | UI开关切换音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_progress_loading.wav | ~1秒 | 44100Hz/16bit/WAV | UI进度条加载音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 森林环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_grassland.wav | ~5秒 | 44100Hz/16bit/WAV | 草原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_curious_peek.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂好奇情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_focused_concentrate.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂专注情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_notification_alert.wav | ~1秒 | 44100Hz/16bit/WAV | UI通知提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_warning_alert.wav | ~1秒 | 44100Hz/16bit/WAV | UI警告提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
