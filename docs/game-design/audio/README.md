@@ -127,6 +127,12 @@ assets/audio/
 | soul_determined_resolve.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂决心情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_levelup_prompt.wav | ~1秒 | 44100Hz/16bit/WAV | UI升级提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_achievement_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_sunset.wav | ~5秒 | 44100Hz/16bit/WAV | 黄昏环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_dawn.wav | ~5秒 | 44100Hz/16bit/WAV | 黎明环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_amazed_wonder.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊叹情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_relieved_sigh.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂松口气情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_coin_get.wav | ~1秒 | 44100Hz/16bit/WAV | UI金币获得音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_exp_get.wav | ~1秒 | 44100Hz/16bit/WAV | UI经验获得音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
