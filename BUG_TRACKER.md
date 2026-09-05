@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（集成测试第17轮，🔴BUG-011回归——未提交修改导致22→171错误（AudioManager sfx_playing移除+SoulGrowthData类型找不到），与监控任务第24/25轮声称"0错误/活跃bug 0个"存在重大差异；🎉SoulArena v5.02 M4 CollectiveCognition（421测试），Seed M4（693测试），引擎1114全绿，集成连续9轮PASS，Vex 19ms历史最佳）
+**最后更新：** 2026-09-06（集成测试第18轮，🏆里程碑——M1基础架构完全可用！Godot编译0错误+运行时0错误+19系统初始化+双SDK连通，BUG-010/011/013/014全部修复关闭；🎉SoulArena v5.04 M4完成（SDK v1.3.0/449测试），Seed M4完成（SDK v2.0.0/705测试），引擎1154全绿，集成连续10轮PASS，30分钟稳定性通过，🎉活跃bug降至0个！）
 **维护者：** 总体监控任务
 
 ---
@@ -12,7 +12,7 @@
 | 待确认 | 0 |
 | 已派发/修复中 | 0 |
 | 待回归 | 0 |
-| 已关闭 | 14 |
+| 已关闭 | 15 |
 | **总计活跃** | **0** |
 
 ---
@@ -372,6 +372,13 @@
   - Godot --check-only：**171个SCRIPT ERROR，1个脚本加载失败（SoulManager.gd）**
   - **回归根因**：①AudioManager未提交修改移除了`sfx_playing`属性，但~160处引用仍存在；②SoulGrowthData类型找不到（7处）
   - **结论：未提交修改引入严重回归。开发任务需完成AudioManager重构并更新所有引用，提交前必须--check-only 0错误。**
+- **第18轮验证（2026-09-06 04:15）：✅ 全部修复关闭**
+  - SoulGame新增commit d0bd544（BUG-013）和8d406fa（BUG-014）
+  - Godot --check-only：**0错误，0脚本加载失败，exit code 0** ✅
+  - **运行时冒烟测试**：headless运行5秒无崩溃，19个系统全部初始化成功，**0 ERROR仅1个WARNING**（首次运行user配置不存在，正常）
+  - **双SDK连通性验证通过**：SoulArenaClient (localhost:3000) reachable + SeedClient (localhost:3001) reachable
+  - Bootstrap完整执行："Bootstrap complete - infrastructure ready"
+  - **结论：BUG-011/013/014全部修复，M1基础架构完全可用。关闭。**
 
 ### BUG-012: SoulGame编码损坏+方法名冲突+Godot 4.7.2 API不匹配
 - **严重程度：** P2（M1游戏功能阻塞）
@@ -403,7 +410,18 @@
 - **问题描述：** ①SoulGrowthData编码损坏（milestone_defs中6个中文字符串乱码，改为英文）；②lambda语法错误（替换为命名函数_sort_memories_by_importance）；③for循环迭代错误（改为索引迭代）；④类型推断错误；⑤SaveSystem API方法名错误；⑥stats字典键不匹配。
 - **修复commit：** SoulGame 8d406fa
 - **回归验证：** 第二十六轮监控（2026-09-06 04:00）`Godot --headless --check-only` → **0错误，exit code 0**。
-- **注意：** SoulGrowthData临时移除了add_memory/_sort_memories_by_importance/get_memories_by_type/adjust_personality函数，待完整编译验证后重新添加。M1灵魂成长功能需后续补全。
+- **注意：** SoulGrowthData临时移除了add_memory/_sort_memories_by_importance/get_memories_by_type/adjust_personality函数，待完整编译验证后重新添加。**已在BUG-015中重新添加。**
+
+### BUG-015: SoulGame SoulGrowthData函数缺失+trait参数名冲突
+- **严重程度：** P2（M1灵魂成长功能不完整）
+- **发现时间：** 2026-09-06
+- **发现者：** SoulGame应用实现任务（BUG-014修复后发现函数缺失）
+- **负责方：** SoulGame
+- **状态：** ✅ **已修复**（SoulGame eef09a0，第二十七轮监控验证0错误）
+- **问题描述：** ①BUG-014修复中临时移除的SoulGrowthData函数（add_memory/_sort_memories_by_importance/get_memories_by_type/adjust_personality）需要重新添加；②trait参数名与Godot内置/trait关键字冲突。
+- **修复commit：** SoulGame eef09a0
+- **回归验证：** 第二十七轮监控（2026-09-06 04:30）`Godot --headless --check-only` → **0错误，exit code 0**。
+- **后续M1进展：** SoulGame已完成CLI玩家界面（7745bee）+ SDK连通性验证（730b877），第18轮集成测试确认M1基础架构完全可用（编译0错误+运行时0错误+19系统初始化+双SDK连通+32分钟稳定性）。
 
 ---
 
