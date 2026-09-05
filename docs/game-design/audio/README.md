@@ -27,9 +27,15 @@ assets/audio/
 | ui_cancel.wav | ~1秒 | 44100Hz/16bit/WAV | UI取消操作反馈 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_panel_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI面板打开滑入声 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_notification.wav | ~1秒 | 44100Hz/16bit/WAV | 通知到达叮咚声 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| act_walk_wood.wav | ~1秒 | 44100Hz/16bit/WAV | 木地板行走脚步声 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| act_interact.wav | ~1秒 | 44100Hz/16bit/WAV | 互动触发光点释放声 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| act_door_open.wav | ~1秒 | 44100Hz/16bit/WAV | 木门打开吱呀声 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| act_pickup.wav | ~1秒 | 44100Hz/16bit/WAV | 物品拾取清脆叮声 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_happy_chime.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达快乐情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_sad_hum.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达悲伤情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_calm_pulse.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达平静情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_spawn.wav | ~2秒 | 44100Hz/16bit/WAV | 灵魂诞生辉煌时刻 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_affinity_heart.wav | ~1秒 | 44100Hz/16bit/WAV | 亲密度提升爱心声 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_grow_up.wav | ~3秒 | 44100Hz/16bit/WAV | 灵魂成长进化时刻 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
