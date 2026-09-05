@@ -98,6 +98,8 @@
 | [art/README.md](./art/README.md) | v1.0 | ✅ 完成 | 美术资源目录索引，已生成资源清单（2张概念图），待生产资源列表 |
 | assets/art/concept_soul_design.png | - | ✅ 已生成 | 灵魂角色设计图（1024×1024，精灵/水晶/火焰3形态+8情绪表情），AI生成 |
 | assets/art/concept_home_mainroom.png | - | ✅ 已生成 | 灵魂之家主房间概念图（1920×1080，温暖客厅+灵魂角色），AI生成 |
+| assets/art/concept_home_training.png | - | ✅ 已生成 | 灵魂之家训练室概念图（1920×1080，训练假人/镜子/黑板/哑铃/灵魂练习），AI生成 |
+| assets/art/concept_home_study.png | - | ✅ 已生成 | 灵魂之家书房概念图（1920×1080，满墙书架/书桌蜡烛/灵魂阅读漂浮书/地球仪），AI生成 |
 
 ### 🔊 音效资源（生产中）
 
@@ -106,7 +108,13 @@
 | [audio/00_音效资源总清单与生产计划.md](./audio/00_音效资源总清单与生产计划.md) | v1.0 | ✅ 完成 | 音效资源总览（~137项预估）、M1/M2/M3资源清单、UI/动作/环境/灵魂/战斗/BGM详细规格、技术规格（44100Hz/16bit/WAV）、命名规范、生产方式（AI生成+代码合成+TTS）、Godot音频架构（5条总线）、动态音乐系统、空间音频、资源验证清单、生产进度跟踪 |
 | [audio/README.md](./audio/README.md) | v1.0 | ✅ 完成 | 音效资源目录索引，已生成资源清单（3个音效），待生产资源列表 |
 | assets/audio/ui_button_click.wav | - | ✅ 已生成 | UI按钮点击音效（~1秒，需后期裁剪到0.15秒），AI生成 |
+| assets/audio/ui_confirm.wav | - | ✅ 已生成 | UI确认音效（~1秒，需后期裁剪到0.3秒），AI生成 |
+| assets/audio/ui_cancel.wav | - | ✅ 已生成 | UI取消音效（~1秒，需后期裁剪到0.3秒），AI生成 |
+| assets/audio/ui_panel_open.wav | - | ✅ 已生成 | UI面板打开音效（~1秒，需后期裁剪到0.25秒），AI生成 |
+| assets/audio/ui_notification.wav | - | ✅ 已生成 | 通知到达音效（~1秒，需后期裁剪到0.5秒），AI生成 |
 | assets/audio/soul_happy_chime.wav | - | ✅ 已生成 | 灵魂快乐情绪音效（~1秒，需后期裁剪到0.5秒），AI生成 |
+| assets/audio/soul_sad_hum.wav | - | ✅ 已生成 | 灵魂悲伤情绪音效（~1秒，需后期裁剪到0.6秒），AI生成 |
+| assets/audio/soul_calm_pulse.wav | - | ✅ 已生成 | 灵魂平静情绪音效（~1秒，需后期裁剪到0.5秒），AI生成 |
 | assets/audio/soul_grow_up.wav | - | ✅ 已生成 | 灵魂成长进化音效（~3秒），AI生成 |
 
 ---
@@ -212,6 +220,7 @@
 | 维护期第18轮 | 2026-09-06 | 推送积压5个commit成功（f1ab704..b5a6737，GitHub网络恢复）；BUG_TRACKER自第13轮后无新更新，M2里程碑已完成（v4.94 SDK v1.1.0，BUG-006全部修复，Nova 24ms，25.4分钟0崩溃无泄漏），进入M3开发（SoulArena灵魂训练机制+知识导入接口，Seed资源系统），全功能开发期M1进行中（灵魂之家+灵魂成长基础）；DR-003已正式关闭无需进一步跟踪；设计待修订项仅剩1项（DR-001 P3版本引用过时），无P0/P1/P2设计问题，无需输出设计修订建议文档 | ✅ 完成 |
 | 维护期第19轮 | 2026-09-06 | 第二十二轮监控重大进展：BUG-006正式关闭（崩溃+退化+稳定性全部修复，Nova 24ms历史最佳对比5097ms，25.4+分钟0崩溃，SDK v1.1.0发布，集成测试连续5轮PASS）；BUG-005已关闭（接口文档v1.1全面更新，SoulBridgeAdapter已实现并验证）；全功能开发M1全面启动（灵魂之家+灵魂成长基础，SoulGame M1已开始：灵魂成长数据模型+灵魂之家+管理器）；SoulArena M3快速推进（v4.95 TrainingSystem 101子系统/235测试→v4.96 KnowledgeImport 102子系统/273测试+76）；Seed M3推进（608测试+58，资源系统+采集+合成）；Godot 4.7.2已安装；新增BUG-010 P1（SoulGame Godot脚本兼容性22错误，技术实现问题非设计问题）；30分钟稳定性验证通过；设计待修订项仅剩1项（DR-001 P3版本引用过时），无P0/P1/P2设计问题；GitHub push失败（Connection was reset），commit保留本地 | ✅ 完成 |
 | 美术音效第1轮 | 2026-09-06 | 定时任务职责扩展，新增美术/音效资源生产；创建art/00_美术资源总清单与生产计划.md（~320项预估，M1/M2/M3清单，角色/场景/UI/图标/粒子/概念图规格，生产方式，验证清单）；创建audio/00_音效资源总清单与生产计划.md（~137项预估，UI/动作/环境/灵魂/战斗/BGM规格，44100Hz/16bit/WAV，Godot 5条音频总线，动态音乐系统，空间音频）；创建art/README.md和audio/README.md资源索引；生成3个音效资源（ui_button_click.wav/soul_happy_chime.wav/soul_grow_up.wav，AI生成text_to_audio）；生成2张概念图（concept_soul_design.png 1024×1024三形态+八情绪/concept_home_mainroom.png 1920×1080温暖客厅，AI生成image_gen）；更新README添加美术/音效资源索引；所有资源自行生成无第三方版权问题 | ✅ 完成 |
+| 美术音效第2轮 | 2026-09-06 | 第二十三轮监控：BUG-010已修复（Logger autoload单例222→0错误，M1解除阻塞），SoulArena M3完成（SDK v1.2.0发布v4.98/103子系统/303测试）→M4启动（多灵魂协作+灵魂间通信），Seed M3~50%（资源系统+采集+合成+成长规则），30分钟稳定性验证通过（32.5分钟0崩溃），引擎939测试全绿，活跃bug降至1个；生成6个音效资源（ui_confirm.wav/ui_cancel.wav/ui_panel_open.wav/ui_notification.wav/soul_sad_hum.wav/soul_calm_pulse.wav，AI生成text_to_audio）；生成2张概念图（concept_home_training.png 1920×1080训练室/concept_home_study.png 1920×1080书房，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计9音效+4概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 
 ---
 
