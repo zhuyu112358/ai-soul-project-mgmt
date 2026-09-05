@@ -73,6 +73,12 @@ assets/audio/
 | soul_satisfied_purr.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达满足情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_tab_switch.wav | ~1秒 | 44100Hz/16bit/WAV | UI标签切换音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_slider_adjust.wav | ~1秒 | 44100Hz/16bit/WAV | UI滑块调整音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_skill_ready.wav | ~1秒 | 44100Hz/16bit/WAV | 战斗技能冷却完成音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_turn_start.wav | ~1秒 | 44100Hz/16bit/WAV | 战斗回合开始音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_turn_end.wav | ~1秒 | 44100Hz/16bit/WAV | 战斗回合结束音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_thinking_hum.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂思考音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_confused_tilt.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂疑惑音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_dropdown.wav | ~1秒 | 44100Hz/16bit/WAV | UI下拉菜单音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 

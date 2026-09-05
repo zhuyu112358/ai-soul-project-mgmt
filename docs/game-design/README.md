@@ -114,6 +114,8 @@
 | assets/art/concept_ui_arena.png | - | ✅ 已生成 | 对战竞技场UI mockup（1920×1080，双方灵魂信息+血量能量条/技能栏4技能+冷却/聊天框/回合计时器+比分/暂停投降按钮），AI生成 |
 | assets/art/concept_world_desert.png | - | ✅ 已生成 | 世界探索沙漠概念图（1920×1080，金色沙丘/烈日/金字塔遗迹/绿洲棕榈树/仙人掌/骨头宝箱/灵魂蓝色光芒），AI生成 |
 | assets/art/concept_ui_soul_growth.png | - | ✅ 已生成 | 灵魂成长界面UI mockup（1920×1080，五大成长维度面板/技能树面板/成长里程碑时间线/灵魂大预览），AI生成 |
+| assets/art/concept_world_ocean.png | - | ✅ 已生成 | 世界探索海洋概念图（1920×1080，蓝色海水/白云海鸥/波浪浪花/帆船小岛/沙滩贝壳/珊瑚鱼群/灵魂青色光芒），AI生成 |
+| assets/art/concept_ui_shop.png | - | ✅ 已生成 | 商店界面UI mockup（1920×1080，商店老板NPC/商品列表网格/玩家信息面板/分类标签/购买确认按钮），AI生成 |
 
 ### 🔊 音效资源（生产中）
 
@@ -172,6 +174,12 @@
 | assets/audio/soul_satisfied_purr.wav | - | ✅ 已生成 | 灵魂满足情绪音效（~1秒，需后期裁剪到0.8秒），AI生成 |
 | assets/audio/ui_tab_switch.wav | - | ✅ 已生成 | UI标签切换音效（~1秒，需后期裁剪到0.2秒），AI生成 |
 | assets/audio/ui_slider_adjust.wav | - | ✅ 已生成 | UI滑块调整音效（~1秒，需后期裁剪到0.15秒），AI生成 |
+| assets/audio/bat_skill_ready.wav | - | ✅ 已生成 | 战斗技能冷却完成音效（~1秒，需后期裁剪到0.4秒），AI生成 |
+| assets/audio/bat_turn_start.wav | - | ✅ 已生成 | 战斗回合开始音效（~1秒，需后期裁剪到0.6秒），AI生成 |
+| assets/audio/bat_turn_end.wav | - | ✅ 已生成 | 战斗回合结束音效（~1秒，需后期裁剪到0.5秒），AI生成 |
+| assets/audio/soul_thinking_hum.wav | - | ✅ 已生成 | 灵魂思考音效（~1秒，需后期裁剪到0.8秒），AI生成 |
+| assets/audio/soul_confused_tilt.wav | - | ✅ 已生成 | 灵魂疑惑音效（~1秒，需后期裁剪到0.5秒），AI生成 |
+| assets/audio/ui_dropdown.wav | - | ✅ 已生成 | UI下拉菜单音效（~1秒，需后期裁剪到0.3秒），AI生成 |
 
 ---
 
@@ -284,6 +292,7 @@
 | 美术音效第7轮 | 2026-09-06 | 第二十六轮监控：积压commit已推送成功，SoulArena M4完成（SDK v1.3.0发布v5.04/108子系统/449测试完整多灵魂协作体系）→M5启动（情感深度+长期记忆+个性演化），Seed M4完成（SDK v2.0.0发布705测试持久化世界+世界生成器）→M5启动（动态世界事件+生态系统+世界规则引擎），BUG-013/014修复（14关闭/0活跃），服务器稳定28分钟，SoulGame 0错误；生成6个音效资源（bgm_battle.wav战斗BGM电子合成器+打击乐紧张节奏/bgm_menu.wav菜单BGM钢琴+木琴轻松愉快/soul_angry_roar.wav灵魂愤怒咆哮/soul_fear_tremble.wav灵魂恐惧颤抖/ui_achievement.wav成就解锁辉煌/ui_item_get.wav物品获得清脆，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_cave.png 1920×1080世界探索洞穴地下洞穴+钟乳石+水晶矿脉+发光蘑菇+地下湖泊+宝箱金币/concept_ui_soul_creation.png 1920×1080灵魂创建界面UI mockup形态选择3种+个性设置5滑块+预览区+名字输入+步骤指示器，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计39音效+14概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 | 美术音效第8轮 | 2026-09-06 | 第二十七轮监控重大里程碑：M1基础架构完全可用（Godot编译0错误+运行时0错误+19系统初始化+SDK连通），BUG-010/011/013/014全部关闭，SoulArena v5.04 M4完成（SDK v1.3.0/449测试），Seed M4完成（SDK v2.0.0/705测试），引擎1154全绿，集成连续10轮PASS，30分钟稳定性验证通过，活跃bug 0个；生成6个音效资源（bat_defend.wav战斗防御金属撞击+护盾/bat_critical_hit.wav战斗暴击强力冲击+闪光/bat_dodge.wav战斗闪避快速风声+残影/soul_tired_sigh.wav灵魂疲惫叹息/act_attack_swing.wav攻击挥舞快速风声+挥砍/act_use_item.wav使用道具魔法光点+叮声，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_snow.png 1920×1080世界探索雪山白雪山峰+飘落雪花+结冰湖面+积雪松树+冰晶+雪山洞穴+灵魂橙色光芒/concept_ui_arena.png 1920×1080对战竞技场UI mockup双方灵魂信息+血量能量条+技能栏4技能+冷却+聊天框+回合计时器+比分+暂停投降按钮，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计45音效+16概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 | 美术音效第9轮 | 2026-09-06 | BUG_TRACKER无新更新（第二十七轮监控后无变化，M1基础架构完全可用，活跃bug 0个）；生成6个音效资源（env_night.wav夜晚环境音蟋蟀+远处风声+猫头鹰/env_campfire.wav篝火环境音木柴燃烧+噼啪声/soul_surprised_gasp.wav灵魂惊讶倒吸气/soul_satisfied_purr.wav灵魂满足柔和咕噜/ui_tab_switch.wav UI标签切换/ui_slider_adjust.wav UI滑块调整，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_desert.png 1920×1080世界探索沙漠金色沙丘+烈日+金字塔遗迹+绿洲棕榈树+仙人掌+骨头宝箱+灵魂蓝色光芒/concept_ui_soul_growth.png 1920×1080灵魂成长界面UI mockup五大成长维度面板+技能树面板+成长里程碑时间线+灵魂大预览，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计51音效+18概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
+| 美术音效第10轮 | 2026-09-06 | 第二十八轮监控重大里程碑：M1功能代码完整实现（SoulManager 19函数/WorldManager 20函数/SoulHomeController 20函数/CLIManager新增），Godot编译+运行时连续2轮0错误，SoulArena v5.06 M5开始（512测试+63），Seed M5（732测试+27），引擎1244全绿，集成连续11轮PASS，活跃bug 0个；积压2个commit推送成功（7a8f1af..d0b1d53）；生成6个音效资源（bat_skill_ready.wav战斗技能冷却完成/bat_turn_start.wav战斗回合开始号角/bat_turn_end.wav战斗回合结束低沉/soul_thinking_hum.wav灵魂思考低沉嗡鸣+闪烁/soul_confused_tilt.wav灵魂疑惑上扬疑问音/ui_dropdown.wav UI下拉菜单，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_ocean.png 1920×1080世界探索海洋蓝色海水+白云海鸥+波浪浪花+帆船小岛+沙滩贝壳+珊瑚鱼群+灵魂青色光芒/concept_ui_shop.png 1920×1080商店界面UI mockup商店老板NPC+商品列表网格+玩家信息面板+分类标签+购买确认按钮，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计57音效+20概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 
 ---
 
