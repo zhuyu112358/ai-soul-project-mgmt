@@ -67,6 +67,12 @@ assets/audio/
 | soul_tired_sigh.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达疲惫情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | act_attack_swing.wav | ~1秒 | 44100Hz/16bit/WAV | 攻击挥舞音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | act_use_item.wav | ~1秒 | 44100Hz/16bit/WAV | 使用道具音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_night.wav | ~5秒 | 44100Hz/16bit/WAV | 夜晚环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_campfire.wav | ~5秒 | 44100Hz/16bit/WAV | 篝火环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_surprised_gasp.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达惊讶情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_satisfied_purr.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达满足情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_tab_switch.wav | ~1秒 | 44100Hz/16bit/WAV | UI标签切换音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_slider_adjust.wav | ~1秒 | 44100Hz/16bit/WAV | UI滑块调整音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
