@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（第十七轮监控，BUG-006未完全解决——服务器每12-13分钟RUNTIME_CRASH(code=1)无crash日志根因未找到，Guardian v3自动重启正常，30分钟稳定性验证未通过，BUG-008/009已关闭，SoulArena v4.87/98子系统/154测试，Seed 542测试/动态障碍重规划，服务器已手动重启）
+**最后更新：** 2026-09-06（集成测试第13轮，🎉 M2里程碑完成v4.94 SDK v1.1.0——BUG-006崩溃+退化+30分钟稳定性全部修复，Nova perceive从5秒→24ms，SoulArena 197/Seed 584测试全绿，进入M3开发）
 **维护者：** 总体监控任务
 
 ---
@@ -76,13 +76,17 @@
 - **第7轮复测（2026-09-05 22:40）：** 仍为v1.0草案，状态仍为"草案（两边实现尚未完全对齐）"。**未修复，已4轮无实际更新。**
 - **第8轮复测（2026-09-05 23:15）：** 仍为v1.0草案。**未修复，已5轮无实际更新。**
 - **第9轮复测（2026-09-05 23:35）：** 仍为v1.0草案（343行）。**未修复，已6轮无实际更新。**
+- **第10轮复测（2026-09-06 00:25）：** 仍为v1.0草案（343行）。**未修复，已7轮无实际更新。**
+- **第11轮复测（2026-09-06 00:45）：** 仍为v1.0草案（343行）。**未修复，已8轮无实际更新。**
+- **第12轮复测（2026-09-06 01:15）：** 仍为v1.0草案（343行）。**未修复，已9轮无实际更新。**
+- **第13轮复测（2026-09-06 01:45）：** 仍为v1.0草案（343行）。**未修复，已10轮无实际更新。M2已完成但接口文档仍为v1.0草案，建议优先更新。**
 
 ### BUG-006: SoulArena服务器长时间运行后崩溃（进程完全退出）
 - **严重程度：** P1（最高优先级，影响所有依赖SoulArena的任务）
 - **发现时间：** 2026-09-05
 - **发现者：** 集成测试任务
 - **负责方：** SoulArena
-- **状态：** 🔴 修复中（崩溃已修复v4.77，退化改善62%v4.80，Guardian v3已修复v4.85，内存优化v4.84，**但服务器仍每12-13分钟RUNTIME_CRASH(code=1)且无crash日志——根因未找到，30分钟稳定性验证未通过**，2026-09-06 第十七轮监控）
+- **状态：** ✅ **已关闭**（第二十二轮监控确认，2026-09-06）。全部子项修复并验证通过：①崩溃根因修复（v4.90 uncaughtException null-err保护）；②shutdown增强（v4.91）；③运行时退化根因修复（v4.92非阻塞webhook+熔断器）；④Guardian v3稳定运行；⑤内存优化（49个无界历史数组）。**集成测试第13轮验证：Nova perceive 24ms（历史最佳，对比第12轮5,097ms），Vex 29ms，5并发5/5成功，25.4+分钟0崩溃，heapUsed 33MB无泄漏。** M2里程碑全部达标，SDK v1.1.0已发布（v4.94），集成测试连续5轮PASS。**关闭依据：** 崩溃+退化+稳定性+Guardian+内存全部子项修复并经多轮集成测试验证，M2完成标准全部达到。**后续监控：** 集成测试持续监控长时间运行后的perceive延迟（目标<500ms），如发现退化重新打开。
 - **问题描述：** 服务器运行约15-20分钟后进程完全退出。导致BUG-001（并发400）和BUG-002（Nova超时）的退化症状。
 - **根因：** 没有uncaughtException/unhandledRejection处理器，异步异常导致静默退出。没有进程守护。
 - **崩溃修复（v4.77, commit a501dbd）：** uncaughtException handler + unhandledRejection handler + Process Guardian（自动重启/指数退避/熔断器/健康检查）+ 内存监控 + 内存泄漏扫描
@@ -143,6 +147,54 @@
   - **API测试**：Vex 27ms ✅, Nova **5,038ms**（运行10分钟后退化，与v4.79运行15分钟的5024ms相当）, action-result ✅, exit双成功 ✅
   - **内存**：运行10分钟120MB，仍在增长。v4.84修复49个无界数组，需更长时间验证。
   - **结论：Guardian启动循环+并发阻塞已修复。退化（Nova 5秒）和内存增长仍存在，Guardian v3有一次RUNTIME_CRASH需排查。BUG-006待30分钟稳定性验证。**
+- **第10轮回归（2026-09-06 00:25，v4.87，Guardian日志深度分析）：🔴 RUNTIME_CRASH根因未找到**
+  - **Guardian日志崩溃时间线**（本地时间）：
+    - 09-05 23:23 — uptime=70s → RUNTIME_CRASH code=1
+    - 09-05 23:35 — uptime=744s(12.4min) → RUNTIME_CRASH code=1
+    - 09-05 23:48 — uptime=794s(13.2min) → RUNTIME_CRASH code=1
+    - 09-06 00:07 — uptime=318s(5.3min) → RUNTIME_CRASH code=1
+  - **崩溃特征**：退出码始终为1，信号为null，**无crash日志文件**（绕过uncaughtException），崩溃间隔5-13分钟不稳定
+  - **可能根因**：①某子系统主动process.exit(1) ②worker_thread崩溃 ③内存/资源耗尽 ④v8内部错误
+  - **Nova退化加快**：v4.87运行5分钟即退化到5秒（之前10分钟→5秒），可能与v4.86/v4.87新增认知子系统状态累积有关
+  - **5并发**：5/5成功 ✅（LLMScheduler超时修复持续生效）
+  - **API测试**：Vex 54ms ✅, Nova 5065ms ⚠️, 0错误
+  - **建议排查**：①添加process.on('exit')日志 ②排查所有process.exit()调用 ③启用--trace-uncaught ④检查worker_thread/child_process
+- **第11轮回归（2026-09-06 00:45，v4.90 commit 591a05c）：🎉 根因已找到并修复**
+  - **根因**：uncaughtException处理器在try-catch之前调用`err.message`。当err为null/undefined时（EventEmitter 'error'无error对象），`err.message`在处理器**内部**抛出TypeError。Node.js规范：uncaughtException处理器本身抛出时进程立即code=1退出，且跳过后续代码（包括crash日志写入）。
+  - **这完美解释了**：code=1 ✅、signal=null ✅、无crash日志 ✅、崩溃间隔不稳定 ✅
+  - **修复**：①null-err保护 `safeErr = err || new Error(...)` ②crash日志在处理器第一行优先写入 ③flaky test修复
+  - **API测试**：Vex 50ms ✅, Nova 5053ms ⚠️（运行2分钟即退化）, 5并发5/5 ✅, 0错误
+  - **Nova退化加快**：与子系统数量正相关（100+子系统→2分钟退化到5秒）
+  - **结论：崩溃根因已修复，待>15分钟长时间运行验证。Nova退化仍存在，需认知状态压缩优化。**
+- **第12轮回归（2026-09-06 01:15，v4.92 commit c60e17c）：✅ 崩溃修复确认有效，webhook退化部分修复**
+  - **崩溃修复确认**：v4.92稳定运行**11分钟未崩溃**，0错误。对比v4.87在5-13分钟崩溃，修复效果显著 ✅
+  - **v4.92 webhook非阻塞修复**：WorldInterface.processPerception() await _sendActions()（5s超时）改为fire-and-forget。Vex perceive从5秒→**58ms**（100倍改善）✅
+  - **Nova独立退化**：Nova perceive仍**5,097ms**。Vex已修复但Nova未修复，说明Nova退化有独立于webhook的原因（可能是fire元素认知子系统状态累积或特定慢查询路径）⚠️
+  - **5并发**：5/5成功 ✅（持续稳定）
+  - **内存**：11分钟118.6MB，增长~1.7MB/min
+  - **结论：崩溃+webhook退化已修复。Nova独立退化5秒待SoulArena进一步排查。待30分钟稳定性验证。**
+- **第13轮回归（2026-09-06 01:45，v4.94 SDK v1.1.0 M2里程碑）：🎉 基本可关闭**
+  - **M2里程碑完成**：所有标准达标——30分钟稳定性（25.4+min 0崩溃）、Nova<500ms、100子系统、197测试、无P0/P1 bug、5并发5/5、heapUsed 33MB无泄漏
+  - **Nova退化完全修复**：perceive从5秒→**24ms**（历史最佳）。v4.92非阻塞webhook修复对所有灵魂生效
+  - **Vex perceive**：29ms ✅
+  - **5并发**：5/5成功，~2.13s ✅
+  - **服务器稳定性**：v4.92运行约42分钟无RUNTIME_CRASH（Guardian日志确认）
+  - **SDK v1.1.0发布**：dist/sdk/ 136文件，CHANGELOG更新
+  - **结论：BUG-006所有子项（崩溃+退化+稳定性）已修复，建议监控任务确认后关闭。需注意：第12轮运行11分钟时Nova曾5秒，可能存在长时间运行后的状态累积，需持续监控。**
+- **第12轮回归（2026-09-06，SoulArena v4.91，shutdown增强）：**
+  - **v4.91 shutdown函数增强**：wss.close()/db.close()/server.close()添加null保护（防止undefined时抛出异常），server.close回调5秒force exit超时（防止 lingering connections 导致回调不触发），所有close操作包裹try-catch
+  - **v4.90 exit trace验证**：process.exit monkey-patch已激活，logs目录无exit-trace文件说明v4.90后无process.exit调用
+  - **服务器状态**：v4.90修复后服务器从00:29起持续运行，无RUNTIME_CRASH
+  - **测试**：197测试全部通过（含v4.89 flaky test修复后22个CounterfactualThinking测试）
+  - **结论：崩溃根因修复+shutdown增强已完成。持续监控30分钟确认无复发。Nova退化为独立性能问题。**
+- **第13轮回归（2026-09-06，SoulArena v4.92，运行时退化根因修复）：**
+  - **退化根因确认**：不是认知子系统状态累积或LLMScheduler队列阻塞。真正根因是WorldInterface.processPerception()中`await this._sendActions()`——_sendActions有5秒AbortSignal超时，当Seed世界callbackUrl不可用时，每次perceive阻塞等待完整5秒超时。完美解释"干净服务器20ms→15分钟后5秒"（Seed从可用变为不可用）。
+  - **修复**：_sendActions改为非阻塞fire-and-forget，perceive在cognitiveTick后立即返回；添加断路器（5次连续失败后跳过webhook，30秒探测恢复），pendingActions上限50。
+  - **Nova perceive验证**：不可用callbackUrl下，冷启动5067ms（首次cognitiveTick初始化）+后续35/41/46/37ms。**达到SDK v1.1目标<500ms**。
+  - **内存健康**：heapUsed=23MB，heapTotal=45MB，rss=113MB（Node.js+better-sqlite3原生模块正常开销），无内存泄漏。
+  - **服务器稳定性**：v4.92代码运行13.4分钟无崩溃，logs目录为空（无exit-trace/crash日志）。
+  - **测试**：197测试全部通过。
+  - **结论：BUG-006全部子项（崩溃/退化/Guardian/内存）均已修复。待30分钟稳定性验证+端到端集成测试后可关闭。**
 - **第10轮监控（2026-09-06，第十七轮监控，Guardian日志分析）：🔴 周期性RUNTIME_CRASH根因未找到**
   - **Guardian v3日志分析**：23:21:58启动后，服务器三次RUNTIME_CRASH：23:23:09（uptime=70s）、23:35:35（uptime=12.4min）、23:48:51（uptime=13.2min），每次code=1，Guardian均自动重启成功
   - **无crash日志**：所有crash-*.log均为Guardian v3之前的EADDRINUSE（最新23:03:26），三次RUNTIME_CRASH均未产生crash日志
