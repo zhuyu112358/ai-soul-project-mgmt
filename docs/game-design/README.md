@@ -128,6 +128,8 @@
 | assets/art/concept_ui_mail.png | - | ✅ 已生成 | 邮件界面UI mockup（1920×1080，邮件分类标签/邮件列表/详情面板/发件人信息/正文内容/附件/回复删除标记已读按钮/写邮件搜索框），AI生成 |
 | assets/art/concept_world_flowerfield.png | - | ✅ 已生成 | 世界探索花田概念图（1920×1080，广阔彩色花田/蓝天白云蝴蝶/风车小屋/花丛蜜蜂/飘落花瓣花粉/灵魂粉色光芒），AI生成 |
 | assets/art/concept_ui_leaderboard.png | - | ✅ 已生成 | 排行榜界面UI mockup（1920×1080，排行榜类型标签/排行榜列表/前三名金银铜边框奖杯/详情面板/统计数据/查看灵魂添加好友发送消息按钮/排名变化箭头），AI生成 |
+| assets/art/concept_world_underground_city.png | - | ✅ 已生成 | 世界探索地下城市概念图（1920×1080，巨大地下洞穴/钟乳石发光水晶/石质建筑街道/石板路火把/商店NPC/漂浮尘埃/灵魂蓝色光芒），AI生成 |
+| assets/art/concept_ui_skill_tree.png | - | ✅ 已生成 | 技能树界面UI mockup（1920×1080，技能树可视化/技能节点图标名称等级解锁状态/连接线流动光效/详情面板/技能点统计/重置技能返回按钮），AI生成 |
 
 ### 🔊 音效资源（生产中）
 
@@ -228,6 +230,12 @@
 | assets/audio/soul_surprised_gasp.wav | - | ✅ 已生成 | 灵魂惊喜情绪音效（~1秒，需后期裁剪到0.5秒），AI生成 |
 | assets/audio/ui_loading_complete.wav | - | ✅ 已生成 | UI加载完成音效（~1秒，需后期裁剪到0.4秒），AI生成 |
 | assets/audio/ui_connection_success.wav | - | ✅ 已生成 | UI连接成功音效（~1秒，需后期裁剪到0.3秒），AI生成 |
+| assets/audio/env_underground_city.wav | - | ✅ 已生成 | 地下城市环境音（~5秒，可循环，回声+远处人声+水滴），AI生成 |
+| assets/audio/env_wind_erosion.wav | - | ✅ 已生成 | 风蚀地貌环境音（~5秒，可循环，风声+沙粒声），AI生成 |
+| assets/audio/soul_nostalgic_memory.wav | - | ✅ 已生成 | 灵魂怀念情绪音效（~1秒，需后期裁剪到0.8秒），AI生成 |
+| assets/audio/soul_brave_courage.wav | - | ✅ 已生成 | 灵魂勇气情绪音效（~1秒，需后期裁剪到0.7秒），AI生成 |
+| assets/audio/ui_item_discard.wav | - | ✅ 已生成 | UI物品丢弃音效（~1秒，需后期裁剪到0.3秒），AI生成 |
+| assets/audio/ui_item_use.wav | - | ✅ 已生成 | UI物品使用音效（~1秒，需后期裁剪到0.3秒），AI生成 |
 
 ---
 
@@ -347,6 +355,7 @@
 | 美术音效第14轮 | 2026-09-06 | 第三十轮监控新更新：SoulArena v5.10 M5完成（SDK v1.4.0/623测试），Seed M6开始（817测试+79，行为树+动态任务系统），SoulGame M1像素精灵+粒子光照+73集成测试，新增BUG-016（M1IntegrationTest编译失败-SoulManager非Autoload）+BUG-017（TestRunner编译失败-独立lambda不兼容Godot4.7），Godot连续4轮0错误，活跃bug 2个（均为实现相关非设计问题）；生成6个音效资源（env_forest.wav森林环境音鸟鸣+树叶声/env_grassland.wav草原环境音风声+虫鸣/soul_curious_peek.wav灵魂好奇偷看声+闪烁/soul_focused_concentrate.wav灵魂专注集中嗡鸣声/ui_notification_alert.wav UI通知提示清脆叮声/ui_warning_alert.wav UI警告提示低沉警告声，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_icefield.png 1920×1080世界探索冰原广阔白色冰原+极光星星+冰山冰川+冰裂缝冰晶+冰湖冰雕+飘落雪花+灵魂橙色光芒/concept_ui_friends.png 1920×1080好友界面UI mockup好友分类标签+好友列表+详情面板+亲密度进度条+发送消息查看灵魂邀请对战删除好友按钮+添加好友搜索框，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计81音效+28概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 | 美术音效第15轮 | 2026-09-06 | BUG_TRACKER无新更新（第三十轮监控后无变化，活跃bug 2个均为实现相关非设计问题）；生成6个音效资源（env_seaside.wav海边环境音海浪+海鸥/env_mountaintop.wav山顶环境音风声+远处鸟鸣/soul_grateful_thanks.wav灵魂感激温暖感谢声/soul_expectant_wait.wav灵魂期待期待上扬音/ui_success_prompt.wav UI成功提示辉煌上升音/ui_failure_prompt.wav UI失败提示低沉下降音，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_ruins.png 1920×1080世界探索古代遗迹巨大石柱+残破神庙+夕阳余晖+石板路藤蔓+古老雕像+发光符文石+漂浮尘埃+灵魂紫色光芒/concept_ui_mail.png 1920×1080邮件界面UI mockup邮件分类标签+邮件列表+详情面板+发件人信息+正文内容+附件+回复删除标记已读按钮+写邮件搜索框，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计87音效+30概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 | 美术音效第16轮 | 2026-09-06 | 第三十一轮监控新更新：SoulArena v5.12 M6（640测试，SoulEvolution+DevelopmentalStages），Seed M6完成（SDK v2.2.0/842测试），SoulGame M2开始（竞技场回合制战斗），Godot连续5轮0错误，引擎1582全绿，集成连续14轮PASS，BUG-016/017回归仍失败（已派发修复中），活跃bug 2个（均为实现相关非设计问题）；积压2个commit推送成功（61cb3e8..cc8eec3）；生成6个音效资源（env_flowerfield.wav花田环境音微风+虫鸣+蜜蜂/env_starlight.wav星空环境音微风+远处虫鸣+宁静感/soul_peaceful_calm.wav灵魂安心柔和平静音/soul_surprised_gasp.wav灵魂惊喜倒吸气+闪光/ui_loading_complete.wav UI加载完成辉煌完成音/ui_connection_success.wav UI连接成功清脆连接音，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_flowerfield.png 1920×1080世界探索花田广阔彩色花田+蓝天白云蝴蝶+风车小屋+花丛蜜蜂+飘落花瓣花粉+灵魂粉色光芒/concept_ui_leaderboard.png 1920×1080排行榜界面UI mockup排行榜类型标签+排行榜列表+前三名金银铜边框奖杯+详情面板+统计数据+查看灵魂添加好友发送消息按钮+排名变化箭头，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计92音效+32概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
+| 美术音效第17轮 | 2026-09-06 | BUG_TRACKER无新更新（第三十一轮监控后无变化，活跃bug 2个均为实现相关非设计问题）；生成6个音效资源（env_underground_city.wav地下城市环境音回声+远处人声+水滴/env_wind_erosion.wav风蚀地貌环境音风声+沙粒声/soul_nostalgic_memory.wav灵魂怀念柔和怀念声/soul_brave_courage.wav灵魂勇气有力勇气声/ui_item_discard.wav UI物品丢弃轻微丢弃声/ui_item_use.wav UI物品使用清脆使用声，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_underground_city.png 1920×1080世界探索地下城市巨大地下洞穴+钟乳石发光水晶+石质建筑街道+石板路火把+商店NPC+漂浮尘埃+灵魂蓝色光芒/concept_ui_skill_tree.png 1920×1080技能树界面UI mockup技能树可视化+技能节点图标名称等级解锁状态+连接线流动光效+详情面板+技能点统计+重置技能返回按钮，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计98音效+34概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 
 ---
 

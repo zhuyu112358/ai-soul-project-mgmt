@@ -115,6 +115,12 @@ assets/audio/
 | soul_surprised_gasp.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊喜情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_loading_complete.wav | ~1秒 | 44100Hz/16bit/WAV | UI加载完成音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_connection_success.wav | ~1秒 | 44100Hz/16bit/WAV | UI连接成功音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_underground_city.wav | ~5秒 | 44100Hz/16bit/WAV | 地下城市环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_wind_erosion.wav | ~5秒 | 44100Hz/16bit/WAV | 风蚀地貌环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_nostalgic_memory.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂怀念情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_brave_courage.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂勇气情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_item_discard.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品丢弃音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_item_use.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品使用音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
