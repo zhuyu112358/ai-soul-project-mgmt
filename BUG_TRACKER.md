@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（第二十四轮监控，✅BUG-010+BUG-011全部修复——SoulGame Godot 4.7.2兼容性0错误exit code 0，M1全部解除阻塞（Logger autoload 7a61d52 + 批量API修复 340fb0b）；🎉SoulArena M4完成v5.00（105子系统/363测试，多灵魂协作+灵魂间通信）；🎉Seed M3完成SDK v1.2.0→M4进行中（世界序列化+存档，663测试）；游戏设计产出4张概念图+9个音效（全部AI生成无版权问题）；活跃bug降至0个）
+**最后更新：** 2026-09-06（集成测试第17轮，🔴BUG-011回归——未提交修改导致22→171错误（AudioManager sfx_playing移除+SoulGrowthData类型找不到），与监控任务第24/25轮声称"0错误/活跃bug 0个"存在重大差异；🎉SoulArena v5.02 M4 CollectiveCognition（421测试），Seed M4（693测试），引擎1114全绿，集成连续9轮PASS，Vex 19ms历史最佳）
 **维护者：** 总体监控任务
 
 ---
@@ -12,7 +12,7 @@
 | 待确认 | 0 |
 | 已派发/修复中 | 0 |
 | 待回归 | 0 |
-| 已关闭 | 12 |
+| 已关闭 | 14 |
 | **总计活跃** | **0** |
 
 ---
@@ -366,6 +366,12 @@
   5. 目标：`--check-only` 0错误
 - **开发任务状态：** commit 340fb0b修复了主要兼容性问题，commit a2bf2c7（BUG-012）修复了剩余编码损坏和API变更。**全部修复完成。**
 - **回归验证：** 第二十五轮监控（2026-09-06 03:32）`Godot --headless --check-only` → **0错误，exit code 0**。M1全部游戏功能解除阻塞。
+- **第17轮集成测试（2026-09-06 03:50）：🔴 回归——171错误**
+  - ⚠️ **与监控任务第25轮（03:32声称0错误）存在重大差异**
+  - SoulGame有10个未提交修改（开发任务在监控测试后继续修改）
+  - Godot --check-only：**171个SCRIPT ERROR，1个脚本加载失败（SoulManager.gd）**
+  - **回归根因**：①AudioManager未提交修改移除了`sfx_playing`属性，但~160处引用仍存在；②SoulGrowthData类型找不到（7处）
+  - **结论：未提交修改引入严重回归。开发任务需完成AudioManager重构并更新所有引用，提交前必须--check-only 0错误。**
 
 ### BUG-012: SoulGame编码损坏+方法名冲突+Godot 4.7.2 API不匹配
 - **严重程度：** P2（M1游戏功能阻塞）
@@ -377,6 +383,27 @@
 - **修复commit：** SoulGame a2bf2c7
 - **回归验证：** 第二十五轮监控（2026-09-06 03:32）`Godot --headless --check-only` → **0错误，exit code 0**。
 - **剩余：** 类型推断警告（DebugOverlay/PerformanceMonitor/ErrorHandler/TimeManager/AudioManager/AnimationManager）不影响运行，SaveSystem集成待M1开发中完成。
+
+### BUG-013: SoulGame BUG-011修复中回归——LocalizationManager tr()冲突+编码损坏+SoulManager字典类型
+- **严重程度：** P2（M1游戏功能阻塞）
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第17轮，BUG-011修复中回归22→171错误）
+- **负责方：** SoulGame
+- **状态：** ✅ **已修复**（SoulGame d0bd544，第二十六轮监控验证0错误）
+- **问题描述：** BUG-011修复过程中出现严重回归（22→171错误，暴增675%）：①LocalizationManager tr()与Object.tr()冲突；②编码损坏（语言名称/中文翻译乱码）；③SoulManager编码损坏（训练任务/个性关键词）；④SoulManager _generate_personality_from_description字典类型和keys()迭代错误（'Expected loop variable name after for'）；⑤enter_world()调用参数顺序错误。
+- **修复commit：** SoulGame d0bd544
+- **回归验证：** 第二十六轮监控（2026-09-06 04:00）`Godot --headless --check-only` → **0错误，exit code 0**。
+
+### BUG-014: SoulGame SoulGrowthData编译错误+SaveSystem API+stats字典键
+- **严重程度：** P2（M1灵魂成长系统阻塞）
+- **发现时间：** 2026-09-06
+- **发现者：** SoulGame应用实现任务（BUG-013修复后发现新问题）
+- **负责方：** SoulGame
+- **状态：** ✅ **已修复**（SoulGame 8d406fa，第二十六轮监控验证0错误）
+- **问题描述：** ①SoulGrowthData编码损坏（milestone_defs中6个中文字符串乱码，改为英文）；②lambda语法错误（替换为命名函数_sort_memories_by_importance）；③for循环迭代错误（改为索引迭代）；④类型推断错误；⑤SaveSystem API方法名错误；⑥stats字典键不匹配。
+- **修复commit：** SoulGame 8d406fa
+- **回归验证：** 第二十六轮监控（2026-09-06 04:00）`Godot --headless --check-only` → **0错误，exit code 0**。
+- **注意：** SoulGrowthData临时移除了add_memory/_sort_memories_by_importance/get_memories_by_type/adjust_personality函数，待完整编译验证后重新添加。M1灵魂成长功能需后续补全。
 
 ---
 
