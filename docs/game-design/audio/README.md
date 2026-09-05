@@ -103,6 +103,12 @@ assets/audio/
 | soul_focused_concentrate.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂专注情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_notification_alert.wav | ~1秒 | 44100Hz/16bit/WAV | UI通知提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_warning_alert.wav | ~1秒 | 44100Hz/16bit/WAV | UI警告提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_seaside.wav | ~5秒 | 44100Hz/16bit/WAV | 海边环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_mountaintop.wav | ~5秒 | 44100Hz/16bit/WAV | 山顶环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_grateful_thanks.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂感激情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_expectant_wait.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂期待情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_success_prompt.wav | ~1秒 | 44100Hz/16bit/WAV | UI成功提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_failure_prompt.wav | ~1秒 | 44100Hz/16bit/WAV | UI失败提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 

@@ -124,6 +124,8 @@
 | assets/art/concept_ui_settings.png | - | ✅ 已生成 | 设置界面UI mockup（1920×1080，设置分类标签/设置选项列表/滑块开关下拉菜单/预览面板/恢复默认保存取消按钮），AI生成 |
 | assets/art/concept_world_icefield.png | - | ✅ 已生成 | 世界探索冰原概念图（1920×1080，广阔白色冰原/极光星星/冰山冰川/冰裂缝冰晶/冰湖冰雕/飘落雪花/灵魂橙色光芒），AI生成 |
 | assets/art/concept_ui_friends.png | - | ✅ 已生成 | 好友界面UI mockup（1920×1080，好友分类标签/好友列表/详情面板/亲密度进度条/发送消息查看灵魂邀请对战删除好友按钮/添加好友搜索框），AI生成 |
+| assets/art/concept_world_ruins.png | - | ✅ 已生成 | 世界探索古代遗迹概念图（1920×1080，巨大石柱/残破神庙/夕阳余晖/石板路藤蔓/古老雕像/发光符文石/漂浮尘埃/灵魂紫色光芒），AI生成 |
+| assets/art/concept_ui_mail.png | - | ✅ 已生成 | 邮件界面UI mockup（1920×1080，邮件分类标签/邮件列表/详情面板/发件人信息/正文内容/附件/回复删除标记已读按钮/写邮件搜索框），AI生成 |
 
 ### 🔊 音效资源（生产中）
 
@@ -212,6 +214,12 @@
 | assets/audio/soul_focused_concentrate.wav | - | ✅ 已生成 | 灵魂专注情绪音效（~1秒，需后期裁剪到0.7秒），AI生成 |
 | assets/audio/ui_notification_alert.wav | - | ✅ 已生成 | UI通知提示音效（~1秒，需后期裁剪到0.3秒），AI生成 |
 | assets/audio/ui_warning_alert.wav | - | ✅ 已生成 | UI警告提示音效（~1秒，需后期裁剪到0.4秒），AI生成 |
+| assets/audio/env_seaside.wav | - | ✅ 已生成 | 海边环境音（~5秒，可循环，海浪+海鸥），AI生成 |
+| assets/audio/env_mountaintop.wav | - | ✅ 已生成 | 山顶环境音（~5秒，可循环，风声+远处鸟鸣），AI生成 |
+| assets/audio/soul_grateful_thanks.wav | - | ✅ 已生成 | 灵魂感激情绪音效（~1秒，需后期裁剪到0.7秒），AI生成 |
+| assets/audio/soul_expectant_wait.wav | - | ✅ 已生成 | 灵魂期待情绪音效（~1秒，需后期裁剪到0.6秒），AI生成 |
+| assets/audio/ui_success_prompt.wav | - | ✅ 已生成 | UI成功提示音效（~1秒，需后期裁剪到0.4秒），AI生成 |
+| assets/audio/ui_failure_prompt.wav | - | ✅ 已生成 | UI失败提示音效（~1秒，需后期裁剪到0.4秒），AI生成 |
 
 ---
 
@@ -329,6 +337,7 @@
 | 美术音效第12轮 | 2026-09-06 | BUG_TRACKER无新更新（第二十九轮监控后无变化，M1 UI+可视化完成，活跃bug 0个）；积压1个commit推送成功（db4f5c2..d92b3e7）；生成6个音效资源（env_waterfall.wav瀑布环境音水流声+水雾/env_thunderstorm.wav雷暴环境音雷声+雨声+风声/soul_trust_warm.wav灵魂信任温暖柔和音/soul_lonely_whisper.wav灵魂孤独低语声/ui_number_input.wav UI数字输入轻微按键声/ui_color_picker.wav UI颜色选择轻微滑动声，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_skyisland.png 1920×1080世界探索天空岛漂浮岛+白云彩虹+藤蔓桥+古老遗迹+飞龙+阳光云层+灵魂白色光芒/concept_ui_achievement.png 1920×1080成就界面UI mockup成就分类标签+成就列表网格+详情面板+成就点数+解锁状态+稀有度边框，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计69音效+24概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 | 美术音效第13轮 | 2026-09-06 | BUG_TRACKER无新更新（第二十九轮监控后无变化，M1 UI+可视化完成，活跃bug 0个）；生成6个音效资源（env_snow.wav雪地环境音风声+雪花声/env_desert.wav沙漠环境音热风+沙粒声/soul_excited_bounce.wav灵魂兴奋弹跳声+闪光/soul_calm_meditation.wav灵魂平静冥想嗡鸣声/ui_toggle_switch.wav UI开关切换轻微咔嗒/ui_progress_loading.wav UI进度条加载轻微滑动声，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_swamp.png 1920×1080世界探索沼泽浑浊水面+浮萍睡莲+浓雾乌云+泥泞小路+枯树+废弃小屋+发光蘑菇+萤火虫+气泡+灵魂绿色光芒/concept_ui_settings.png 1920×1080设置界面UI mockup设置分类标签+设置选项列表+滑块开关下拉菜单+预览面板+恢复默认保存取消按钮，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计75音效+26概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 | 美术音效第14轮 | 2026-09-06 | 第三十轮监控新更新：SoulArena v5.10 M5完成（SDK v1.4.0/623测试），Seed M6开始（817测试+79，行为树+动态任务系统），SoulGame M1像素精灵+粒子光照+73集成测试，新增BUG-016（M1IntegrationTest编译失败-SoulManager非Autoload）+BUG-017（TestRunner编译失败-独立lambda不兼容Godot4.7），Godot连续4轮0错误，活跃bug 2个（均为实现相关非设计问题）；生成6个音效资源（env_forest.wav森林环境音鸟鸣+树叶声/env_grassland.wav草原环境音风声+虫鸣/soul_curious_peek.wav灵魂好奇偷看声+闪烁/soul_focused_concentrate.wav灵魂专注集中嗡鸣声/ui_notification_alert.wav UI通知提示清脆叮声/ui_warning_alert.wav UI警告提示低沉警告声，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_icefield.png 1920×1080世界探索冰原广阔白色冰原+极光星星+冰山冰川+冰裂缝冰晶+冰湖冰雕+飘落雪花+灵魂橙色光芒/concept_ui_friends.png 1920×1080好友界面UI mockup好友分类标签+好友列表+详情面板+亲密度进度条+发送消息查看灵魂邀请对战删除好友按钮+添加好友搜索框，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计81音效+28概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
+| 美术音效第15轮 | 2026-09-06 | BUG_TRACKER无新更新（第三十轮监控后无变化，活跃bug 2个均为实现相关非设计问题）；生成6个音效资源（env_seaside.wav海边环境音海浪+海鸥/env_mountaintop.wav山顶环境音风声+远处鸟鸣/soul_grateful_thanks.wav灵魂感激温暖感谢声/soul_expectant_wait.wav灵魂期待期待上扬音/ui_success_prompt.wav UI成功提示辉煌上升音/ui_failure_prompt.wav UI失败提示低沉下降音，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_ruins.png 1920×1080世界探索古代遗迹巨大石柱+残破神庙+夕阳余晖+石板路藤蔓+古老雕像+发光符文石+漂浮尘埃+灵魂紫色光芒/concept_ui_mail.png 1920×1080邮件界面UI mockup邮件分类标签+邮件列表+详情面板+发件人信息+正文内容+附件+回复删除标记已读按钮+写邮件搜索框，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计87音效+30概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 
 ---
 
