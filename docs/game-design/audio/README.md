@@ -133,6 +133,12 @@ assets/audio/
 | soul_relieved_sigh.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂松口气情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_coin_get.wav | ~1秒 | 44100Hz/16bit/WAV | UI金币获得音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_exp_get.wav | ~1秒 | 44100Hz/16bit/WAV | UI经验获得音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_waterfall_canyon.wav | ~5秒 | 44100Hz/16bit/WAV | 峡谷瀑布环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_hot_spring.wav | ~5秒 | 44100Hz/16bit/WAV | 温泉环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_embarrassed.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂尴尬情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_smug.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂得意情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_buy.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店购买音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_sell.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店出售音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
