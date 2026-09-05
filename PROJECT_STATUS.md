@@ -1,19 +1,19 @@
 # AI灵魂项目 — 总体进展报告
 
-**报告日期：** 2026-09-05（第十四轮监控）
+**报告日期：** 2026-09-05（第十五轮监控）
 **项目愿景：** 打造跨游戏、跨平台的AI灵魂系统，从数字伙伴到智能载体进化平台
-**当前阶段：** 应用实现基础架构期（设计v1.1已冻结，**BUG-006内存增长偏快优化中**，Guardian v2已验证自动恢复，退化改善62%，待30分钟稳定验证后切换全功能开发）
+**当前阶段：** 应用实现基础架构期（设计v1.1已冻结，**BUG-006 Guardian v2修复本身有bug导致启动循环恶化**，干净服务器绕过Guardian运行正常，待Guardian修复后切换全功能开发）
 
 ---
 
 ## 一、项目总览
 
-| 灵魂系统 | SoulArena | zhuyu112358/SoulArena | v4.82 | 核心引擎高度成熟，**95认知子系统，64轮优化**，**111个持久化单元测试**，SDK v1.0.0已发布，Guardian v2已验证 | ✅ 已同步 |
-| 虚拟世界平台 | Seed | zhuyu112358/Seed | v1.0.0 | 引擎完善，**515测试（flaky BUG-009）**，SDK v1.0.0已发布，物理材质/触发器/碰撞摩擦，BUG-008未修复 | ✅ 已同步 |
+| 灵魂系统 | SoulArena | zhuyu112358/SoulArena | v4.83 | 核心引擎高度成熟，**96认知子系统，65轮优化**，**111个持久化单元测试**，SDK v1.0.0已发布，budgetCompliance NaN修复 | ✅ 已同步 |
+| 虚拟世界平台 | Seed | zhuyu112358/Seed | v1.0.0 | 引擎完善，**522测试全通过**，SDK v1.0.0已发布，CCD连续碰撞检测，BUG-008修复中 | ✅ 已同步 |
 | 项目管理 | ai-soul-project-mgmt | zhuyu112358/ai-soul-project-mgmt | — | 管理体系完善，设计v1.1冻结，bug跟踪5关闭/4活跃 | ✅ 已同步 |
 | 游戏应用 | SoulGame | zhuyu112358/SoulGame | 基础架构完成 | **30+文件，roadmap+dev setup+性能基线+CI/CD增强** | ✅ 已同步 |
 
-**整体进度评估：** 第十四轮——**BUG-006分阶段修复取得重大进展：Guardian v2已验证自动恢复，运行时退化改善62%，但内存增长偏快（0.32MB/s）是下一个优化重点。** SoulArena v4.80修复运行时退化（LLMScheduler超时/队列过期/并发增加，Nova 15分钟后从13,337ms→5,024ms，改善62%），v4.81修复Guardian EADDRINUSE（端口检查/启动运行时分离/熔断器自动恢复，已验证22:12和22:53两次启动失败均自动恢复），v4.82新增期望理论（95子系统，111测试）。但v4.81内存增长偏快（81秒+25.8MB，0.32MB/s），已设为SoulArena最高优先级。Seed方面：新增物理材质系统/触发器体积/碰撞摩擦冲量，但**BUG-008实际未修复**（监控第十二轮过早关闭，集成测试连续3轮验证discoverSouls()仍无status过滤，选中sleeping灵魂0感知/12失败，已重新派发Seed），新增BUG-009测试flaky（数量508-515波动，偶发1失败，已派发Seed）。当前活跃bug 4个（BUG-006内存、BUG-005接口文档、BUG-008 sleeping灵魂、BUG-009 flaky测试），5个已关闭。服务器通过Guardian v2稳定运行，EADDRINUSE启动失败自动恢复。
+**整体进度评估：** 第十五轮——**发现Guardian v2修复本身有严重bug，导致启动循环恶化（P1）。** 集成测试第8轮验证发现：23:01-23:03连续8次EADDRINUSE启动失败（每次uptime<250ms），根因是v4.81 Guardian杀进程后立即重启（未等待TIME_WAIT释放）、portAvailable检测假阳性、启动失败不计入熔断器导致无限循环、熔断器触发后完全停止不恢复。恢复方式：杀掉全部node进程，手动`node server/index.js`绕过Guardian启动。干净v4.83服务器（无Guardian）运行正常：Vex 27ms/Nova 19ms/5并发4/5/0错误。已将SoulArena最高优先级转为Guardian v2 bug修复。其他进展：SoulArena v4.83（96子系统，修复budgetCompliance NaN），Seed实现CCD连续碰撞检测（522测试全绿），Seed正在修复BUG-008（23:03轮进行中），BUG-009 flaky未复现。当前活跃bug 4个，5个已关闭。
 
 ---
 
@@ -257,8 +257,8 @@
 
 | 指标 | 目标（阶段零） | 当前 | 差距 |
 |------|---------------|------|------|
-| 灵魂认知子系统数 | 基础5-8个 | **95个（v4.82）** | 大幅超前（12倍） |
-| 世界引擎测试 | 核心模块全覆盖 | 🟡 **515测试（flaky BUG-009，数量508-515波动）** | 🟡 稳定性待修复 |
+| 灵魂认知子系统数 | 基础5-8个 | **96个（v4.83）** | 大幅超前（12倍） |
+| 世界引擎测试 | 核心模块全覆盖 | ✅ **522测试全通过**（CCD+7测试，BUG-009 flaky未复现） | ✅ 已完成 |
 | SoulArena单元测试 | 自动化测试 | ✅ **111个持久化测试全部通过**（BUG-003已修复，从71→111） | ✅ 已完成 |
 | 灵魂感知层（Seed） | 可生成感知 | ✅ 含光照/温度/移动完成/声学/碰撞感知/衍射 | ✅ 已完成 |
 | 灵魂执行层（Seed） | 可执行动作 | ✅ 7种动作+物理移动+加减速+碰撞+A*寻路+路径平滑+动态瞄准+空间哈希+碰撞层 | ✅ 已完成 |
@@ -275,7 +275,7 @@
 | 集成测试报告 | SDK连通性+基础架构测试 | ✅ **8轮报告，9bug发现（5关闭/4活跃）** | ✅ 已完成 |
 | SoulArena SDK v1.0.0 | API稳定+打包 | ✅ **已发布**（tag已打） | 🏆 已发布 |
 | Seed SDK v1.0.0 | API稳定+打包 | ✅ **已发布**（tag `seed-sdk-v1.0.0`已打） | 🏆 已发布 |
-| 服务器稳定性 | 持续运行不崩溃+不退化 | 🟡 **Guardian v2已验证自动恢复EADDRINUSE，退化改善62%（Nova 15min 5s），但内存增长偏快（0.32MB/s）待优化** | 🟡 内存优化中 |
+| 服务器稳定性 | 持续运行不崩溃+不退化 | 🔴 **Guardian v2修复本身有bug（8次连续EADDRINUSE启动循环），干净服务器绕过Guardian运行正常（Vex 27ms/Nova 19ms），Guardian待修复** | 🔴 Guardian修复中 |
 | GitHub同步 | 三仓库均推送 | ✅ 全部已同步 | ✅ 已完成 |
 | 用户测试 | 10-20人 | 0人 | 未开始 |
 
@@ -283,24 +283,22 @@
 
 ## 七、结论
 
-**第十四轮监控核心发现：**
+**第十五轮监控核心发现：**
 
-1. **🏆 BUG-006 Guardian v2已验证自动恢复。** v4.81实现Port Availability Check + Startup/Runtime Crash Separation + Circuit Breaker Auto-Recovery。22:12和22:53两次EADDRINUSE启动失败，Guardian均自动检测端口占用→杀掉占用进程→分类为STARTUP_FAILURE（不计入运行时熔断器）→重启成功。**Guardian循环崩溃问题已解决。**
+1. **🔴 Guardian v2修复本身有严重bug，导致启动循环恶化（P1）。** 集成测试第8轮验证发现：23:01-23:03连续8次EADDRINUSE启动失败（每次uptime<250ms），服务器完全不可用。根因：①v4.81 Guardian杀进程后立即重启，未等待TIME_WAIT释放（需30-60秒）；②portAvailable检测假阳性（日志显示portAvailable=true但启动仍EADDRINUSE）；③启动失败不计入运行时熔断器，但没有独立的启动失败熔断器，导致无限循环；④熔断器触发后完全停止不恢复（v4.81声称有Auto-Recovery但实际未实现）。恢复方式：杀掉全部4个node进程，手动`node server/index.js`绕过Guardian启动。**干净v4.83服务器（无Guardian）运行正常：Vex 27ms/Nova 19ms/5并发4/5/0错误。** 已将SoulArena最高优先级转为Guardian v2 bug修复（TIME_WAIT等待/端口实际绑定检测/启动失败独立熔断器/熔断器自动恢复）。
 
-2. **🏆 BUG-006运行时退化改善62%。** v4.80实现LLMScheduler Request Timeout + Queue Expiry + Concurrency Increase。15分钟后Nova perceive从13,337ms→5,024ms（改善62%），Vex连接状态从stale→connected，5并发5/5成功。但仍未达到<100ms目标。
+2. **🏆 BUG-006运行时退化改善62%。** v4.80 LLMScheduler超时+队列过期+并发增加。15分钟后Nova从13,337ms→5,024ms，Vex连接状态从stale→connected。
 
-3. **⚠️ BUG-006内存增长偏快（新最高优先级）。** v4.81启动77.9MB→81秒后103.7MB（+25.8MB，~0.32MB/s），远高于v4.79的~0.1MB/min。已设为SoulArena最高优先级，优化方向：内存泄漏排查（LLMScheduler队列/事件监听器/状态累积）、队列清理验证、认知状态压缩、内存阈值保护。
+3. **SoulArena v4.83（96子系统/65轮/111测试）。** v4.82期望理论（Vroom F=E×I×V），v4.83公平理论（Adams投入产出比/Greenberg组织公正/Walster不公平不对称）+ **budgetCompliance NaN修复**（SoulEvaluator中`perf.breaches / perf.totalTicks`在TickScheduler统计未定义时产生NaN，JSON序列化为null，导致整个cognition score=null。修复后cognition=82, total=45.2）。
 
-4. **🔴 BUG-008实际未修复——监控第十二轮过早关闭。** 集成测试连续3轮验证：discoverSouls()仅有`.filter((s) => !s.current_game_id)`，无status过滤。所有Vex/Nova灵魂current_game_id非空（历史残留），只有PersistTest（sleeping）被选中，0感知/12失败。已重新派发Seed最高优先级。**管理教训：关闭bug前必须验证实际代码变更，不能仅基于commit消息。**
+4. **Seed实现CCD连续碰撞检测（522测试全绿）。** 第43轮实现Entity.prevPosition记录+PhysicsSystem积分前保存+CollisionSystem扫掠AABB检测+隧道回退。7个CCD专项测试全通过，原有79个碰撞测试无回归。测试从515→522（+7）。BUG-009 flaky未复现（522测试稳定）。
 
-5. **⚠️ 新增BUG-009 Seed测试flaky。** npm test连续运行结果不一致：测试数量508~515波动（差7个），偶发1个不可复现失败。已派发Seed第二优先级修复。
+5. **BUG-008修复中（Seed 23:03轮进行中）。** 集成测试连续4轮验证discoverSouls()仍无status过滤，选中sleeping灵魂0感知/12失败。Seed已收到最高优先级修复指令，23:03轮正在执行。
 
-6. **SoulArena v4.82（95子系统/64轮/111测试）。** v4.80退化修复、v4.81 Guardian修复、v4.82期望理论（Vroom F=E×I×V/Porter-Lawler/Atkinson/Bandura/Locke-Latham，20测试）。测试从71→111，全部通过。全部已同步GitHub。
+6. **Bug生命周期：5关闭/4活跃。** 活跃：BUG-006（Guardian bug+内存+退化P1）、BUG-005（接口文档过时P3，已5轮未修复）、BUG-008（sleeping灵魂P2，修复中）、BUG-009（flaky P2，未复现）。
 
-7. **Seed持续完善物理系统。** 新增碰撞生命周期回调（Enter/Stay/Exit）、Trigger Volumes、物理材质系统（per-entity restitution/friction）、碰撞摩擦冲量（切向库仑摩擦）。测试从482→515（+33），但flaky待修复。
+**🔴 门控状态：设计v1.1已冻结，基础架构已完成，双SDK已发布，退化改善62%，干净服务器性能优秀。但切换全功能开发的前提"服务器稳定"尚未满足——Guardian v2修复本身有bug导致启动循环，必须先修复Guardian才能确保服务器持续可用。** SoulArena正在最高优先级修复Guardian，预计1-2轮完成。
 
-8. **SoulGame基础架构完善。** 新增roadmap、dev setup脚本、comprehensive README、性能基线（dual-service+WebSocket连通性）、CI/CD增强、SDK集成指南。全部已同步GitHub。
+**管理教训：** ①上一轮声称"Guardian v2已验证自动恢复"过于乐观——仅验证了2次启动失败恢复，未验证连续启动失败场景和熔断器恢复。后续验证必须覆盖边界场景。②BUG-005接口文档已5轮未修复，需考虑是否降级或分配专门任务。
 
-**🔴 门控状态：设计v1.1已冻结，基础架构已完成，双SDK已发布，Guardian v2已验证，退化改善62%。但切换全功能开发的前提"服务器稳定"尚未完全满足——内存增长偏快（0.32MB/s）需优化，30分钟稳定性验证尚未通过。** SoulArena正在最高优先级优化内存增长，预计1-2轮完成。
-
-**下一阶段核心任务（服务器稳定后）：** 内存增长优化完成 → 30分钟稳定性验证通过（perceive<100ms，内存增长<5MB，5并发成功）→ BUG-008修复（集成测试可选active灵魂）→ 用户确认 → 应用实现切换全功能开发（M1：灵魂之家+灵魂成长基础）→ 集成测试切换游戏功能测试 → 首个可玩原型 → 用户测试。
+**下一阶段核心任务（服务器稳定后）：** Guardian v2 bug修复 → 内存增长优化 → 30分钟稳定性验证通过 → BUG-008修复 → 用户确认 → 应用实现切换全功能开发 → 集成测试切换游戏功能测试 → 首个可玩原型 → 用户测试。

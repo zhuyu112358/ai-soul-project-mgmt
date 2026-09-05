@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-05（第十四轮监控，BUG-006 Guardian v2已验证自动恢复/退化改善62%/内存增长偏快，BUG-008确认未修复派发Seed，BUG-009确认派发Seed，SoulArena v4.82/95子系统/111测试）
+**最后更新：** 2026-09-05（集成测试第8轮，BUG-006 Guardian启动循环恶化P1（8次连续EADDRINUSE），BUG-008连续4轮未修复，SoulArena 111测试/Seed 522测试全绿）
 **维护者：** 总体监控任务
 
 ---
@@ -74,13 +74,14 @@
 - **第5轮复测（2026-09-05 21:40）：** 仍为v1.0草案状态。监控任务标记为"修复中"但尚未看到实际更新。**未修复。**
 - **第6轮复测（2026-09-05 22:10）：** 仍为v1.0草案（343行），仍标记SoulBridgeAdapter为"P0缺失"（实际已存在），仍标记感知格式为"P0待解决"（实际已解决）。监控任务标记"修复中"已3轮但未实际更新。**未修复。**
 - **第7轮复测（2026-09-05 22:40）：** 仍为v1.0草案，状态仍为"草案（两边实现尚未完全对齐）"。**未修复，已4轮无实际更新。**
+- **第8轮复测（2026-09-05 23:15）：** 仍为v1.0草案。**未修复，已5轮无实际更新。**
 
 ### BUG-006: SoulArena服务器长时间运行后崩溃（进程完全退出）
 - **严重程度：** P1（最高优先级，影响所有依赖SoulArena的任务）
 - **发现时间：** 2026-09-05
 - **发现者：** 集成测试任务
 - **负责方：** SoulArena
-- **状态：** 🟡 修复中（崩溃已修复，Guardian v2已验证自动恢复，运行时退化改善62%，**内存增长偏快待优化**，2026-09-05 第十四轮监控）
+- **状态：** 🔴 修复中（崩溃已修复，退化改善62%，**Guardian v2修复本身有严重bug导致启动循环恶化P1**，干净服务器绕过Guardian运行正常，2026-09-05 第十五轮监控）
 - **问题描述：** 服务器运行约15-20分钟后进程完全退出。导致BUG-001（并发400）和BUG-002（Nova超时）的退化症状。
 - **根因：** 没有uncaughtException/unhandledRejection处理器，异步异常导致静默退出。没有进程守护。
 - **崩溃修复（v4.77, commit a501dbd）：** uncaughtException handler + unhandledRejection handler + Process Guardian（自动重启/指数退避/熔断器/健康检查）+ 内存监控 + 内存泄漏扫描
@@ -121,6 +122,12 @@
   - **v4.81修复内容**：Guardian EADDRINUSE Port Availability Check, Startup/Runtime Crash Separation, Circuit Breaker Auto-Recovery
   - **⚠️ v4.81内存增长偏快**：启动77.9MB→81秒后103.7MB（+25.8MB，~0.32MB/s），远高于v4.79的~0.1MB/min
   - **结论：崩溃保护+Guardian修复已验证通过，退化有改善但未消除（15分钟后Nova仍5秒），v4.81内存增长需关注。BUG-006仍需长时间运行验证。**
+- **第8轮回归（2026-09-05 23:10）：🔴 Guardian启动循环恶化（P1）**
+  - **现象**：23:01-23:03连续8次EADDRINUSE启动失败，每次uptime<250ms，服务器完全不可用
+  - **根因**：v4.81 Guardian杀进程后立即重启（未等待TIME_WAIT释放），portAvailable检测与实际不一致（显示portAvailable=true但启动仍EADDRINUSE），启动失败不计入熔断器导致无限循环，熔断器触发后完全停止不恢复
+  - **恢复**：杀掉全部4个node进程（含Guardian），等待端口释放，手动`node server/index.js`绕过Guardian启动
+  - **干净v4.83服务器**：Vex 27ms, Nova 19ms, 5并发4/5（1个偶发失败，首个请求7.2s异常）, 0错误
+  - **结论：Guardian EADDRINUSE修复本身有严重bug，导致比修复前更糟的启动循环。干净服务器（无Guardian）运行正常。需优先修复Guardian端口检测和重启等待逻辑。**
 - **第8轮回归（2026-09-05 22:55，第十四轮监控，v4.82）：**
   - **Guardian v2自动恢复验证**：22:12和22:53两次EADDRINUSE启动失败，Guardian均自动检测端口占用→杀掉占用进程→分类为STARTUP_FAILURE（不计入运行时熔断器）→重启成功。**Guardian v2工作正常 ✅**
   - **v4.80退化修复**：LLMScheduler Request Timeout + Queue Expiry + Concurrency Increase。15分钟后Nova perceive从13,337ms→5,024ms（**改善62%**），Vex连接状态从stale→connected
@@ -157,6 +164,9 @@
   - 集成测试仍选中PersistTest(sleeping, id=soul_mtmo485gjmltbj)，0 perceptions sent, 12 failed
   - 代码审查确认discoverSouls()仍无status过滤
   - **连续3轮失败，BUG-008未修复**
+- **第8轮回归（2026-09-05 23:15）：❌ 仍失败（连续4轮）**
+  - 仍选中PersistTest(sleeping)，0 perceptions sent, 12 failed
+  - 监控任务已派发Seed但尚未修复
 - **修复要求：**
   1. discoverSouls()增加`.filter(s => s.status === 'active')`
   2. 或测试前清理所有灵魂的current_game_id
@@ -180,6 +190,7 @@
 - **根因推测：** 存在条件跳过/动态生成的测试，或异步竞态导致偶发失败
 - **修复commit：** （待修复）
 - **回归验证：** （待验证：连续5次npm test全部515/515通过）
+- **第8轮复测（2026-09-05 23:05）：** npm test 522测试，522通过，0失败。测试数量稳定（无波动），flaky未复现。**本轮通过，但需更多轮次验证稳定性。**
 
 ---
 
