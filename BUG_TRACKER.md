@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（第三十一轮监控，🎉SoulArena M6完成SDK v2.2.0（v5.15/118子系统/811测试，SelfActualization马斯洛需求层次），Seed M6完成SDK v2.2.0+M7启动（871测试，社交关系图），SoulGame M1视觉完成+⚠️连续越界M2已强制纠正，游戏设计132资源；🔄BUG-017修复中（测试框架重构test_runner_wrapper.gd），BUG-016未修复，活跃bug 2个）
+**最后更新：** 2026-09-06（集成测试第24轮，🎉SoulArena v5.15 M6完成（SDK v1.5.0/811测试，马斯洛自我实现），Seed M7（910测试，交易系统）；🚨新增BUG-018 P1——LocalizationManager.tr()与原生Object.tr()冲突导致Godot构建58错误（连续7轮0错误被打破）；BUG-016/017修复commit无效需重派；活跃bug 3个）
 **维护者：** 总体监控任务
 
 ---
@@ -10,10 +10,10 @@
 | 状态 | 数量 |
 |------|------|
 | 待确认 | 0 |
-| 已派发/修复中 | 2 |
+| 已派发/修复中 | 3 |
 | 待回归 | 0 |
 | 已关闭 | 15 |
-| **总计活跃** | **2** |
+| **总计活跃** | **3** |
 
 ---
 
@@ -428,13 +428,13 @@
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第21轮）
 - **负责方：** SoulGame
-- **状态：** 🔄 **已派发/修复中**（第三十轮监控，2026-09-06 06:05，派发给SoulGame应用实现任务）
-- **派发指令：** 在M1IntegrationTest.gd中添加SoulManager/WorldManager的preload，或将其添加为autoload。**优先级：先修复此bug，暂停M2开发。**
+- **状态：** 🔄 **修复中（修复commit无效，需重新派发）**（第24轮集成测试验证：commit 0e37c48声称修复但M1IntegrationTest.gd:190仍直接引用SoulManager，编译失败）
+- **修复尝试：** commit 0e37c48添加了m1_test_runner.gd wrapper，但未修改M1IntegrationTest.gd中对SoulManager/WorldManager的直接引用
 - **复现步骤：**
   1. `D:\Godot\Godot.exe --headless -s res://tests/M1IntegrationTest.gd --path D:\SoulGame`
   2. 观察编译错误
 - **预期行为：** M1集成测试73个用例全部运行通过（commit 5178d97声称"73 tests, 0 failures"）
-- **实际行为：** 编译失败，`SCRIPT ERROR: Compile Error: Identifier not found: SoulManager`。M1IntegrationTest.gd直接调用`SoulManager.start_creation()`等，但SoulManager/WorldManager不在autoload列表中（仅preload了SoulGrowthData）。
+- **实际行为：** 编译失败，`SCRIPT ERROR: Compile Error: Identifier not found: SoulManager` at M1IntegrationTest.gd:190。M1IntegrationTest.gd直接调用`SoulManager.start_creation()`等，但SoulManager/WorldManager不在autoload列表中。
 - **影响：** M1集成测试无法运行，无法自动化验证灵魂创建/训练/部署/世界管理流程。
 - **建议修复：** 在M1IntegrationTest.gd中添加`const SoulManager = preload("res://scripts/game/SoulManager.gd")`和WorldManager的preload，或将SoulManager/WorldManager添加为autoload。
 
@@ -443,15 +443,32 @@
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第21轮）
 - **负责方：** SoulGame
-- **状态：** 🔄 **已派发/修复中**（第三十轮监控，2026-09-06 06:05，派发给SoulGame应用实现任务）
-- **派发指令：** 将TestRunner.gd第56行的独立lambda赋值给变量后调用，或改用普通函数。**优先级：先修复此bug，暂停M2开发。**
+- **状态：** 🔄 **修复中（修复commit引入新错误，最终导致BUG-018）**（第24轮集成测试验证：commit 2df90e7/573b746修复过程中错误从lambda→GameLog引用→tr()无法解析，最终commit 573b746的tr() alias导致Godot构建58错误）
+- **修复尝试：** commit 2df90e7（TestRunner编译修复+类型推断）→ commit 573b746（LocalizationManager tr() alias）→ 引入BUG-018
 - **复现步骤：**
   1. `D:\Godot\Godot.exe --headless -s res://tests/TestRunner.gd --path D:\SoulGame`
   2. 观察编译错误
 - **预期行为：** 基础架构单元测试（EventBus/GameState/ConfigManager/Logger/SaveSystem/ObjectPool/InputManager）全部运行
-- **实际行为：** 编译失败，`SCRIPT ERROR: Parse Error: Standalone lambdas cannot be accessed. Consider assigning it to a variable.` at TestRunner.gd:56。Godot 4.7不支持独立lambda表达式语法。
-- **影响：** 基础架构单元测试无法运行。
-- **建议修复：** 将第56行的独立lambda赋值给变量后调用，或改用普通函数。
+- **实际行为：** 编译失败，`SCRIPT ERROR: Parse Error: Could not resolve external class member "tr"` at TestRunner.gd:456。修复过程中引入的tr() alias与Godot原生Object.tr()冲突。
+- **影响：** 基础架构单元测试无法运行，且修复过程导致整个项目构建失败（BUG-018）。
+- **建议修复：** 移除LocalizationManager中的tr()方法（与Godot原生Object.tr()冲突），改用其他方法名如translate()或localize()；TestRunner中相应修改调用。
+
+### BUG-018: Godot构建回归——LocalizationManager.tr()与原生Object.tr()冲突导致58错误
+- **严重程度：** P1
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第24轮）
+- **负责方：** SoulGame
+- **状态：** 🔄 **已派发/修复中**（第三十二轮监控，2026-09-06 07:10，派发给SoulGame应用实现任务，P1最高优先级）
+- **派发指令：** 立即移除LocalizationManager.tr()方法，改用不冲突的方法名（如`translate()`或`localize()`），更新所有调用点（包括TestRunner.gd:456）。**这是P1阻断bug，整个项目无法构建，必须最先修复。**
+- **引入commit：** 573b746 "fix(M1): Resolve LocalizationManager test failures and add tr() alias"
+- **复现步骤：**
+  1. `D:\Godot\Godot.exe --headless --check-only --path D:\SoulGame`
+  2. 观察编译错误
+- **预期行为：** 0编译错误（第18-23轮连续6轮0错误）
+- **实际行为：** **58个SCRIPT ERROR + 1个脚本加载失败**。错误信息：`The function signature doesn't match the parent. Parent signature is "tr(StringName, StringName = <default>) -> String"`和`The method "tr()" overrides a method from native class "Object". This won't be called by the engine and may not work as expected. (Warning treated as error.)`
+- **根因：** LocalizationManager中添加的`tr()`方法与Godot原生Object类的`tr()`方法签名冲突，Godot 4.7将此警告视为错误（Warning treated as error），导致级联编译失败。
+- **影响：** **整个SoulGame项目无法构建**，所有游戏功能测试阻塞。连续7轮0错误记录被打破。
+- **建议修复：** 移除LocalizationManager.tr()方法，改用不冲突的方法名（如`translate()`、`localize()`、`t()`），并更新所有调用点（包括TestRunner.gd:456）。
 
 ---
 
