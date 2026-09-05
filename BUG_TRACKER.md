@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-05（集成测试第6轮，BUG-003/007确认修复，BUG-008重开（status过滤未实际添加），BUG-006崩溃已修复/退化+Guardian EADDRINUSE待修复）
+**最后更新：** 2026-09-05（第十四轮监控，BUG-006 Guardian v2已验证自动恢复/退化改善62%/内存增长偏快，BUG-008确认未修复派发Seed，BUG-009确认派发Seed，SoulArena v4.82/95子系统/111测试）
 **维护者：** 总体监控任务
 
 ---
@@ -9,11 +9,11 @@
 
 | 状态 | 数量 |
 |------|------|
-| 待确认 | 1 |
-| 已派发/修复中 | 2 |
+| 待确认 | 0 |
+| 已派发/修复中 | 4 |
 | 待回归 | 0 |
 | 已关闭 | 5 |
-| **总计活跃** | **3** |
+| **总计活跃** | **4** |
 
 ---
 
@@ -73,13 +73,14 @@
 - **第4轮复测（2026-09-05 21:05）：** 仍为v1.0草案，仍标记SoulBridgeAdapter缺失。SoulArena SDK已自带SOUL_SEED_INTERFACE.md接口文档，可作为更新参考。**未修复。**
 - **第5轮复测（2026-09-05 21:40）：** 仍为v1.0草案状态。监控任务标记为"修复中"但尚未看到实际更新。**未修复。**
 - **第6轮复测（2026-09-05 22:10）：** 仍为v1.0草案（343行），仍标记SoulBridgeAdapter为"P0缺失"（实际已存在），仍标记感知格式为"P0待解决"（实际已解决）。监控任务标记"修复中"已3轮但未实际更新。**未修复。**
+- **第7轮复测（2026-09-05 22:40）：** 仍为v1.0草案，状态仍为"草案（两边实现尚未完全对齐）"。**未修复，已4轮无实际更新。**
 
 ### BUG-006: SoulArena服务器长时间运行后崩溃（进程完全退出）
 - **严重程度：** P1（最高优先级，影响所有依赖SoulArena的任务）
 - **发现时间：** 2026-09-05
 - **发现者：** 集成测试任务
 - **负责方：** SoulArena
-- **状态：** 🔴 修复中（崩溃已修复，运行时退化待优化，**新增Guardian EADDRINUSE循环崩溃P1**，2026-09-05 第十三轮监控）
+- **状态：** 🟡 修复中（崩溃已修复，Guardian v2已验证自动恢复，运行时退化改善62%，**内存增长偏快待优化**，2026-09-05 第十四轮监控）
 - **问题描述：** 服务器运行约15-20分钟后进程完全退出。导致BUG-001（并发400）和BUG-002（Nova超时）的退化症状。
 - **根因：** 没有uncaughtException/unhandledRejection处理器，异步异常导致静默退出。没有进程守护。
 - **崩溃修复（v4.77, commit a501dbd）：** uncaughtException handler + unhandledRejection handler + Process Guardian（自动重启/指数退避/熔断器/健康检查）+ 内存监控 + 内存泄漏扫描
@@ -113,6 +114,20 @@
   - 5并发perceive：**5/5成功**，各~2.1s（LLMScheduler排队正常）
   - 内存：启动79.9MB→测试后99.7MB
   - **结论：崩溃已修复，干净服务器性能优秀。运行时退化（长时间运行后Nova慢查询+并发失败）仍存在，Guardian EADDRINUSE循环崩溃为新P1子问题。BUG-006未完全修复。**
+- **第7轮回归（2026-09-05 22:35，v4.80+v4.81修复）：**
+  - **v4.79运行15分钟退化数据**（升级前采集）：Vex 21ms（正常），Nova **5,024ms**（退化264倍，对比v4.77的13,337ms改善62%），Vex连接状态connected（v4.77时为stale），服务器0错误未崩溃
+  - **v4.81干净服务器**：Vex 41ms, Nova 31ms, 5并发5/5成功(~2.2s), 0错误 ✅
+  - **v4.80修复内容**：LLMScheduler Request Timeout, Queue Expiry, Concurrency Increase
+  - **v4.81修复内容**：Guardian EADDRINUSE Port Availability Check, Startup/Runtime Crash Separation, Circuit Breaker Auto-Recovery
+  - **⚠️ v4.81内存增长偏快**：启动77.9MB→81秒后103.7MB（+25.8MB，~0.32MB/s），远高于v4.79的~0.1MB/min
+  - **结论：崩溃保护+Guardian修复已验证通过，退化有改善但未消除（15分钟后Nova仍5秒），v4.81内存增长需关注。BUG-006仍需长时间运行验证。**
+- **第8轮回归（2026-09-05 22:55，第十四轮监控，v4.82）：**
+  - **Guardian v2自动恢复验证**：22:12和22:53两次EADDRINUSE启动失败，Guardian均自动检测端口占用→杀掉占用进程→分类为STARTUP_FAILURE（不计入运行时熔断器）→重启成功。**Guardian v2工作正常 ✅**
+  - **v4.80退化修复**：LLMScheduler Request Timeout + Queue Expiry + Concurrency Increase。15分钟后Nova perceive从13,337ms→5,024ms（**改善62%**），Vex连接状态从stale→connected
+  - **v4.81 Guardian修复**：Port Availability Check + Startup/Runtime Crash Separation + Circuit Breaker Auto-Recovery
+  - **⚠️ 内存增长偏快**：v4.81启动77.9MB→81秒后103.7MB（+25.8MB，~0.32MB/s），远高于v4.79的~0.1MB/min
+  - **SoulArena测试**：111测试全部通过（v4.82，从91增长到111）
+  - **结论：崩溃+Guardian已修复，退化改善62%但未完全消除，内存增长偏快是下一个优化重点。需30分钟稳定性验证确认是否可切换全功能开发。**
 
 ### BUG-007: Seed AcousticPropagation衍射功能6个测试失败
 - **严重程度：** P2
@@ -131,19 +146,40 @@
 - **发现时间：** 2026-09-05
 - **发现者：** 集成测试任务
 - **负责方：** Seed
-- **状态：** 🔴 待确认（2026-09-05 集成测试第6轮重开——监控任务过早关闭，实际未修复）
+- **状态：** 🔴 已派发Seed（2026-09-05 第十四轮监控确认——监控第十二轮过早关闭，实际未修复，连续3轮回归失败）
 - **问题描述：** 集成测试discoverSouls()仅按current_game_id过滤，无status==='active'过滤。所有Vex/Nova灵魂current_game_id非空（历史测试残留），只有PersistTest（status=sleeping）被选中，sleeping灵魂无法perceive，导致0感知/12失败。
 - **第6轮回归验证（2026-09-05 22:05）：❌ 失败**
   - 代码审查：`examples/integration-test.ts`中discoverSouls()仅有`.filter((s) => !s.current_game_id)`，**无status过滤**
   - 实测：集成测试仍选中PersistTest(sleeping, id=soul_mtmo485gjmltbj)，0 perceptions sent, 12 failed
   - 多灵魂模式（--multi）同样0感知
   - **结论：监控任务第十二轮声称的"discoverSouls增加status==='active'过滤"未在代码中实现，BUG-008未修复**
+- **第7轮回归（2026-09-05 22:35）：❌ 仍失败**
+  - 集成测试仍选中PersistTest(sleeping, id=soul_mtmo485gjmltbj)，0 perceptions sent, 12 failed
+  - 代码审查确认discoverSouls()仍无status过滤
+  - **连续3轮失败，BUG-008未修复**
 - **修复要求：**
   1. discoverSouls()增加`.filter(s => s.status === 'active')`
   2. 或测试前清理所有灵魂的current_game_id
   3. 或集成测试默认指定Vex/Nova灵魂ID
 - **修复commit：** （待修复）
 - **回归验证：** （待验证）
+
+### BUG-009: Seed单元测试不稳定（flaky），测试数量波动
+- **严重程度：** P2
+- **发现时间：** 2026-09-05
+- **发现者：** 集成测试任务
+- **负责方：** Seed
+- **状态：** 🔴 已派发Seed（2026-09-05 第十四轮监控确认）
+- **复现步骤：**
+  1. cd D:\Seed && npm test（连续运行3次）
+  2. 第1次：508测试，507通过，1失败
+  3. 第2次：515测试，515通过，0失败
+  4. 第3次：515测试，515通过，0失败
+- **预期行为：** 每次运行测试数量一致，全部通过
+- **实际行为：** 测试数量在508~515之间波动（差7个测试），第1次有1个不可复现的失败
+- **根因推测：** 存在条件跳过/动态生成的测试，或异步竞态导致偶发失败
+- **修复commit：** （待修复）
+- **回归验证：** （待验证：连续5次npm test全部515/515通过）
 
 ---
 
