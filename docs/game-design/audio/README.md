@@ -139,6 +139,12 @@ assets/audio/
 | soul_smug.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂得意情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_shop_buy.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店购买音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_shop_sell.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店出售音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_furious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂暴怒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_terrified.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊恐情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_equip_wear.wav | ~1秒 | 44100Hz/16bit/WAV | UI装备穿戴音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_equip_remove.wav | ~1秒 | 44100Hz/16bit/WAV | UI装备卸下音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 

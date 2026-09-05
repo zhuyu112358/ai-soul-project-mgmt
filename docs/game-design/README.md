@@ -136,6 +136,8 @@
 | assets/art/concept_ui_inventory_expanded.png | - | ✅ 已生成 | 背包扩展界面UI mockup（1920×1080，背包分类标签/背包格子网格4x6/物品图标数量稀有度边框/详情面板/使用装备丢弃拆分按钮/容量统计/扩展整理按钮/金币显示），AI生成 |
 | assets/art/concept_world_waterfall_canyon.png | - | ✅ 已生成 | 世界探索峡谷瀑布概念图（1920×1080，巨大峡谷/壮观瀑布/水潭水雾/岩石植被/阳光彩虹/石板路石头/灵魂蓝色光芒），AI生成 |
 | assets/art/concept_ui_market.png | - | ✅ 已生成 | 市场界面UI mockup（1920×1080，市场分类标签/商品列表/商品图标名称描述价格库存购买按钮/详情面板/购买数量选择/卖家信息/金币显示/交易记录刷新按钮），AI生成 |
+| assets/art/concept_world_volcano_crater.png | - | ✅ 已生成 | 世界探索火山口概念图（1920×1080，巨大火山口/翻滚岩浆热气/岩石黑曜石/浓烟火山灰/熔岩流裂缝/灵魂红色光芒），AI生成 |
+| assets/art/concept_ui_equipment.png | - | ✅ 已生成 | 装备界面UI mockup（1920×1080，装备槽位头盔胸甲护腿靴子武器盾牌饰品/角色预览/详情面板/属性加成套装效果/背包装备列表/对比属性/金币显示），AI生成 |
 
 ### 🔊 音效资源（生产中）
 
@@ -260,6 +262,12 @@
 | assets/audio/soul_smug.wav | - | ✅ 已生成 | 灵魂得意情绪音效（~1秒，需后期裁剪到0.7秒），AI生成 |
 | assets/audio/ui_shop_buy.wav | - | ✅ 已生成 | UI商店购买音效（~1秒，需后期裁剪到0.3秒），AI生成 |
 | assets/audio/ui_shop_sell.wav | - | ✅ 已生成 | UI商店出售音效（~1秒，需后期裁剪到0.3秒），AI生成 |
+| assets/audio/env_volcano_crater.wav | - | ✅ 已生成 | 火山口环境音（~5秒，可循环，岩浆声+热气声），AI生成 |
+| assets/audio/env_lava_cave.wav | - | ✅ 已生成 | 熔岩洞环境音（~5秒，可循环，岩浆声+岩石声），AI生成 |
+| assets/audio/soul_furious.wav | - | ✅ 已生成 | 灵魂暴怒情绪音效（~1秒，需后期裁剪到0.8秒），AI生成 |
+| assets/audio/soul_terrified.wav | - | ✅ 已生成 | 灵魂惊恐情绪音效（~1秒，需后期裁剪到0.8秒），AI生成 |
+| assets/audio/ui_equip_wear.wav | - | ✅ 已生成 | UI装备穿戴音效（~1秒，需后期裁剪到0.3秒），AI生成 |
+| assets/audio/ui_equip_remove.wav | - | ✅ 已生成 | UI装备卸下音效（~1秒，需后期裁剪到0.3秒），AI生成 |
 
 ---
 
@@ -383,6 +391,7 @@
 | 美术音效第18轮 | 2026-09-06 | 第三十一轮监控重大更新：SoulArena M6完成（SDK v2.2.0发布，v5.15/118子系统/811测试，SelfActualization马斯洛需求层次与高峰体验，完整自我意识发展体系）→M7待启动（高级认知+元认知深化+意识理论），Seed M6完成SDK v2.2.0（842测试，BehaviorTree+TaskSystem+NarrativeSystem）→M7进行中（社交关系图谱phase1，871测试），SoulGame M1视觉完成+⚠️连续越界M2已强制纠正（commit必须fix(M1):/test(M1):开头，集中修复BUG-016/017），BUG-017修复中（测试框架重构test_runner_wrapper.gd），BUG-016未修复，引擎1643全绿，连续15轮PASS，活跃bug 2个（均为实现相关非设计问题）；生成6个音效资源（env_aurora.wav极光环境音微风+远处鸟鸣+宁静感/env_meteor_shower.wav流星雨环境音微风+流星声+宁静感/soul_content_smile.wav灵魂满足柔和满足声/soul_determined_resolve.wav灵魂决心有力决心声/ui_levelup_prompt.wav UI升级提示辉煌上升音/ui_achievement_unlock.wav UI成就解锁辉煌解锁音，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_aurora.png 1920×1080世界探索极光广阔雪地+绚丽极光绿紫粉光带+星星+雪山松树+冰湖冰雕+飘落雪花+灵魂青色光芒/concept_ui_quest.png 1920×1080任务界面UI mockup任务分类标签+任务列表+详情面板+目标列表进度条+奖励展示+NPC信息+接取放弃追踪按钮+任务统计，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计104音效+36概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 | 美术音效第19轮 | 2026-09-06 | 第三十二轮监控新更新：集成测试第24轮，SoulArena v5.15 M6完成（SDK v1.5.0/811测试，马斯洛自我实现），Seed M7（910测试，交易系统），新增BUG-018 P1（LocalizationManager.tr()与原用Object.tr()冲突导致Godot构建58错误，连续5轮0错误被打破），BUG-016/017修复commit无效需重派，活跃bug 3个（均为实现相关非设计问题）；生成6个音效资源（env_sunset.wav黄昏环境音微风+鸟鸣+宁静感/env_dawn.wav黎明环境音微风+鸟鸣+清新感/soul_amazed_wonder.wav灵魂惊叹上升柔和音+闪光/soul_relieved_sigh.wav灵魂松口气下降柔和音+光点/ui_coin_get.wav UI金币获得清脆金币声/ui_exp_get.wav UI经验获得清脆上升音，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_sunset.png 1920×1080世界探索黄昏广阔草原+绚丽黄昏橙粉紫渐变+夕阳+山脉树木+小溪石头+野花+飘落花瓣+灵魂橙色光芒/concept_ui_inventory_expanded.png 1920×1080背包扩展界面UI mockup背包分类标签+背包格子网格4x6+物品图标数量稀有度边框+详情面板+使用装备丢弃拆分按钮+容量统计+扩展整理按钮+金币显示，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计110音效+38概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题；GitHub push失败（443端口连接超时，已知间歇性网络问题），本地领先远程2个commit，下一轮网络恢复时一并推送 | ✅ 完成 |
 | 美术音效第20轮 | 2026-09-06 | BUG_TRACKER无新更新（第三十二轮监控后无变化，活跃bug 3个均为实现相关非设计问题）；GitHub push再次失败（443端口连接超时，已知间歇性网络问题），本地领先远程2个commit（第18轮+第19轮），下一轮网络恢复时一并推送；生成6个音效资源（env_waterfall_canyon.wav峡谷瀑布环境音水流声+水雾声/env_hot_spring.wav温泉环境音水流声+蒸汽声+宁静感/soul_embarrassed.wav灵魂尴尬上升柔和音+光点/soul_smug.wav灵魂得意上升柔和音+闪光/ui_shop_buy.wav UI商店购买清脆金币声/ui_shop_sell.wav UI商店出售清脆金币声，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_waterfall_canyon.png 1920×1080世界探索峡谷瀑布巨大峡谷+壮观瀑布+水潭水雾+岩石植被+阳光彩虹+石板路石头+灵魂蓝色光芒/concept_ui_market.png 1920×1080市场界面UI mockup市场分类标签+商品列表+商品图标名称描述价格库存购买按钮+详情面板+购买数量选择+卖家信息+金币显示+交易记录刷新按钮，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计116音效+40概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
+| 美术音效第21轮 | 2026-09-06 | BUG_TRACKER无新更新（第三十二轮监控后无变化，活跃bug 3个均为实现相关非设计问题）；积压3个commit推送成功（6d588e1..49ef726，第18轮+第19轮+第20轮），本地与远程同步；生成6个音效资源（env_volcano_crater.wav火山口环境音岩浆声+热气声/env_lava_cave.wav熔岩洞环境音岩浆声+岩石声/soul_furious.wav灵魂暴怒强烈上升吼声+闪光/soul_terrified.wav灵魂惊恐快速颤抖音+光点/ui_equip_wear.wav UI装备穿戴清脆金属声/ui_equip_remove.wav UI装备卸下清脆金属声，AI生成text_to_audio，44100Hz/16bit/WAV）；生成2张概念图（concept_world_volcano_crater.png 1920×1080世界探索火山口巨大火山口+翻滚岩浆热气+岩石黑曜石+浓烟火山灰+熔岩流裂缝+灵魂红色光芒/concept_ui_equipment.png 1920×1080装备界面UI mockup装备槽位头盔胸甲护腿靴子武器盾牌饰品+角色预览+详情面板+属性加成套装效果+背包装备列表+对比属性+金币显示，AI生成image_gen）；更新art/README.md和audio/README.md资源清单（累计122音效+42概念图）；更新README资源索引和进度跟踪；所有资源自行生成无第三方版权问题 | ✅ 完成 |
 
 ---
 
