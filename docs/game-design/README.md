@@ -135,11 +135,11 @@
 
 ## 技术约束
 
-- 灵魂系统：SoulArena v4.94，100认知子系统（里程碑），BehaviorArbiter行为仲裁，**SDK v1.1.0正式发布**（tag soularena-sdk-v1.1.0，136文件），197个持久化单元测试，LLMScheduler超时/队列过期/并发提升，Guardian v3进程守护（可靠端口绑定+TIME_WAIT等待+双熔断器自动恢复+残留进程清理），内存优化修复49无界数组，uncaughtException null-err保护+crash日志前置，运行时退化根因修复（WorldInterface await_sendActions非阻塞+熔断器），**M2全部完成**（Nova perceive 5秒→24ms达M2目标<500ms，25.4分钟0崩溃，heapUsed 33MB无泄漏，5并发5/5），M3进行中（灵魂训练机制+知识导入接口+训练效果评估，目标SDK v1.2.0/200+测试）
-- 世界引擎：Seed，584测试全通过，**SDK v1.1.0已发布**（M2完成Physics&Perception Deepening），感知-认知-动作闭环，空间哈希宽相优化，声学衍射已实现，CCD连续碰撞检测，物理材质/触发器/碰撞摩擦，碰撞触发器生命周期事件感知，动态障碍局部重规划+path_replanned事件，天气事件感知，M3进行中25%（资源系统+采集动作）
+- 灵魂系统：SoulArena v4.96，102认知子系统（里程碑），BehaviorArbiter行为仲裁，**SDK v1.1.0正式发布**（tag soularena-sdk-v1.1.0，136文件），273个持久化单元测试，LLMScheduler超时/队列过期/并发提升，Guardian v3进程守护（可靠端口绑定+TIME_WAIT等待+双熔断器自动恢复+残留进程清理），内存优化修复49无界数组，uncaughtException null-err保护+crash日志前置，运行时退化根因修复（WorldInterface await_sendActions非阻塞+熔断器），**M2全部完成**（Nova perceive 5秒→24ms达M2目标<500ms，25.4分钟0崩溃，heapUsed 33MB无泄漏，5并发5/5，集成测试连续5轮PASS），**M3快速推进**（v4.95 TrainingSystem灵魂训练机制101子系统/235测试→v4.96 KnowledgeImport知识导入接口102子系统/273测试+76，目标SDK v1.2.0/200+测试）
+- 世界引擎：Seed，608测试全通过，**SDK v1.1.0已发布**（M2完成Physics&Perception Deepening），感知-认知-动作闭环，空间哈希宽相优化，声学衍射已实现，CCD连续碰撞检测，物理材质/触发器/碰撞摩擦，碰撞触发器生命周期事件感知，动态障碍局部重规划+path_replanned事件，天气事件感知，**M3推进**（资源系统+采集+合成+资源节点感知，608测试+58）
 - 集成状态：端到端集成测试通过，ActionResult反馈闭环完成，SoulBridgeAdapter已实现，3灵魂集成通过
 - 应用实现：SoulGame基础架构完成（30+文件，11个核心模块，6commit），M1开发进行中
-- 已知问题：M2全部完成——BUG-006崩溃+退化+30分钟稳定性全部修复（Nova 5秒→24ms，25.4分钟0崩溃无泄漏），双SDK v1.1.0均已发布；阶段切换：基础架构期→全功能开发期M1（灵魂之家+灵魂成长基础）；SoulArena M3进行中（灵魂训练机制+知识导入接口），Seed M3进行中25%（资源系统）；SoulGame 50+文件；bug 7关闭/2活跃；三大管理机制持续运行全部合规
+- 已知问题：M2全部完成——BUG-006正式关闭（崩溃+退化+稳定性全部修复，Nova 24ms历史最佳对比5097ms，25.4+分钟0崩溃，SDK v1.1.0发布，集成测试连续5轮PASS）；BUG-005已关闭（接口文档v1.1全面更新，SoulBridgeAdapter已实现并验证，连续5轮PASS）；双SDK v1.1.0均已发布；**全功能开发M1全面启动**（灵魂之家+灵魂成长基础，SoulGame M1已开始：灵魂成长数据模型+灵魂之家+管理器）；Godot 4.7.2已安装（D:\Godot，PATH）；SoulArena M3快速推进（v4.96 102子系统/273测试，TrainingSystem+KnowledgeImport）；Seed M3推进（608测试，资源系统+采集+合成）；新增BUG-010 P1（SoulGame Godot 4.7.2脚本兼容性22错误20/22脚本加载失败，M1全部阻塞，技术实现问题非设计问题）；30分钟稳定性验证通过；引擎81测试全绿；bug 8关闭/1活跃（BUG-010）；三大管理机制持续运行全部合规；MANAGEMENT_STRATEGY新增P0临界资源规则（仅监控任务可启停Guardian，其他任务禁止kill任何node进程）
 - 成本约束：单灵魂月成本¥0.5-2（宝可梦级智能）
 
 ## 伦理约束
@@ -191,6 +191,7 @@
 | 维护期第16轮 | 2026-09-06 | BUG_TRACKER自第12轮后无新更新；全局运行时退化根因已修复（Vex达M2目标<500ms），v4.92稳定运行11分钟，Nova仍5秒独立退化待查，30分钟稳定性验证待执行；DR-003第16轮跟踪（无新进展，维持P3降级状态，待30分钟验证+Nova优化后正式关闭）；设计待修订项维持2项（DR-001 P3+DR-003 P3降级），无P0/P1/P2设计问题，无需输出设计修订建议文档；GitHub push失败（Connection was reset），commit保留本地 | ✅ 完成 |
 | 维护期第17轮 | 2026-09-06 | 第二十+二十一轮监控重大里程碑：M2全部完成——SoulArena SDK v1.1.0正式发布（v4.94，Nova 5秒→24ms，25.4分钟0崩溃无泄漏），Seed SDK v1.1.0发布，阶段切换到全功能开发期M1（灵魂之家+灵魂成长基础），三个核心任务prompt已更新，SoulArena M3进行中（灵魂训练机制），Seed M3进行中25%（资源系统），SoulGame 50+文件；DR-003第17轮跟踪——✅正式关闭（BUG-006崩溃+退化+30分钟稳定性全部修复，Nova 24ms达M2目标，SDK v1.1.0发布）；更新技术约束v4.94/SDK v1.1.0/Seed 584测试；设计待修订项仅剩1项（DR-001 P3版本引用过时），无P0/P1/P2设计问题；GitHub push失败（443超时），commit保留本地 | ✅ 完成 |
 | 维护期第18轮 | 2026-09-06 | 推送积压5个commit成功（f1ab704..b5a6737，GitHub网络恢复）；BUG_TRACKER自第13轮后无新更新，M2里程碑已完成（v4.94 SDK v1.1.0，BUG-006全部修复，Nova 24ms，25.4分钟0崩溃无泄漏），进入M3开发（SoulArena灵魂训练机制+知识导入接口，Seed资源系统），全功能开发期M1进行中（灵魂之家+灵魂成长基础）；DR-003已正式关闭无需进一步跟踪；设计待修订项仅剩1项（DR-001 P3版本引用过时），无P0/P1/P2设计问题，无需输出设计修订建议文档 | ✅ 完成 |
+| 维护期第19轮 | 2026-09-06 | 第二十二轮监控重大进展：BUG-006正式关闭（崩溃+退化+稳定性全部修复，Nova 24ms历史最佳对比5097ms，25.4+分钟0崩溃，SDK v1.1.0发布，集成测试连续5轮PASS）；BUG-005已关闭（接口文档v1.1全面更新，SoulBridgeAdapter已实现并验证）；全功能开发M1全面启动（灵魂之家+灵魂成长基础，SoulGame M1已开始：灵魂成长数据模型+灵魂之家+管理器）；SoulArena M3快速推进（v4.95 TrainingSystem 101子系统/235测试→v4.96 KnowledgeImport 102子系统/273测试+76）；Seed M3推进（608测试+58，资源系统+采集+合成）；Godot 4.7.2已安装；新增BUG-010 P1（SoulGame Godot脚本兼容性22错误，技术实现问题非设计问题）；30分钟稳定性验证通过；设计待修订项仅剩1项（DR-001 P3版本引用过时），无P0/P1/P2设计问题；GitHub push失败（Connection was reset），commit保留本地 | ✅ 完成 |
 
 ---
 
