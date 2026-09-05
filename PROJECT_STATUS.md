@@ -1,19 +1,19 @@
 # AI灵魂项目 — 总体进展报告
 
-**报告日期：** 2026-09-05（第十六轮监控）
+**报告日期：** 2026-09-06（第十七轮监控）
 **项目愿景：** 打造跨游戏、跨平台的AI灵魂系统，从数字伙伴到智能载体进化平台
-**当前阶段：** 应用实现基础架构期（设计v1.1已冻结，**BUG-006 Guardian v3+内存优化已修复并验证，BUG-008已修复，BUG-009稳定，服务器Guardian v3运行7.6分钟稳定，待30分钟稳定性验证后可建议切换全功能开发**）
+**当前阶段：** 应用实现基础架构期（设计v1.1已冻结，**BUG-006未完全解决——服务器每12-13分钟RUNTIME_CRASH(code=1)无crash日志，Guardian v3自动重启正常但根因未找到，30分钟稳定性验证未通过**，BUG-008/009已关闭）
 
 ---
 
 ## 一、项目总览
 
-| 灵魂系统 | SoulArena | zhuyu112358/SoulArena | v4.85 | 核心引擎高度成熟，**96认知子系统，67轮优化**，**111个持久化单元测试**，SDK v1.0.0已发布，**Guardian v3已修复验证+内存优化(49无界数组)** | ✅ 已同步 |
-| 虚拟世界平台 | Seed | zhuyu112358/Seed | v1.0.0 | 引擎完善，**530测试全通过**，SDK v1.0.0已发布，**BUG-008已修复+碰撞触发器生命周期事件感知** | ✅ 已同步 |
-| 项目管理 | ai-soul-project-mgmt | zhuyu112358/ai-soul-project-mgmt | — | 管理体系完善，设计v1.1冻结，bug跟踪5关闭/4活跃(3待回归) | ✅ 已同步 |
-| 游戏应用 | SoulGame | zhuyu112358/SoulGame | 基础架构完成 | **30+文件，CHANGELOG+roadmap+dev setup+性能基线+CI/CD增强** | ✅ 已同步 |
+| 灵魂系统 | SoulArena | zhuyu112358/SoulArena | v4.87 | 核心引擎高度成熟，**98认知子系统，69轮优化**，**154个持久化单元测试**，SDK v1.0.0已发布，Guardian v3+内存优化已修复，**周期性RUNTIME_CRASH待排查** | ⚠️ 2 commit待推送 |
+| 虚拟世界平台 | Seed | zhuyu112358/Seed | v1.0.0 | 引擎完善，**542测试全通过**，SDK v1.0.0已发布，**动态障碍局部重规划+path_replanned事件感知** | ⚠️ 2 commit待推送 |
+| 项目管理 | ai-soul-project-mgmt | zhuyu112358/ai-soul-project-mgmt | — | 管理体系完善，设计v1.1冻结，bug跟踪7关闭/2活跃 | ⚠️ 1 commit待推送 |
+| 游戏应用 | SoulGame | zhuyu112358/SoulGame | 基础架构完成 | **30+文件，音频总线+项目图标+存档版本迁移+get_stats()重构** | ⚠️ 2 commit待推送 |
 
-**整体进度评估：** 第十六轮——**重大突破：所有关键bug已修复！** SoulArena v4.84修复内存增长（49个无界历史数组+增强内存监控+内存快照API），v4.85重写Guardian v3（可靠端口绑定检测canBindPort()+TIME_WAIT等待waitForPortFree(10×3s)+双熔断器自动恢复+残留进程清理cleanupResidualProcesses），崩溃恢复测试通过（杀掉服务器→Guardian检测RUNTIME_CRASH→2秒重启→端口绑定检测通过→healthz=ok）。Seed第44轮修复BUG-008（discoverSouls()第52行增加`.filter(s => s.status === 'active')`）并验证BUG-009稳定，第45轮新增碰撞/触发器生命周期事件感知（4个事件监听器+8个测试，530测试全绿）。服务器通过Guardian v3运行7.6分钟稳定（uptime 457s，pid 29712，内存94.5MB——远优于v4.81的103.7MB/81s）。当前活跃bug 4个（BUG-006待30分钟回归、BUG-005接口文档、BUG-008待集成测试回归、BUG-009待连续5次确认），5个已关闭。**门控条件接近满足：设计冻结✓ 基础架构完成✓ 双SDK发布✓ Guardian稳定✓ 内存优化✓ BUG-008修复✓，仅剩30分钟稳定性验证。**
+**整体进度评估：** 第十七轮——**BUG-006未完全解决：Guardian v3日志分析发现服务器每12-13分钟RUNTIME_CRASH(code=1)且无crash日志，根因未找到。** Guardian v3自动重启正常（三次崩溃均成功重启），但30分钟稳定性验证未通过。根因推测：①uncaughtException处理器写crash日志后调用shutdown()，若engine.stop()抛出异常则`.catch(() => process.exit(1))`静默退出；②SoulArena开发任务每轮"重启服务器验证"可能触发Guardian误报；③内存监控可能触发退出。服务器在监控时已停止（电脑休眠导致Guardian进程终止），已手动重启（pid=31740）。其他进展：SoulArena夜间新增v4.86认知评价理论（Lazarus，97子系统）+v4.87调节定向理论（Higgins，98子系统），154测试（+43）；Seed新增动态障碍局部重规划+path_replanned事件感知，542测试（+12）；SoulGame新增音频总线+项目图标+存档版本迁移+get_stats()重构。BUG-008/009已被集成测试关闭。GitHub 443端口不可用，所有仓库commit保留本地。当前活跃bug 2个（BUG-006周期性crash、BUG-005接口文档），7个已关闭。
 
 ---
 
@@ -257,8 +257,8 @@
 
 | 指标 | 目标（阶段零） | 当前 | 差距 |
 |------|---------------|------|------|
-| 灵魂认知子系统数 | 基础5-8个 | **96个（v4.85）** | 大幅超前（12倍） |
-| 世界引擎测试 | 核心模块全覆盖 | ✅ **530测试全通过**（碰撞触发器生命周期事件+8测试，BUG-009稳定） | ✅ 已完成 |
+| 灵魂认知子系统数 | 基础5-8个 | **98个（v4.87）** | 大幅超前（12倍） |
+| 世界引擎测试 | 核心模块全覆盖 | ✅ **542测试全通过**（动态障碍重规划+path_replanned事件，BUG-009已关闭） | ✅ 已完成 |
 | SoulArena单元测试 | 自动化测试 | ✅ **111个持久化测试全部通过**（BUG-003已修复，从71→111） | ✅ 已完成 |
 | 灵魂感知层（Seed） | 可生成感知 | ✅ 含光照/温度/移动完成/声学/碰撞感知/衍射 | ✅ 已完成 |
 | 灵魂执行层（Seed） | 可执行动作 | ✅ 7种动作+物理移动+加减速+碰撞+A*寻路+路径平滑+动态瞄准+空间哈希+碰撞层 | ✅ 已完成 |
@@ -275,7 +275,7 @@
 | 集成测试报告 | SDK连通性+基础架构测试 | ✅ **8轮报告，9bug发现（5关闭/4活跃）** | ✅ 已完成 |
 | SoulArena SDK v1.0.0 | API稳定+打包 | ✅ **已发布**（tag已打） | 🏆 已发布 |
 | Seed SDK v1.0.0 | API稳定+打包 | ✅ **已发布**（tag `seed-sdk-v1.0.0`已打） | 🏆 已发布 |
-| 服务器稳定性 | 持续运行不崩溃+不退化 | 🟡 **Guardian v3已修复并验证崩溃恢复，内存优化已修复(49无界数组)，服务器运行7.6分钟稳定(94.5MB)，待30分钟稳定性验证** | 🟡 30分钟验证中 |
+| 服务器稳定性 | 持续运行不崩溃+不退化 | 🔴 **Guardian v3自动重启正常，但服务器每12-13分钟RUNTIME_CRASH(code=1)无crash日志，根因未找到，30分钟稳定性验证未通过** | 🔴 根因排查中 |
 | GitHub同步 | 三仓库均推送 | ✅ 全部已同步 | ✅ 已完成 |
 | 用户测试 | 10-20人 | 0人 | 未开始 |
 
@@ -283,24 +283,24 @@
 
 ## 七、结论
 
-**第十六轮监控核心发现：**
+**第十七轮监控核心发现：**
 
-1. **🏆 BUG-006 Guardian v3已修复并验证崩溃恢复。** v4.85重写Guardian v3，修复v2的5个严重bug：①端口检测假阳性→`canBindPort()`用实际`net.createServer().listen()`测试绑定；②无TIME_WAIT等待→`waitForPortFree()`重试10次×3秒（30秒）；③启动失败无限循环→独立启动失败熔断器（连续5次→60秒冷却→自动恢复）；④熔断器不自动恢复→双熔断器均用`setTimeout()`恢复，Guardian保持存活；⑤多Guardian竞争→`cleanupResidualProcesses()`启动前清理端口占用者。**崩溃恢复测试通过：** 杀掉服务器PID→Guardian检测RUNTIME_CRASH（uptime=70秒）→2秒后重启→端口绑定检测通过→healthz=ok。111测试全部通过。
+1. **🔴 BUG-006未完全解决：服务器每12-13分钟RUNTIME_CRASH(code=1)且无crash日志，根因未找到。** Guardian v3日志分析（23:21-23:49）发现三次RUNTIME_CRASH：23:23:09（uptime=70s）、23:35:35（uptime=12.4min）、23:48:51（uptime=13.2min），每次code=1，Guardian均自动重启成功。但所有crash-*.log均为Guardian v3之前的EADDRINUSE（最新23:03:26），三次RUNTIME_CRASH均未产生crash日志。**根因推测：** ①uncaughtException处理器写crash日志后调用shutdown()，若engine.stop()抛出异常则`.catch(() => process.exit(1))`静默退出（crash日志可能写入失败被catch吞掉）；②SoulArena开发任务每轮"重启服务器验证"可能触发Guardian误报crash；③内存监控可能触发退出。**30分钟稳定性验证未通过。**
 
-2. **🏆 BUG-006内存优化已修复。** v4.84修复49个无界历史数组（认知子系统中累积历史数据的数组），新增增强内存监控和内存快照API（`/api/debug/memory-snapshot`）。**效果验证：** 服务器运行7.6分钟后内存94.5MB（vs v4.81的103.7MB/81秒），内存增长得到有效控制。
+2. **服务器已手动重启。** 监控时服务器已停止（无node进程，电脑休眠导致Guardian进程终止），已通过Guardian v3手动重启（pid=31740，healthz=ok，uptime=9s）。
 
-3. **🏆 BUG-008已修复。** Seed第44轮（commit ac0069c）修复：`examples/integration-test.ts`第51-52行增加`// Filter to only active souls`注释和`const activeSouls = body.souls.filter((s) => s.status === 'active');`。代码已验证。待集成测试回归验证。
+3. **SoulArena夜间进展：v4.86+v4.87（98子系统/154测试）。** v4.86认知评价理论（Lazarus初级/次级评价/应对策略/重评/适应负荷，21测试），v4.87调节定向理论（Higgins促进/预防定向/调节匹配/策略倾向，22测试）。测试从111→154（+43）。动机理论三部曲完成：Vroom期望(v4.82)+Adams公平(v4.83)+Higgins调节定向(v4.87)。
 
-4. **✅ BUG-009测试稳定。** Seed 530测试全通过（88套件，2916ms），连续多轮无flakiness，测试数量稳定。待连续5次运行确认后关闭。
+4. **Seed夜间进展：动态障碍局部重规划+path_replanned事件（542测试）。** PathFollowerSystem新增动态障碍检测和局部重规划，SoulPerceptionSystem集成path_replanned事件感知。测试从530→542（+12）。
 
-5. **Seed新增碰撞/触发器生命周期事件感知（第45轮，530测试）。** SoulPerceptionSystem新增4个事件监听器：碰撞进入/退出（按速度分级严重度）、触发器进入/退出。8个新测试，原有522测试无回归。灵魂现在能感知到"被碰撞"和"进入区域"等事件。
+5. **SoulGame夜间进展：音频总线+项目图标+存档版本迁移+get_stats()重构。** 新增audio bus layout、project icon、save version migration、所有核心系统添加get_stats()方法。
 
-6. **服务器通过Guardian v3稳定运行。** healthz=ok，uptime=457秒（~7.6分钟），pid=29712，内存94.5MB。Guardian进程pid=36500（34.1MB）。无崩溃，无EADDRINUSE。
+6. **BUG-008/009已关闭。** 集成测试第9轮验证：BUG-008选中Vex(active)，12 perceptions sent，0 failed，11 actions executed；BUG-009连续多轮稳定530测试。
 
-7. **Bug生命周期：5关闭/4活跃（3待回归）。** 待回归：BUG-006（30分钟稳定性验证）、BUG-008（集成测试回归）、BUG-009（连续5次确认）。活跃：BUG-005（接口文档过时P3，已6轮未修复）。
+7. **Bug生命周期：7关闭/2活跃。** 活跃：BUG-006（周期性RUNTIME_CRASH根因排查P1）、BUG-005（接口文档过时P3，已7轮未修复）。关闭：BUG-001/002/003/004/007/008/009。
 
-**🟡 门控状态：设计v1.1已冻结✓ 基础架构已完成✓ 双SDK已发布✓ Guardian v3已修复验证✓ 内存优化已修复✓ BUG-008已修复✓ BUG-009稳定✓。仅剩30分钟稳定性验证（perceive<100ms，内存增长<5MB，5并发成功，无崩溃）。** 验证通过后即可建议用户确认切换应用实现到全功能开发。
+**🔴 门控状态：设计v1.1已冻结✓ 基础架构已完成✓ 双SDK已发布✓ Guardian v3自动重启✓ 内存优化✓ BUG-008/009已关闭✓。但服务器稳定性未达标——每12-13分钟RUNTIME_CRASH，30分钟稳定性验证未通过。** 需SoulArena排查周期性crash根因并修复后，才能建议切换全功能开发。
 
-**管理建议：** ①集成测试任务下一轮应执行30分钟稳定性验证+BUG-008回归+BUG-009连续5次确认；②BUG-005接口文档已6轮未修复，建议分配专门任务或降级为P3低优先级；③SoulArena/Seed开发任务prompt需更新——BUG-006/008/009已修复，下一优先级应转为新功能开发或SDK v1.1准备；④30分钟稳定性验证通过后，建议用户确认切换全功能开发，应用实现任务开始M1（灵魂之家+灵魂成长基础）。
+**管理建议：** ①SoulArena最高优先级转为排查周期性RUNTIME_CRASH根因——添加process.exit调用栈日志、检查engine.stop()在uncaughtException时是否抛出异常、确认开发任务"重启服务器"操作是否触发Guardian误报；②集成测试任务下一轮执行30分钟稳定性验证（需服务器持续运行）；③BUG-005接口文档已7轮未修复，建议分配专门任务或降级；④GitHub 443端口间歇性不可用，所有仓库commit保留本地，网络恢复时推送；⑤开发任务prompt需更新——当前prompt仍标记Guardian v2 bug为最高优先级（已过时），应转为周期性crash排查。
 
-**下一阶段核心任务：** 30分钟稳定性验证通过 → BUG-008/009回归确认关闭 → 用户确认 → 应用实现切换全功能开发（M1：灵魂之家+灵魂成长基础）→ 集成测试切换游戏功能测试 → 首个可玩原型 → 用户测试。
+**下一阶段核心任务：** SoulArena排查并修复周期性RUNTIME_CRASH → 30分钟稳定性验证通过 → 用户确认 → 应用实现切换全功能开发（M1：灵魂之家+灵魂成长基础）→ 集成测试切换游戏功能测试 → 首个可玩原型 → 用户测试。
