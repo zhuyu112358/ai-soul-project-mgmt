@@ -37,6 +37,12 @@ assets/audio/
 | soul_spawn.wav | ~2秒 | 44100Hz/16bit/WAV | 灵魂诞生辉煌时刻 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_affinity_heart.wav | ~1秒 | 44100Hz/16bit/WAV | 亲密度提升爱心声 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_grow_up.wav | ~3秒 | 44100Hz/16bit/WAV | 灵魂成长进化时刻 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_error.wav | ~1秒 | 44100Hz/16bit/WAV | UI错误提示音 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_levelup.wav | ~2秒 | 44100Hz/16bit/WAV | 升级辉煌音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_excited_sparkle.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达兴奋情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_curious_blip.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达好奇情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_home_indoor.wav | ~3秒 | 44100Hz/16bit/WAV | 室内环境底噪（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_garden_birds.wav | ~3秒 | 44100Hz/16bit/WAV | 花园鸟鸣环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
