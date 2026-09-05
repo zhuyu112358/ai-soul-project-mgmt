@@ -109,6 +109,12 @@ assets/audio/
 | soul_expectant_wait.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂期待情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_success_prompt.wav | ~1秒 | 44100Hz/16bit/WAV | UI成功提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_failure_prompt.wav | ~1秒 | 44100Hz/16bit/WAV | UI失败提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_flowerfield.wav | ~5秒 | 44100Hz/16bit/WAV | 花田环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_starlight.wav | ~5秒 | 44100Hz/16bit/WAV | 星空环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_peaceful_calm.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂安心情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_surprised_gasp.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊喜情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_loading_complete.wav | ~1秒 | 44100Hz/16bit/WAV | UI加载完成音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_connection_success.wav | ~1秒 | 44100Hz/16bit/WAV | UI连接成功音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
