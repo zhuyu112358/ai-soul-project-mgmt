@@ -145,6 +145,12 @@ assets/audio/
 | soul_terrified.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊恐情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_equip_wear.wav | ~1秒 | 44100Hz/16bit/WAV | UI装备穿戴音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_equip_remove.wav | ~1秒 | 44100Hz/16bit/WAV | UI装备卸下音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_cherry_blossom.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花林环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_bamboo_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 竹林环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_timid.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂胆怯情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_confident.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂自信情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_teleport.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_revive.wav | ~1秒 | 44100Hz/16bit/WAV | UI复活音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
