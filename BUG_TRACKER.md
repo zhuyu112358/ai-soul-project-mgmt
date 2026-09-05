@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（集成测试第18轮，🏆里程碑——M1基础架构完全可用！Godot编译0错误+运行时0错误+19系统初始化+双SDK连通，BUG-010/011/013/014全部修复关闭；🎉SoulArena v5.04 M4完成（SDK v1.3.0/449测试），Seed M4完成（SDK v2.0.0/705测试），引擎1154全绿，集成连续10轮PASS，30分钟稳定性通过，🎉活跃bug降至0个！）
+**最后更新：** 2026-09-06（第三十轮监控，🎉SoulArena M6快速推进（v5.12/115子系统/700测试里程碑），Seed M6四阶段完成（817测试），SoulGame M1视觉效果完成+⚠️越界开始M2战斗系统已纠正，游戏设计109资源；BUG-016/017已派发SoulGame修复，活跃bug 2个）
 **维护者：** 总体监控任务
 
 ---
@@ -10,10 +10,10 @@
 | 状态 | 数量 |
 |------|------|
 | 待确认 | 0 |
-| 已派发/修复中 | 0 |
+| 已派发/修复中 | 2 |
 | 待回归 | 0 |
 | 已关闭 | 15 |
-| **总计活跃** | **0** |
+| **总计活跃** | **2** |
 
 ---
 
@@ -422,6 +422,36 @@
 - **修复commit：** SoulGame eef09a0
 - **回归验证：** 第二十七轮监控（2026-09-06 04:30）`Godot --headless --check-only` → **0错误，exit code 0**。
 - **后续M1进展：** SoulGame已完成CLI玩家界面（7745bee）+ SDK连通性验证（730b877），第18轮集成测试确认M1基础架构完全可用（编译0错误+运行时0错误+19系统初始化+双SDK连通+32分钟稳定性）。
+
+### BUG-016: M1IntegrationTest编译失败——SoulManager/WorldManager非autoload
+- **严重程度：** P2
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第21轮）
+- **负责方：** SoulGame
+- **状态：** 🔄 **已派发/修复中**（第三十轮监控，2026-09-06 06:05，派发给SoulGame应用实现任务）
+- **派发指令：** 在M1IntegrationTest.gd中添加SoulManager/WorldManager的preload，或将其添加为autoload。**优先级：先修复此bug，暂停M2开发。**
+- **复现步骤：**
+  1. `D:\Godot\Godot.exe --headless -s res://tests/M1IntegrationTest.gd --path D:\SoulGame`
+  2. 观察编译错误
+- **预期行为：** M1集成测试73个用例全部运行通过（commit 5178d97声称"73 tests, 0 failures"）
+- **实际行为：** 编译失败，`SCRIPT ERROR: Compile Error: Identifier not found: SoulManager`。M1IntegrationTest.gd直接调用`SoulManager.start_creation()`等，但SoulManager/WorldManager不在autoload列表中（仅preload了SoulGrowthData）。
+- **影响：** M1集成测试无法运行，无法自动化验证灵魂创建/训练/部署/世界管理流程。
+- **建议修复：** 在M1IntegrationTest.gd中添加`const SoulManager = preload("res://scripts/game/SoulManager.gd")`和WorldManager的preload，或将SoulManager/WorldManager添加为autoload。
+
+### BUG-017: TestRunner编译失败——Godot 4.7不支持独立lambda
+- **严重程度：** P2
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第21轮）
+- **负责方：** SoulGame
+- **状态：** 🔄 **已派发/修复中**（第三十轮监控，2026-09-06 06:05，派发给SoulGame应用实现任务）
+- **派发指令：** 将TestRunner.gd第56行的独立lambda赋值给变量后调用，或改用普通函数。**优先级：先修复此bug，暂停M2开发。**
+- **复现步骤：**
+  1. `D:\Godot\Godot.exe --headless -s res://tests/TestRunner.gd --path D:\SoulGame`
+  2. 观察编译错误
+- **预期行为：** 基础架构单元测试（EventBus/GameState/ConfigManager/Logger/SaveSystem/ObjectPool/InputManager）全部运行
+- **实际行为：** 编译失败，`SCRIPT ERROR: Parse Error: Standalone lambdas cannot be accessed. Consider assigning it to a variable.` at TestRunner.gd:56。Godot 4.7不支持独立lambda表达式语法。
+- **影响：** 基础架构单元测试无法运行。
+- **建议修复：** 将第56行的独立lambda赋值给变量后调用，或改用普通函数。
 
 ---
 
