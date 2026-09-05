@@ -79,6 +79,12 @@ assets/audio/
 | soul_thinking_hum.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂思考音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_confused_tilt.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂疑惑音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_dropdown.wav | ~1秒 | 44100Hz/16bit/WAV | UI下拉菜单音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 洞穴环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_stream.wav | ~5秒 | 44100Hz/16bit/WAV | 溪流环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_shy_blush.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂害羞情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_proud_pose.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂骄傲情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_checkbox.wav | ~1秒 | 44100Hz/16bit/WAV | UI复选框勾选音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_radio.wav | ~1秒 | 44100Hz/16bit/WAV | UI单选按钮选择音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
