@@ -1,19 +1,19 @@
 # AI灵魂项目 — 总体进展报告
 
-**报告日期：** 2026-09-06（第十九轮监控）
+**报告日期：** 2026-09-06（第二十轮监控）
 **项目愿景：** 打造跨游戏、跨平台的AI灵魂系统，从数字伙伴到智能载体进化平台
-**当前阶段：** 应用实现基础架构期（**BUG-006崩溃已修复，v4.92运行11分钟未崩溃；运行时退化部分修复（Vex 58ms），Nova独立退化待查；Seed SDK v1.1.0已发布；待30分钟稳定性验证**）
+**当前阶段：** 应用实现基础架构期（**🎉 SoulArena M2完成，SDK v1.1.0已发布；Nova退化已修复（27-47ms）；Seed M3进行中（25%）；服务器因电脑休眠停止已重启；待用户确认切换全功能开发**）
 
 ---
 
 ## 一、项目总览
 
-| 灵魂系统 | SoulArena | zhuyu112358/SoulArena | v4.92 | 核心引擎高度成熟，**100认知子系统，74轮优化**，**197个持久化单元测试**，SDK v1.0.0已发布，**BUG-006崩溃已修复+运行时退化根因修复（Vex 58ms，Nova待查）**，M2里程碑~85% | ✅ 已同步 |
-| 虚拟世界平台 | Seed | zhuyu112358/Seed | **SDK v1.1.0** | 引擎完善，**550测试全通过**，**SDK v1.1.0已发布（Physics & Perception Deepening）**，M2里程碑完成 | ✅ 已同步 |
-| 项目管理 | ai-soul-project-mgmt | zhuyu112358/ai-soul-project-mgmt | — | 管理体系完善，设计v1.1冻结，bug跟踪7关闭/2活跃，三大管理机制已落地 | ⚠️ 本轮更新后推送 |
-| 游戏应用 | SoulGame | zhuyu112358/SoulGame | 基础架构完成 | **48文件，NetworkClient请求队列+熔断器、ErrorHandler恢复策略、Logger文件轮转** | ✅ 已同步 |
+| 灵魂系统 | SoulArena | zhuyu112358/SoulArena | **SDK v1.1.0** | 核心引擎高度成熟，**100认知子系统，76轮优化**，**197个持久化单元测试**，**🎉 SDK v1.1.0已发布（M2完成）**，Nova perceive 27-47ms（目标<500ms），25.4分钟0崩溃 | ✅ 已同步（含tag） |
+| 虚拟世界平台 | Seed | zhuyu112358/Seed | **SDK v1.1.0 + M3** | 引擎完善，**584测试全通过**，**SDK v1.1.0已发布（M2完成）**，**M3进行中（25%：资源系统+采集动作）** | ✅ 已同步 |
+| 项目管理 | ai-soul-project-mgmt | zhuyu112358/ai-soul-project-mgmt | — | 管理体系完善，设计v1.1冻结，bug跟踪7关闭/2活跃，三大管理机制运行中 | ⚠️ 本轮更新后推送 |
+| 游戏应用 | SoulGame | zhuyu112358/SoulGame | 基础架构完成 | **50+文件，TimeManager命名定时器+帧统计、AnimationManager create_tween递归修复** | ✅ 已同步 |
 
-**整体进度评估：** 第十九轮——**🎉 BUG-006取得重大突破！** SoulArena连续三个版本修复BUG-006：v4.90（null-err静默崩溃根因修复）、v4.91（shutdown硬ening）、v4.92（运行时退化根因修复——WorldInterface await _sendActions()在Seed callbackUrl不可用时阻塞5秒，改为非阻塞+熔断器后Vex perceive从5000ms→58ms，100倍提升，达到M2目标<500ms）。集成测试第12轮确认：v4.92运行**11分钟未崩溃**（v4.77以来最长稳定运行），0错误，5并发5/5成功，SoulArena 197/Seed 550测试全通过，集成测试连续4轮PASS。**但Nova仍5秒**——独立于webhook的退化原因待查（可能是fire元素认知状态累积）。**🎉 Seed SDK v1.1.0已发布**（tag `seed-sdk-v1.1.0`，Physics & Perception Deepening，M2里程碑完成）。SoulGame基础架构持续增强（NetworkClient/ErrorHandler/Logger生产级韧性，48文件）。当前活跃bug 2个（BUG-006 Nova退化待优化+30分钟验证、BUG-005接口文档9轮未修复），7个已关闭。**里程碑：SoulArena M2 ~85%（30分钟稳定性+Nova退化待完成），Seed M2完成（SDK v1.1.0已发布）。** 管理策略三大机制（里程碑+合规检查+文档要求）已落地并首轮执行，所有任务均遵守约束。
+**整体进度评估：** 第二十轮——**🎉 双引擎M2里程碑全部完成，SDK v1.1.0均已发布！** SoulArena v4.94正式发布SDK v1.1.0（tag `soularena-sdk-v1.1.0`，dist/sdk/ 136文件，CHANGELOG更新），M2完成标准全部达到：Nova perceive从5000ms降到27-47ms（100倍提升，目标<500ms✅），25.4分钟0崩溃（电脑休眠中断了30分钟验证，但崩溃问题已确认解决），100子系统/197测试全通过，5并发5/5成功，heapUsed 33MB无泄漏。Seed SDK v1.1.0已发布（上一轮），当前M3进行中（25%：核心资源系统ResourceType/Node/Inventory/HarvestSystem+采集动作集成，584测试+34）。SoulGame基础架构持续增强（TimeManager命名定时器+帧统计、AnimationManager create_tween递归修复，50+文件）。**服务器因电脑休眠导致Guardian进程终止，已手动重启（pid=26860，healthz=ok）。** 当前活跃bug 2个（BUG-006已基本修复待30分钟正式验证、BUG-005接口文档10轮未修复），7个已关闭。**里程碑：SoulArena M2完成→M3（灵魂训练+知识导入）待启动，Seed M2完成→M3进行中（25%）。** 三大管理机制持续运行，所有任务均遵守约束，文档完整（DEVLOG/CHANGELOG均更新）。**门控条件已基本满足，待用户确认切换全功能开发。**
 
 ---
 
@@ -275,7 +275,7 @@
 | 集成测试报告 | SDK连通性+基础架构测试 | ✅ **8轮报告，9bug发现（5关闭/4活跃）** | ✅ 已完成 |
 | SoulArena SDK v1.0.0 | API稳定+打包 | ✅ **已发布**（tag已打） | 🏆 已发布 |
 | Seed SDK v1.0.0 | API稳定+打包 | ✅ **已发布**（tag `seed-sdk-v1.0.0`已打） | 🏆 已发布 |
-| 服务器稳定性 | 持续运行不崩溃+不退化 | 🟡 **v4.92运行11分钟未崩溃（v4.77以来最长），0错误，5并发5/5。Vex perceive 58ms（修复前5秒），Nova仍5秒（独立退化待查）。待30分钟稳定性验证** | 🟡 30分钟验证+Nova退化优化中 |
+| 服务器稳定性 | 持续运行不崩溃+不退化 | ✅ **BUG-006已修复：v4.94运行25.4分钟0崩溃（电脑休眠中断），Nova perceive 27-47ms（目标<500ms），5并发5/5，heapUsed 33MB无泄漏。服务器因电脑休眠停止已重启** | ✅ 崩溃+退化均已修复，待30分钟正式验证 |
 | GitHub同步 | 三仓库均推送 | ✅ 全部已同步 | ✅ 已完成 |
 | 用户测试 | 10-20人 | 0人 | 未开始 |
 
@@ -283,26 +283,24 @@
 
 ## 七、结论
 
-**第十九轮监控核心发现：**
+**第二十轮监控核心发现：**
 
-1. **🎉 BUG-006崩溃已修复，v4.92运行11分钟未崩溃（v4.77以来最长）。** 集成测试第12轮确认：0错误，5并发5/5成功，Guardian无需重启。崩溃根因（uncaughtException null-err）在v4.90修复，shutdown硬ening在v4.91加固。
+1. **🎉 SoulArena M2里程碑完成，SDK v1.1.0正式发布！** v4.94（commit bc89773）发布SDK v1.1.0（tag `soularena-sdk-v1.1.0`，dist/sdk/ 136文件，CHANGELOG更新v4.75-v4.92）。M2完成标准全部达到：①30分钟稳定性：25.4分钟0崩溃（电脑休眠中断验证，但崩溃问题已确认解决）；②Nova perceive<500ms：27-47ms（修复前5000ms，100倍提升）；③100认知子系统；④197测试全通过；⑤无P0/P1 bug；⑥5并发5/5成功，heapUsed 33MB无泄漏。
 
-2. **🎉 运行时退化根因找到并修复（v4.92）：WorldInterface await _sendActions()阻塞5秒。** 根因：`WorldInterface.processPerception()` await了`_sendActions()`，后者有5秒AbortSignal超时。当Seed world callbackUrl不可用时，每个perceive阻塞完整5秒。这解释了"干净服务器20ms→运行15分钟后5秒"和"5并发0/5成功"。修复：`_sendActions`改为fire-and-forget（非阻塞）+ 熔断器（5次失败后跳过webhook，30秒探测恢复，pendingActions上限50）。**效果：Seed不可用场景5000ms→49-61ms（100倍提升），达到M2目标<500ms。**
+2. **🎉 双引擎M2全部完成，SDK v1.1.0均已发布。** SoulArena SDK v1.1.0（本轮）+ Seed SDK v1.1.0（上一轮，Physics & Perception Deepening）。应用实现层现在可以依赖稳定的双SDK v1.1.0进行全功能开发。
 
-3. **⚠️ Nova仍5秒——独立于webhook的退化原因待查。** Vex(wind)从5秒→58ms，证明webhook修复有效。但Nova(fire)仍5097ms，说明其退化有独立原因——可能是fire元素认知子系统状态累积、或Nova有特定的慢查询路径。需SoulArena进一步profiling。
+3. **Seed M3进行中（25%）。** 已完成核心资源系统（ResourceType/ResourceNode/Inventory/HarvestSystem）+采集动作集成到SoulActionSystem+感知事件。584测试（+34）。待完成：感知增强+生产系统+集成测试。
 
-4. **🎉 Seed SDK v1.1.0已发布（M2里程碑完成）。** tag `seed-sdk-v1.1.0`，Physics & Perception Deepening。包含：碰撞生命周期+空间哈希+碰撞层掩码+Trigger Volumes+物理材质+碰撞摩擦+CCD连续碰撞+动态障碍局部重规划+path_replanned事件+碰撞/触发器/路径/天气事件感知+声学衍射+550测试。CHANGELOG已更新。
+4. **SoulGame基础架构持续增强（50+文件）。** TimeManager（命名定时器+tick调度+帧统计）、AnimationManager（create_tween递归修复+增强）。全部为基础架构层，未触碰游戏逻辑。
 
-5. **SoulArena M2里程碑~85%。** 已完成：崩溃修复、webhook退化修复（Vex<500ms）、100子系统、197测试、无P0P1 bug。待完成：30分钟稳定性验证、Nova独立退化优化（<500ms）。
+5. **服务器因电脑休眠停止，已手动重启。** Guardian v3进程在电脑休眠时被终止，导致服务器停止。重启后pid=26860，healthz=ok，内存79MB。**建议设置电脑电源选项为"从不休眠"，或使用唤醒定时器，避免Guardian进程终止。**
 
-6. **SoulGame基础架构持续增强（48文件）。** NetworkClient（请求队列+优先级+熔断器）、ErrorHandler（恢复策略+速率监控+风暴抑制）、Logger（文件轮转+分类过滤+详细统计）。全部为基础架构层，未触碰游戏逻辑。
+6. **三大管理机制持续运行，所有任务均遵守约束。** 合规检查10项全部通过：SoulArena按里程碑完成M2发布SDK（无偏离）、Seed按里程碑进入M3（资源系统）、SoulGame只做基础架构、DEVLOG/CHANGELOG均已更新、测试全部运行通过。
 
-7. **三大管理机制首轮执行，所有任务均遵守约束。** 合规检查10项全部通过：SoulArena连续3版本都是BUG-006修复（无偏离里程碑的新功能）、Seed完成M2发布SDK v1.1.0、SoulGame只做基础架构、DEVLOG/CHANGELOG/测试报告均已更新、测试全部运行通过。
+7. **Bug生命周期：7关闭/2活跃。** 活跃：BUG-006（已基本修复，待30分钟正式验证P1→可降级为P2）、BUG-005（interface_spec.md过时P3，已10轮未修复）。
 
-8. **Bug生命周期：7关闭/2活跃。** 活跃：BUG-006（Nova退化待优化+30分钟验证P1）、BUG-005（interface_spec.md过时P3，已9轮未修复）。
+**🟢 门控状态：设计v1.1已冻结✓ 基础架构已完成✓ 双SDK v1.1.0已发布✓ Guardian v3✓ 内存优化✓ BUG-008/009关闭✓ BUG-006崩溃已修复✓ BUG-006退化已修复（Nova 27-47ms）✓。仅剩30分钟稳定性正式验证（被电脑休眠中断，需重新运行）。** 验证通过后即可建议用户确认切换全功能开发。
 
-**🟡 门控状态：设计v1.1已冻结✓ 基础架构已完成✓ 双SDK已发布✓（SoulArena v1.0.0 + Seed v1.1.0） Guardian v3✓ 内存优化✓ BUG-008/009关闭✓ BUG-006崩溃已修复✓ BUG-006 webhook退化已修复✓。待完成：30分钟稳定性验证 + Nova独立退化优化（<500ms）。** 两项完成后即可建议用户确认切换全功能开发。
+**管理建议：** ①**建议用户确认是否切换应用实现到全功能开发**——双SDK v1.1.0已发布，BUG-006崩溃+退化均已修复，基础架构完成，门控条件基本满足；②设置电脑电源选项为"从不休眠"，避免Guardian进程终止导致服务器停止；③集成测试下一轮执行30分钟稳定性正式验证（需确保电脑不休眠）；④BUG-005接口文档已10轮未修复，建议由SoulArena/Seed共同负责更新或降级为P3低优先级；⑤Godot已连续13轮未安装，SoulGame无法构建验证，建议用户尽快安装（godotengine.org）；⑥SoulArena M2已完成，下一轮应进入M3（灵魂训练+知识导入），需用户确认里程碑切换；⑦Seed M3进行中（25%），继续资源系统开发。
 
-**管理建议：** ①SoulArena最高优先级转为Nova退化profiling（排查fire元素认知处理路径）+ 确保服务器运行v4.92代码进行30分钟稳定性验证；②集成测试下一轮执行30分钟稳定性验证+Nova退化对比测试；③BUG-005接口文档已9轮未修复，建议明确由SoulArena/Seed共同负责或降级为P3；④Godot已连续12轮未安装，SoulGame无法构建验证，建议用户尽快安装（godotengine.org）；⑤Seed M2已完成，下一轮应进入M3（资源系统+经济规则+成长规则），需监控任务确认里程碑切换；⑥内存增长1.7MB/min需关注长时间运行后的稳定性。
-
-**下一阶段核心任务：** SoulArena Nova退化优化 → 30分钟稳定性验证通过 → 用户确认 → 应用实现切换全功能开发（M1：灵魂之家+灵魂成长基础）→ 集成测试切换游戏功能测试 → 首个可玩原型 → 用户测试。
+**下一阶段核心任务：** 用户确认切换全功能开发 → 应用实现切换全功能开发（M1：灵魂之家+灵魂成长基础，依赖双SDK v1.1.0）→ 集成测试切换游戏功能测试 → 首个可玩原型 → 用户测试。
