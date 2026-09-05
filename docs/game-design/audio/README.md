@@ -61,6 +61,12 @@ assets/audio/
 | soul_fear_tremble.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达恐惧情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_achievement.wav | ~2秒 | 44100Hz/16bit/WAV | 成就解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_item_get.wav | ~1秒 | 44100Hz/16bit/WAV | 物品获得音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_defend.wav | ~1秒 | 44100Hz/16bit/WAV | 战斗防御音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_critical_hit.wav | ~1秒 | 44100Hz/16bit/WAV | 战斗暴击音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| bat_dodge.wav | ~1秒 | 44100Hz/16bit/WAV | 战斗闪避音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_tired_sigh.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂表达疲惫情绪 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| act_attack_swing.wav | ~1秒 | 44100Hz/16bit/WAV | 攻击挥舞音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| act_use_item.wav | ~1秒 | 44100Hz/16bit/WAV | 使用道具音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
