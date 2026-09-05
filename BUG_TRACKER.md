@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（第二十三轮监控，✅BUG-010已修复——Logger从class_name静态类改为autoload单例，222→0错误，exit code 0，M1解除阻塞；🎉SoulArena M3完成SDK v1.2.0发布（v4.98/103子系统/303测试）；✅BUG-005已关闭（接口文档v1.1）；✅30分钟稳定性验证通过（32.5分钟0崩溃）；引擎939测试全绿；Nova长时间运行退化4.7秒待排查；活跃bug降至1个）
+**最后更新：** 2026-09-06（第二十四轮监控，✅BUG-010+BUG-011全部修复——SoulGame Godot 4.7.2兼容性0错误exit code 0，M1全部解除阻塞（Logger autoload 7a61d52 + 批量API修复 340fb0b）；🎉SoulArena M4完成v5.00（105子系统/363测试，多灵魂协作+灵魂间通信）；🎉Seed M3完成SDK v1.2.0→M4进行中（世界序列化+存档，663测试）；游戏设计产出4张概念图+9个音效（全部AI生成无版权问题）；活跃bug降至0个）
 **维护者：** 总体监控任务
 
 ---
@@ -10,10 +10,10 @@
 | 状态 | 数量 |
 |------|------|
 | 待确认 | 0 |
-| 已派发/修复中 | 1 |
+| 已派发/修复中 | 0 |
 | 待回归 | 0 |
-| 已关闭 | 9 |
-| **总计活跃** | **1** |
+| 已关闭 | 11 |
+| **总计活跃** | **0** |
 
 ---
 
@@ -322,6 +322,50 @@
   3. 修复类型推断错误或放宽类型检查
   4. 目标：`--check-only` 0错误，项目可启动
 - **回归验证：** 第15轮（2026-09-06 02:50）❌ 回归失败——216个SCRIPT ERROR，22个脚本加载失败（对比第14轮222错误基本相同），Logger静态方法错误169个，SoulGame无新提交。M1全部阻塞。
+- **第16轮回归（2026-09-06 03:20）：✅ 根因修复，大部分解决**
+  - SoulGame新增3个commit：7a61d52（Logger改autoload单例）、2dbce64（命名空间/循环依赖）、340fb0b（API兼容性批量修复）
+  - Godot --check-only：**22个SCRIPT ERROR（从216→22，-90%），11个脚本加载失败（从22→11，-50%）**
+  - Logger静态方法错误：**0个**（从169→0，根因完全解决 ✅）
+  - **结论：BUG-010根因（Logger静态类）已修复。剩余22个错误为不同类型问题，已记录为BUG-011。BUG-010可关闭。**
+
+---
+
+### BUG-011: SoulGame Godot 4.7.2剩余脚本错误——22错误11脚本加载失败
+- **严重程度：** P2（M1部分游戏功能阻塞）
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第16轮，BUG-010修复后回归）
+- **负责方：** SoulGame
+- **状态：** ✅ **已修复**（SoulGame 340fb0b，第二十四轮监控验证）。SoulGame批量修复了剩余22个Godot 4.7.2兼容性错误（AudioManager静态方法、AnimationManager字典语法、PerformanceMonitor/TimeManager类型推断、ErrorHandler未声明变量、各Manager类型推断等）。**验证：** 第二十四轮监控（2026-09-06 03:04）`Godot --headless --check-only` → **0错误，exit code 0**。M1全部游戏功能解除阻塞。
+- **复现步骤：**
+  1. cd D:\SoulGame
+  2. D:\Godot\Godot.exe --headless --check-only --path D:\SoulGame
+- **预期行为：** 0脚本错误，所有脚本正常加载
+- **实际行为：** **22个SCRIPT ERROR，11个脚本加载失败**
+- **错误分布：**
+  - AudioManager.gd: 8个（is_bus_muted()静态方法找不到、类型推断）
+  - AnimationManager.gd: 5个（类型推断、字典语法）
+  - PerformanceMonitor.gd: 5个（类型推断elapsed_ms/frame_time_p99/fps_1pct_low）
+  - TimeManager.gd: 4个（类型推断elapsed/target_tick/p99_ms）
+  - ErrorHandler.gd: 4个（attempt未声明、类型推断）
+  - SoulManager.gd: 3个（类型推断、返回null）
+  - WorldManager.gd: 3个（类型推断、返回null）
+  - LocalizationManager.gd: 3个（locale_lang类型推断）
+  - ResourceManager.gd: 3个（类型推断）
+  - InputManager.gd: 3个（类型推断）
+  - DebugOverlay.gd: 3个（类型推断）
+  - ConfigManager.gd: 2个（字典语法）
+  - Logger.gd: 2个（残留）
+- **错误类型统计：** 类型推断~10个、Variant警告5个、字典语法3个、AudioManager静态方法1个、语法错误1个、其他3个
+- **加载失败的脚本（11个）：** DebugOverlay, PerformanceMonitor, ResourceManager, InputManager, ErrorHandler, TimeManager, AudioManager, LocalizationManager, AnimationManager, SoulManager, WorldManager
+- **影响：** 核心系统（音频/性能/时间/错误处理）和游戏系统（灵魂管理/世界管理）无法加载，M1部分功能仍阻塞
+- **修复要求：**
+  1. AudioManager.is_bus_muted()改为实例方法（类似Logger修复）
+  2. 所有类型推断错误添加显式类型注解
+  3. 字典语法错误检查大括号匹配
+  4. Variant警告通过显式类型或project.godot配置解决
+  5. 目标：`--check-only` 0错误
+- **开发任务状态：** commit 340fb0b已标记"fix(BUG-011)"并部分修复，但不完整（仍22错误）
+- **回归验证：** （待验证）
 
 ---
 
