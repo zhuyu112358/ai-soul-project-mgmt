@@ -175,6 +175,12 @@ assets/audio/
 | soul_dejected.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂沮丧情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_replay_start.wav | ~1秒 | 44100Hz/16bit/WAV | UI回放开始音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_replay_end.wav | ~1秒 | 44100Hz/16bit/WAV | UI回放结束音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_tundra.wav | ~5秒 | 44100Hz/16bit/WAV | 苔原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_savanna.wav | ~5秒 | 44100Hz/16bit/WAV | 热带草原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_amused.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂被逗乐情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_bored.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂无聊情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_spectator_enter.wav | ~1秒 | 44100Hz/16bit/WAV | UI进入观战音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_spectator_leave.wav | ~1秒 | 44100Hz/16bit/WAV | UI离开观战音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
