@@ -10,8 +10,8 @@
 | 状态 | 数量 |
 |------|------|
 | 待确认 | 0 |
-| 已派发/修复中 | 2 |
-| 待回归 | 0 |
+| 已派发/修复中 | 0 |
+| 待回归 | 2 |
 | 已关闭 | 21 |
 | **总计活跃** | **2** |
 
@@ -531,7 +531,7 @@
 - **回归验证（第39轮，2026-09-06）：** M2测试运行 **469测试，469通过，0失败**。BattleResultManager autoload正常加载，GameLog.info()调用正常工作。**确认非bug，关闭 ✅**
 - **经验教训：** 遇到"Identifier not found"错误时，应先检查project.godot中的autoload配置，确认标识符是否为有效autoload名称，再判断是否为代码bug。
 
-### BUG-022: SubjectiveExperience.broadcastToWorkspace测试失败 — 🟡 **已派发/修复中**（第39轮集成测试发现，2026-09-06，监控第51轮确认并派发Ember修复）
+### BUG-022: SubjectiveExperience.broadcastToWorkspace测试失败 — 🟡 **待回归**（第39轮集成测试发现，2026-09-06，监控第51轮确认并派发Ember修复，监控第52轮验证npm test 1600全通过0失败，待集成测试正式回归）
 - **严重程度：** P2
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第39轮）
@@ -550,7 +550,7 @@
 - **影响：** 主观体验系统的广播功能异常，可能影响意识整合和工作空间通信。非阻塞（其他1598测试全通过）。
 - **建议修复：** 检查SubjectiveExperience.broadcastToWorkspace()实现和工作空间接收逻辑。
 
-### BUG-023: UpdatingMonitoring.refreshAll未激活slots — 🟡 **已派发/修复中**（第39轮集成测试发现，2026-09-06，监控第51轮确认并派发Ember修复）
+### BUG-023: UpdatingMonitoring.refreshAll未激活slots — 🟡 **待回归**（第39轮集成测试发现，2026-09-06，监控第51轮确认并派发Ember修复，监控第52轮验证npm test 1600全通过0失败，待集成测试正式回归）
 - **严重程度：** P2
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第39轮）
