@@ -181,6 +181,12 @@ assets/audio/
 | soul_bored.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂无聊情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_spectator_enter.wav | ~1秒 | 44100Hz/16bit/WAV | UI进入观战音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_spectator_leave.wav | ~1秒 | 44100Hz/16bit/WAV | UI离开观战音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_highland.wav | ~5秒 | 44100Hz/16bit/WAV | 高原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_wetland.wav | ~5秒 | 44100Hz/16bit/WAV | 湿地环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_playful.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂调皮情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_jealous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂嫉妒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_start.wav | ~1.5秒 | 44100Hz/16bit/WAV | UI赛季开始音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_end.wav | ~1.5秒 | 44100Hz/16bit/WAV | UI赛季结束音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
