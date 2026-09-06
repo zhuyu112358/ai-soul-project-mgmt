@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-07（集成测试第47轮，🎉M13双引擎完成+双SDK发布——ember(SoulArena) M13完成SDK v2.2.0（2025测试全绿+65，世界模型八阶段SelfWorld+Physics+Causal+Temporal+Social+PredictivePlanner+PredictionErrorLearning+WorldModelIntegration，第156子系统），arboreus(Seed) M13完成SDK v2.9.0（1868测试全绿+94，社交系统+群体行为+信息传播+文化演化+社会文化整合），battleplan(SoulGame) M2测试1189（+98，PixelSpriteGenerator+ArenaBackgroundGenerator+ServerAuthority），Godot构建0错误，TestRunner 111+M1 73全通过，引擎3893全绿，❌M2测试编译错误（BUG-024: M2IntegrationTest.gd:2480 soft_currency变量重复声明），⚠️服务器开始时29.6分钟但API测试期间停止（连续两轮SERVER_DOWN，需监控任务关注），活跃bug 1个（BUG-024待确认））
+**最后更新：** 2026-09-07（集成测试第48轮，🎉BUG-024修复+连续8轮全绿恢复——ember(SoulArena) M13完成SDK v2.2.0（2025测试全绿，世界模型八阶段），arboreus(Seed) M13完成SDK v2.9.0（1868测试全绿，社会模拟+文化演化），battleplan(SoulGame) M2测试1266全通过（+77，HomeAPI+SoulSnapshot+WorldPlugin+AudioManager+ArenaMap，🎉BUG-024 soft_currency重复声明已修复），Godot构建0错误，1450自动化测试全通过（111+73+1266），引擎3893全绿，⚠️服务器连续三轮停止（SERVER_DOWN，API测试跳过，需监控任务重点关注服务器稳定性），🎉活跃bug 0个（24个全部关闭，连续8轮全绿恢复））
 **维护者：** 总体监控任务
 
 ---
@@ -9,11 +9,11 @@
 
 | 状态 | 数量 |
 |------|------|
-| 待确认 | 1 |
+| 待确认 | 0 |
 | 已派发/修复中 | 0 |
 | 待回归 | 0 |
-| 已关闭 | 23 |
-| **总计活跃** | **1** |
+| 已关闭 | 24 |
+| **总计活跃** | **0** |
 
 ---
 
@@ -24,14 +24,14 @@
 - **发现时间：** 2026-09-07
 - **发现者：** 集成测试任务（第47轮）
 - **负责方：** battleplan应用实现
-- **状态：** 🔴 待确认
+- **状态：** ✅ 已关闭（2026-09-07 第48轮回归验证）
 - **复现步骤：**
   1. 运行 `D:\Godot\Godot.exe --headless -s res://tests/m2_test_runner.gd --path D:\Sojourn\battleplan`
 - **预期：** M2测试正常运行，1189个测试全通过
-- **实际：** `SCRIPT ERROR: Parse Error: There is already a variable named "soft_currency" declared in this scope. at: GDScript::reload (res://tests/M2IntegrationTest.gd:2480)`，M2测试无法运行，超时退出
-- **影响：** M2集成测试套件完全无法运行，无法验证RTS竞技场功能。不影响游戏运行（仅测试代码问题）。
-- **根因推测：** M2IntegrationTest.gd第2480行附近，soft_currency变量在同一作用域内被重复声明（可能是MonetizationManager相关测试中重复声明）。
-- **修复建议：** 检查M2IntegrationTest.gd第2480行附近，删除重复的soft_currency变量声明，或重命名其中一个。
+- **实际（第47轮）：** `SCRIPT ERROR: Parse Error: There is already a variable named "soft_currency" declared in this scope. at: GDScript::reload (res://tests/M2IntegrationTest.gd:2480)`，M2测试无法运行
+- **修复：** 在M2测试扩展过程中（+77测试，从1189增至1266），soft_currency重复声明问题被修复（可能是在重写MonetizationManager相关测试代码时修复）
+- **回归验证（第48轮，2026-09-07）：** M2测试 `D:\Godot\Godot.exe --headless -s res://tests/m2_test_runner.gd --path D:\Sojourn\battleplan` → **1266测试，1266通过，0失败**。编译错误消失，M2测试正常运行。**确认修复 ✅**
+- **影响：** M2集成测试套件完全无法运行，不影响游戏运行（仅测试代码问题）。已修复。
 
 ---
 
