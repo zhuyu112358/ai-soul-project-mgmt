@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-07（集成测试第46轮，🎉M13双引擎深化+连续7轮全绿——ember(SoulArena) M13六阶段完成（1960测试全绿+111，SelfWorld+Physics+Causal+Temporal+Social世界模型五支柱+PredictivePlanner预测规划器，第154子系统），arboreus(Seed) M13五阶段完成（1774测试全绿+92，社交关系+规范+事件+GroupBehaviorEngine群体行为+InformationSpreadModel信息传播SIR模型），battleplan(SoulGame) M2测试1091全通过（+37，AudioManager+Minimap+ArenaMap），Godot构建0错误，1275自动化测试全通过（111+73+1091），引擎3734全绿，⚠️服务器开始时31分钟达标但API测试期间停止（SERVER_DOWN，API测试失败，需监控任务关注），🎉活跃bug 0个（23个全部关闭，连续7轮））
+**最后更新：** 2026-09-07（集成测试第47轮，🎉M13双引擎完成+双SDK发布——ember(SoulArena) M13完成SDK v2.2.0（2025测试全绿+65，世界模型八阶段SelfWorld+Physics+Causal+Temporal+Social+PredictivePlanner+PredictionErrorLearning+WorldModelIntegration，第156子系统），arboreus(Seed) M13完成SDK v2.9.0（1868测试全绿+94，社交系统+群体行为+信息传播+文化演化+社会文化整合），battleplan(SoulGame) M2测试1189（+98，PixelSpriteGenerator+ArenaBackgroundGenerator+ServerAuthority），Godot构建0错误，TestRunner 111+M1 73全通过，引擎3893全绿，❌M2测试编译错误（BUG-024: M2IntegrationTest.gd:2480 soft_currency变量重复声明），⚠️服务器开始时29.6分钟但API测试期间停止（连续两轮SERVER_DOWN，需监控任务关注），活跃bug 1个（BUG-024待确认））
 **维护者：** 总体监控任务
 
 ---
@@ -9,15 +9,31 @@
 
 | 状态 | 数量 |
 |------|------|
-| 待确认 | 0 |
+| 待确认 | 1 |
 | 已派发/修复中 | 0 |
 | 待回归 | 0 |
 | 已关闭 | 23 |
-| **总计活跃** | **0** |
+| **总计活跃** | **1** |
 
 ---
 
 ## 活跃Bug
+
+### BUG-024: M2IntegrationTest.gd 第2480行 soft_currency 变量重复声明导致编译错误
+- **严重程度：** P2
+- **发现时间：** 2026-09-07
+- **发现者：** 集成测试任务（第47轮）
+- **负责方：** battleplan应用实现
+- **状态：** 🔴 待确认
+- **复现步骤：**
+  1. 运行 `D:\Godot\Godot.exe --headless -s res://tests/m2_test_runner.gd --path D:\Sojourn\battleplan`
+- **预期：** M2测试正常运行，1189个测试全通过
+- **实际：** `SCRIPT ERROR: Parse Error: There is already a variable named "soft_currency" declared in this scope. at: GDScript::reload (res://tests/M2IntegrationTest.gd:2480)`，M2测试无法运行，超时退出
+- **影响：** M2集成测试套件完全无法运行，无法验证RTS竞技场功能。不影响游戏运行（仅测试代码问题）。
+- **根因推测：** M2IntegrationTest.gd第2480行附近，soft_currency变量在同一作用域内被重复声明（可能是MonetizationManager相关测试中重复声明）。
+- **修复建议：** 检查M2IntegrationTest.gd第2480行附近，删除重复的soft_currency变量声明，或重命名其中一个。
+
+---
 
 ### BUG-001: perceive并发请求导致连接状态损坏
 - **严重程度：** P1
