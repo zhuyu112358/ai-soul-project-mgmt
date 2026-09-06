@@ -25,7 +25,7 @@
 - **M1已完成**：灵魂之家场景+成长可视化+184自动化测试全通过+全部18个bug关闭
 - **M1遗留（后续优化阶段）**：灵魂之家交互细节完善、灵魂成长端到端验证
 - **设计v1.1已冻结**：①以灵魂成长为核心 ②精致像素风 ③灵魂之家交流训练模式
-- **双SDK已发布**：Ember SDK v1.8.0（M9元认知，133子系统/1295测试）+ Arboreus SDK v2.8.0（M12 NPC AI深化+世界叙事增强，1567测试）
+- **双SDK最新版本**：Ember SDK v2.2.0（M13世界模型与预测规划，v5.53，156子系统/2025测试）+ Arboreus SDK v2.9.0（M13社会模拟与文化演化，1868测试）
 - **全部bug关闭**：19个bug全部修复，活跃bug 0个
 - **Steam状态**：开发者账号已注册，税务审核中；token套餐已升级到200元加强版；Steamworks SDK接入待M2可玩原型完成后启动
 
@@ -60,12 +60,12 @@
 | # | 任务 | 平时频率 | 高频频率 | 状态 | 当前重点 |
 |---|------|----------|----------|------|----------|
 | 1 | 总体监控 | **每小时** | 每15分钟 | ✅ 启用 | 总控、协调、合规检查、文档检查、报告、Steam接入统筹 |
-| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13全部7子系统完成→集成+SDK发布阶段**（世界模型与预测规划，SDK v2.2.0目标）：Phase1 SelfWorldModel(v5.46)+Phase2 PhysicsModel(v5.47)+Phase3 CausalModel(v5.48)+Phase4 TemporalModel(v5.49)+Phase5 SocialModel(v5.50)+Phase6 PredictivePlanner(v5.51)+**Phase7 PredictionErrorLearning完成**(v5.52,**155子系统,1996测试全通过**,M13所有7子系统完成)，接下来：集成测试→端到端验证→SDK v2.2.0发布 |
-| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13全部7phase完成→集成+SDK发布阶段**（社会模拟与文化演化，SDK v2.9.0目标）：Phase1 SocialRelationGraph+Phase2 SocialNormSystem+Phase3 SocialEventSystem+Phase4 GroupBehaviorEngine+Phase5 InformationSpreadModel+Phase6 SocialMobility+**Phase7 CulturalEvolution完成**(17文化特质类型+达尔文式文化演化(突变+选择+传播)+文化管理+文化距离计算+文化融合+自动演化,32测试,**1846总测试**,build 0错误,M13所有7phase完成)，接下来：集成测试→端到端验证→SDK v2.9.0发布 |
-| 4 | 游戏设计 | **每30分钟（提高）** | 每15分钟 | ✅ 启用 | v1.1已冻结，资源生产第46轮，**253音效+74概念图**（全部AI生成无版权，本轮覆盖更新旧版资源）；**P1：Steam商店页素材准备**（截图/宣传片分镜/成就图标/商店页文案配图） |
-| 5 | 战策应用实现 | **每15分钟（最高优先级）** | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场（最高优先级）**，✅全部bug关闭，114 sounds，**1329总测试**（**1145 M2测试**，RTSArenaManager持续增强），平台层持续开发；**EA上架必须项：基础灵魂之家集成**（M1已完成，平台层已有HomeAPI+SoulSnapshot接口） |
-| 6 | 集成测试 | **每2小时** | 每15-30分钟 | ✅ 启用 | M2测试期+引擎回归，✅全部bug关闭；新功能上线时动态拉满；Ember/Arboreus M13 SDK发布后需引擎回归测试 |
-| 7 | 灵栖预研 | **每3小时** | 每小时 | ✅ 启用 | **第14轮完成**（Ember灵魂注入与价值观对齐深化★★★★★+游戏设计道德与伦理主题数据库3条目，未实现方向累计**216项**，Ember64/Arboreus45/Battleplan32/跨方向42/管理33）；GitHub有1个积压commit待推送 |
+| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **✅ M13完成！SDK v2.2.0已发布**（世界模型与预测规划，v5.53，**156子系统，2025测试全通过**）：7子系统全部完成（SelfWorldModel+PhysicsModel+CausalModel+TemporalModel+SocialModel+PredictivePlanner+PredictionErrorLearning）+集成+SDK发布。**待定义M14方向**（预研有多个推荐方向待评估） |
+| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **✅ M13完成！SDK v2.9.0已发布**（社会模拟与文化演化，**1868测试全通过**，build 0错误）：8系统+集成+73断言端到端demo（SocialRelationGraph+SocialNormSystem+SocialEventSystem+GroupBehaviorEngine+InformationSpreadModel+SocialMobility+CulturalEvolution+集成）。**待定义M14方向** |
+| 4 | 游戏设计 | **每30分钟（提高）** | 每15分钟 | ✅ 启用 | v1.1已冻结，资源生产第48轮，**257音效+74概念图**（全部AI生成无版权，持续覆盖更新旧版资源）；**P1：Steam商店页素材准备**（截图/宣传片分镜/成就图标/商店页文案配图） |
+| 5 | 战策应用实现 | **每15分钟（最高优先级）** | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场（最高优先级）**，✅全部bug关闭，114 sounds，**1373总测试**（**1189 M2测试**，ServerAuthority持续增强），平台层持续开发；**EA上架必须项：基础灵魂之家集成**（M1已完成，平台层已有HomeAPI+SoulSnapshot接口）；Ember SDK v2.2.0+Arboreus SDK v2.9.0已发布，可评估升级 |
+| 6 | 集成测试 | **每2小时** | 每15-30分钟 | ✅ 启用 | M2测试期+引擎回归，✅全部bug关闭；新功能上线时动态拉满；**Ember SDK v2.2.0+Arboreus SDK v2.9.0已发布，需引擎回归测试** |
+| 7 | 灵栖预研 | **每3小时** | 每小时 | ✅ 启用 | **第14轮完成**（Ember灵魂注入与价值观对齐深化★★★★★+游戏设计道德与伦理主题数据库3条目，未实现方向累计**216项**，Ember64/Arboreus45/Battleplan32/跨方向42/管理33）；GitHub已同步 |
 
 ### ⭐ 动态频率策略（用户确认）
 
