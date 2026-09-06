@@ -223,6 +223,12 @@ assets/audio/
 | soul_skeptical.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂怀疑情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_settings_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_settings_save.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置保存音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞穴环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_frozen_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 冰冻森林环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_envious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂羡慕情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_overwhelmed.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂不知所措情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
