@@ -151,6 +151,12 @@ assets/audio/
 | soul_confident.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂自信情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_teleport.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_revive.wav | ~1秒 | 44100Hz/16bit/WAV | UI复活音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_meadow.wav | ~5秒 | 44100Hz/16bit/WAV | 草甸环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_glacier.wav | ~5秒 | 44100Hz/16bit/WAV | 冰川环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_inquisitive.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂求知情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_absorbed.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂沉浸情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI段位提升音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_title_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI称号解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
