@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（集成测试第36轮，🎉服务器恢复后全绿——ember(SoulArena) M10完成SDK v1.9.0（1453测试+60，意识流+意识&主观体验深化），arboreus(Seed) M11交互会话系统（1282测试+74，动作预设+11种交互类型），battleplan(SoulGame) M2竞技场环境系统（天气+地形）+85音效，Godot构建0错误，312自动化测试全通过（111+73+128，M2+47），引擎2735全绿，集成连续26轮PASS，🎉30分钟稳定性达标（30.1分钟0错误），Vex perceive仅15ms，活跃bug 0个（19个全部关闭））
+**最后更新：** 2026-09-06（集成测试第37轮，🚨发现新bug BUG-020——ember(SoulArena) M11 v5.37 ValueGuard（1514测试，1失败：UpdatingMonitoring.decayAll未降低activation），arboreus(Seed) M11性能分析器（1299测试全绿+17），battleplan(SoulGame) M2环境系统测试大幅扩展（216测试+88，ArenaEnvironment+RTSArenaManager集成），Godot构建0错误，400自动化测试全通过（111+73+216），引擎2812测试2811通过，⚠️服务器再次停止（API/5并发/稳定性测试跳过），活跃bug 1个（BUG-020待确认））
 **维护者：** 总体监控任务
 
 ---
@@ -9,11 +9,11 @@
 
 | 状态 | 数量 |
 |------|------|
-| 待确认 | 0 |
+| 待确认 | 1 |
 | 已派发/修复中 | 0 |
 | 待回归 | 0 |
 | 已关闭 | 19 |
-| **总计活跃** | **0** |
+| **总计活跃** | **1** |
 
 ---
 
@@ -494,6 +494,25 @@
   - 构建：0错误
 - **影响：** 无实际功能影响——FlockingSystem代码始终正确，仅是测试期望与配置不匹配。修复后测试准确反映系统能力。
 - **经验教训：** 新增系统的测试配置需物理量验证（maxForce*dt*ticks=最大速度，平均速度*ticks*dt=移动距离），避免设置不可达的期望阈值。
+
+### BUG-020: UpdatingMonitoring.decayAll未降低activation值 — 🔴 **待确认**（第37轮集成测试发现，2026-09-06）
+- **严重程度：** P2
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第37轮）
+- **负责方：** ember(SoulArena)
+- **状态：** 🔴 **待确认**（监控任务下一轮确认并派发）
+- **引入版本：** ember v5.37 M11（UpdatingMonitoring为M8子系统，可能为近期回归）
+- **复现步骤：**
+  1. `cd D:\Sojourn\ember; npm test`
+  2. 观察UpdatingMonitoring测试结果
+- **预期行为：** decayAll()调用后所有slot的activation值应降低（slots[0].activation < before）
+- **实际行为：** **1个测试失败**（1514测试中1513通过1失败）：
+  - `UpdatingMonitoring: decayAll decreases activation`
+  - 错误：`assert.ok(um.slots[0].activation < before)` 评估为falsy
+  - 位置：`tests/soul/UpdatingMonitoring.test.js:160`
+- **根因分析（待确认）：** decayAll()方法可能未正确实现activation衰减逻辑，或衰减率为0导致值不变。需检查`src/soul/UpdatingMonitoring.js`中decayAll方法实现。
+- **影响：** 工作记忆更新子系统的衰减功能异常，可能导致记忆slot的activation值不会随时间降低，影响认知状态的动态平衡。非阻塞（其他1513测试全通过）。
+- **建议修复：** 检查UpdatingMonitoring.decayAll()实现，确认衰减率参数和计算逻辑是否正确。
 
 ---
 
