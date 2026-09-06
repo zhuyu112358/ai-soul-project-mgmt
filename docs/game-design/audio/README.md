@@ -235,6 +235,12 @@ assets/audio/
 | soul_energetic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂精力充沛情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_quest_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_quest_complete.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务完成音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_aurora_icefield.wav | ~5秒 | 44100Hz/16bit/WAV | 极光冰原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_mushroom_swamp.wav | ~5秒 | 44100Hz/16bit/WAV | 蘑菇沼泽环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_alert.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂警觉情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_drowsy.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂困倦情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_inventory_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI背包界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_item_use.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品使用音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
