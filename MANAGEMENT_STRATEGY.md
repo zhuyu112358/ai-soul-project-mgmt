@@ -1,6 +1,6 @@
 ﻿# AI灵魂项目 — 管理策略
 
-**最后更新：** 2026-09-06（监控第41轮：Ember M10进行中v5.32（135子系统/1359测试，主观体验+意识整合），Arboreus M10完成SDK v2.6.0（感知系统增强，1208测试），战策M2进行中（程序化像素精灵+教练风格RTS AI+平台层重构，265测试全绿），双SDK v1.8.0+v2.6.0，活跃bug 0个，集成连续24轮PASS，灵栖预研任务已启动）
+**最后更新：** 2026-09-06（Arboreus M12完成SDK v2.8.0（NPC AI深化+世界叙事增强，1567测试，M12端到端演示50/50通过），Ember M12进行中，战策M2进行中，活跃bug 0个）
 **更新者：** 总体监控任务
 
 ---
@@ -22,7 +22,7 @@
 - **M1已完成**：灵魂之家场景+成长可视化+184自动化测试全通过+全部18个bug关闭
 - **M1遗留（后续优化阶段）**：灵魂之家交互细节完善、灵魂成长端到端验证
 - **设计v1.1已冻结**：①以灵魂成长为核心 ②精致像素风 ③灵魂之家交流训练模式
-- **双SDK已发布**：Ember SDK v1.8.0（M9元认知，133子系统/1295测试）+ Arboreus SDK v2.6.0（M10感知系统增强，1208测试）
+- **双SDK已发布**：Ember SDK v1.8.0（M9元认知，133子系统/1295测试）+ Arboreus SDK v2.8.0（M12 NPC AI深化+世界叙事增强，1567测试）
 - **全部bug关闭**：19个bug全部修复，活跃bug 0个
 
 ---
@@ -55,7 +55,7 @@
 |---|------|----------|----------|------|----------|
 | 1 | 总体监控 | 每30分钟 | 每15分钟 | ✅ 启用 | 总控、协调、合规检查、文档检查、报告 |
 | 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M12进行中（6/9阶段）**：Phase1 GlobalWorkspace(v5.41,144子系统,1635测试)+Phase4 IntegratedInformation(v5.42,145子系统,IIT简化Φ值+5意识层级,1663测试)+Phase5 PredictiveCoding(v5.43,146子系统,预测编码+主动推理,1691测试)+Phase6 ActiveInference(v5.44,147子系统,行动策略+行动-感知循环,1718测试全通过,超过1700目标)，接下来Phase7意识体系集成→Phase8端到端演示→Phase9 SDK v2.1.0 |
-| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M12 features 100% complete（8/9阶段）**：NPC记忆(24)+NPC个性(41)+GOAP规划器(36)+行为树增强(40)+NPC日常作息(32)+动态叙事生成(36)+任务链深化(30)+叙事集成(22,SoulPerceptionSystem+WorldStateNarrativeSystem+NpcNarrativeBridge)，1567总测试，接下来phase9 SDK v2.8.0发布 |
+| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M12完成（SDK v2.8.0已发布）**：NPC记忆(24)+NPC个性(41)+GOAP规划器(36)+行为树增强(40)+NPC日常作息(32)+动态叙事生成(36)+任务链深化(30)+叙事集成(22)，1567总测试，M12端到端演示50/50通过，M13待用户确认方向 |
 | 4 | 游戏设计 | 每小时 | 每15分钟 | ✅ 启用 | v1.1已冻结，资源生产第42轮，240音效+72概念图（全部AI生成无版权） |
 | 5 | 战策应用实现 | 每30分钟 | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场**，✅全部bug关闭，114 sounds，**突破1000测试**（823 M2测试/1007总测试，+RTSArenaManager13+SoulUnit combat27），平台层持续开发 |
 | 6 | 集成测试 | 每小时 | 每15-30分钟 | ✅ 启用 | M2测试期+引擎回归，✅全部bug关闭（BUG-022+023已回归关闭） |
@@ -240,7 +240,7 @@
 | M9 | SDK v2.5.0 | AI导航增强+群体行为+编队控制 | 群体行为（分离/对齐/聚合）+局部避障（ORCA）+编队控制（阵型/跟随/保持间距）+路径成本修饰器（地形/危险区）+导航事件感知 | ✅ **完成（SDK v2.5.0已发布，1101测试，FlockingSystem+OrcaSystem+FormationSystem+PathCostSystem+4导航事件感知+M9端到端演示，BUG-019已关闭）** |
 | M10 | SDK v2.6.0 | 感知系统增强+视野锥+多模态感官 | 视野锥（FOV）感知+听觉感知增强+感知过滤/注意力机制+感知距离/范围配置+多模态感知事件+SoulPerceptionSystem集成 | ✅ **完成（SDK v2.6.0已发布，1208测试，VisionConeSystem+SoundPerceptionSystem+PerceptionFilter+AttentionSystem+SoulPerceptionSystem多模态集成+M10端到端演示35/35通过）** |
 | M11 | SDK v2.7.0 | **动作系统增强+交互系统深化+性能优化**（用户已确认2026-09-06） | ①动作系统：NPC丰富动作（攻击/防御/交互/采集/建造）+动作状态机+动作动画事件+动作与感知/导航集成 ②交互深化：NPC-NPC交互增强+NPC-环境交互+交互事件系统+对话/交易/组队深化+交互与感知集成 ③性能优化：100+NPC稳定30FPS+空间分区+对象池+帧率优化+内存优化 ④1300+测试全通过 ⑤无P0/P1 bug ⑥M11端到端演示 | ✅ **完成（SDK v2.7.0已发布，1306测试，ActionStateMachine+7ActionPresets+InteractionSessionSystem+PerformanceProfiler+M11端到端演示42/42通过）** |
-| M12 | SDK v2.8.0 | **NPC AI深化+世界叙事增强**（用户已确认2026-09-06） | ①NPC AI深化：行为树增强+目标导向行动规划(GOAP)+NPC记忆系统+NPC个性系统+NPC日常作息 ②世界叙事增强：动态叙事生成+任务链深化+世界状态叙事+玩家行为影响叙事+叙事事件感知 ③NPC与叙事集成：NPC行为驱动叙事+叙事事件影响NPC行为 ④1400+测试全通过 ⑤无P0/P1 bug ⑥M12端到端演示 | 🔄 **进行中**（用户确认方向，M11刚完成，待启动开发） |
+| M12 | SDK v2.8.0 | **NPC AI深化+世界叙事增强**（用户已确认2026-09-06） | ①NPC AI深化：行为树增强+目标导向行动规划(GOAP)+NPC记忆系统+NPC个性系统+NPC日常作息 ②世界叙事增强：动态叙事生成+任务链深化+世界状态叙事+玩家行为影响叙事+叙事事件感知 ③NPC与叙事集成：NPC行为驱动叙事+叙事事件影响NPC行为 ④1400+测试全通过 ⑤无P0/P1 bug ⑥M12端到端演示 | ✅ **完成（SDK v2.8.0已发布，1567测试，NPCMemorySystem+NPCPersonalitySystem+GoapSystem+BehaviorTreeEnhanced+ScheduleSystem+DynamicNarrativeSystem+TaskChainSystem+NarrativeIntegration+SoulPerceptionSystem 6新事件监听器，M12端到端演示50/50通过）** |
 
 ### SDK自发布流程（引擎开发任务必须遵守）
 
@@ -584,7 +584,7 @@ LLM推荐：国内DeepSeek-V3/Qwen-Plus，海外GPT-4o-mini/Claude 3.5 Haiku。L
 1. **战策/Battleplan应用实现**：🔄 **M2 RTS灵魂对战竞技场**——平台层重构已完成（b1f58e7），RTS战斗系统+成长反馈+3张地图+完整战斗流程+81测试+服务端权威架构+付费接口桩+音频系统66音效+小地图UI。下一步：AI对手接入Ember SDK、对战UI完善（血条/技能栏）、M2退出条件验证
 2. **集成测试**：🔄 **M2测试期**——RTS竞技场测试+M1回归+引擎回归，连续多轮PASS
 3. **Ember/灵火开发**：✅ **M9完成→M10待启动**——元认知与自我意识深化（SDK v1.8.0已发布，v5.30，133子系统/1295测试，MetaAwareness+MetacognitiveControl+SelfInsight+LearningRegulation+CognitiveTransfer）。M10建议方向：社会认知深化与道德判断（待Ember开发任务评估确认）。⚠️ CHANGELOG.md尚未更新v1.8.0条目
-4. **Arboreus/建木开发**：🔄 **M10进行中**——感知系统增强（phase1视觉锥FOV+phase2声音距离衰减+phase3感知过滤与注意力系统，commit ee72e36）
+4. **Arboreus/建木开发**：✅ **M12完成→M13待启动**——NPC AI深化+世界叙事增强（SDK v2.8.0已发布，1567测试，NPC记忆+个性+GOAP+行为树增强+日常作息+动态叙事+任务链+叙事集成，M12端到端演示50/50通过）。M13建议方向待用户确认
 5. **游戏设计**：v1.1已冻结维护，美术音效资源持续生产（194音效+64概念图，全部AI生成无版权），商业化外观设计体系，平台生态设计
 6. **管理仪表盘**：✅ 已上线（http://localhost:3001），6个模块（总览/任务/仓库/资源/历史/文档），自动刷新30秒
 7. **灵栖预研任务**：✅ 已启动（每小时，本地PC）——各方向前沿研究+理论发展+设计灵感库，仓库 D:\Sojourn\research（GitHub: github.com/zhuyu112358/sojourn-research），6个方向（Ember预研/Arboreus预研/游戏设计历史文化哲学数据库/测试预研/管理预研/跨方向共享），纯研究不修改现有代码。第1轮已产出5个数据库条目+Ember预测编码预研报告
