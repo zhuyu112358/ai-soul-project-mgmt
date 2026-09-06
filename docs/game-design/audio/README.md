@@ -241,6 +241,12 @@ assets/audio/
 | soul_zealous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂狂热情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_quest_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务界面打开音效（覆盖更新第51轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_quest_complete.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务完成音效（覆盖更新第51轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_aurora_icefield.wav | ~5秒 | 44100Hz/16bit/WAV | 极光冰原环境音（可循环，覆盖更新第52轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_cherry_blossom_valley.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花谷环境音（可循环，覆盖更新第52轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_harmonious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂和谐情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_fierce.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂凶猛情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效（覆盖更新第46轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效（覆盖更新第46轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_aurora.wav | ~5秒 | 44100Hz/16bit/WAV | 极光环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_meteor_shower.wav | ~5秒 | 44100Hz/16bit/WAV | 流星雨环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_content_smile.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂满足情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -361,6 +367,12 @@ assets/audio/
 | soul_zealous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂狂热情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_quest_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务界面打开音效（覆盖更新第51轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_quest_complete.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务完成音效（覆盖更新第51轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_aurora_icefield.wav | ~5秒 | 44100Hz/16bit/WAV | 极光冰原环境音（可循环，覆盖更新第52轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_cherry_blossom_valley.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花谷环境音（可循环，覆盖更新第52轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_harmonious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂和谐情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_fierce.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂凶猛情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效（覆盖更新第46轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效（覆盖更新第46轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_sunset.wav | ~5秒 | 44100Hz/16bit/WAV | 黄昏环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_dawn.wav | ~5秒 | 44100Hz/16bit/WAV | 黎明环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_amazed_wonder.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊叹情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -481,6 +493,12 @@ assets/audio/
 | soul_zealous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂狂热情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_quest_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务界面打开音效（覆盖更新第51轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_quest_complete.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务完成音效（覆盖更新第51轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_aurora_icefield.wav | ~5秒 | 44100Hz/16bit/WAV | 极光冰原环境音（可循环，覆盖更新第52轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_cherry_blossom_valley.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花谷环境音（可循环，覆盖更新第52轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_harmonious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂和谐情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_fierce.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂凶猛情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效（覆盖更新第46轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效（覆盖更新第46轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_furious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂暴怒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -703,6 +721,12 @@ assets/audio/
 | soul_zealous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂狂热情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_quest_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务界面打开音效（覆盖更新第51轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_quest_complete.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务完成音效（覆盖更新第51轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_aurora_icefield.wav | ~5秒 | 44100Hz/16bit/WAV | 极光冰原环境音（可循环，覆盖更新第52轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_cherry_blossom_valley.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花谷环境音（可循环，覆盖更新第52轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_harmonious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂和谐情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_fierce.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂凶猛情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效（覆盖更新第46轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效（覆盖更新第46轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
