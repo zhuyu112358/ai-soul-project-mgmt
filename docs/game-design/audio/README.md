@@ -151,6 +151,12 @@ assets/audio/
 | soul_persistent.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂执着情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_battle_result_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗结算界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_battle_victory.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗胜利音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_aurora_snowfield.wav | ~5秒 | 44100Hz/16bit/WAV | 极光雪原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_sakura_shrine.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花神社环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_tenacious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂坚韧情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_valiant.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂英勇情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI赛季界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_reward.wav | ~1秒 | 44100Hz/16bit/WAV | UI赛季奖励领取音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_aurora.wav | ~5秒 | 44100Hz/16bit/WAV | 极光环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_meteor_shower.wav | ~5秒 | 44100Hz/16bit/WAV | 流星雨环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_content_smile.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂满足情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -181,6 +187,12 @@ assets/audio/
 | soul_persistent.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂执着情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_battle_result_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗结算界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_battle_victory.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗胜利音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_aurora_snowfield.wav | ~5秒 | 44100Hz/16bit/WAV | 极光雪原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_sakura_shrine.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花神社环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_tenacious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂坚韧情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_valiant.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂英勇情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI赛季界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_reward.wav | ~1秒 | 44100Hz/16bit/WAV | UI赛季奖励领取音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_sunset.wav | ~5秒 | 44100Hz/16bit/WAV | 黄昏环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_dawn.wav | ~5秒 | 44100Hz/16bit/WAV | 黎明环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_amazed_wonder.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊叹情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -211,6 +223,12 @@ assets/audio/
 | soul_persistent.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂执着情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_battle_result_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗结算界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_battle_victory.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗胜利音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_aurora_snowfield.wav | ~5秒 | 44100Hz/16bit/WAV | 极光雪原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_sakura_shrine.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花神社环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_tenacious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂坚韧情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_valiant.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂英勇情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI赛季界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_reward.wav | ~1秒 | 44100Hz/16bit/WAV | UI赛季奖励领取音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_furious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂暴怒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -343,6 +361,12 @@ assets/audio/
 | soul_persistent.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂执着情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_battle_result_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗结算界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_battle_victory.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗胜利音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_aurora_snowfield.wav | ~5秒 | 44100Hz/16bit/WAV | 极光雪原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_sakura_shrine.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花神社环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_tenacious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂坚韧情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_valiant.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂英勇情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI赛季界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_season_reward.wav | ~1秒 | 44100Hz/16bit/WAV | UI赛季奖励领取音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
