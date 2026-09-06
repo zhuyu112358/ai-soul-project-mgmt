@@ -1,4 +1,4 @@
-# AI灵魂项目 — 管理策略
+﻿# AI灵魂项目 — 管理策略
 
 **最后更新：** 2026-09-06（阶段切换：M1→M2 RTS灵魂对战竞技场；用户确认进入M2，灵魂之家交互细节和成长端到端验证留到后续优化阶段；全部18个bug关闭；双SDK v1.5.0+v2.3.0已发布；SoulArena v5.18/914测试；Seed M8建筑系统/971测试）
 **更新者：** 总体监控任务
@@ -94,14 +94,14 @@
 
 | 资源 | 访问者 | 权限 | 规则 |
 |------|--------|------|------|
-| D:\SoulArena 仓库 | SoulArena开发 | 读写 | 唯一可修改内核的任务 |
-| D:\SoulArena 仓库 | 集成测试 | 只读 | 只git pull，不修改代码 |
-| D:\SoulArena 仓库 | 应用实现 | 只读(SDK) | 通过打包的SDK版本依赖，不直接修改 |
-| D:\Seed 仓库 | Seed开发 | 读写 | 唯一可修改内核的任务 |
-| D:\Seed 仓库 | 集成测试 | 只读 | 只git pull，不修改代码 |
-| D:\Seed 仓库 | 应用实现 | 只读(SDK) | 通过打包的SDK版本依赖，不直接修改 |
-| D:\ai-soul-project-mgmt | 监控/游戏设计/集成测试 | 读写 | 各任务写自己负责的文档，避免同时修改同一文件 |
-| D:\SoulGame 仓库 | 应用实现 | 读写 | 唯一可修改的任务 |
+| D:\Sojourn\ember 仓库 | SoulArena开发 | 读写 | 唯一可修改内核的任务 |
+| D:\Sojourn\ember 仓库 | 集成测试 | 只读 | 只git pull，不修改代码 |
+| D:\Sojourn\ember 仓库 | 应用实现 | 只读(SDK) | 通过打包的SDK版本依赖，不直接修改 |
+| D:\Sojourn\arboreus 仓库 | Seed开发 | 读写 | 唯一可修改内核的任务 |
+| D:\Sojourn\arboreus 仓库 | 集成测试 | 只读 | 只git pull，不修改代码 |
+| D:\Sojourn\arboreus 仓库 | 应用实现 | 只读(SDK) | 通过打包的SDK版本依赖，不直接修改 |
+| D:\Sojourn\management | 监控/游戏设计/集成测试 | 读写 | 各任务写自己负责的文档，避免同时修改同一文件 |
+| D:\Sojourn\battleplan 仓库 | 应用实现 | 读写 | 唯一可修改的任务 |
 | localhost:3000 SoulArena服务 | 集成测试/应用实现 | 调用 | 测试前确保服务运行，测试后不关闭 |
 | **Guardian进程（server-guard.js）** | **仅监控任务** | **启停** | **P0：仅监控任务可启动/停止/重启Guardian。其他任务禁止kill任何node进程，禁止执行taskkill /f /im node.exe。如需重启服务器，通知监控任务或使用不同端口。违反此规则视为P0违规。** |
 | GitHub 推送 | 所有任务 | 推送 | 推送前先git pull --rebase，如失败则commit保留本地 |
@@ -114,7 +114,7 @@
 5. **服务共享**：SoulArena服务器是共享资源，测试后不关闭
 6. **🔴 P0：禁止kill node进程**：除监控任务外，任何任务不得执行`taskkill /f /im node.exe`、`Stop-Process -Name node`或类似操作。Guardian（server-guard.js）和SoulArena服务器由监控任务统一管理。如需重启服务器，在任务prompt中记录并由监控任务下一轮处理。违反此规则导致服务器中断的，视为P0违规，立即在报告中标注并下发纠正指令。
 7. **🟢 开发调试服务器**：SoulArena/Seed开发任务如需调试，可在**不同端口**（如3001/3002）启动独立调试服务器，不得影响localhost:3000主服务器。调试服务器用完后自行关闭，不得长期占用。启动命令示例：`PORT=3001 node server/index.js`。
-8. **🎨 美术与音效资源**：所有游戏美术（贴图/图片/动画/UI）和音效资源由**游戏设计任务**负责设计和生成。资源必须自行生成（AI生成/代码绘制/程序化生成），**禁止使用第三方受版权保护的素材**。资源输出到 `D:\ai-soul-project-mgmt\docs\game-design\assets\` 目录，包含设计文档+生成的资源文件。设计完成后由监控任务评估是否符合要求（风格一致性/技术可行性/版权安全）。
+8. **🎨 美术与音效资源**：所有游戏美术（贴图/图片/动画/UI）和音效资源由**游戏设计任务**负责设计和生成。资源必须自行生成（AI生成/代码绘制/程序化生成），**禁止使用第三方受版权保护的素材**。资源输出到 `D:\Sojourn\management\docs\game-design\assets\` 目录，包含设计文档+生成的资源文件。设计完成后由监控任务评估是否符合要求（风格一致性/技术可行性/版权安全）。
 
 ---
 
@@ -303,12 +303,12 @@
 
 | 任务 | 必须产出的文档 | 位置 | 检查标准 |
 |------|---------------|------|----------|
-| **SoulArena开发** | ①DEVLOG更新（每轮commit记录+测试结果） ②CHANGELOG更新（SDK发布时） ③API文档更新（接口变更时） ④新增系统的设计说明（docs/目录） | D:\SoulArena\docs\、D:\SoulArena\CHANGELOG.md | 每轮commit必须包含DEVLOG更新；新增子系统必须有设计文档 |
+| **SoulArena开发** | ①DEVLOG更新（每轮commit记录+测试结果） ②CHANGELOG更新（SDK发布时） ③API文档更新（接口变更时） ④新增系统的设计说明（docs/目录） | D:\Sojourn\ember\docs\、D:\Sojourn\ember\CHANGELOG.md | 每轮commit必须包含DEVLOG更新；新增子系统必须有设计文档 |
 | **Seed开发** | ①DEVLOG更新（每轮commit记录+测试结果） ②CHANGELOG更新（SDK发布时） ③API文档更新（接口变更时） ④新增系统的设计说明 | D:\Seed\docs\、D:\Seed\CHANGELOG.md | 每轮commit必须包含DEVLOG更新；新增系统必须有设计文档 |
-| **游戏设计** | ①设计文档（Markdown，含图表/表格/示例/数据支撑） ②设计修订项跟踪 ③与技术现状对齐说明 | D:\ai-soul-project-mgmt\docs\game-design\ | 每份设计文档必须有实质内容，不得泛泛而谈；必须与PROJECT_STATUS中的技术能力对齐 |
-| **应用实现** | ①README更新 ②ROADMAP更新 ③CHANGELOG更新 ④架构设计文档（新增系统时） ⑤开发环境配置说明 | D:\SoulGame\ | 每轮commit必须包含文档更新；基础架构组件必须有使用说明 |
-| **集成测试** | ①测试报告（每轮一份，含测试范围/结果/性能数据/bug发现） ②BUG_TRACKER更新（发现新bug时） | D:\ai-soul-project-mgmt\docs\testing\、D:\ai-soul-project-mgmt\BUG_TRACKER.md | 每轮必须产出测试报告；发现bug必须记录到BUG_TRACKER |
-| **总体监控** | ①PROJECT_STATUS更新 ②BUG_TRACKER更新 ③MANAGEMENT_STRATEGY更新 ④BLOCKERS更新（如有新卡点） | D:\ai-soul-project-mgmt\ | 每轮必须更新PROJECT_STATUS和MANAGEMENT_STRATEGY |
+| **游戏设计** | ①设计文档（Markdown，含图表/表格/示例/数据支撑） ②设计修订项跟踪 ③与技术现状对齐说明 | D:\Sojourn\management\docs\game-design\ | 每份设计文档必须有实质内容，不得泛泛而谈；必须与PROJECT_STATUS中的技术能力对齐 |
+| **应用实现** | ①README更新 ②ROADMAP更新 ③CHANGELOG更新 ④架构设计文档（新增系统时） ⑤开发环境配置说明 | D:\Sojourn\battleplan\ | 每轮commit必须包含文档更新；基础架构组件必须有使用说明 |
+| **集成测试** | ①测试报告（每轮一份，含测试范围/结果/性能数据/bug发现） ②BUG_TRACKER更新（发现新bug时） | D:\Sojourn\management\docs\testing\、D:\Sojourn\management\BUG_TRACKER.md | 每轮必须产出测试报告；发现bug必须记录到BUG_TRACKER |
+| **总体监控** | ①PROJECT_STATUS更新 ②BUG_TRACKER更新 ③MANAGEMENT_STRATEGY更新 ④BLOCKERS更新（如有新卡点） | D:\Sojourn\management\ | 每轮必须更新PROJECT_STATUS和MANAGEMENT_STRATEGY |
 
 ### 文档完整性检查（监控任务每轮执行）
 1. 检查SoulArena/Seed最近3个commit是否包含DEVLOG更新
@@ -521,7 +521,7 @@ LLM推荐：国内DeepSeek-V3/Qwen-Plus，海外GPT-4o-mini/Claude 3.5 Haiku。L
 ## 十九、管理策略使用说明
 
 **监控任务每次运行时：**
-1. 读取本文档（D:\ai-soul-project-mgmt\MANAGEMENT_STRATEGY.md）
+1. 读取本文档（D:\Sojourn\management\MANAGEMENT_STRATEGY.md）
 2. 读取BUG_TRACKER.md，检查待回归bug和新增bug
 3. 读取TASK_MANAGEMENT.md
 4. 检查当前阶段和任务状态是否匹配

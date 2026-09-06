@@ -1,9 +1,9 @@
-# AI灵魂项目 — 任务管理系统
+﻿# AI灵魂项目 — 任务管理系统
 
 **创建日期：** 2026-09-05
-**最后更新：** 2026-09-06（第三十八轮监控后，全面重写：动态频率策略+平台架构+命名v3.2+任务详细设计）
+**最后更新：** 2026-09-06（全局改名+统一文件夹迁移完成：凌栖/Sojourn+灵火/Ember+建木/Arboreus+战策/Battleplan，所有仓库迁移到D:\Sojourn\，6个任务prompt路径已更新，游戏设计/集成测试降频为每小时）
 **管理者：** AI灵魂项目总体监控任务（每30分钟执行）
-**版本：** v2.0
+**版本：** v2.1
 
 ---
 
@@ -88,7 +88,7 @@
 - M8已完成（SDK v1.7.0，GoalShielding认知控制与执行功能）
 
 **职责边界：**
-- 只修改D:\SoulArena仓库
+- 只修改D:\Sojourn\ember仓库
 - 禁止硬编码具体灵魂人设（名字/性格/背景）
 - 禁止硬编码具体世界属性
 - 禁止内核直接依赖世界引擎，所有世界交互通过WorldInterface.js
@@ -127,7 +127,7 @@
 - M8已完成（SDK v2.4.0，建筑系统+领土系统）
 
 **职责边界：**
-- 只修改D:\Seed仓库
+- 只修改D:\Sojourn\arboreus仓库
 - 禁止硬编码具体世界属性（名称/地图/场景）
 - 禁止实现灵魂认知/决策逻辑
 - SoulPerceptionSystem/SoulActionSystem只处理标准化格式
@@ -161,7 +161,7 @@
 - 美术音效资源持续生产（228资源：170音效+58概念图）
 
 **职责边界：**
-- 只修改D:\ai-soul-project-mgmt\docs\game-design\目录
+- 只修改D:\Sojourn\management\docs\game-design\目录
 - 不修改任何代码仓库
 - 美术音效全部AI生成（image_gen/text_to_audio），禁止第三方版权素材
 - 命名需做版权查重（Steam/商标局）
@@ -196,7 +196,7 @@
 - Godot 265测试全绿（111基础+73 M1+81 M2），编译0错误
 
 **职责边界：**
-- 只修改D:\SoulGame仓库
+- 只修改D:\Sojourn\battleplan仓库
 - 不得修改Ember/建木内核代码（通过SDK/API使用）
 - 游戏-specific逻辑只在SoulGame仓库
 - 灵魂的游戏能力通过训练获得，不得硬编码
@@ -207,7 +207,7 @@
 
 **目录结构：**
 ```
-D:\SoulGame\
+D:\Sojourn\battleplan\
   platform/          # 平台层（灵魂管理/家园/跨世界迁移接口，可复用）
     soul/            # 灵魂数据格式SoulSnapshot
     home/            # 灵魂之家平台级接口
@@ -230,8 +230,8 @@ D:\SoulGame\
 - commit以feat(M2):/fix(M2):/test(M2):/refactor(platform):开头
 - 英文注释
 - 更新README/CHANGELOG
-- 编译检查：D:\Godot\Godot.exe --headless --check-only --path D:\SoulGame
-- 测试：D:\Godot\Godot.exe --headless -s res://tests/test_runner_wrapper.gd --path D:\SoulGame
+- 编译检查：D:\Godot\Godot.exe --headless --check-only --path D:\Sojourn\battleplan
+- 测试：D:\Godot\Godot.exe --headless -s res://tests/test_runner_wrapper.gd --path D:\Sojourn\battleplan
 
 ---
 
@@ -250,7 +250,7 @@ D:\SoulGame\
 - Godot 265测试全绿
 
 **职责边界：**
-- 只修改D:\ai-soul-project-mgmt\docs\testing\目录
+- 只修改D:\Sojourn\management\docs\testing\目录
 - 不修改任何代码仓库的业务代码
 - 发现bug时在BUG_TRACKER.md中记录，通知监控任务派发
 - 禁止kill node进程
@@ -362,12 +362,12 @@ D:\SoulGame\
 ### 8.1 各任务输出位置
 | 任务 | 输出位置 |
 |------|----------|
-| Ember开发 | D:\SoulArena (git commit), 对话38440269340892930 |
-| 建木开发 | D:\Seed (git commit), 对话38439539282590722 |
-| 游戏设计 | D:\ai-soul-project-mgmt\docs\game-design\ |
-| 涿鹿应用 | D:\SoulGame (git commit) |
-| 集成测试 | D:\ai-soul-project-mgmt\docs\testing\ |
-| 监控 | D:\ai-soul-project-mgmt\ (管理文档) |
+| Ember开发 | D:\Sojourn\ember (git commit), 对话38440269340892930 |
+| 建木开发 | D:\Sojourn\arboreus (git commit), 对话38439539282590722 |
+| 游戏设计 | D:\Sojourn\management\docs\game-design\ |
+| 涿鹿应用 | D:\Sojourn\battleplan (git commit) |
+| 集成测试 | D:\Sojourn\management\docs\testing\ |
+| 监控 | D:\Sojourn\management\ (管理文档) |
 
 ### 8.2 监控报告内容（每30分钟）
 1. 当前阶段和门控状态
