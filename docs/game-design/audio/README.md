@@ -1,4 +1,4 @@
-# 音效资源目录
+﻿# 音效资源目录
 
 **版本：** v1.0
 **创建日期：** 2026-09-06
@@ -121,6 +121,12 @@ assets/audio/
 | soul_brave_courage.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂勇气情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_item_discard.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品丢弃音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_item_use.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品使用音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_cherry_blossom_valley.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花谷环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_lavender_field.wav | ~5秒 | 44100Hz/16bit/WAV | 薰衣草田环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_compassionate.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂富有同情心情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_melancholic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂忧郁情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_achievement_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_achievement_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_aurora.wav | ~5秒 | 44100Hz/16bit/WAV | 极光环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_meteor_shower.wav | ~5秒 | 44100Hz/16bit/WAV | 流星雨环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_content_smile.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂满足情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -241,6 +247,12 @@ assets/audio/
 | soul_drowsy.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂困倦情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_inventory_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI背包界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_item_use.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品使用音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_cherry_blossom_valley.wav | ~5秒 | 44100Hz/16bit/WAV | 樱花谷环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_lavender_field.wav | ~5秒 | 44100Hz/16bit/WAV | 薰衣草田环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_compassionate.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂富有同情心情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_melancholic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂忧郁情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_achievement_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_achievement_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
