@@ -127,12 +127,24 @@ assets/audio/
 | soul_melancholic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂忧郁情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_achievement_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_achievement_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_starfield_grassland.wav | ~5秒 | 44100Hz/16bit/WAV | 星空草原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_autumn_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 秋日森林环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_contemplative.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂沉思情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_anticipating.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂期待情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_sell.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店出售音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_aurora.wav | ~5秒 | 44100Hz/16bit/WAV | 极光环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_meteor_shower.wav | ~5秒 | 44100Hz/16bit/WAV | 流星雨环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_content_smile.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂满足情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_determined_resolve.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂决心情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_levelup_prompt.wav | ~1秒 | 44100Hz/16bit/WAV | UI升级提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_achievement_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_starfield_grassland.wav | ~5秒 | 44100Hz/16bit/WAV | 星空草原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_autumn_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 秋日森林环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_contemplative.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂沉思情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_anticipating.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂期待情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_sell.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店出售音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_sunset.wav | ~5秒 | 44100Hz/16bit/WAV | 黄昏环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_dawn.wav | ~5秒 | 44100Hz/16bit/WAV | 黎明环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_amazed_wonder.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊叹情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -253,6 +265,12 @@ assets/audio/
 | soul_melancholic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂忧郁情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_achievement_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_achievement_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI成就解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_starfield_grassland.wav | ~5秒 | 44100Hz/16bit/WAV | 星空草原环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_autumn_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 秋日森林环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_contemplative.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂沉思情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_anticipating.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂期待情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_sell.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店出售音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
