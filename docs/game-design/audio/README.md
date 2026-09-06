@@ -163,6 +163,12 @@ assets/audio/
 | soul_serene.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂宁静情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_match_found.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配成功音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_match_cancel.wav | ~1秒 | 44100Hz/16bit/WAV | UI取消匹配音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_canyon.wav | ~5秒 | 44100Hz/16bit/WAV | 峡谷环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_cliff.wav | ~5秒 | 44100Hz/16bit/WAV | 悬崖环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_delighted.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂愉悦情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_wistful.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惆怅情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_battle_start.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗开始音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_battle_end.wav | ~1秒 | 44100Hz/16bit/WAV | UI战斗结束音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
