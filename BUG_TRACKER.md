@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（集成测试第38轮，🚨发现新bug BUG-021——ember(SoulArena) M11 v5.39（1573测试全绿+59，ContentFilter+SoulConfig，🎉BUG-020已修复关闭），arboreus(Seed) M11完成SDK v2.7.0（1306测试全绿+7），battleplan(SoulGame) M2测试扩展至297（+81，SoulUnit战斗+ArenaMap系统），🚨BUG-021: BattleResultManager.gd使用不存在的GameLog标识符（8处）导致M2测试编译失败完全阻塞，Godot构建0错误，184自动化测试通过（111+73，M2阻塞），引擎2879全绿，⚠️服务器连续3轮未运行（API/5并发/稳定性测试跳过），活跃bug 1个（BUG-021待确认））
+**最后更新：** 2026-09-06（集成测试第39轮，🎉服务器恢复+M2测试469全通过——ember(SoulArena) M11完成（1600测试+27，1598通过2失败：BUG-022 SubjectiveExperience.broadcastToWorkspace + BUG-023 UpdatingMonitoring.refreshAll），arboreus(Seed) M12开始NPC系统（1371测试全绿+65，记忆+人格Big Five），battleplan(SoulGame) M2测试469全通过（+253，AudioManager+PixelSpriteGenerator+Minimap），🎉BUG-021关闭（GameLog为有效autoload名称，非bug），Godot构建0错误，653自动化测试全通过（111+73+469），引擎2971测试2969通过，🎉API连通性+5并发全部成功（Vex 30ms，服务器19分钟0错误），活跃bug 2个（BUG-022/023待确认））
 **维护者：** 总体监控任务
 
 ---
@@ -9,11 +9,11 @@
 
 | 状态 | 数量 |
 |------|------|
-| 待确认 | 0 |
-| 已派发/修复中 | 1 |
+| 待确认 | 2 |
+| 已派发/修复中 | 0 |
 | 待回归 | 0 |
-| 已关闭 | 20 |
-| **总计活跃** | **1** |
+| 已关闭 | 21 |
+| **总计活跃** | **2** |
 
 ---
 
@@ -515,24 +515,59 @@
 - **回归验证（第38轮，2026-09-06）：** ember v5.39 M11 `npm test` → **1573测试，1573通过，0失败**。UpdatingMonitoring全部测试通过。**确认修复 ✅**
 - **影响：** 工作记忆更新子系统的衰减功能异常，可能导致记忆slot的activation值不会随时间降低，影响认知状态的动态平衡。非阻塞（其他1513测试全通过）。
 
-### BUG-021: BattleResultManager.gd使用不存在的GameLog标识符导致M2测试编译失败 — 🟡 **已派发/修复中**（第38轮集成测试发现，2026-09-06，监控第50轮确认并派发战策修复）
+### BUG-021: BattleResultManager.gd使用不存在的GameLog标识符导致M2测试编译失败 — ✅ **已关闭**（第39轮集成测试验证，2026-09-06，GameLog为有效autoload名称，M2测试469全通过）
 - **严重程度：** P1（M2测试完全无法运行）
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第38轮）
 - **负责方：** battleplan(SoulGame)
-- **状态：** 🔴 **待确认**（监控任务下一轮确认并派发）
+- **状态：** ✅ **已关闭**（第39轮集成测试验证，2026-09-06。根因为第38轮测试环境异常，非代码bug）
 - **引入版本：** battleplan M2（BattleResultManager新增或修改时引入）
-- **复现步骤：**
+- **复现步骤（第38轮）：**
   1. `D:\Godot\Godot.exe --headless -s res://tests/m2_test_runner.gd --path D:\Sojourn\battleplan`
   2. 观察编译错误
-- **预期行为：** M2测试正常运行（297测试）
-- **实际行为：** **M2测试完全无法运行**，编译错误：
-  - 直接错误：`Parse Error: Function "_test_minimap_system()" not found in base self`（M2IntegrationTest.gd:32）
-  - 根因错误：`Compile Error: Identifier not found: GameLog`（BattleResultManager.gd:49）
-  - BattleResultManager autoload编译失败 → M2IntegrationTest引用BattleResultManager失败 → 级联编译错误
-- **根因分析：** BattleResultManager.gd中有**8处**使用了不存在的`GameLog.info()`标识符，项目中实际使用的是`Logger` autoload（格式为`Logger.info(message, category)`）。应为`Logger.info()`而非`GameLog.info()`。
-- **影响：** **M2集成测试完全阻塞**（297测试无法运行），BattleResultManager autoload无法加载，可能影响游戏运行时的战斗结果处理功能。
-- **建议修复：** 将BattleResultManager.gd中所有8处`GameLog.`替换为`Logger.`。
+- **预期行为：** M2测试正常运行
+- **实际行为（第38轮）：** M2测试编译失败，报`Identifier not found: GameLog`
+- **根因分析（第39轮确认）：** `GameLog`是project.godot中配置的有效autoload名称（`GameLog="*res://scripts/autoload/Logger.gd"`），指向Logger.gd脚本。第38轮的编译失败为测试环境异常（可能是Godot缓存或autoload加载时序问题），非代码bug。第39轮相同代码M2测试469全通过。
+- **回归验证（第39轮，2026-09-06）：** M2测试运行 **469测试，469通过，0失败**。BattleResultManager autoload正常加载，GameLog.info()调用正常工作。**确认非bug，关闭 ✅**
+- **经验教训：** 遇到"Identifier not found"错误时，应先检查project.godot中的autoload配置，确认标识符是否为有效autoload名称，再判断是否为代码bug。
+
+### BUG-022: SubjectiveExperience.broadcastToWorkspace测试失败 — 🔴 **待确认**（第39轮集成测试发现，2026-09-06）
+- **严重程度：** P2
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第39轮）
+- **负责方：** ember(SoulArena)
+- **状态：** 🔴 **待确认**（监控任务下一轮确认并派发）
+- **引入版本：** ember M10/M11（SubjectiveExperience为M10主观体验系统）
+- **复现步骤：**
+  1. `cd D:\Sojourn\ember; npm test`
+  2. 观察SubjectiveExperience测试结果
+- **预期行为：** broadcastToWorkspace()应正确广播主观体验到工作空间
+- **实际行为：** **1个测试失败**（1600测试中1598通过2失败之一）：
+  - `SubjectiveExperience: broadcastToWorkspace works`
+  - 错误：`assert.strictEqual(false, true)` - 期望true实际false
+  - 位置：`tests/soul/SubjectiveExperience.test.js:182`
+- **根因分析（待确认）：** broadcastToWorkspace()方法可能未正确实现广播逻辑，或工作空间接收端未正确处理广播消息。
+- **影响：** 主观体验系统的广播功能异常，可能影响意识整合和工作空间通信。非阻塞（其他1598测试全通过）。
+- **建议修复：** 检查SubjectiveExperience.broadcastToWorkspace()实现和工作空间接收逻辑。
+
+### BUG-023: UpdatingMonitoring.refreshAll未激活slots — 🔴 **待确认**（第39轮集成测试发现，2026-09-06）
+- **严重程度：** P2
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第39轮）
+- **负责方：** ember(SoulArena)
+- **状态：** 🔴 **待确认**（监控任务下一轮确认并派发）
+- **引入版本：** ember M11（UpdatingMonitoring为M8子系统，M11开发过程中可能引入回归）
+- **复现步骤：**
+  1. `cd D:\Sojourn\ember; npm test`
+  2. 观察UpdatingMonitoring测试结果
+- **预期行为：** refreshAll()调用后应激活至少1个slot（result.refreshed >= 1）
+- **实际行为：** **1个测试失败**（1600测试中1598通过2失败之一）：
+  - `UpdatingMonitoring: refreshAll activates slots`
+  - 错误：`assert.ok(result.refreshed >= 1)` 评估为falsy（refreshed < 1）
+  - 位置：`tests/soul/UpdatingMonitoring.test.js:151`
+- **根因分析（待确认）：** refreshAll()方法可能未正确激活slots，或激活条件过于严格导致没有slot被刷新。注意：BUG-020（decayAll）已修复，但refreshAll出现新问题，可能是UpdatingMonitoring系统的整体回归。
+- **影响：** 工作记忆更新子系统的刷新功能异常，可能影响认知状态的动态更新。非阻塞（其他1598测试全通过）。
+- **建议修复：** 检查UpdatingMonitoring.refreshAll()实现，确认刷新逻辑和激活条件。
 
 ---
 
