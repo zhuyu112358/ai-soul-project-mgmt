@@ -187,6 +187,12 @@ assets/audio/
 | soul_jealous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂嫉妒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_season_start.wav | ~1.5秒 | 44100Hz/16bit/WAV | UI赛季开始音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_season_end.wav | ~1.5秒 | 44100Hz/16bit/WAV | UI赛季结束音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_underground_river.wav | ~5秒 | 44100Hz/16bit/WAV | 地下河流环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_crystal_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 水晶洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_humble.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂谦逊情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_anxious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂焦虑情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_shop_purchase.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店购买音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
