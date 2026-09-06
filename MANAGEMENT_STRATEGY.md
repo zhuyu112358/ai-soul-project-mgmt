@@ -54,7 +54,7 @@
 | # | 任务 | 平时频率 | 高频频率 | 状态 | 当前重点 |
 |---|------|----------|----------|------|----------|
 | 1 | 总体监控 | 每30分钟 | 每15分钟 | ✅ 启用 | 总控、协调、合规检查、文档检查、报告 |
-| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M11完成SDK v2.0.0**（143子系统/1600测试全通过），✅BUG-022+023已修复待回归，M12方向评估完成（意识架构深化设计文档），**M12待用户确认启动** |
+| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M12进行中（意识架构深化：GNWT全局工作空间+IIT整合信息+主动推理预测编码融合，用户确认启动，SDK v2.1.0目标，1700+测试）**，M11完成SDK v2.0.0（143子系统/1600测试），BUG-022+023已修复待回归 |
 | 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M12快速推进（3/9阶段）**：phase1 NPC记忆（24测试）+phase2 NPC个性（大五人格+8原型，41测试）+phase3 GOAP目标导向行动规划（A*规划器，36测试，1407总测试）完成 |
 | 4 | 游戏设计 | 每小时 | 每15分钟 | ✅ 启用 | v1.1已冻结，美术音效资源生产，99 sounds已集成战策 |
 | 5 | 战策应用实现 | 每30分钟 | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场**，✅BUG-021已关闭，99 sounds，503 M2测试/687总测试（+34 ServerAuthority服务端权威反作弊测试） |
@@ -223,7 +223,7 @@
 | M9 | SDK v1.8.0 | 元认知与自我意识深化 | 元觉知+策略调节+自我洞察+学习调节+知识迁移 | ✅ **完成（SDK v1.8.0已发布，v5.30，133子系统/1295测试，MetaAwareness+MetacognitiveControl+SelfInsight+LearningRegulation+CognitiveTransfer）** |
 | M10 | SDK v1.9.0 | **意识体系——主观体验+现象意识+意识整合+意识流+自我连续性+觉知深度** | ①SubjectiveExperience主观体验/现象意识（质体验qualia+第一人称视角） ②ConsciousnessIntegration意识整合（全局信息整合+统一意识场+意识内容广播） ③SelfContinuity自我连续性（时间自我整合+自传体自我+身份锚点） ④StreamOfConsciousness意识流（思想节点+自由联想+心智游移检测） ⑤AwarenessDepth觉知深度（6觉知层级+清晰度因子+吸收态+见证意识） ⑥意识与认知/情感/记忆集成 ⑦1453测试全通过 ⑧无P0/P1 bug ⑨M10端到端演示 | ✅ **完成（SDK v1.9.0已发布，v5.35，138子系统/1453测试，5个新认知子系统）** |
 | M11 | SDK v2.0.0 | **灵魂注入与内容安全——SoulTemplate预设灵魂+SoulConfig属性微调+ValueGuard价值观约束+ContentFilter内容过滤**（用户确认2026-09-06，主版本号升级） | ①SoulTemplate系统：至少3种预设灵魂模板（战士型/法师型/陪伴型），含性格/情感/认知/价值观/兴趣/语言风格6维度 ②SoulConfig微调接口：±20%范围内属性微调+稳定化测试（perceive/respond一致性验证） ③ValueGuard价值观约束层：5项硬约束（不暴力煽动/不仇恨言论/不自残引导/不违法内容/不隐私侵犯），所有灵魂输出必须通过检查，不可关闭 ④ContentFilter内容过滤：用户输入过滤+灵魂输出过滤+违规内容处理（拒绝响应+提示+记录） ⑤灵魂注入端到端演示：模板创建→属性微调→交互→价值观约束验证 ⑥1600+测试全通过 ⑦无P0/P1 bug ⑧SDK v2.0.0发布 | ✅ **完成（SDK v2.0.0已发布，v5.40，143子系统/1600测试，SoulTemplate+ValueGuard+ContentFilter+SoulConfig+端到端集成，5个新系统，BUG-020已修复）** |
-| M12 | SDK v2.1.0 | **待定义（建议方向：意识架构深化——全局工作空间GNWT+整合信息IIT+主动推理预测编码融合，预研第6轮★★★★★推荐）** | 待用户确认方向 | ⏳ 待启动（M11刚完成，方向待用户确认，预研建议：GlobalWorkspace全局广播+意识内容竞争选择+简化Φ值计算+预测编码集成+精度加权注意力） |
+| M12 | SDK v2.1.0 | **意识架构深化——全局工作空间GNWT+整合信息IIT+主动推理预测编码融合**（用户确认2026-09-06，预研第6轮★★★★★推荐） | ①GlobalWorkspace全局工作空间：意识内容竞争选择+全局广播+离散快照似现在（ignition点火机制+attention competition+global broadcast） ②简化Φ值计算：整合信息度量+意识层级模型（5层级+Φ值简化算法） ③预测编码集成：主动推理自由能原理+精度加权注意力+生成模型（generative model+prediction error+precision weighting+active inference） ④与现有意识体系5子系统集成（SubjectiveExperience+ConsciousnessIntegration+SelfContinuity+StreamOfConsciousness+AwarenessDepth） ⑤1700+测试全通过 ⑥无P0/P1 bug ⑦M12端到端演示 ⑧SDK v2.1.0发布 | 🔄 **进行中**（用户确认方向，M11刚完成，预研第6轮提供完整理论基础和三阶段路线图） |
 
 ### Seed里程碑计划
 
