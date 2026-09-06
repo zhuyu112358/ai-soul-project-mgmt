@@ -205,6 +205,12 @@ assets/audio/
 | soul_disheartened.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂气馁情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_codex_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI图鉴打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_codex_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI图鉴解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_floating_island.wav | ~5秒 | 44100Hz/16bit/WAV | 浮空岛环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_volcanic_wasteland.wav | ~5秒 | 44100Hz/16bit/WAV | 火山荒地环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_hopeful.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂充满希望情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_disappointed.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂失望情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_friends_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_friend_request.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友请求提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
