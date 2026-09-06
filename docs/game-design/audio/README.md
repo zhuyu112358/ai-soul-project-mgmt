@@ -229,6 +229,12 @@ assets/audio/
 | soul_overwhelmed.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂不知所措情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_desert_oasis.wav | ~5秒 | 44100Hz/16bit/WAV | 沙漠绿洲环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_ancient_ruins.wav | ~5秒 | 44100Hz/16bit/WAV | 古代遗迹环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_relaxed.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂放松情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_energetic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂精力充沛情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_quest_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_quest_complete.wav | ~1秒 | 44100Hz/16bit/WAV | UI任务完成音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
