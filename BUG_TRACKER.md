@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（集成测试第45轮，🎉M13双引擎三阶段完成+30分钟稳定达标+连续6轮全绿——ember(SoulArena) M13三阶段完成（1849测试全绿+72，SelfWorldModel自我+PhysicsModel物理+CausalModel因果世界模型三支柱，第151子系统，超1800目标），arboreus(Seed) M13三阶段完成（1682测试全绿+77，SocialRelationGraph社交关系+SocialNormSystem社会规范+SocialEventSystem社会事件，M13 1650+目标达成），battleplan(SoulGame) M2测试1054全通过（+59，WorldLoader+HomeAPI+SoulSnapshot），Godot构建0错误，1238自动化测试全通过（111+73+1054），引擎3531全绿，🎉API连通性+5并发全部成功（Nova 49ms，Vex 5s认知退化），🎉服务器31.8分钟0错误（30分钟稳定性达标），🎉活跃bug 0个（23个全部关闭，连续6轮））
+**最后更新：** 2026-09-07（集成测试第46轮，🎉M13双引擎深化+连续7轮全绿——ember(SoulArena) M13六阶段完成（1960测试全绿+111，SelfWorld+Physics+Causal+Temporal+Social世界模型五支柱+PredictivePlanner预测规划器，第154子系统），arboreus(Seed) M13五阶段完成（1774测试全绿+92，社交关系+规范+事件+GroupBehaviorEngine群体行为+InformationSpreadModel信息传播SIR模型），battleplan(SoulGame) M2测试1091全通过（+37，AudioManager+Minimap+ArenaMap），Godot构建0错误，1275自动化测试全通过（111+73+1091），引擎3734全绿，⚠️服务器开始时31分钟达标但API测试期间停止（SERVER_DOWN，API测试失败，需监控任务关注），🎉活跃bug 0个（23个全部关闭，连续7轮））
 **维护者：** 总体监控任务
 
 ---
