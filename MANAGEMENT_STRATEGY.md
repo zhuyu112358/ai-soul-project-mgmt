@@ -1,6 +1,6 @@
 ﻿# AI灵魂项目 — 管理策略
 
-**最后更新：** 2026-09-06（Arboreus M12完成SDK v2.8.0（NPC AI深化+世界叙事增强，1567测试，M12端到端演示50/50通过），Ember M12进行中，战策M2进行中，活跃bug 0个）
+**最后更新：** 2026-09-07（Arboreus M13完成SDK v2.9.0（社会模拟与文化演化，1868测试，M13端到端演示73/73通过），Ember M13完成SDK v2.2.0，战策M2进行中，活跃bug 0个）
 **更新者：** 总体监控任务
 
 ---
@@ -260,7 +260,7 @@
 | M10 | SDK v2.6.0 | 感知系统增强+视野锥+多模态感官 | 视野锥（FOV）感知+听觉感知增强+感知过滤/注意力机制+感知距离/范围配置+多模态感知事件+SoulPerceptionSystem集成 | ✅ **完成（SDK v2.6.0已发布，1208测试，VisionConeSystem+SoundPerceptionSystem+PerceptionFilter+AttentionSystem+SoulPerceptionSystem多模态集成+M10端到端演示35/35通过）** |
 | M11 | SDK v2.7.0 | **动作系统增强+交互系统深化+性能优化**（用户已确认2026-09-06） | ①动作系统：NPC丰富动作（攻击/防御/交互/采集/建造）+动作状态机+动作动画事件+动作与感知/导航集成 ②交互深化：NPC-NPC交互增强+NPC-环境交互+交互事件系统+对话/交易/组队深化+交互与感知集成 ③性能优化：100+NPC稳定30FPS+空间分区+对象池+帧率优化+内存优化 ④1300+测试全通过 ⑤无P0/P1 bug ⑥M11端到端演示 | ✅ **完成（SDK v2.7.0已发布，1306测试，ActionStateMachine+7ActionPresets+InteractionSessionSystem+PerformanceProfiler+M11端到端演示42/42通过）** |
 | M12 | SDK v2.8.0 | **NPC AI深化+世界叙事增强**（用户已确认2026-09-06） | ①NPC AI深化：行为树增强+目标导向行动规划(GOAP)+NPC记忆系统+NPC个性系统+NPC日常作息 ②世界叙事增强：动态叙事生成+任务链深化+世界状态叙事+玩家行为影响叙事+叙事事件感知 ③NPC与叙事集成：NPC行为驱动叙事+叙事事件影响NPC行为 ④1400+测试全通过 ⑤无P0/P1 bug ⑥M12端到端演示 | ✅ **完成（SDK v2.8.0已发布，1567测试，NPCMemorySystem+NPCPersonalitySystem+GoapSystem+BehaviorTreeEnhanced+ScheduleSystem+DynamicNarrativeSystem+TaskChainSystem+NarrativeIntegration+SoulPerceptionSystem 6新事件监听器，M12端到端演示50/50通过）** |
-| M13 | SDK v2.9.0 | **社会模拟与文化演化——社会关系网络+社会规范+社会事件+群体行为+信息传播+文化演化**（监控评估决策2026-09-06，基于预研A-P1-08社会基础层+A-P1-10涌现行为引擎+A-P1-12信息传播模型，与M12 NPC AI和叙事系统协同，让有个性的NPC形成有生命力的社会） | ①SocialRelationGraph社会关系网络：亲属/朋友/敌人/师徒/领主-臣民/商业伙伴等关系类型+关系强度动态变化+关系事件（结识/结仇/联姻/背叛） ②SocialNormSystem社会规范系统：习俗/禁忌/价值观/传统/礼仪+规范的形成传播演化+违规检测与社会反馈 ③SocialEventSystem社会事件系统：婚礼/葬礼/节日/庆典/集会/冲突/战争/迁徙等社会事件+事件触发与参与+事件叙事生成 ④GroupBehaviorEngine群体行为引擎：基于Boids的群体行为+暴民心理+集体行动+群体决策+群体情绪传播 ⑤InformationSpreadModel信息传播模型：观念/谣言/新闻的SIR传播模型+社会影响网络+信息可信度评估+信息变异 ⑥SocialMobility社会流动机制：阶层升降+移民+通婚+社会地位变化+声望系统 ⑦CulturalEvolution文化演化系统：文化特质的变异/选择/传播+文化差异化+文化接触与融合+文化变迁驱动叙事 ⑧与M12 NPC AI和叙事系统集成（社会关系驱动NPC行为+社会事件驱动动态叙事+文化影响NPC个性） ⑨1650+测试全通过 ⑩无P0/P1 bug ⑪M13端到端演示（NPC社会关系演化+社会事件触发+文化差异+群体行为涌现） ⑫SDK v2.9.0发布 | 🔄 **待启动**（监控评估决策方向，M12刚完成） |
+| M13 | SDK v2.9.0 | **社会模拟与文化演化——社会关系网络+社会规范+社会事件+群体行为+信息传播+文化演化**（监控评估决策2026-09-06，基于预研A-P1-08社会基础层+A-P1-10涌现行为引擎+A-P1-12信息传播模型，与M12 NPC AI和叙事系统协同，让有个性的NPC形成有生命力的社会） | ①SocialRelationGraph社会关系网络：亲属/朋友/敌人/师徒/领主-臣民/商业伙伴等关系类型+关系强度动态变化+关系事件（结识/结仇/联姻/背叛） ②SocialNormSystem社会规范系统：习俗/禁忌/价值观/传统/礼仪+规范的形成传播演化+违规检测与社会反馈 ③SocialEventSystem社会事件系统：婚礼/葬礼/节日/庆典/集会/冲突/战争/迁徙等社会事件+事件触发与参与+事件叙事生成 ④GroupBehaviorEngine群体行为引擎：基于Boids的群体行为+暴民心理+集体行动+群体决策+群体情绪传播 ⑤InformationSpreadModel信息传播模型：观念/谣言/新闻的SIR传播模型+社会影响网络+信息可信度评估+信息变异 ⑥SocialMobility社会流动机制：阶层升降+移民+通婚+社会地位变化+声望系统 ⑦CulturalEvolution文化演化系统：文化特质的变异/选择/传播+文化差异化+文化接触与融合+文化变迁驱动叙事 ⑧与M12 NPC AI和叙事系统集成（社会关系驱动NPC行为+社会事件驱动动态叙事+文化影响NPC个性） ⑨1650+测试全通过 ⑩无P0/P1 bug ⑪M13端到端演示（NPC社会关系演化+社会事件触发+文化差异+群体行为涌现） ⑫SDK v2.9.0发布 | ✅ **完成（SDK v2.9.0已发布，1868测试，SocialRelationGraph+SocialNormSystem+SocialEventSystem+GroupBehaviorEngine+InformationSpreadModel+SocialMobility+CulturalEvolution+SocialCulturalIntegrationSystem 8系统+集成，M13端到端演示73/73通过）** |
 
 ### SDK自发布流程（引擎开发任务必须遵守）
 
@@ -604,7 +604,7 @@ LLM推荐：国内DeepSeek-V3/Qwen-Plus，海外GPT-4o-mini/Claude 3.5 Haiku。L
 1. **战策/Battleplan应用实现**：🔄 **M2 RTS灵魂对战竞技场**——平台层重构已完成（b1f58e7），RTS战斗系统+成长反馈+3张地图+完整战斗流程+81测试+服务端权威架构+付费接口桩+音频系统66音效+小地图UI。下一步：AI对手接入Ember SDK、对战UI完善（血条/技能栏）、M2退出条件验证
 2. **集成测试**：🔄 **M2测试期**——RTS竞技场测试+M1回归+引擎回归，连续多轮PASS
 3. **Ember/灵火开发**：✅ **M9完成→M10待启动**——元认知与自我意识深化（SDK v1.8.0已发布，v5.30，133子系统/1295测试，MetaAwareness+MetacognitiveControl+SelfInsight+LearningRegulation+CognitiveTransfer）。M10建议方向：社会认知深化与道德判断（待Ember开发任务评估确认）。⚠️ CHANGELOG.md尚未更新v1.8.0条目
-4. **Arboreus/建木开发**：✅ **M12完成→M13待启动**——NPC AI深化+世界叙事增强（SDK v2.8.0已发布，1567测试，NPC记忆+个性+GOAP+行为树增强+日常作息+动态叙事+任务链+叙事集成，M12端到端演示50/50通过）。M13建议方向待用户确认
+4. **Arboreus/建木开发**：✅ **M13完成→M14待定义**——社会模拟与文化演化（SDK v2.9.0已发布，1868测试，SocialRelationGraph+SocialNormSystem+SocialEventSystem+GroupBehaviorEngine+InformationSpreadModel+SocialMobility+CulturalEvolution+SocialCulturalIntegrationSystem 8系统+集成，M13端到端演示73/73通过）。M14方向待监控评估决策
 5. **游戏设计**：v1.1已冻结维护，美术音效资源持续生产（194音效+64概念图，全部AI生成无版权），商业化外观设计体系，平台生态设计
 6. **管理仪表盘**：✅ 已上线（http://localhost:3001），6个模块（总览/任务/仓库/资源/历史/文档），自动刷新30秒
 7. **灵栖预研任务**：✅ 已启动（每小时，本地PC）——各方向前沿研究+理论发展+设计灵感库，仓库 D:\Sojourn\research（GitHub: github.com/zhuyu112358/sojourn-research），6个方向（Ember预研/Arboreus预研/游戏设计历史文化哲学数据库/测试预研/管理预研/跨方向共享），纯研究不修改现有代码。第1轮已产出5个数据库条目+Ember预测编码预研报告
