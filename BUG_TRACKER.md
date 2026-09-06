@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（集成测试第41轮，🎉连续2轮全绿+30分钟稳定达标——ember(SoulArena) M12 v5.42（1663测试全绿+63，GlobalWorkspace全局工作空间+IIT整合信息理论Phi+5意识层级），arboreus(Seed) M12 NPC日程+动态叙事（1515测试全绿+68，ScheduleSystem+DynamicNarrativeArc分支叙事），battleplan(SoulGame) M2测试783全通过（+186，SoulSnapshot+WorldPlugin），Godot构建0错误，967自动化测试全通过（111+73+783），引擎3178全绿，🎉API连通性+5并发全部成功（Vex 83ms，🎉服务器31.6分钟0错误，30分钟稳定性连续2轮达标），🎉活跃bug 0个（23个全部关闭，连续2轮））
+**最后更新：** 2026-09-06（集成测试第42轮，🎉M12双引擎完成+连续3轮全绿——ember(SoulArena) M12完成v5.44（1718测试全绿+55，GlobalWorkspace+IIT+PredictiveCoding+ActiveInference意识架构四大支柱，超1700目标），arboreus(Seed) M12完成（1567测试全绿+52，NPC AI 5/5+动态叙事+任务链+叙事集成，M12 features 100%），battleplan(SoulGame) M2测试860全通过（+77，RTSArenaManager+SoulUnit战斗），Godot构建0错误，1044自动化测试全通过（111+73+860，突破1000），引擎3285全绿，🎉API连通性+5并发全部成功（Vex 73ms，服务器本轮开始时停止后恢复，87秒0错误），🎉活跃bug 0个（23个全部关闭，连续3轮））
 **维护者：** 总体监控任务
 
 ---
