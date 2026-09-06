@@ -60,12 +60,12 @@
 | # | 任务 | 平时频率 | 高频频率 | 状态 | 当前重点 |
 |---|------|----------|----------|------|----------|
 | 1 | 总体监控 | **每小时** | 每15分钟 | ✅ 启用 | 总控、协调、合规检查、文档检查、报告、Steam接入统筹 |
-| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13进行中（4/9阶段，世界模型与预测规划，SDK v2.2.0目标）**：Phase1 SelfWorldModel(v5.46,149子系统,1777测试)+Phase2 PhysicsModel(v5.47,150子系统,1816测试超1800目标)+Phase3 CausalModel(v5.48,151子系统,1849测试)+**Phase4 TemporalModel时间世界模型**完成(v5.49,152子系统,1886测试全通过)，接下来SocialModel→PredictivePlanner→PredictionErrorLearning→集成→SDK发布 |
-| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13进行中（4/9阶段，社会模拟与文化演化，SDK v2.9.0目标）**：Phase1 SocialRelationGraph(1605测试)+Phase2 SocialNormSystem(1642测试)+Phase3 SocialEventSystem(18事件类型+叙事模板,1682测试达1650+目标)+**Phase4 GroupBehaviorEngine群体行为引擎**完成(10群体情绪+暴民心理极化/去个体化/非理性/行动倾向/易受暗示+10集体行动类型+50%自动动员+暴民状态暴力升级+5决策方法多数投票/共识/领袖决定/抽签/加权投票+基于影响力的情绪传播,54测试,1736总测试,build 0错误)，接下来InformationSpreadModel→SocialMobility→CulturalEvolution→集成→SDK发布 |
-| 4 | 游戏设计 | **每30分钟（提高）** | 每15分钟 | ✅ 启用 | v1.1已冻结，资源生产第45轮，251音效+74概念图（全部AI生成无版权）；**P1：Steam商店页素材准备**（截图/宣传片分镜/成就图标/商店页文案配图） |
-| 5 | 战策应用实现 | **每15分钟（最高优先级）** | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场（最高优先级）**，✅全部bug关闭，114 sounds，**1256总测试**（1072 M2测试，+WorldPlugin10+AudioManager8+HomeAPI9+SoulSnapshot15），平台层持续开发；**EA上架必须项：基础灵魂之家集成**（M1已完成，平台层已有HomeAPI+SoulSnapshot接口） |
-| 6 | 集成测试 | **每2小时** | 每15-30分钟 | ✅ 启用 | M2测试期+引擎回归，✅全部bug关闭（BUG-022+023已回归关闭）；新功能上线时动态拉满 |
-| 7 | 灵栖预研 | **每3小时** | 每小时 | ✅ 启用 | 第13轮完成（战策RTS设计与竞技平衡深化★★★★★+游戏与玩家主题数据库3条目，未实现方向累计199项，战策深化） |
+| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13全部7子系统完成→集成+SDK发布阶段**（世界模型与预测规划，SDK v2.2.0目标）：Phase1 SelfWorldModel(v5.46)+Phase2 PhysicsModel(v5.47)+Phase3 CausalModel(v5.48)+Phase4 TemporalModel(v5.49)+Phase5 SocialModel(v5.50)+Phase6 PredictivePlanner(v5.51)+**Phase7 PredictionErrorLearning完成**(v5.52,**155子系统,1996测试全通过**,M13所有7子系统完成)，接下来：集成测试→端到端验证→SDK v2.2.0发布 |
+| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13全部7phase完成→集成+SDK发布阶段**（社会模拟与文化演化，SDK v2.9.0目标）：Phase1 SocialRelationGraph+Phase2 SocialNormSystem+Phase3 SocialEventSystem+Phase4 GroupBehaviorEngine+Phase5 InformationSpreadModel+Phase6 SocialMobility+**Phase7 CulturalEvolution完成**(17文化特质类型+达尔文式文化演化(突变+选择+传播)+文化管理+文化距离计算+文化融合+自动演化,32测试,**1846总测试**,build 0错误,M13所有7phase完成)，接下来：集成测试→端到端验证→SDK v2.9.0发布 |
+| 4 | 游戏设计 | **每30分钟（提高）** | 每15分钟 | ✅ 启用 | v1.1已冻结，资源生产第46轮，**253音效+74概念图**（全部AI生成无版权，本轮覆盖更新旧版资源）；**P1：Steam商店页素材准备**（截图/宣传片分镜/成就图标/商店页文案配图） |
+| 5 | 战策应用实现 | **每15分钟（最高优先级）** | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场（最高优先级）**，✅全部bug关闭，114 sounds，**1329总测试**（**1145 M2测试**，RTSArenaManager持续增强），平台层持续开发；**EA上架必须项：基础灵魂之家集成**（M1已完成，平台层已有HomeAPI+SoulSnapshot接口） |
+| 6 | 集成测试 | **每2小时** | 每15-30分钟 | ✅ 启用 | M2测试期+引擎回归，✅全部bug关闭；新功能上线时动态拉满；Ember/Arboreus M13 SDK发布后需引擎回归测试 |
+| 7 | 灵栖预研 | **每3小时** | 每小时 | ✅ 启用 | **第14轮完成**（Ember灵魂注入与价值观对齐深化★★★★★+游戏设计道德与伦理主题数据库3条目，未实现方向累计**216项**，Ember64/Arboreus45/Battleplan32/跨方向42/管理33）；GitHub有1个积压commit待推送 |
 
 ### ⭐ 动态频率策略（用户确认）
 
