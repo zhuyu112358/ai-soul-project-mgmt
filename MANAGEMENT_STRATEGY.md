@@ -54,10 +54,10 @@
 | # | 任务 | 平时频率 | 高频频率 | 状态 | 当前重点 |
 |---|------|----------|----------|------|----------|
 | 1 | 总体监控 | 每30分钟 | 每15分钟 | ✅ 启用 | 总控、协调、合规检查、文档检查、报告 |
-| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13进行中（2/9阶段，世界模型与预测规划，SDK v2.2.0目标）**：Phase1 SelfWorldModel(v5.46,149子系统,1777测试)+Phase2 PhysicsModel物理世界模型完成(v5.47,150子系统,**1816测试全通过,超过1800目标**)，接下来CausalModel→TemporalModel→SocialModel→PredictivePlanner→PredictionErrorLearning→集成→SDK发布 |
-| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13进行中（2/9阶段，社会模拟与文化演化，SDK v2.9.0目标）**：Phase1 SocialRelationGraph(8关系类别+5维度强度+BFS+群体检测,38测试,1605总测试)+Phase2 SocialNormSystem社会规范系统完成(6规范类型习俗/禁忌/价值观/传统/礼仪/法律+4违规严重程度+6反馈类型+规范演化突变率x弱点因子+违规检测自动社会反馈,37测试,1642总测试,build 0错误)，接下来SocialEventSystem→GroupBehaviorEngine→InformationSpreadModel→SocialMobility→CulturalEvolution→集成→SDK发布 |
+| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13进行中（3/9阶段，世界模型与预测规划，SDK v2.2.0目标）**：Phase1 SelfWorldModel(v5.46,149子系统,1777测试)+Phase2 PhysicsModel(v5.47,150子系统,1816测试超1800目标)+**Phase3 CausalModel因果世界模型**完成(v5.48,151子系统,1849测试全通过)，接下来TemporalModel→SocialModel→PredictivePlanner→PredictionErrorLearning→集成→SDK发布 |
+| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13进行中（3/9阶段，社会模拟与文化演化，SDK v2.9.0目标）**：Phase1 SocialRelationGraph(8关系类别+5维度强度+BFS+群体检测,1605测试)+Phase2 SocialNormSystem(6规范类型+规范演化+违规检测,1642测试)+**Phase3 SocialEventSystem社会事件系统**完成(18事件类型婚礼/葬礼/节日/战争/迁徙/出生/加冕/条约/贸易展/宗教仪式/抗议/暴动/外交会议等+4状态生命周期+8参与者角色+自动生命周期推进+18类型叙事模板+社会影响配置,40测试,**1682总测试,达1650+目标**,build 0错误)，接下来GroupBehaviorEngine→InformationSpreadModel→SocialMobility→CulturalEvolution→集成→SDK发布 |
 | 4 | 游戏设计 | 每小时 | 每15分钟 | ✅ 启用 | v1.1已冻结，资源生产第42轮，240音效+72概念图（全部AI生成无版权） |
-| 5 | 战策应用实现 | 每30分钟 | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场**，✅全部bug关闭，114 sounds，**1214总测试**（1030 M2测试，+PlatformSDK21+WorldLoader14+ServerAuthority18+MonetizationManager23），平台层持续开发 |
+| 5 | 战策应用实现 | 每30分钟 | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场**，✅全部bug关闭，114 sounds，**1238总测试**（1054 M2测试，+HomeAPI9+SoulSnapshot15+PlatformSDK21+WorldLoader14），平台层持续开发 |
 | 6 | 集成测试 | 每小时 | 每15-30分钟 | ✅ 启用 | M2测试期+引擎回归，✅全部bug关闭（BUG-022+023已回归关闭） |
 | 7 | 灵栖预研 | 每小时 | 每小时 | ✅ 启用 | 第12轮完成（Arboreus叙事生成与无限世界深化★★★★★+自然与生态主题数据库3条目，未实现方向累计182项，Arboreus第三轮深化） |
 
