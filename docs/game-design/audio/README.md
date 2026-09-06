@@ -139,6 +139,12 @@ assets/audio/
 | soul_astonished.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊讶情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_teleport_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_teleport_cast.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送施放音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_cloud_peak.wav | ~5秒 | 44100Hz/16bit/WAV | 云峰环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_devoted.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂忠诚情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_resolute.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂坚定情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_matchmaking_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_match_found.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配成功音效（覆盖更新） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_aurora.wav | ~5秒 | 44100Hz/16bit/WAV | 极光环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_meteor_shower.wav | ~5秒 | 44100Hz/16bit/WAV | 流星雨环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_content_smile.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂满足情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -157,6 +163,12 @@ assets/audio/
 | soul_astonished.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊讶情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_teleport_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_teleport_cast.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送施放音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_cloud_peak.wav | ~5秒 | 44100Hz/16bit/WAV | 云峰环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_devoted.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂忠诚情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_resolute.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂坚定情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_matchmaking_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_match_found.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配成功音效（覆盖更新） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_sunset.wav | ~5秒 | 44100Hz/16bit/WAV | 黄昏环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_dawn.wav | ~5秒 | 44100Hz/16bit/WAV | 黎明环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_amazed_wonder.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊叹情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -175,6 +187,12 @@ assets/audio/
 | soul_astonished.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊讶情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_teleport_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_teleport_cast.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送施放音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_cloud_peak.wav | ~5秒 | 44100Hz/16bit/WAV | 云峰环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_devoted.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂忠诚情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_resolute.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂坚定情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_matchmaking_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_match_found.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配成功音效（覆盖更新） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_furious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂暴怒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -295,6 +313,12 @@ assets/audio/
 | soul_astonished.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊讶情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_teleport_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_teleport_cast.wav | ~1秒 | 44100Hz/16bit/WAV | UI传送施放音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_cloud_peak.wav | ~5秒 | 44100Hz/16bit/WAV | 云峰环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_devoted.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂忠诚情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_resolute.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂坚定情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_matchmaking_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_match_found.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配成功音效（覆盖更新） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
