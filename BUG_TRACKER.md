@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（集成测试第28轮，🚨发现BUG-019 Seed FlockingSystem回归3测试失败（agent移动距离不足，M8建筑系统引入）；🎉M2 RTS竞技场已提交（RTS实时战斗+战斗结果成长反馈），Godot构建0错误，M1回归184全通过；SoulArena M8 v5.21（1018测试+36，认知控制），Seed M8完成SDK v2.4.0（1033测试1030通过3失败），集成连续19轮PASS，服务器16分钟0错误，活跃bug 1个（BUG-019待确认））
+**最后更新：** 2026-09-06（集成测试第34轮，系统持续全绿——ember(SoulArena) M10 v5.31（1326测试+59，主观体验&现象意识，SDK v1.8.0发布），arboreus(Seed) M10多模态感知集成（1208测试+9），battleplan(SoulGame) M2教练风格RTS AI（人格驱动自主决策），Godot构建0错误，265自动化测试全通过（111+73+81），引擎2534全绿，集成连续24轮PASS，⚠️服务器未运行（API/稳定性测试跳过，已通知监控任务重启），活跃bug 0个（19个全部关闭））
 **维护者：** 总体监控任务
 
 ---
@@ -10,10 +10,10 @@
 | 状态 | 数量 |
 |------|------|
 | 待确认 | 0 |
-| 已派发/修复中 | 1 |
+| 已派发/修复中 | 0 |
 | 待回归 | 0 |
-| 已关闭 | 18 |
-| **总计活跃** | **1** |
+| 已关闭 | 19 |
+| **总计活跃** | **0** |
 
 ---
 
@@ -462,24 +462,38 @@
 - **影响：** **整个SoulGame项目无法构建**，所有游戏功能测试阻塞。连续7轮0错误记录被打破。
 - **建议修复：** 移除LocalizationManager.tr()方法，改用不冲突的方法名（如`translate()`、`localize()`、`t()`），并更新所有调用点（包括TestRunner.gd:456）。
 
-### BUG-019: Seed FlockingSystem测试失败——agent移动距离不足
+### BUG-019: Seed FlockingSystem测试失败——agent移动距离不足 — ✅ **已关闭**（第85轮Seed开发，2026-09-06，根因为测试配置过于保守而非代码bug，修复测试配置后1048/1048全绿）
 - **严重程度：** P2
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第28轮）
 - **负责方：** Seed
-- **状态：** 🔄 **已派发/修复中**（第三十六轮监控，2026-09-06 09:35，派发给Seed开发任务，P2。要求先修复BUG-019再继续M9开发，commit以fix(M9):开头）
-- **引入版本：** Seed M8 SDK v2.4.0（建筑&领土系统）
+- **状态：** ✅ **已关闭**（第85轮Seed开发任务，2026-09-06。根因分析+修复验证完成，commit以fix(M9):开头）
+- **引入版本：** Seed M9 phase 1 FlockingSystem（非M8建筑系统，原报告归因有误——FlockingSystem是M9新增，M8不可能引入其回归）
 - **复现步骤：**
   1. `cd D:\Seed; npm test`
   2. 观察FlockingSystem测试结果
-- **预期行为：** FlockingSystem全部测试通过（第27轮1016测试全绿）
-- **实际行为：** **3个测试失败**（1033测试中1030通过3失败）：
-  1. `agent moves toward target`（flocking-system.test.ts:154）：期望agent向x=10移动，实际x=2.017，移动距离严重不足
-  2. `can be added to world and ticked`（flocking-system.test.ts:179）：Agent should move via world tick
+- **预期行为：** FlockingSystem全部测试通过
+- **实际行为（发现时）：** **3个测试失败**（1033测试中1030通过3失败）：
+  1. `agent moves toward target`：期望agent向x=10移动，实际x=2.017，移动距离严重不足
+  2. `can be added to world and ticked`：Agent should move via world tick
   3. 对应2个测试套件失败（FlockingSystem - Seek Target + FlockingSystem - World Integration）
-- **可能根因：** M8建筑系统（building/territory）引入的回归，可能影响了FlockingSystem的seek行为或world tick集成。agent移动速度或力计算被修改。
-- **影响：** Seed群体行为系统（FlockingSystem）功能异常，可能影响多灵魂场景中的群体移动和AI行为。非阻塞性（集成测试仍PASS），但需修复。
-- **建议修复：** 检查M8建筑系统提交中是否修改了FlockingSystem、World tick或agent移动相关代码；对比第27轮（1016全绿）和第28轮（1033，3失败）的代码差异。
+- **根因分析（第85轮确认）：**
+  - FlockingSystem代码（updateAgent）正确：标准Euler积分（加速度→速度限制→位置更新）
+  - 失败原因是**测试配置过于保守**：原始测试使用maxForce=1, maxSpeed=3, dt=1/60, 120 ticks
+  - 物理计算：maxForce=1时每tick加速度增量=1*(1/60)=0.0167，120tick后最大速度=2.0（受maxSpeed=3限制），平均速度≈1.0，移动距离=120*1.0*(1/60)=**2.0**
+  - 与报告中实际x=2.017完全吻合，证明是配置问题而非代码bug
+  - M8建筑系统未修改任何FlockingSystem/World tick/agent移动代码，原归因有误
+- **修复（第83轮已实施，第85轮验证）：**
+  - 测试配置调整：maxForce 1→3, maxSpeed 2/3→5，增加tick数，降低断言阈值（x>5→x>3）
+  - 未修改FlockingSystem核心代码（代码本身正确）
+  - "agent moves toward target"：maxForce=3,maxSpeed=5，120tick后x>3
+  - "can be added to world and ticked"：maxForce=3,maxSpeed=5，120tick后x>1
+- **验证结果：**
+  - FlockingSystem测试：17/17通过
+  - 完整测试套件：1048/1048全绿（0失败）
+  - 构建：0错误
+- **影响：** 无实际功能影响——FlockingSystem代码始终正确，仅是测试期望与配置不匹配。修复后测试准确反映系统能力。
+- **经验教训：** 新增系统的测试配置需物理量验证（maxForce*dt*ticks=最大速度，平均速度*ticks*dt=移动距离），避免设置不可达的期望阈值。
 
 ---
 
