@@ -157,6 +157,12 @@ assets/audio/
 | soul_absorbed.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂沉浸情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI段位提升音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_title_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI称号解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_lake.wav | ~5秒 | 44100Hz/16bit/WAV | 湖泊环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_pond.wav | ~5秒 | 44100Hz/16bit/WAV | 池塘环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_ecstatic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂狂喜情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_serene.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂宁静情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_match_found.wav | ~1秒 | 44100Hz/16bit/WAV | UI匹配成功音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_match_cancel.wav | ~1秒 | 44100Hz/16bit/WAV | UI取消匹配音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
