@@ -175,6 +175,12 @@ assets/audio/
 | soul_righteous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂正义情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效（覆盖更新第35轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效（覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_floating_island.wav | ~5秒 | 44100Hz/16bit/WAV | 浮空岛环境音（可循环，覆盖更新第32轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_underground_city.wav | ~5秒 | 44100Hz/16bit/WAV | 地下城市环境音（可循环，覆盖更新第18轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_generous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂慷慨情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_honorable.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂荣耀情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_friends_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友界面打开音效（覆盖更新第34轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_friend_request.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友请求音效（覆盖更新第34轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_aurora.wav | ~5秒 | 44100Hz/16bit/WAV | 极光环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_meteor_shower.wav | ~5秒 | 44100Hz/16bit/WAV | 流星雨环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_content_smile.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂满足情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -229,6 +235,12 @@ assets/audio/
 | soul_righteous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂正义情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效（覆盖更新第35轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效（覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_floating_island.wav | ~5秒 | 44100Hz/16bit/WAV | 浮空岛环境音（可循环，覆盖更新第32轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_underground_city.wav | ~5秒 | 44100Hz/16bit/WAV | 地下城市环境音（可循环，覆盖更新第18轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_generous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂慷慨情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_honorable.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂荣耀情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_friends_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友界面打开音效（覆盖更新第34轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_friend_request.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友请求音效（覆盖更新第34轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_sunset.wav | ~5秒 | 44100Hz/16bit/WAV | 黄昏环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_dawn.wav | ~5秒 | 44100Hz/16bit/WAV | 黎明环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_amazed_wonder.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊叹情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -283,6 +295,12 @@ assets/audio/
 | soul_righteous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂正义情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效（覆盖更新第35轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效（覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_floating_island.wav | ~5秒 | 44100Hz/16bit/WAV | 浮空岛环境音（可循环，覆盖更新第32轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_underground_city.wav | ~5秒 | 44100Hz/16bit/WAV | 地下城市环境音（可循环，覆盖更新第18轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_generous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂慷慨情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_honorable.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂荣耀情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_friends_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友界面打开音效（覆盖更新第34轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_friend_request.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友请求音效（覆盖更新第34轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_furious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂暴怒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -439,6 +457,12 @@ assets/audio/
 | soul_righteous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂正义情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_leaderboard_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI排行榜界面打开音效（覆盖更新第35轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_rank_up.wav | ~1秒 | 44100Hz/16bit/WAV | UI排名上升音效（覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_floating_island.wav | ~5秒 | 44100Hz/16bit/WAV | 浮空岛环境音（可循环，覆盖更新第32轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_underground_city.wav | ~5秒 | 44100Hz/16bit/WAV | 地下城市环境音（可循环，覆盖更新第18轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_generous.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂慷慨情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_honorable.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂荣耀情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_friends_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友界面打开音效（覆盖更新第34轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_friend_request.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友请求音效（覆盖更新第34轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
