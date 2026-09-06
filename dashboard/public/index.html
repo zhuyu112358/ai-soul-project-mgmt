@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>凌栖/Sojourn 项目管理仪表盘</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #0f1117; color: #e0e0e0; min-height: 100vh; }
+.header { background: linear-gradient(135deg, #1a1d2e 0%, #2d1b4e 100%); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #3a3a5c; }
+.header h1 { font-size: 20px; background: linear-gradient(90deg, #e8a87c, #c38d9e, #85dcba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header .meta { font-size: 12px; color: #888; }
+.header .meta span { margin-left: 16px; }
+.nav { background: #161821; padding: 0 24px; display: flex; gap: 4px; border-bottom: 1px solid #2a2a3a; }
+.nav button { background: none; border: none; color: #888; padding: 12px 20px; cursor: pointer; font-size: 14px; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.nav button:hover { color: #ccc; }
+.nav button.active { color: #e8a87c; border-bottom-color: #e8a87c; }
+.container { padding: 24px; max-width: 1400px; margin: 0 auto; }
+.tab { display: none; }
+.tab.active { display: block; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.card { background: #1a1d2b; border-radius: 10px; padding: 18px; border: 1px solid #2a2a3a; transition: transform 0.2s, border-color 0.2s; }
+.card:hover { transform: translateY(-2px); border-color: #4a4a6a; }
+.card h3 { font-size: 14px; color: #888; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.card .value { font-size: 28px; font-weight: 700; }
+.card .sub { font-size: 12px; color: #666; margin-top: 4px; }
+.card.ok .value { color: #85dcba; }
+.card.warn .value { color: #e8c547; }
+.card.err .value { color: #e87c7c; }
+.card.info .value { color: #7cb8e8; }
+.section { background: #1a1d2b; border-radius: 10px; padding: 20px; margin-bottom: 16px; border: 1px solid #2a2a3a; }
+.section h2 { font-size: 16px; margin-bottom: 16px; color: #e8a87c; display: flex; align-items: center; gap: 8px; }
+.section h2::before { content: ''; width: 3px; height: 18px; background: #e8a87c; border-radius: 2px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 10px 12px; color: #888; border-bottom: 1px solid #2a2a3a; font-weight: 600; }
+td { padding: 10px 12px; border-bottom: 1px solid #1e1e2e; }
+tr:hover td { background: #1e2030; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.badge.ok { background: #1a3a2a; color: #85dcba; }
+.badge.warn { background: #3a3a1a; color: #e8c547; }
+.badge.err { background: #3a1a1a; color: #e87c7c; }
+.badge.info { background: #1a2a3a; color: #7cb8e8; }
+.commit-hash { font-family: 'Consolas', monospace; color: #7cb8e8; font-size: 12px; }
+.commit-msg { color: #ccc; }
+.commit-date { color: #666; font-size: 12px; white-space: nowrap; }
+pre { background: #0d0f15; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 12px; line-height: 1.6; color: #b0b0b0; max-height: 500px; overflow-y: auto; }
+.refresh-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.refresh-bar button { background: #2a2a4a; border: 1px solid #3a3a5a; color: #ccc; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+.refresh-bar button:hover { background: #3a3a5a; }
+.auto-refresh { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #888; }
+.auto-refresh input { cursor: pointer; }
+.naming-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.naming-item { background: #161821; padding: 14px; border-radius: 8px; text-align: center; }
+.naming-item .label { font-size: 11px; color: #666; margin-bottom: 4px; }
+.naming-item .cn { font-size: 18px; font-weight: 700; color: #e8a87c; }
+.naming-item .en { font-size: 13px; color: #888; font-family: 'Consolas', monospace; }
+.progress-bar { height: 6px; background: #2a2a3a; border-radius: 3px; overflow: hidden; margin-top: 8px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #e8a87c, #c38d9e); border-radius: 3px; transition: width 0.3s; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>凌栖 / Sojourn 项目管理仪表盘</h1>
+  <div class="meta">
+    <span id="lastUpdate">--</span>
+    <span id="uptime">--</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="active" data-tab="overview">总览</button>
+  <button data-tab="tasks">任务管理</button>
+  <button data-tab="repos">代码仓库</button>
+  <button data-tab="resources">资源管理</button>
+  <button data-tab="history">历史归档</button>
+  <button data-tab="docs">管理文档</button>
+</div>
+
+<div class="container">
+
+  <!-- Overview Tab -->
+  <div class="tab active" id="tab-overview">
+    <div class="refresh-bar">
+      <div class="auto-refresh">
+        <input type="checkbox" id="autoRefresh" checked>
+        <label for="autoRefresh">自动刷新 (30秒)</label>
+      </div>
+      <button onclick="loadOverview()">手动刷新</button>
+    </div>
+
+    <div class="naming-grid" id="namingGrid"></div>
+
+    <div class="cards" id="overviewCards" style="margin-top:20px;"></div>
+
+    <div class="section">
+      <h2>各仓库最新提交</h2>
+      <div id="latestCommits"></div>
+    </div>
+  </div>
+
+  <!-- Tasks Tab -->
+  <div class="tab" id="tab-tasks">
+    <div class="section">
+      <h2>定时任务清单</h2>
+      <table id="tasksTable">
+        <thead><tr><th>任务名称</th><th>频率</th><th>状态</th><th>职责</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Repos Tab -->
+  <div class="tab" id="tab-repos">
+    <div id="reposContent"></div>
+  </div>
+
+  <!-- Resources Tab -->
+  <div class="tab" id="tab-resources">
+    <div class="section">
+      <h2>资源统计</h2>
+      <div id="resourceStats"></div>
+    </div>
+  </div>
+
+  <!-- History Tab -->
+  <div class="tab" id="tab-history">
+    <div class="section">
+      <h2>管理仓库提交历史</h2>
+      <div id="historyCommits"></div>
+    </div>
+    <div class="section">
+      <h2>任务管理文档（含轮次日志）</h2>
+      <pre id="taskMgmtContent">加载中...</pre>
+    </div>
+  </div>
+
+  <!-- Docs Tab -->
+  <div class="tab" id="tab-docs">
+    <div class="section">
+      <h2>管理文档</h2>
+      <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+        <button onclick="loadDoc('strategy')">管理策略</button>
+        <button onclick="loadDoc('bugs')">Bug跟踪</button>
+        <button onclick="loadDoc('tasks')">任务管理</button>
+        <button onclick="loadDoc('status')">项目状态</button>
+        <button onclick="loadDoc('blockers')">卡点清单</button>
+      </div>
+      <pre id="docContent">选择上方文档查看</pre>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let autoRefreshTimer = null;
+
+// Tab switching
+document.querySelectorAll('.nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    if (btn.dataset.tab === 'repos') loadRepos();
+    if (btn.dataset.tab === 'history') loadHistory();
+    if (btn.dataset.tab === 'resources') loadResources();
+    if (btn.dataset.tab === 'tasks') loadTasks();
+  });
+});
+
+async function fetchJSON(url) {
+  try {
+    const res = await fetch(url);
+    return await res.json();
+  } catch (e) { return { error: e.message }; }
+}
+
+async function loadOverview() {
+  const data = await fetchJSON('/api/overview');
+  if (data.error) { document.getElementById('overviewCards').innerHTML = '<p style="color:#e87c7c">加载失败: ' + data.error + '</p>'; return; }
+
+  document.getElementById('lastUpdate').textContent = '更新: ' + new Date().toLocaleTimeString('zh-CN');
+
+  // Naming grid
+  const n = data.naming;
+  document.getElementById('namingGrid').innerHTML = `
+    <div class="naming-item"><div class="label">项目总名</div><div class="cn">${n.project.split(' / ')[0]}</div><div class="en">${n.project.split(' / ')[1]}</div></div>
+    <div class="naming-item"><div class="label">灵魂引擎</div><div class="cn">${n.soulEngine.split(' / ')[0]}</div><div class="en">${n.soulEngine.split(' / ')[1]}</div></div>
+    <div class="naming-item"><div class="label">世界引擎</div><div class="cn">${n.worldEngine.split(' / ')[0]}</div><div class="en">${n.worldEngine.split(' / ')[1]}</div></div>
+    <div class="naming-item"><div class="label">第一个游戏</div><div class="cn">${n.game.split(' / ')[0]}</div><div class="en">${n.game.split(' / ')[1]}</div></div>
+  `;
+
+  // Cards
+  const srv = data.server;
+  const srvClass = srv.status === 'running' ? 'ok' : 'err';
+  const srvUptime = srv.uptime ? Math.floor(srv.uptime/60) + '分钟' : '--';
+
+  document.getElementById('overviewCards').innerHTML = `
+    <div class="card ${srvClass}"><h3>服务器状态</h3><div class="value">${srv.status === 'running' ? '运行中' : '已停止'}</div><div class="sub">uptime: ${srvUptime} | pid: ${srv.pid || '--'}</div></div>
+    <div class="card info"><h3>活跃Bug</h3><div class="value">${data.bugs.active || 0}</div><div class="sub">总计 ${data.bugs.total || 0} | 已关闭 ${data.bugs.closed || 0}</div></div>
+    <div class="card ok"><h3>美术资源</h3><div class="value">${data.resources.art?.count || 0}</div><div class="sub">概念图/设计图</div></div>
+    <div class="card ok"><h3>音效资源</h3><div class="value">${data.resources.audio?.count || 0}</div><div class="sub">WAV/MP3音效</div></div>
+    <div class="card info"><h3>Ember SDK</h3><div class="value" style="font-size:18px">${(data.sdk.ember?.latest || '').replace('soularena-sdk-','')}</div><div class="sub">灵火灵魂引擎</div></div>
+    <div class="card info"><h3>Arboreus SDK</h3><div class="value" style="font-size:18px">${(data.sdk.arboreus?.latest || '').replace('seed-sdk-','')}</div><div class="sub">建木世界引擎</div></div>
+  `;
+
+  // Latest commits
+  let html = '<table><thead><tr><th>仓库</th><th>提交</th><th>日期</th><th>信息</th><th>状态</th></tr></thead><tbody>';
+  for (const [name, repo] of Object.entries(data.repos)) {
+    const dirtyBadge = repo.dirty?.length ? '<span class="badge warn">有未提交</span>' : '<span class="badge ok">干净</span>';
+    const aheadBadge = repo.ahead > 0 ? `<span class="badge warn">领先${repo.ahead}</span>` : '';
+    html += `<tr><td><strong>${name}</strong></td><td class="commit-hash">${repo.lastCommit?.hash || '--'}</td><td class="commit-date">${repo.lastCommit?.date || '--'}</td><td class="commit-msg">${repo.lastCommit?.message || '--'}</td><td>${dirtyBadge} ${aheadBadge}</td></tr>`;
+  }
+  html += '</tbody></table>';
+  document.getElementById('latestCommits').innerHTML = html;
+}
+
+async function loadTasks() {
+  const data = await fetchJSON('/api/tasks');
+  let html = '';
+  for (const t of data) {
+    html += `<tr><td><strong>${t.name}</strong><br><small style="color:#666">${t.id}</small></td><td>${t.freq}</td><td><span class="badge ${t.status === 'running' ? 'ok' : 'err'}">${t.status}</span></td><td>${t.role}</td></tr>`;
+  }
+  document.querySelector('#tasksTable tbody').innerHTML = html;
+}
+
+async function loadRepos() {
+  const data = await fetchJSON('/api/repos');
+  let html = '';
+  for (const [name, repo] of Object.entries(data)) {
+    const log = await fetchJSON(`/api/repos/${name}/log?count=15`);
+    html += `<div class="section"><h2>${name} <small style="font-size:12px;color:#666;font-weight:normal">${repo.path}</small></h2>`;
+    html += `<p style="margin-bottom:12px;font-size:13px;color:#888">分支: <span class="commit-hash">${repo.branch}</span> | 远程: ${repo.remote} | 领先: ${repo.ahead}</p>`;
+    if (repo.dirty?.length) {
+      html += `<p style="margin-bottom:12px"><span class="badge warn">未提交变更:</span> ${repo.dirty.join(', ')}</p>`;
+    }
+    html += '<table><thead><tr><th>哈希</th><th>日期</th><th>提交信息</th></tr></thead><tbody>';
+    for (const c of (log.entries || [])) {
+      html += `<tr><td class="commit-hash">${c.hash}</td><td class="commit-date">${c.date}</td><td class="commit-msg">${c.message}</td></tr>`;
+    }
+    html += '</tbody></table></div>';
+  }
+  document.getElementById('reposContent').innerHTML = html;
+}
+
+async function loadResources() {
+  const data = await fetchJSON('/api/resources');
+  document.getElementById('resourceStats').innerHTML = `
+    <div class="cards">
+      <div class="card ok"><h3>概念图/美术</h3><div class="value">${data.art?.count || 0}</div><div class="sub">${data.art?.dir}</div></div>
+      <div class="card ok"><h3>音效/BGM</h3><div class="value">${data.audio?.count || 0}</div><div class="sub">${data.audio?.dir}</div></div>
+      <div class="card info"><h3>设计文档</h3><div class="value">${data.designDocs?.count || 0}</div><div class="sub">Markdown文档</div></div>
+      <div class="card info"><h3>资源总计</h3><div class="value">${data.total || 0}</div><div class="sub">美术+音效</div></div>
+    </div>
+  `;
+}
+
+async function loadHistory() {
+  const data = await fetchJSON('/api/history?count=80');
+  let html = '<table><thead><tr><th>哈希</th><th>日期</th><th>提交信息</th></tr></thead><tbody>';
+  for (const c of (data.commits || [])) {
+    html += `<tr><td class="commit-hash">${c.hash}</td><td class="commit-date">${c.date}</td><td class="commit-msg">${c.message}</td></tr>`;
+  }
+  html += '</tbody></table>';
+  document.getElementById('historyCommits').innerHTML = html;
+  document.getElementById('taskMgmtContent').textContent = data.taskManagement || '无法加载';
+}
+
+async function loadDoc(name) {
+  const data = await fetchJSON('/api/docs/' + name);
+  document.getElementById('docContent').textContent = data.content || '无法加载';
+}
+
+// Auto refresh
+document.getElementById('autoRefresh').addEventListener('change', (e) => {
+  if (e.target.checked) {
+    autoRefreshTimer = setInterval(loadOverview, 30000);
+  } else {
+    clearInterval(autoRefreshTimer);
+  }
+});
+
+// Initial load
+loadOverview();
+autoRefreshTimer = setInterval(loadOverview, 30000);
+</script>
+
+</body>
+</html>

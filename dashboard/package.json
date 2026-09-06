@@ -1,0 +1,13 @@
+{
+  "name": "sojourn-dashboard",
+  "version": "1.0.0",
+  "description": "凌栖/Sojourn项目管理仪表盘 - 查看各模块工作情况、历史操作、资源状态",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
