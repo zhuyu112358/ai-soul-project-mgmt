@@ -54,10 +54,10 @@
 | # | 任务 | 平时频率 | 高频频率 | 状态 | 当前重点 |
 |---|------|----------|----------|------|----------|
 | 1 | 总体监控 | 每30分钟 | 每15分钟 | ✅ 启用 | 总控、协调、合规检查、文档检查、报告 |
-| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13启动（世界模型与预测规划，SDK v2.2.0目标）**：物理/社会/自我/因果/时间五模块世界模型+预测规划器+预测误差学习，与M12预测编码/主动推理衔接，1800+测试目标 |
-| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13启动（社会模拟与文化演化，SDK v2.9.0目标）**：社会关系网络+社会规范+社会事件+群体行为+信息传播+文化演化，与M12 NPC AI和叙事系统协同，1650+测试目标 |
+| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13进行中（1/9阶段，世界模型与预测规划，SDK v2.2.0目标）**：Phase1 SelfWorldModel自我世界模型完成（v5.46，149子系统，1777测试全通过），接下来PhysicsModel→CausalModel→TemporalModel→SocialModel→PredictivePlanner→PredictionErrorLearning→集成→SDK发布 |
+| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | **M13进行中（1/9阶段，社会模拟与文化演化，SDK v2.9.0目标）**：Phase1 SocialRelationGraph社会关系网络完成（8关系类别+40+子类型+5维度强度信任/亲密/尊重/恐惧/影响+16关系事件+BFS路径查询+群体检测+自动衰减，38测试，1605总测试，修复M12 demo构建错误），接下来SocialNormSystem→SocialEventSystem→GroupBehaviorEngine→InformationSpreadModel→SocialMobility→CulturalEvolution→集成→SDK发布 |
 | 4 | 游戏设计 | 每小时 | 每15分钟 | ✅ 启用 | v1.1已冻结，资源生产第42轮，240音效+72概念图（全部AI生成无版权） |
-| 5 | 战策应用实现 | 每30分钟 | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场**，✅全部bug关闭，114 sounds，1138总测试（954 M2测试，+PixelSpriteGenerator24+ArenaBackgroundGenerator29+SoulAIController27+Minimap14），平台层持续开发 |
+| 5 | 战策应用实现 | 每30分钟 | 每15分钟 | ✅ 启用 | **M2 RTS对战竞技场**，✅全部bug关闭，114 sounds，1179总测试（995 M2测试，+ServerAuthority18+MonetizationManager23+PixelSpriteGenerator24+ArenaBackgroundGenerator29），平台层持续开发 |
 | 6 | 集成测试 | 每小时 | 每15-30分钟 | ✅ 启用 | M2测试期+引擎回归，✅全部bug关闭（BUG-022+023已回归关闭） |
 | 7 | 灵栖预研 | 每小时 | 每小时 | ✅ 启用 | 第11轮完成（Ember神经符号AI与具身认知深化★★★★★+身体与具身主题数据库3条目，未实现方向累计165项，世界模型五模块分析为M13提供理论基础） |
 
