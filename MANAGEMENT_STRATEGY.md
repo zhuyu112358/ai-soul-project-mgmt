@@ -479,9 +479,9 @@ LLM推荐：国内DeepSeek-V3/Qwen-Plus，海外GPT-4o-mini/Claude 3.5 Haiku。L
 
 1. **应用实现**：🔄 **全功能开发M1**——灵魂之家场景+灵魂成长基础系统+玩家交互界面（CLI）+灵魂管理+世界管理，依赖双SDK v1.1.0
 2. **集成测试**：🔄 **游戏功能测试期**——灵魂之家/成长系统/SDK集成测试+引擎回归+30分钟稳定性持续监控
-3. **SoulArena开发**：🔄 **M8里程碑进行中**——认知控制体系（M7已完成SDK v1.6.0；M8 v5.21 CognitiveControl+v5.22 InhibitoryControl抑制控制+v5.23 TaskSwitching任务切换/认知灵活性，126子系统/1075测试）
-4. **Seed开发**：🔄 **M9里程碑进行中**——群体行为+导航系统（M8已完成SDK v2.4.0建筑+领土；M9 phase1 FlockingSystem⚠️有BUG-019+phase2 ORCA局部碰撞避免）
-5. **SoulGame M2**：🚀 **快速推进中**——3个M2 commit：RTS实时战斗系统（SoulUnit+RTSArenaManager）+战斗结果与灵魂成长反馈+竞技场地图系统（地形/障碍物/3张地图）。编译0错误，M1回归184全绿
+3. **Ember（原SoulArena）开发**：✅ **M8完成→M9待启动**——认知控制与执行功能体系完整（SDK v1.7.0已发布，v5.25 GoalShielding，128子系统/1141测试。M8含CognitiveControl+InhibitoryControl+TaskSwitching+UpdatingMonitoring+GoalShielding）
+4. **世界引擎（原Seed）开发**：🔄 **M9进行中**——群体行为+导航+编队（M8已完成SDK v2.4.0；M9 FlockingSystem✅BUG-019已关闭+ORCA局部碰撞避免+formation control编队控制phase3，1076测试）
+5. **SoulGame M2**：🚀 **快速推进中**——5个M2 commit：RTS实时战斗系统+战斗结果成长反馈+竞技场地图系统（3张地图）+完整战斗流程（灵魂选择→竞技场入口）+**M2集成测试81个全通过**。Godot总测试265全绿（111基础+73 M1+81 M2），编译0错误
 5. **游戏设计**：维护模式，跟踪设计修订项+M1设计细化支持
 6. **监控任务**：每轮执行10项合规检查+文档完整性检查+里程碑进度检查，发现违规立即纠正
 7. **用户待办**：①注册Steam开发者账号（$100） ②安装Godot 4（godotengine.org） ③设置电脑"从不休眠" ④确认M1最小可玩原型后是否进入M2（RTS对战竞技场）
