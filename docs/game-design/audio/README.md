@@ -193,6 +193,12 @@ assets/audio/
 | soul_anxious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂焦虑情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_shop_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_shop_purchase.wav | ~1秒 | 44100Hz/16bit/WAV | UI商店购买音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_firefly_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 萤火虫森林环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_mushroom_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 蘑菇林环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_forgiving.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂宽恕情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_resentful.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂怨恨情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_soul_detail_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI灵魂详情打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_soul_evolve.wav | ~1.5秒 | 44100Hz/16bit/WAV | UI灵魂进化音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
