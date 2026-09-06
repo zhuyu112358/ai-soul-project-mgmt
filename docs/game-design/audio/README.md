@@ -217,6 +217,12 @@ assets/audio/
 | soul_kind.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂善良情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_friends_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友界面打开音效（覆盖更新第47轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_friend_request.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友请求音效（覆盖更新第47轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_coral_reef.wav | ~5秒 | 44100Hz/16bit/WAV | 珊瑚礁环境音（可循环，覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_glowing_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 发光洞穴环境音（可循环，覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_loving.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂充满爱情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_dedicated.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂专注情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_mail_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI邮件界面打开音效（覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_mail_receive.wav | ~1秒 | 44100Hz/16bit/WAV | UI收到邮件音效（覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_aurora.wav | ~5秒 | 44100Hz/16bit/WAV | 极光环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_meteor_shower.wav | ~5秒 | 44100Hz/16bit/WAV | 流星雨环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_content_smile.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂满足情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -313,6 +319,12 @@ assets/audio/
 | soul_kind.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂善良情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_friends_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友界面打开音效（覆盖更新第47轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_friend_request.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友请求音效（覆盖更新第47轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_coral_reef.wav | ~5秒 | 44100Hz/16bit/WAV | 珊瑚礁环境音（可循环，覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_glowing_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 发光洞穴环境音（可循环，覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_loving.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂充满爱情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_dedicated.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂专注情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_mail_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI邮件界面打开音效（覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_mail_receive.wav | ~1秒 | 44100Hz/16bit/WAV | UI收到邮件音效（覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_sunset.wav | ~5秒 | 44100Hz/16bit/WAV | 黄昏环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_dawn.wav | ~5秒 | 44100Hz/16bit/WAV | 黎明环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_amazed_wonder.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊叹情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -409,6 +421,12 @@ assets/audio/
 | soul_kind.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂善良情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_friends_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友界面打开音效（覆盖更新第47轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_friend_request.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友请求音效（覆盖更新第47轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_coral_reef.wav | ~5秒 | 44100Hz/16bit/WAV | 珊瑚礁环境音（可循环，覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_glowing_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 发光洞穴环境音（可循环，覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_loving.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂充满爱情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_dedicated.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂专注情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_mail_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI邮件界面打开音效（覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_mail_receive.wav | ~1秒 | 44100Hz/16bit/WAV | UI收到邮件音效（覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_furious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂暴怒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -607,6 +625,12 @@ assets/audio/
 | soul_kind.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂善良情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_friends_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友界面打开音效（覆盖更新第47轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_friend_request.wav | ~1秒 | 44100Hz/16bit/WAV | UI好友请求音效（覆盖更新第47轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_coral_reef.wav | ~5秒 | 44100Hz/16bit/WAV | 珊瑚礁环境音（可循环，覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_glowing_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 发光洞穴环境音（可循环，覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_loving.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂充满爱情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_dedicated.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂专注情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_mail_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI邮件界面打开音效（覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_mail_receive.wav | ~1秒 | 44100Hz/16bit/WAV | UI收到邮件音效（覆盖更新第48轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
