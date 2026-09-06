@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（第三十三轮监控，🎉Seed M7完成SDK v2.3.0发布（社交+交易+组队，910测试），SoulArena M7 v5.17（自传体记忆，120子系统/881测试），✅BUG-018已修复（编译0错误），🔄BUG-017部分修复但TestRunner.gd:27 GameLog标识符未找到需继续修复，游戏设计156资源）
+**最后更新：** 2026-09-06（集成测试第28轮，🚨发现BUG-019 Seed FlockingSystem回归3测试失败（agent移动距离不足，M8建筑系统引入）；🎉M2 RTS竞技场已提交（RTS实时战斗+战斗结果成长反馈），Godot构建0错误，M1回归184全通过；SoulArena M8 v5.21（1018测试+36，认知控制），Seed M8完成SDK v2.4.0（1033测试1030通过3失败），集成连续19轮PASS，服务器16分钟0错误，活跃bug 1个（BUG-019待确认））
 **维护者：** 总体监控任务
 
 ---
@@ -10,10 +10,10 @@
 | 状态 | 数量 |
 |------|------|
 | 待确认 | 0 |
-| 已派发/修复中 | 2 |
-| 待回归 | 1 |
-| 已关闭 | 15 |
-| **总计活跃** | **3** |
+| 已派发/修复中 | 1 |
+| 待回归 | 0 |
+| 已关闭 | 18 |
+| **总计活跃** | **1** |
 
 ---
 
@@ -428,40 +428,30 @@
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第21轮）
 - **负责方：** SoulGame
-- **状态：** 🔄 **修复中（修复commit无效，需重新派发）**（第24轮集成测试验证：commit 0e37c48声称修复但M1IntegrationTest.gd:190仍直接引用SoulManager，编译失败）
-- **修复尝试：** commit 0e37c48添加了m1_test_runner.gd wrapper，但未修改M1IntegrationTest.gd中对SoulManager/WorldManager的直接引用
-- **复现步骤：**
-  1. `D:\Godot\Godot.exe --headless -s res://tests/M1IntegrationTest.gd --path D:\SoulGame`
-  2. 观察编译错误
-- **预期行为：** M1集成测试73个用例全部运行通过（commit 5178d97声称"73 tests, 0 failures"）
-- **实际行为：** 编译失败，`SCRIPT ERROR: Compile Error: Identifier not found: SoulManager` at M1IntegrationTest.gd:190。M1IntegrationTest.gd直接调用`SoulManager.start_creation()`等，但SoulManager/WorldManager不在autoload列表中。
-- **影响：** M1集成测试无法运行，无法自动化验证灵魂创建/训练/部署/世界管理流程。
-- **建议修复：** 在M1IntegrationTest.gd中添加`const SoulManager = preload("res://scripts/game/SoulManager.gd")`和WorldManager的preload，或将SoulManager/WorldManager添加为autoload。
+- **状态：** ✅ **已关闭**（第25轮集成测试验证，2026-09-06 07:30）
+- **修复commit：** 0e37c48（添加m1_test_runner.gd wrapper）+ f00d1e2（完整修复）
+- **修复方式：** 通过m1_test_runner.gd wrapper（extends SceneTree加载m1_test.tscn场景）触发autoload初始化，解决`-s`脚本模式下SoulManager/WorldManager不可访问的问题
+- **回归验证：** 第25轮集成测试 `godot --headless -s res://tests/m1_test_runner.gd` → **73测试全部通过，0失败，0错误**
 
 ### BUG-017: TestRunner编译失败——Godot 4.7不支持独立lambda
 - **严重程度：** P2
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第21轮）
 - **负责方：** SoulGame
-- **状态：** 🔄 **修复中（f00d1e2部分修复，但TestRunner.gd:27 GameLog标识符未找到）**（第三十三轮监控验证：f00d1e2修复了tr()冲突（BUG-018同步修复），编译0错误，但运行TestRunner时出现`SCRIPT ERROR: Compile Error: Identifier not found: GameLog` at TestRunner.gd:27。GameLog是project.godot中注册的autoload（Logger.gd别名），但在-s脚本模式下无法解析。）
-- **修复尝试：** commit 2df90e7 → 573b746（引入BUG-018）→ f00d1e2（修复tr()冲突+BUG-018，但GameLog问题暴露）
-- **当前问题：** TestRunner.gd:27 `GameLog.info(...)` — GameLog标识符在-s脚本模式下未找到。可能修复：①在TestRunner.gd中preload Logger.gd并使用Logger代替GameLog；②或确保autoload在-s模式下正确加载。
-- **复现步骤：**
-  1. `D:\Godot\Godot.exe --headless -s res://tests/TestRunner.gd --path D:\SoulGame`
-  2. 观察编译错误
-- **预期行为：** 基础架构单元测试（EventBus/GameState/ConfigManager/Logger/SaveSystem/ObjectPool/InputManager）全部运行
-- **实际行为：** 编译失败，`SCRIPT ERROR: Parse Error: Could not resolve external class member "tr"` at TestRunner.gd:456。修复过程中引入的tr() alias与Godot原生Object.tr()冲突。
-- **影响：** 基础架构单元测试无法运行，且修复过程导致整个项目构建失败（BUG-018）。
-- **建议修复：** 移除LocalizationManager中的tr()方法（与Godot原生Object.tr()冲突），改用其他方法名如translate()或localize()；TestRunner中相应修改调用。
+- **状态：** ✅ **已关闭**（第25轮集成测试验证，2026-09-06 07:45）
+- **修复commit：** 2df90e7（TestRunner编译修复+类型推断）+ f00d1e2（完整修复，移除tr()冲突改用translate()，修复Logger warning count bug，更新中文翻译）
+- **修复方式：** ①移除LocalizationManager.tr()方法（与Godot原生Object.tr()冲突），改用translate()；②通过test_runner_wrapper.gd（extends SceneTree加载test_runner.tscn场景）触发autoload初始化，解决`-s`模式下GameLog找不到的问题
+- **回归验证：** 第25轮集成测试 `godot --headless -s res://tests/test_runner_wrapper.gd` → **111测试全部通过，0失败，0错误**
 
 ### BUG-018: Godot构建回归——LocalizationManager.tr()与原生Object.tr()冲突导致58错误
 - **严重程度：** P1
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第24轮）
 - **负责方：** SoulGame
-- **状态：** ✅ **已修复（待回归）**（第三十三轮监控验证：`Godot --headless --check-only` 返回0 SCRIPT ERROR，LocalizationManager.tr()冲突已解决。f00d1e2 commit修复）
+- **状态：** ✅ **已关闭**（第25轮集成测试验证，2026-09-06 07:45）
 - **修复commit：** f00d1e2 "fix(M1): Complete BUG-017 resolution - TestRunner 111 tests all passing"（同时修复了BUG-018的tr()冲突）
-- **回归验证：** 第三十三轮监控（2026-09-06 07:35）编译检查0错误 ✅。待集成测试任务运行完整回归验证。
+- **修复方式：** 移除LocalizationManager.tr()方法，改用不冲突的translate()方法，更新所有调用点
+- **回归验证：** 第25轮集成测试 `godot --headless --check-only --path D:\SoulGame` → **0错误，0脚本加载失败**，构建恢复正常
 - **引入commit：** 573b746 "fix(M1): Resolve LocalizationManager test failures and add tr() alias"
 - **复现步骤：**
   1. `D:\Godot\Godot.exe --headless --check-only --path D:\SoulGame`
@@ -471,6 +461,25 @@
 - **根因：** LocalizationManager中添加的`tr()`方法与Godot原生Object类的`tr()`方法签名冲突，Godot 4.7将此警告视为错误（Warning treated as error），导致级联编译失败。
 - **影响：** **整个SoulGame项目无法构建**，所有游戏功能测试阻塞。连续7轮0错误记录被打破。
 - **建议修复：** 移除LocalizationManager.tr()方法，改用不冲突的方法名（如`translate()`、`localize()`、`t()`），并更新所有调用点（包括TestRunner.gd:456）。
+
+### BUG-019: Seed FlockingSystem测试失败——agent移动距离不足
+- **严重程度：** P2
+- **发现时间：** 2026-09-06
+- **发现者：** 集成测试任务（第28轮）
+- **负责方：** Seed
+- **状态：** 🔄 **已派发/修复中**（第三十六轮监控，2026-09-06 09:35，派发给Seed开发任务，P2。要求先修复BUG-019再继续M9开发，commit以fix(M9):开头）
+- **引入版本：** Seed M8 SDK v2.4.0（建筑&领土系统）
+- **复现步骤：**
+  1. `cd D:\Seed; npm test`
+  2. 观察FlockingSystem测试结果
+- **预期行为：** FlockingSystem全部测试通过（第27轮1016测试全绿）
+- **实际行为：** **3个测试失败**（1033测试中1030通过3失败）：
+  1. `agent moves toward target`（flocking-system.test.ts:154）：期望agent向x=10移动，实际x=2.017，移动距离严重不足
+  2. `can be added to world and ticked`（flocking-system.test.ts:179）：Agent should move via world tick
+  3. 对应2个测试套件失败（FlockingSystem - Seek Target + FlockingSystem - World Integration）
+- **可能根因：** M8建筑系统（building/territory）引入的回归，可能影响了FlockingSystem的seek行为或world tick集成。agent移动速度或力计算被修改。
+- **影响：** Seed群体行为系统（FlockingSystem）功能异常，可能影响多灵魂场景中的群体移动和AI行为。非阻塞性（集成测试仍PASS），但需修复。
+- **建议修复：** 检查M8建筑系统提交中是否修改了FlockingSystem、World tick或agent移动相关代码；对比第27轮（1016全绿）和第28轮（1033，3失败）的代码差异。
 
 ---
 
