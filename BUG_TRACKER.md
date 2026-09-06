@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-06（集成测试第39轮，🎉服务器恢复+M2测试469全通过——ember(SoulArena) M11完成（1600测试+27，1598通过2失败：BUG-022 SubjectiveExperience.broadcastToWorkspace + BUG-023 UpdatingMonitoring.refreshAll），arboreus(Seed) M12开始NPC系统（1371测试全绿+65，记忆+人格Big Five），battleplan(SoulGame) M2测试469全通过（+253，AudioManager+PixelSpriteGenerator+Minimap），🎉BUG-021关闭（GameLog为有效autoload名称，非bug），Godot构建0错误，653自动化测试全通过（111+73+469），引擎2971测试2969通过，🎉API连通性+5并发全部成功（Vex 30ms，服务器19分钟0错误），活跃bug 2个（BUG-022/023待确认））
+**最后更新：** 2026-09-06（集成测试第40轮，🎉里程碑——全部测试全绿+30分钟稳定性达标+活跃bug 0个！ember(SoulArena) M11完成SDK v2.0.0（1600测试全绿，🎉BUG-022/023修复关闭），arboreus(Seed) M12 GOAP+行为树增强（1447测试全绿+76，A*规划器+BehaviorTreeBuilder），battleplan(SoulGame) M2测试597全通过（+128，MonetizationManager+PlatformSDK），Godot构建0错误，781自动化测试全通过（111+73+597），引擎3047全绿，🎉API连通性+5并发全部成功（Vex 50ms，🎉服务器31.2分钟0错误，30分钟稳定性达标），🎉活跃bug 0个（23个全部关闭））
 **维护者：** 总体监控任务
 
 ---
@@ -11,9 +11,9 @@
 |------|------|
 | 待确认 | 0 |
 | 已派发/修复中 | 0 |
-| 待回归 | 2 |
-| 已关闭 | 21 |
-| **总计活跃** | **2** |
+| 待回归 | 0 |
+| 已关闭 | 23 |
+| **总计活跃** | **0** |
 
 ---
 
@@ -531,43 +531,40 @@
 - **回归验证（第39轮，2026-09-06）：** M2测试运行 **469测试，469通过，0失败**。BattleResultManager autoload正常加载，GameLog.info()调用正常工作。**确认非bug，关闭 ✅**
 - **经验教训：** 遇到"Identifier not found"错误时，应先检查project.godot中的autoload配置，确认标识符是否为有效autoload名称，再判断是否为代码bug。
 
-### BUG-022: SubjectiveExperience.broadcastToWorkspace测试失败 — 🟡 **待回归**（第39轮集成测试发现，2026-09-06，监控第51轮确认并派发Ember修复，监控第52轮验证npm test 1600全通过0失败，待集成测试正式回归）
+### BUG-022: SubjectiveExperience.broadcastToWorkspace测试失败 — ✅ **已关闭**（第40轮集成测试回归验证，2026-09-06，ember M11 SDK v2.0.0 1600测试全绿）
 - **严重程度：** P2
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第39轮）
 - **负责方：** ember(SoulArena)
-- **状态：** 🔴 **待确认**（监控任务下一轮确认并派发）
+- **状态：** ✅ **已关闭**（第40轮集成测试回归验证通过，2026-09-06）
 - **引入版本：** ember M10/M11（SubjectiveExperience为M10主观体验系统）
+- **修复commit：** `6bf770e fix(BUG-022): SubjectiveExperience broadcastToWorkspace flaky test - ensure conscious experience`
+- **修复方式：** 确保在调用broadcastToWorkspace之前有意识体验（conscious experience）存在，修复flaky测试
 - **复现步骤：**
   1. `cd D:\Sojourn\ember; npm test`
   2. 观察SubjectiveExperience测试结果
 - **预期行为：** broadcastToWorkspace()应正确广播主观体验到工作空间
-- **实际行为：** **1个测试失败**（1600测试中1598通过2失败之一）：
-  - `SubjectiveExperience: broadcastToWorkspace works`
-  - 错误：`assert.strictEqual(false, true)` - 期望true实际false
-  - 位置：`tests/soul/SubjectiveExperience.test.js:182`
-- **根因分析（待确认）：** broadcastToWorkspace()方法可能未正确实现广播逻辑，或工作空间接收端未正确处理广播消息。
-- **影响：** 主观体验系统的广播功能异常，可能影响意识整合和工作空间通信。非阻塞（其他1598测试全通过）。
-- **建议修复：** 检查SubjectiveExperience.broadcastToWorkspace()实现和工作空间接收逻辑。
+- **实际行为（发现时）：** `SubjectiveExperience: broadcastToWorkspace works`失败，`assert.strictEqual(false, true)`
+- **回归验证（第40轮，2026-09-06）：** ember M11 `npm test` → **1600测试，1600通过，0失败**。SubjectiveExperience全部测试通过。**确认修复 ✅**
+- **影响：** 主观体验系统的广播功能异常，可能影响意识整合和工作空间通信。非阻塞。
 
-### BUG-023: UpdatingMonitoring.refreshAll未激活slots — 🟡 **待回归**（第39轮集成测试发现，2026-09-06，监控第51轮确认并派发Ember修复，监控第52轮验证npm test 1600全通过0失败，待集成测试正式回归）
+### BUG-023: UpdatingMonitoring.refreshAll未激活slots — ✅ **已关闭**（第40轮集成测试回归验证，2026-09-06，ember M11 SDK v2.0.0 1600测试全绿）
 - **严重程度：** P2
 - **发现时间：** 2026-09-06
 - **发现者：** 集成测试任务（第39轮）
 - **负责方：** ember(SoulArena)
-- **状态：** 🔴 **待确认**（监控任务下一轮确认并派发）
+- **状态：** ✅ **已关闭**（第40轮集成测试回归验证通过，2026-09-06）
 - **引入版本：** ember M11（UpdatingMonitoring为M8子系统，M11开发过程中可能引入回归）
+- **修复commit：** `6bf770e fix(BUG-023): UpdatingMonitoring refreshAll flaky test - ensure slot content`
+- **修复方式：** 确保在调用refreshAll之前slot有内容（slot content），修复flaky测试
 - **复现步骤：**
   1. `cd D:\Sojourn\ember; npm test`
   2. 观察UpdatingMonitoring测试结果
 - **预期行为：** refreshAll()调用后应激活至少1个slot（result.refreshed >= 1）
-- **实际行为：** **1个测试失败**（1600测试中1598通过2失败之一）：
-  - `UpdatingMonitoring: refreshAll activates slots`
-  - 错误：`assert.ok(result.refreshed >= 1)` 评估为falsy（refreshed < 1）
-  - 位置：`tests/soul/UpdatingMonitoring.test.js:151`
-- **根因分析（待确认）：** refreshAll()方法可能未正确激活slots，或激活条件过于严格导致没有slot被刷新。注意：BUG-020（decayAll）已修复，但refreshAll出现新问题，可能是UpdatingMonitoring系统的整体回归。
-- **影响：** 工作记忆更新子系统的刷新功能异常，可能影响认知状态的动态更新。非阻塞（其他1598测试全通过）。
-- **建议修复：** 检查UpdatingMonitoring.refreshAll()实现，确认刷新逻辑和激活条件。
+- **实际行为（发现时）：** `UpdatingMonitoring: refreshAll activates slots`失败，`assert.ok(result.refreshed >= 1)`评估为falsy
+- **回归验证（第40轮，2026-09-06）：** ember M11 `npm test` → **1600测试，1600通过，0失败**。UpdatingMonitoring全部测试通过。**确认修复 ✅**
+- **影响：** 工作记忆更新子系统的刷新功能异常，可能影响认知状态的动态更新。非阻塞。
+- **注意：** BUG-020（decayAll）和BUG-023（refreshAll）均为flaky测试，根因为测试前置条件不足（未确保slot有内容/有意识体验），非核心代码bug。
 
 ---
 
