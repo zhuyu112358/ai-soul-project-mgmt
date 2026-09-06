@@ -229,6 +229,12 @@ assets/audio/
 | soul_passionate.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂热情情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_settings_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置界面打开音效（覆盖更新第49轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_settings_save.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置保存音效（覆盖更新第49轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞穴环境音（可循环，覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_frozen_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 冰冻森林环境音（可循环，覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_gracious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂优雅情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_enthusiastic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂热忱情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_inventory_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI背包界面打开音效（覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_item_use.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品使用音效（覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_aurora.wav | ~5秒 | 44100Hz/16bit/WAV | 极光环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_meteor_shower.wav | ~5秒 | 44100Hz/16bit/WAV | 流星雨环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_content_smile.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂满足情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -337,6 +343,12 @@ assets/audio/
 | soul_passionate.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂热情情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_settings_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置界面打开音效（覆盖更新第49轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_settings_save.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置保存音效（覆盖更新第49轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞穴环境音（可循环，覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_frozen_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 冰冻森林环境音（可循环，覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_gracious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂优雅情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_enthusiastic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂热忱情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_inventory_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI背包界面打开音效（覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_item_use.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品使用音效（覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_sunset.wav | ~5秒 | 44100Hz/16bit/WAV | 黄昏环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_dawn.wav | ~5秒 | 44100Hz/16bit/WAV | 黎明环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_amazed_wonder.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊叹情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -445,6 +457,12 @@ assets/audio/
 | soul_passionate.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂热情情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_settings_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置界面打开音效（覆盖更新第49轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_settings_save.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置保存音效（覆盖更新第49轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞穴环境音（可循环，覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_frozen_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 冰冻森林环境音（可循环，覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_gracious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂优雅情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_enthusiastic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂热忱情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_inventory_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI背包界面打开音效（覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_item_use.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品使用音效（覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_furious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂暴怒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -655,6 +673,12 @@ assets/audio/
 | soul_passionate.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂热情情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_settings_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置界面打开音效（覆盖更新第49轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_settings_save.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置保存音效（覆盖更新第49轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞穴环境音（可循环，覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| env_frozen_forest.wav | ~5秒 | 44100Hz/16bit/WAV | 冰冻森林环境音（可循环，覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_gracious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂优雅情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| soul_enthusiastic.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂热忱情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_inventory_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI背包界面打开音效（覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_item_use.wav | ~1秒 | 44100Hz/16bit/WAV | UI物品使用音效（覆盖更新第50轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
