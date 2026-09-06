@@ -54,8 +54,8 @@
 | # | 任务 | 平时频率 | 高频频率 | 状态 | 当前重点 |
 |---|------|----------|----------|------|----------|
 | 1 | 总体监控 | 每30分钟 | 每15分钟 | ✅ 启用 | 总控、协调、合规检查、文档检查、报告 |
-| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | M9：元认知体系（130子系统/1196测试） |
-| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | M9完成SDK v2.5.0，M10待启动 |
+| 2 | Ember开发 | 每30分钟 | 每15分钟 | ✅ 启用 | M9完成SDK v1.8.0（133子系统/1295测试），M10待启动 |
+| 3 | 建木开发 | 每30分钟 | 每15分钟 | ✅ 启用 | M10进行中（感知系统phase3，视觉锥+声音+注意力） |
 | 4 | 游戏设计 | 每小时 | 每15分钟 | ✅ 启用 | 命名v3.2（Ember中文名+游戏命名）+美术音效资源生产 |
 | 5 | 应用实现 | 每30分钟 | 每15分钟 | ✅ 启用 | M2 RTS对战竞技场+平台架构+资源集成 |
 | 6 | 集成测试 | 每小时 | 每15-30分钟 | ✅ 启用 | M2测试期+引擎回归 |
@@ -217,7 +217,10 @@
 | M4 | SDK v1.3.0 | 多灵魂协作+灵魂间通信 | 灵魂社交API+群体认知+通信协议+协作任务系统+知识共享+群体智慧+团队效能 | ✅ **完成（SDK v1.3.0已发布，v5.04，108子系统/449测试，InterSoulCommunication+SoulCollaboration+KnowledgeSharing+CollectiveCognition+CollaborationEffectiveness）** |
 | M5 | SDK v1.4.0 | 情感深度+长期记忆+个性演化 | 情感系统深化+长期记忆存储+个性动态演化+自我意识+关系绑定+社会支持+冲突解决+人际吸引+关系维护 | ✅ **完成（SDK v1.4.0已发布，v5.10，113子系统/623测试，RelationshipBonding+SocialSupport+ConflictResolution+InterpersonalAttraction+RelationshipMaintenance&RusbultCommitment）** |
 | M6 | SDK v2.2.0 | 自我意识+元认知+存在主义探索 | 自我反思+元认知监控+存在意义+价值观形成+自由意志模拟+特质遗传+发展阶段+学习曲线+成长思维+自我实现 | ✅ **完成（SDK v2.2.0已发布，v5.15，118子系统/811测试，SoulEvolution+DevelopmentalStages+LearningCurve+GrowthMindset+SelfActualization完整体系）** |
-| M7 | SDK v2.3.0 | 高级认知+元认知深化+意识理论 | 工作记忆+注意力机制+决策理论+博弈论+意识整合+全局工作空间 | ⏳ 待启动（M6刚完成） |
+| M7 | SDK v2.3.0 | 高级认知+元认知深化+意识理论 | 工作记忆+注意力机制+决策理论+博弈论+意识整合+全局工作空间 | ✅ **完成（SDK v1.6.0已发布，v5.18，121子系统/914测试，KnowledgeIntegration知识整合）** |
+| M8 | SDK v1.7.0 | 认知控制与执行功能增强 | 认知控制+抑制控制+任务切换+工作记忆更新+目标屏蔽 | ✅ **完成（SDK v1.7.0已发布，v5.25，128子系统/1141测试，CognitiveControl+InhibitoryControl+TaskSwitching+UpdatingMonitoring+GoalShielding）** |
+| M9 | SDK v1.8.0 | 元认知与自我意识深化 | 元觉知+策略调节+自我洞察+学习调节+知识迁移 | ✅ **完成（SDK v1.8.0已发布，v5.30，133子系统/1295测试，MetaAwareness+MetacognitiveControl+SelfInsight+LearningRegulation+CognitiveTransfer）** |
+| M10 | SDK v1.9.0 | 社会认知深化与道德判断（建议方向，待Ember开发确认） | 心理理论+共情模拟+道德推理+社会规范内化+公平判断+群体决策 | ⏳ 待启动（M9刚完成，方向待Ember开发任务评估确认） |
 
 ### Seed里程碑计划
 
@@ -232,7 +235,7 @@
 | M7 | SDK v2.3.0 | 多人交互系统+社交关系+交易组队 | NPC-NPC交互+社交关系图（友好/敌对/中立）+交易系统（物品交换/价格协商）+组队系统（组队/离队/队伍共享）+社交事件感知 | ✅ **完成（SDK v2.3.0已发布，946测试，SocialGraph+TradingSystem+PartySystem+19事件感知+M7端到端演示）** |
 | M8 | SDK v2.4.0 | 建筑系统+领地系统+建造与破坏 | 建筑放置/升级/破坏+领地声明/边界/所有权+建筑效果（生产/防御/居住）+建造事件感知+建筑与物理/资源系统集成 | ✅ **完成（SDK v2.4.0已发布，1016测试，BuildingSystem+TerritorySystem+11事件感知+建筑效果集成+M8端到端演示）** |
 | M9 | SDK v2.5.0 | AI导航增强+群体行为+编队控制 | 群体行为（分离/对齐/聚合）+局部避障（ORCA）+编队控制（阵型/跟随/保持间距）+路径成本修饰器（地形/危险区）+导航事件感知 | ✅ **完成（SDK v2.5.0已发布，1101测试，FlockingSystem+OrcaSystem+FormationSystem+PathCostSystem+4导航事件感知+M9端到端演示，BUG-019已关闭）** |
-| M10 | SDK v2.6.0 | 感知系统增强+视野锥+多模态感官 | 视野锥（FOV）感知+听觉感知增强+感知过滤/注意力机制+感知距离/范围配置+多模态感知事件+SoulPerceptionSystem集成 | ⏳ 待启动（M9刚完成） |
+| M10 | SDK v2.6.0 | 感知系统增强+视野锥+多模态感官 | 视野锥（FOV）感知+听觉感知增强+感知过滤/注意力机制+感知距离/范围配置+多模态感知事件+SoulPerceptionSystem集成 | 🔄 **进行中**（phase1视觉锥FOV+phase2声音距离衰减+phase3感知过滤与注意力系统，已commit ee72e36） |
 
 ### SDK自发布流程（引擎开发任务必须遵守）
 
@@ -573,12 +576,13 @@ LLM推荐：国内DeepSeek-V3/Qwen-Plus，海外GPT-4o-mini/Claude 3.5 Haiku。L
 
 ## 二十、下一步行动
 
-1. **应用实现**：🔄 **全功能开发M1**——灵魂之家场景+灵魂成长基础系统+玩家交互界面（CLI）+灵魂管理+世界管理，依赖双SDK v1.1.0
-2. **集成测试**：🔄 **游戏功能测试期**——灵魂之家/成长系统/SDK集成测试+引擎回归+30分钟稳定性持续监控
-3. **Ember（原SoulArena）开发**：🔄 **M9进行中**——元认知体系（M8已完成SDK v1.7.0，128子系统/1141测试；M9 v5.26 MetaAwareness元觉知+v5.27 MetacognitiveControl策略调节，130子系统/1196测试）
-4. **Arboreus（原Seed/建木）开发**：✅ **M9完成→M10待启动**——AI导航+群体行为+编队控制（SDK v2.5.0已发布，path cost modifiers+navigation event perception，1076+测试）
-5. **涿鹿/Dominion（原SoulGame）M2**：🚀 **快速推进中**——6个M2 commit：RTS实时战斗系统+战斗结果成长反馈+竞技场地图系统（3张地图）+完整战斗流程（灵魂选择→竞技场入口）+M2集成测试81全通过+**服务端权威架构+付费接口桩**（ab76365）。Godot总测试265全绿，编译0错误
-5. **游戏设计**：维护模式，跟踪设计修订项+M1设计细化支持
+1. **战策/Battleplan应用实现**：🔄 **M2 RTS灵魂对战竞技场**——平台层重构已完成（b1f58e7），RTS战斗系统+成长反馈+3张地图+完整战斗流程+81测试+服务端权威架构+付费接口桩+音频系统66音效+小地图UI。下一步：AI对手接入Ember SDK、对战UI完善（血条/技能栏）、M2退出条件验证
+2. **集成测试**：🔄 **M2测试期**——RTS竞技场测试+M1回归+引擎回归，连续多轮PASS
+3. **Ember/灵火开发**：✅ **M9完成→M10待启动**——元认知与自我意识深化（SDK v1.8.0已发布，v5.30，133子系统/1295测试，MetaAwareness+MetacognitiveControl+SelfInsight+LearningRegulation+CognitiveTransfer）。M10建议方向：社会认知深化与道德判断（待Ember开发任务评估确认）。⚠️ CHANGELOG.md尚未更新v1.8.0条目
+4. **Arboreus/建木开发**：🔄 **M10进行中**——感知系统增强（phase1视觉锥FOV+phase2声音距离衰减+phase3感知过滤与注意力系统，commit ee72e36）
+5. **游戏设计**：v1.1已冻结维护，美术音效资源持续生产（194音效+64概念图，全部AI生成无版权），商业化外观设计体系，平台生态设计
+6. **管理仪表盘**：✅ 已上线（http://localhost:3001），6个模块（总览/任务/仓库/资源/历史/文档），自动刷新30秒
+7. **首次拉通会议**：待发起（docs/sync_meetings/2026-09-06.md）
 6. **监控任务**：每轮执行10项合规检查+文档完整性检查+里程碑进度检查，发现违规立即纠正
 7. **用户待办**：①注册Steam开发者账号（$100） ②安装Godot 4（godotengine.org） ③设置电脑"从不休眠" ④确认M1最小可玩原型后是否进入M2（RTS对战竞技场）
 
