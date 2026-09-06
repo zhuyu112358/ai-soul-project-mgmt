@@ -217,6 +217,12 @@ assets/audio/
 | soul_motivated.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂有动力情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_mail_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI邮件界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_mail_receive.wav | ~1秒 | 44100Hz/16bit/WAV | UI收到邮件提示音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_underground_cavern.wav | ~5秒 | 44100Hz/16bit/WAV | 地下溶洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_crystal_garden.wav | ~5秒 | 44100Hz/16bit/WAV | 水晶花园环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_ashamed.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂羞愧情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_skeptical.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂怀疑情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_settings_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置界面打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_settings_save.wav | ~1秒 | 44100Hz/16bit/WAV | UI设置保存音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
