@@ -199,6 +199,12 @@ assets/audio/
 | soul_resentful.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂怨恨情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_soul_detail_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI灵魂详情打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | ui_soul_evolve.wav | ~1.5秒 | 44100Hz/16bit/WAV | UI灵魂进化音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_ancient_battlefield.wav | ~5秒 | 44100Hz/16bit/WAV | 古战场环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| env_moonlit_garden.wav | ~5秒 | 44100Hz/16bit/WAV | 月光花园环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_inspired.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂受到启发情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| soul_disheartened.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂气馁情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_codex_open.wav | ~1秒 | 44100Hz/16bit/WAV | UI图鉴打开音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
+| ui_codex_unlock.wav | ~1秒 | 44100Hz/16bit/WAV | UI图鉴解锁音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
