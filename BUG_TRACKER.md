@@ -9,15 +9,67 @@
 
 | 状态 | 数量 |
 |------|------|
-| 待确认 | 3 |
-| 已派发/修复中 | 0 |
+| 待确认 | 1 |
+| 已派发/修复中 | 2 |
 | 待回归 | 0 |
-| 已关闭 | 25 |
-| **总计活跃** | **3** |
+| 已关闭 | 27 |
+| **总计活跃** | **5** |
 
 ---
 
 ## 活跃Bug
+
+### BUG-029: RTS竞技场单位不创建 / Souls:0 / 方块卡着不动（用户试玩P0阻塞）
+- **严重程度：** P0
+- **发现时间：** 2026-09-08
+- **发现者：** 用户试玩反馈
+- **负责方：** battleplan(SoulGame)
+- **状态：** 🔴 已派发/修复中（紧急标记已放入战策仓库docs/URGENT_BUG.md，战策自触发下一轮优先处理）
+- **复现步骤：**
+  1. 运行战策游戏，进入RTS竞技场
+  2. 战斗开始（Tick跑了141）
+  3. 调试面板显示 Souls: 0
+  4. 地图上只有几个彩色方块卡着不动
+- **预期：** 进入竞技场后，玩家和AI灵魂单位正常创建，Souls计数 > 0，单位能正常移动和战斗
+- **实际：** 战斗开始但单位未创建，Souls: 0，方块不动
+- **可能原因：**
+  1. 用户未经过灵魂选择场景直接进入竞技场，GameState中无player_soul
+  2. RTSArenaManager.start_battle()中SoulUnit.new()或init_from_soul()失败
+  3. 单位创建了但调试面板Souls计数逻辑有bug
+  4. 最近的commit（战斗反馈系统/设置保存加载）可能引入了回归
+- **排查方向：**
+  1. 检查RTSArenaManager.start_battle()执行流程，确认player_unit和ai_unit是否成功add_child
+  2. 检查SoulUnit.gd的init_from_soul()和_ready()是否有报错
+  3. 检查调试面板Souls计数的数据源
+  4. 检查从主菜单直接进入竞技场的路径是否有默认灵魂创建逻辑
+  5. 用Godot headless运行测试，确认RTS竞技场相关测试是否通过
+- **影响：** 阻塞可玩原型验证，用户无法正常体验RTS对战
+- **紧急标记：** D:\Sojourn\battleplan\docs\URGENT_BUG.md
+
+---
+
+### BUG-030: 音频wav加载失败 / 大量Failed to load警告（用户试玩P1）
+- **严重程度：** P1
+- **发现时间：** 2026-09-08
+- **发现者：** 用户试玩反馈
+- **负责方：** battleplan(SoulGame)
+- **状态：** 🔴 已派发/修复中（紧急标记已放入战策仓库docs/URGENT_BUG.md）
+- **复现步骤：**
+  1. 运行战策游戏
+  2. 控制台大量输出"Failed to load res://assets/audio/..."警告
+  3. 包括ui_battle_start.wav、bgm_battle.wav、ui_game_start.wav等
+- **预期：** 所有音频资源正常加载，无警告，关键音效和BGM能正常播放
+- **实际：** 大量音频加载失败，控制台刷屏警告
+- **根因：** wav文件未被Godot导入（缺少.import文件）。Godot headless --import处理大量wav时会崩溃（exit code -1073741819）。图片资源全部导入成功（118个.import文件），音频只有约20/351导入成功
+- **排查方向：**
+  1. 检查assets/audio/目录下.import文件数量
+  2. 尝试分批导入音频（每次导入一个子目录）
+  3. 检查AudioManager的音频注册列表，确认引用的文件名是否与实际文件一致
+  4. 考虑在AudioManager中添加容错：加载失败时静默跳过而不是刷屏警告
+- **影响：** 游戏无音效和BGM，控制台大量警告影响调试体验
+- **紧急标记：** D:\Sojourn\battleplan\docs\URGENT_BUG.md
+
+---
 
 ### BUG-026: PerceptionActionLoop selectAction exploitation 测试flaky（Q学习探索/利用随机性）
 - **严重程度：** P2
