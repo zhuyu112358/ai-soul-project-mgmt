@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-07（集成测试第51轮，🎉M14双引擎完成+双SDK发布+引擎突破4500测试——ember(SoulArena) M14完成SDK v2.3.0（2223测试全绿+61，五阶段神经符号与具身认知OntologicalSelf+HybridMemory+PerceptionActionLoop+EmbodiedConcepts，第162子系统，⚠️BUG-026 PerceptionActionLoop selectAction exploitation flaky测试，重试后全绿），arboreus(Seed) M14完成SDK v3.0.0（2285测试全绿+147，六阶段经济基础与文明模拟ResourceProduction+TradeExchange+Distribution+CivilizationSimulation+LargeScaleSimulation），battleplan(SoulGame) M2测试1624全通过（+141，音频库35新音效+美术库37新图+背景图集成+BGM集成+全场景修复，Godot 1808全绿突破1800），Godot构建仍有main_menu_bg.png缺失（BUG-025未完全修复，BGM已修复），引擎4508全绿（突破4500！），⚠️服务器停止（连续多轮，API测试跳过），活跃bug 2个（BUG-025资源缺失+BUG-026 flaky测试））
+**最后更新：** 2026-09-07（集成测试第52轮，🎉M2快速推进接近2000测试——ember(SoulArena) M14完成SDK v2.3.0（2223测试全绿，一次通过，BUG-026 PerceptionActionLoop flaky测试本轮未复现），arboreus(Seed) M14完成SDK v3.0.0（2285测试全绿，M15预研中军事+生态系统技术设计文档），battleplan(SoulGame) M2测试1775全通过（+151，全场景按钮悬停音频视觉反馈：设置菜单+灵魂选择+灵魂之家+RTS竞技场+结果弹窗，Godot 1959全绿接近2000），Godot构建仍有main_menu_bg.png缺失（BUG-025未修复），引擎4508全绿，⚠️服务器停止（连续多轮，API测试跳过），活跃bug 2个（BUG-025资源缺失+BUG-026 flaky测试本轮未复现））
 **维护者：** 总体监控任务
 
 ---
@@ -24,19 +24,20 @@
 - **发现时间：** 2026-09-07
 - **发现者：** 集成测试任务（第51轮）
 - **负责方：** ember(SoulArena)
-- **状态：** 🔴 待确认
+- **状态：** 🔴 待确认（第52轮未复现，一次通过2223全绿，持续观察）
 - **复现步骤：**
   1. 运行 `cd D:\Sojourn\ember; npm test`
-  2. 偶发失败（约1/2概率）
+  2. 偶发失败（约1/2概率，第51轮第一次运行失败，重试后通过；第52轮一次通过未复现）
 - **预期：** PerceptionActionLoop: selectAction exploitation 测试通过，在高Q值时选择exploitation
-- **实际：** 偶发失败，actual='exploration', expected='exploitation'
+- **实际（第51轮第一次）：** 偶发失败，actual='exploration', expected='exploitation'
   ```
   not ok 1204 - PerceptionActionLoop: selectAction exploitation
   error: Expected values to be strictly equal: + actual - expected
   + 'exploration' - 'exploitation'
   location: tests/soul/PerceptionActionLoop.test.js:210
   ```
-- **重试结果：** 第51轮重试后2223测试全通过，确认为flaky测试
+- **重试结果（第51轮）：** 重试后2223测试全通过，确认为flaky测试
+- **第52轮结果：** 一次通过2223全绿，未复现
 - **影响：** M14 Phase4 PerceptionActionLoop（感知-动作闭环学习+Q学习）的exploration/exploitation决策测试不稳定。不影响核心功能，仅测试稳定性问题。
 - **根因推测：** Q学习中的epsilon-greedy策略涉及随机性，测试未正确设置随机种子或确保epsilon=0（纯利用），导致偶发选择exploration。与BUG-022/023类似，均为flaky测试前置条件不足。
 - **修复建议：** 在测试中显式设置epsilon=0或随机种子，确保selectAction在高Q值时确定性地选择exploitation。
@@ -48,7 +49,7 @@
 - **发现时间：** 2026-09-07
 - **发现者：** 集成测试任务（第50轮）
 - **负责方：** battleplan应用实现
-- **状态：** 🔴 待确认（部分修复：BGM已修复，main_menu_bg.png仍缺失）
+- **状态：** 🔴 待确认（部分修复：BGM已修复，main_menu_bg.png仍缺失，第52轮仍存在）
 - **复现步骤：**
   1. 运行 `D:\Godot\Godot.exe --headless --check-only --path D:\Sojourn\battleplan`
 - **预期：** 项目构建无错误，所有资源文件存在
