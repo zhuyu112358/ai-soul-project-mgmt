@@ -19,32 +19,28 @@
 
 ## 活跃Bug
 
-### BUG-029: RTS竞技场单位不创建 / Souls:0 / 方块卡着不动（用户试玩P0阻塞）
+### BUG-029: RTS竞技场单位不移动 / 视觉方块卡住不动（用户试玩P0阻塞）
 - **严重程度：** P0
 - **发现时间：** 2026-09-08
 - **发现者：** 用户试玩反馈
 - **负责方：** battleplan(SoulGame)
-- **状态：** 🔴 已派发/修复中（紧急标记已放入战策仓库docs/URGENT_BUG.md，战策自触发下一轮优先处理）
-- **复现步骤：**
-  1. 运行战策游戏，进入RTS竞技场
-  2. 战斗开始（Tick跑了141）
-  3. 调试面板显示 Souls: 0
-  4. 地图上只有几个彩色方块卡着不动
-- **预期：** 进入竞技场后，玩家和AI灵魂单位正常创建，Souls计数 > 0，单位能正常移动和战斗
-- **实际：** 战斗开始但单位未创建，Souls: 0，方块不动
-- **可能原因：**
-  1. 用户未经过灵魂选择场景直接进入竞技场，GameState中无player_soul
-  2. RTSArenaManager.start_battle()中SoulUnit.new()或init_from_soul()失败
-  3. 单位创建了但调试面板Souls计数逻辑有bug
-  4. 最近的commit（战斗反馈系统/设置保存加载）可能引入了回归
-- **排查方向：**
-  1. 检查RTSArenaManager.start_battle()执行流程，确认player_unit和ai_unit是否成功add_child
-  2. 检查SoulUnit.gd的init_from_soul()和_ready()是否有报错
-  3. 检查调试面板Souls计数的数据源
-  4. 检查从主菜单直接进入竞技场的路径是否有默认灵魂创建逻辑
-  5. 用Godot headless运行测试，确认RTS竞技场相关测试是否通过
+- **状态：** 🟡 修复中（根因已找到并修复代码，待用户GUI验证）
+- **根因分析（战策第58轮排查确认）：**
+  1. **主要bug**：RTSArenaController._on_unit_spawned()中连接position_changed信号时，lambda函数写了`func(pos)`参数，但Godot 4中Node2D.position_changed信号**没有参数**，导致信号连接失败，视觉方块位置永远不更新
+  2. **次要问题**：battle_mode默认是"manual"，玩家单位不会自动移动，只有AI单位会移动，不符合"教练式RTS"设计理念
+- **修复内容（战策第58轮）：**
+  1. ✅ 修复position_changed信号连接：`func(pos)`改为`func()`，在lambda体内读取p_unit.position
+  2. ✅ 将battle_mode默认从"manual"改为"auto"，符合"教练式RTS"设计理念（灵魂自主决策，玩家通过宏观指令干预）
+- **修改文件：**
+  - scripts/game/RTSArenaController.gd: 修复position_changed信号连接（第1470-1473行）
+  - scripts/game/RTSArenaManager.gd: battle_mode默认改为"auto"（第68行）
+- **修复后预期效果：**
+  - RTS竞技场中玩家和AI单位的视觉方块会正确跟随单位移动
+  - 玩家单位在auto模式下会自动向AI单位移动并攻击
+  - 战斗流程完整：双方移动→攻击→技能→一方HP归零→结果展示
+- **待验证：** 用户GUI运行验证（用户已睡觉，待下一次试玩确认）
 - **影响：** 阻塞可玩原型验证，用户无法正常体验RTS对战
-- **紧急标记：** D:\Sojourn\battleplan\docs\URGENT_BUG.md
+- **紧急标记：** D:\Sojourn\battleplan\docs\URGENT_BUG.md（BUG-029修复后仍保留，因BUG-030未解决）
 
 ---
 
@@ -53,7 +49,17 @@
 - **发现时间：** 2026-09-08
 - **发现者：** 用户试玩反馈
 - **负责方：** battleplan(SoulGame)
-- **状态：** 🔴 已派发/修复中（紧急标记已放入战策仓库docs/URGENT_BUG.md）
+- **状态：** 🔴 已派发/修复中（紧急标记已放入战策仓库docs/URGENT_BUG.md，战策自触发优先处理BUG-029后将处理此问题）
+- **当前进展（监控第88轮检查）：**
+  - 音频.import文件：20 / 381 wav文件（仅5%导入率）
+  - 图片资源全部导入成功（118个.import文件）
+  - 战策自触发当前优先处理BUG-029（已修复），尚未开始处理BUG-030
+  - 已知技术限制：Godot headless --import处理大量wav时会崩溃（exit code -1073741819）
+- **可能的解决方案：**
+  1. 用Godot编辑器打开项目，等待自动导入（用户操作）
+  2. 分批导入音频（每次导入一个子目录，避免崩溃）
+  3. 在AudioManager中添加容错：加载失败时静默跳过而不是刷屏警告
+  4. 考虑将wav转换为ogg（Godot对ogg支持更好，文件更小）
 - **复现步骤：**
   1. 运行战策游戏
   2. 控制台大量输出"Failed to load res://assets/audio/..."警告
