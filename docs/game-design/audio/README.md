@@ -265,6 +265,12 @@ assets/audio/
 | ui_slider_adjust.wav | ~0.2秒 | 44100Hz/16bit/WAV | UI滑动条调整音效（战策M2 UI资源，覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_dropdown.wav | ~0.3秒 | 44100Hz/16bit/WAV | UI下拉菜单音效（战策M2 UI资源，覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_confirm_dialog.wav | ~0.5秒 | 44100Hz/16bit/WAV | UI确认对话框音效（战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_start.wav | ~1秒 | 44100Hz/16bit/WAV | 对战开始音效（史诗上升有力音+闪光+战鼓声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_end.wav | ~0.8秒 | 44100Hz/16bit/WAV | 对战结束音效（柔和下降音+回响+结束感，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_victory.wav | ~1秒 | 44100Hz/16bit/WAV | 胜利音效（欢快上升音+闪光+号角声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_defeat.wav | ~1秒 | 44100Hz/16bit/WAV | 失败音效（低沉下降音+回响+失落感但不沮丧，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_skill_cast.wav | ~0.5秒 | 44100Hz/16bit/WAV | 技能释放音效（有力上升音+闪光+能量感+魔法声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_loading.wav | ~0.8秒 | 44100Hz/16bit/WAV | 加载界面音效（柔和循环音+光点+神秘感，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_aurora.wav | ~5秒 | 44100Hz/16bit/WAV | 极光环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_meteor_shower.wav | ~5秒 | 44100Hz/16bit/WAV | 流星雨环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_content_smile.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂满足情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -409,6 +415,12 @@ assets/audio/
 | ui_slider_adjust.wav | ~0.2秒 | 44100Hz/16bit/WAV | UI滑动条调整音效（战策M2 UI资源，覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_dropdown.wav | ~0.3秒 | 44100Hz/16bit/WAV | UI下拉菜单音效（战策M2 UI资源，覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_confirm_dialog.wav | ~0.5秒 | 44100Hz/16bit/WAV | UI确认对话框音效（战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_start.wav | ~1秒 | 44100Hz/16bit/WAV | 对战开始音效（史诗上升有力音+闪光+战鼓声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_end.wav | ~0.8秒 | 44100Hz/16bit/WAV | 对战结束音效（柔和下降音+回响+结束感，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_victory.wav | ~1秒 | 44100Hz/16bit/WAV | 胜利音效（欢快上升音+闪光+号角声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_defeat.wav | ~1秒 | 44100Hz/16bit/WAV | 失败音效（低沉下降音+回响+失落感但不沮丧，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_skill_cast.wav | ~0.5秒 | 44100Hz/16bit/WAV | 技能释放音效（有力上升音+闪光+能量感+魔法声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_loading.wav | ~0.8秒 | 44100Hz/16bit/WAV | 加载界面音效（柔和循环音+光点+神秘感，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_sunset.wav | ~5秒 | 44100Hz/16bit/WAV | 黄昏环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_dawn.wav | ~5秒 | 44100Hz/16bit/WAV | 黎明环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_amazed_wonder.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂惊叹情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -553,6 +565,12 @@ assets/audio/
 | ui_slider_adjust.wav | ~0.2秒 | 44100Hz/16bit/WAV | UI滑动条调整音效（战策M2 UI资源，覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_dropdown.wav | ~0.3秒 | 44100Hz/16bit/WAV | UI下拉菜单音效（战策M2 UI资源，覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_confirm_dialog.wav | ~0.5秒 | 44100Hz/16bit/WAV | UI确认对话框音效（战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_start.wav | ~1秒 | 44100Hz/16bit/WAV | 对战开始音效（史诗上升有力音+闪光+战鼓声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_end.wav | ~0.8秒 | 44100Hz/16bit/WAV | 对战结束音效（柔和下降音+回响+结束感，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_victory.wav | ~1秒 | 44100Hz/16bit/WAV | 胜利音效（欢快上升音+闪光+号角声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_defeat.wav | ~1秒 | 44100Hz/16bit/WAV | 失败音效（低沉下降音+回响+失落感但不沮丧，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_skill_cast.wav | ~0.5秒 | 44100Hz/16bit/WAV | 技能释放音效（有力上升音+闪光+能量感+魔法声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_loading.wav | ~0.8秒 | 44100Hz/16bit/WAV | 加载界面音效（柔和循环音+光点+神秘感，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | env_volcano_crater.wav | ~5秒 | 44100Hz/16bit/WAV | 火山口环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | env_lava_cave.wav | ~5秒 | 44100Hz/16bit/WAV | 熔岩洞环境音（可循环） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
 | soul_furious.wav | ~1秒 | 44100Hz/16bit/WAV | 灵魂暴怒情绪音效 | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-06 |
@@ -799,6 +817,12 @@ assets/audio/
 | ui_slider_adjust.wav | ~0.2秒 | 44100Hz/16bit/WAV | UI滑动条调整音效（战策M2 UI资源，覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_dropdown.wav | ~0.3秒 | 44100Hz/16bit/WAV | UI下拉菜单音效（战策M2 UI资源，覆盖更新第1轮旧版） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 | ui_confirm_dialog.wav | ~0.5秒 | 44100Hz/16bit/WAV | UI确认对话框音效（战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_start.wav | ~1秒 | 44100Hz/16bit/WAV | 对战开始音效（史诗上升有力音+闪光+战鼓声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_end.wav | ~0.8秒 | 44100Hz/16bit/WAV | 对战结束音效（柔和下降音+回响+结束感，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_victory.wav | ~1秒 | 44100Hz/16bit/WAV | 胜利音效（欢快上升音+闪光+号角声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_defeat.wav | ~1秒 | 44100Hz/16bit/WAV | 失败音效（低沉下降音+回响+失落感但不沮丧，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| battle_skill_cast.wav | ~0.5秒 | 44100Hz/16bit/WAV | 技能释放音效（有力上升音+闪光+能量感+魔法声，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
+| ui_loading.wav | ~0.8秒 | 44100Hz/16bit/WAV | 加载界面音效（柔和循环音+光点+神秘感，战策M2 UI资源，新增） | AI生成（text_to_audio） | 自行生成，无第三方版权 | 2026-09-07 |
 
 **注意：** UI音效和灵魂情绪音效生成时长为1秒，设计规格为0.15-0.6秒，需后期裁剪到目标时长。
 
