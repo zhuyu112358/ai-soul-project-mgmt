@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-07（集成测试第55轮，🎉M2突破2600+Godot突破2800+灵魂音效全部完成——ember(SoulArena) M14完成SDK v2.3.0（2223测试全绿，一次通过，BUG-026 PerceptionActionLoop flaky测试连续4轮未复现），arboreus(Seed) M14完成SDK v3.0.0（2285测试全绿，文档完善中API一致性+测试覆盖率+依赖分析），battleplan(SoulGame) M2测试2616全通过（+291，🎉灵魂音效全部完成133个+美术概念图，Godot 2800全绿🎉突破2800！），Godot构建有多个资源缺失（BUG-025继续扩展：5个资源缺失main_menu_bg.png+ui_panel_switch.wav+bgm_main_menu.wav+env_floating_island.wav+ui_hover.wav），引擎4508全绿，⚠️服务器停止（连续多轮，API测试跳过），活跃bug 2个（BUG-025资源缺失继续扩展+BUG-026 flaky测试连续4轮未复现））
+**最后更新：** 2026-09-07（集成测试第56轮，🎉M2概念美术全部完成93个+Godot 2870——ember(SoulArena) M14完成SDK v2.3.0（2223测试全绿，一次通过，BUG-026 PerceptionActionLoop flaky测试连续5轮未复现），arboreus(Seed) M14完成SDK v3.0.0（2285测试，⚠️BUG-027性能基准测试持续失败：50文化tick 20帧317.76ms超阈值300ms，两次运行都失败非flaky），battleplan(SoulGame) M2测试2686全通过（+70，🎉概念美术全部完成93个，Godot 2870全绿），Godot构建有多个资源缺失（BUG-025持续存在：5个资源缺失），引擎4508测试4507通过1失败，⚠️服务器停止（连续多轮，API测试跳过），活跃bug 3个（BUG-025资源缺失+BUG-026 flaky连续5轮未复现+BUG-027性能基准测试持续失败））
 **维护者：** 总体监控任务
 
 ---
@@ -9,11 +9,11 @@
 
 | 状态 | 数量 |
 |------|------|
-| 待确认 | 2 |
+| 待确认 | 3 |
 | 已派发/修复中 | 0 |
 | 待回归 | 0 |
 | 已关闭 | 24 |
-| **总计活跃** | **2** |
+| **总计活跃** | **3** |
 
 ---
 
@@ -24,7 +24,7 @@
 - **发现时间：** 2026-09-07
 - **发现者：** 集成测试任务（第51轮）
 - **负责方：** ember(SoulArena)
-- **状态：** 🔴 待确认（第52-55轮连续4轮未复现，一次通过2223全绿，持续观察）
+- **状态：** 🔴 待确认（第52-56轮连续5轮未复现，一次通过2223全绿，持续观察）
 - **复现步骤：**
   1. 运行 `cd D:\Sojourn\ember; npm test`
   2. 偶发失败（约1/2概率，第51轮第一次运行失败，重试后通过；第52轮一次通过未复现）
@@ -41,6 +41,29 @@
 - **影响：** M14 Phase4 PerceptionActionLoop（感知-动作闭环学习+Q学习）的exploration/exploitation决策测试不稳定。不影响核心功能，仅测试稳定性问题。
 - **根因推测：** Q学习中的epsilon-greedy策略涉及随机性，测试未正确设置随机种子或确保epsilon=0（纯利用），导致偶发选择exploration。与BUG-022/023类似，均为flaky测试前置条件不足。
 - **修复建议：** 在测试中显式设置epsilon=0或随机种子，确保selectAction在高Q值时确定性地选择exploitation。
+
+---
+
+### BUG-027: arboreus CulturalEvolutionSystem性能基准测试持续失败（50文化tick超阈值）
+- **严重程度：** P2
+- **发现时间：** 2026-09-07
+- **发现者：** 集成测试任务（第56轮）
+- **负责方：** arboreus(Seed)
+- **状态：** 🔴 待确认（两次运行都失败，非flaky）
+- **复现步骤：**
+  1. 运行 `cd D:\Sojourn\arboreus; npm test`
+  2. M13 Performance Benchmark - CulturalEvolutionSystem测试失败
+- **预期：** 50个文化tick 20帧耗时 ≤ 300ms
+- **实际（第56轮第一次）：** 317.76ms，超阈值17.76ms
+  ```
+  not ok 2 - should tick 50 cultures within threshold
+  error: 'Ticking 50 cultures for 20 frames took 317.76ms, threshold 300ms'
+  location: tests/m13-performance-benchmark.test.ts:374
+  ```
+- **实际（第56轮重试）：** 仍然失败（2285测试2284通过1失败）
+- **影响：** arboreus M13 CulturalEvolutionSystem性能基准测试不通过。不影响核心功能，仅性能测试失败。
+- **根因推测：** 可能是测试环境系统负载过高（同时运行ember测试+Godot构建+其他进程），或CulturalEvolutionSystem存在性能退化。由于无代码变更（arboreus仅文档完善），优先怀疑测试环境负载问题。
+- **修复建议：** ①检查测试时系统负载，排除环境因素；②如确认非环境问题，调查CulturalEvolutionSystem性能瓶颈；③考虑适当提高阈值（如350ms）以适应测试环境波动。
 
 ---
 
