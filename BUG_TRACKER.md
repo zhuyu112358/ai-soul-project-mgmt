@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-07（集成测试第50轮🎉里程碑——M14双引擎快速推进+引擎突破4000测试+连续10轮全绿——ember(SoulArena) M14四阶段完成（2162测试全绿+137，OntologicalSelf具身自我+HybridMemory神经符号混合记忆+PerceptionActionLoop感知动作闭环Q学习，第160子系统），arboreus(Seed) M14三阶段经济系统完成（2138测试全绿+195，ResourceProduction资源生产+TradeExchange交易交换+Distribution分配系统），battleplan(SoulGame) M2测试1483全通过（+136，主菜单+灵魂选择+游戏流程修复+游戏设计冻结M2 prototype），Godot构建有资源缺失错误（BUG-025: main_menu_bg.png和bgm_bgm_menu_01不存在），1667自动化测试全通过（111+73+1483），引擎4300全绿（突破4000里程碑！），⚠️服务器停止（上一轮5.2分钟后崩溃，30分钟稳定未达成，API测试跳过），活跃bug 1个（BUG-025待确认））
+**最后更新：** 2026-09-07（集成测试第51轮，🎉M14双引擎完成+双SDK发布+引擎突破4500测试——ember(SoulArena) M14完成SDK v2.3.0（2223测试全绿+61，五阶段神经符号与具身认知OntologicalSelf+HybridMemory+PerceptionActionLoop+EmbodiedConcepts，第162子系统，⚠️BUG-026 PerceptionActionLoop selectAction exploitation flaky测试，重试后全绿），arboreus(Seed) M14完成SDK v3.0.0（2285测试全绿+147，六阶段经济基础与文明模拟ResourceProduction+TradeExchange+Distribution+CivilizationSimulation+LargeScaleSimulation），battleplan(SoulGame) M2测试1624全通过（+141，音频库35新音效+美术库37新图+背景图集成+BGM集成+全场景修复，Godot 1808全绿突破1800），Godot构建仍有main_menu_bg.png缺失（BUG-025未完全修复，BGM已修复），引擎4508全绿（突破4500！），⚠️服务器停止（连续多轮，API测试跳过），活跃bug 2个（BUG-025资源缺失+BUG-026 flaky测试））
 **维护者：** 总体监控任务
 
 ---
@@ -9,32 +9,58 @@
 
 | 状态 | 数量 |
 |------|------|
-| 待确认 | 1 |
+| 待确认 | 2 |
 | 已派发/修复中 | 0 |
 | 待回归 | 0 |
 | 已关闭 | 24 |
-| **总计活跃** | **1** |
+| **总计活跃** | **2** |
 
 ---
 
 ## 活跃Bug
+
+### BUG-026: PerceptionActionLoop selectAction exploitation 测试flaky（Q学习探索/利用随机性）
+- **严重程度：** P2
+- **发现时间：** 2026-09-07
+- **发现者：** 集成测试任务（第51轮）
+- **负责方：** ember(SoulArena)
+- **状态：** 🔴 待确认
+- **复现步骤：**
+  1. 运行 `cd D:\Sojourn\ember; npm test`
+  2. 偶发失败（约1/2概率）
+- **预期：** PerceptionActionLoop: selectAction exploitation 测试通过，在高Q值时选择exploitation
+- **实际：** 偶发失败，actual='exploration', expected='exploitation'
+  ```
+  not ok 1204 - PerceptionActionLoop: selectAction exploitation
+  error: Expected values to be strictly equal: + actual - expected
+  + 'exploration' - 'exploitation'
+  location: tests/soul/PerceptionActionLoop.test.js:210
+  ```
+- **重试结果：** 第51轮重试后2223测试全通过，确认为flaky测试
+- **影响：** M14 Phase4 PerceptionActionLoop（感知-动作闭环学习+Q学习）的exploration/exploitation决策测试不稳定。不影响核心功能，仅测试稳定性问题。
+- **根因推测：** Q学习中的epsilon-greedy策略涉及随机性，测试未正确设置随机种子或确保epsilon=0（纯利用），导致偶发选择exploration。与BUG-022/023类似，均为flaky测试前置条件不足。
+- **修复建议：** 在测试中显式设置epsilon=0或随机种子，确保selectAction在高Q值时确定性地选择exploitation。
+
+---
 
 ### BUG-025: 主菜单场景资源缺失（main_menu_bg.png和bgm_bgm_menu_01）
 - **严重程度：** P3
 - **发现时间：** 2026-09-07
 - **发现者：** 集成测试任务（第50轮）
 - **负责方：** battleplan应用实现
-- **状态：** 🔴 待确认
+- **状态：** 🔴 待确认（部分修复：BGM已修复，main_menu_bg.png仍缺失）
 - **复现步骤：**
   1. 运行 `D:\Godot\Godot.exe --headless --check-only --path D:\Sojourn\battleplan`
 - **预期：** 项目构建无错误，所有资源文件存在
-- **实际：**
-  - `ERROR: No loader found for resource: res://assets/art/background/main_menu_bg.png (expected type: Texture2D)`
-  - `ERROR: res://scenes/main_menu.tscn:42 - Parse Error: [ext_resource] referenced non-existent resource at: res://assets/art/background/main_menu_bg.png.`
+- **实际（第50轮）：**
+  - `ERROR: No loader found for resource: res://assets/art/background/main_menu_bg.png`
   - `WARNING: [Audio] AudioManager: Sound 'bgm_bgm_menu_01' not found`
-- **影响：** 主菜单场景加载时背景图和背景音乐缺失，影响游戏运行时视觉和音频体验。不影响测试运行（1483测试全通过）。
-- **根因推测：** M2新增主菜单场景（main_menu.tscn）时引用了尚未创建的资源文件（main_menu_bg.png和bgm_bgm_menu_01音效）。可能是占位符引用，资源文件待制作。
-- **修复建议：** 创建 `res://assets/art/background/main_menu_bg.png` 背景图片和 `bgm_bgm_menu_01` 音效文件，或修改main_menu.tscn移除对不存在资源的引用。
+- **实际（第51轮）：**
+  - `ERROR: No loader found for resource: res://assets/art/background/main_menu_bg.png`（仍存在）
+  - BGM音效已修复（音频库扩展35新音效+BGM集成）
+- **影响：** 主菜单场景加载时背景图缺失，影响游戏运行时视觉体验。BGM已修复。不影响测试运行（1624测试全通过）。
+- **部分修复：** 第51轮添加了35新音效+37新设计图+背景图集成+BGM集成，但main_menu_bg.png特定文件仍未创建。
+- **修复建议：** 创建 `res://assets/art/background/main_menu_bg.png` 背景图片，或修改main_menu.tscn使用已存在的背景图资源。
 
 ---
 
