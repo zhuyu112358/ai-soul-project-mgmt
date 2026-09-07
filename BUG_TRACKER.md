@@ -1,6 +1,6 @@
 # AI灵魂项目 — Bug跟踪
 
-**最后更新：** 2026-09-07（集成测试第52轮，🎉M2快速推进接近2000测试——ember(SoulArena) M14完成SDK v2.3.0（2223测试全绿，一次通过，BUG-026 PerceptionActionLoop flaky测试本轮未复现），arboreus(Seed) M14完成SDK v3.0.0（2285测试全绿，M15预研中军事+生态系统技术设计文档），battleplan(SoulGame) M2测试1775全通过（+151，全场景按钮悬停音频视觉反馈：设置菜单+灵魂选择+灵魂之家+RTS竞技场+结果弹窗，Godot 1959全绿接近2000），Godot构建仍有main_menu_bg.png缺失（BUG-025未修复），引擎4508全绿，⚠️服务器停止（连续多轮，API测试跳过），活跃bug 2个（BUG-025资源缺失+BUG-026 flaky测试本轮未复现））
+**最后更新：** 2026-09-07（集成测试第53轮，🎉M2突破2000测试+Godot突破2200——ember(SoulArena) M14完成SDK v2.3.0（2223测试全绿，一次通过，BUG-026 PerceptionActionLoop flaky测试连续2轮未复现），arboreus(Seed) M14完成SDK v3.0.0（2285测试全绿，文档完善中），battleplan(SoulGame) M2测试2019全通过（+244，🎉突破2000！环境+战斗+BGM+UI+灵魂音效集成5轮，Godot 2203全绿突破2200），Godot构建有多个资源缺失（BUG-025扩展：main_menu_bg.png+ui_panel_switch.wav+bgm_main_menu.wav不存在），引擎4508全绿，⚠️服务器停止（连续多轮，API测试跳过），活跃bug 2个（BUG-025资源缺失扩展+BUG-026 flaky测试连续2轮未复现））
 **维护者：** 总体监控任务
 
 ---
@@ -24,7 +24,7 @@
 - **发现时间：** 2026-09-07
 - **发现者：** 集成测试任务（第51轮）
 - **负责方：** ember(SoulArena)
-- **状态：** 🔴 待确认（第52轮未复现，一次通过2223全绿，持续观察）
+- **状态：** 🔴 待确认（第52-53轮连续2轮未复现，一次通过2223全绿，持续观察）
 - **复现步骤：**
   1. 运行 `cd D:\Sojourn\ember; npm test`
   2. 偶发失败（约1/2概率，第51轮第一次运行失败，重试后通过；第52轮一次通过未复现）
@@ -44,24 +44,25 @@
 
 ---
 
-### BUG-025: 主菜单场景资源缺失（main_menu_bg.png和bgm_bgm_menu_01）
+### BUG-025: 主菜单场景资源缺失（扩展为多个资源缺失）
 - **严重程度：** P3
 - **发现时间：** 2026-09-07
 - **发现者：** 集成测试任务（第50轮）
 - **负责方：** battleplan应用实现
-- **状态：** 🔴 待确认（部分修复：BGM已修复，main_menu_bg.png仍缺失，第52轮仍存在）
+- **状态：** 🔴 待确认（第53轮扩展：多个资源缺失，main_menu_bg.png+ui_panel_switch.wav+bgm_main_menu.wav）
 - **复现步骤：**
   1. 运行 `D:\Godot\Godot.exe --headless --check-only --path D:\Sojourn\battleplan`
 - **预期：** 项目构建无错误，所有资源文件存在
-- **实际（第50轮）：**
+- **实际（第50-52轮）：**
   - `ERROR: No loader found for resource: res://assets/art/background/main_menu_bg.png`
-  - `WARNING: [Audio] AudioManager: Sound 'bgm_bgm_menu_01' not found`
-- **实际（第51轮）：**
-  - `ERROR: No loader found for resource: res://assets/art/background/main_menu_bg.png`（仍存在）
   - BGM音效已修复（音频库扩展35新音效+BGM集成）
-- **影响：** 主菜单场景加载时背景图缺失，影响游戏运行时视觉体验。BGM已修复。不影响测试运行（1624测试全通过）。
-- **部分修复：** 第51轮添加了35新音效+37新设计图+背景图集成+BGM集成，但main_menu_bg.png特定文件仍未创建。
-- **修复建议：** 创建 `res://assets/art/background/main_menu_bg.png` 背景图片，或修改main_menu.tscn使用已存在的背景图资源。
+- **实际（第53轮，扩展）：**
+  - `ERROR: No loader found for resource: res://assets/audio/ui/ui_panel_switch.wav`（新缺失）
+  - `ERROR: No loader found for resource: res://assets/art/background/main_menu_bg.png`（仍缺失）
+  - `ERROR: No loader found for resource: res://assets/audio/bgm/bgm_main_menu.wav`（新缺失）
+- **影响：** 主菜单场景加载时背景图和多个音效缺失，影响游戏运行时视觉和音频体验。不影响测试运行（2019测试全通过）。
+- **根因推测：** M2新增音效集成（环境+战斗+BGM+UI+灵魂音效5轮共177新音效）时，部分音效文件引用了尚未创建的资源。main_menu_bg.png背景图持续未创建。
+- **修复建议：** 创建 `res://assets/art/background/main_menu_bg.png`、`res://assets/audio/ui/ui_panel_switch.wav`、`res://assets/audio/bgm/bgm_main_menu.wav`，或修改场景/脚本移除对不存在资源的引用。
 
 ---
 
