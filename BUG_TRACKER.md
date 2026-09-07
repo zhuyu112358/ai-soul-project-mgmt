@@ -24,21 +24,26 @@
 - **发现时间：** 2026-09-08
 - **发现者：** 用户试玩反馈
 - **负责方：** battleplan(SoulGame)
-- **状态：** 🟡 修复中（根因已找到并修复代码，待用户GUI验证）
-- **根因分析（战策第58轮排查确认）：**
-  1. **主要bug**：RTSArenaController._on_unit_spawned()中连接position_changed信号时，lambda函数写了`func(pos)`参数，但Godot 4中Node2D.position_changed信号**没有参数**，导致信号连接失败，视觉方块位置永远不更新
-  2. **次要问题**：battle_mode默认是"manual"，玩家单位不会自动移动，只有AI单位会移动，不符合"教练式RTS"设计理念
-- **修复内容（战策第58轮）：**
-  1. ✅ 修复position_changed信号连接：`func(pos)`改为`func()`，在lambda体内读取p_unit.position
-  2. ✅ 将battle_mode默认从"manual"改为"auto"，符合"教练式RTS"设计理念（灵魂自主决策，玩家通过宏观指令干预）
-- **修改文件：**
-  - scripts/game/RTSArenaController.gd: 修复position_changed信号连接（第1470-1473行）
-  - scripts/game/RTSArenaManager.gd: battle_mode默认改为"auto"（第68行）
-- **修复后预期效果：**
-  - RTS竞技场中玩家和AI单位的视觉方块会正确跟随单位移动
-  - 玩家单位在auto模式下会自动向AI单位移动并攻击
-  - 战斗流程完整：双方移动→攻击→技能→一方HP归零→结果展示
-- **待验证：** 用户GUI运行验证（用户已睡觉，待下一次试玩确认）
+- **状态：** 🟢 代码已修复（监控第92轮找到真正根因并修复，待用户GUI验证）
+- **根因分析（战策第58轮初步排查 + 监控第92轮深入排查确认）：**
+  1. **战策第58轮发现的问题**：position_changed信号lambda用了`func(pos)`参数，但Godot 4 Node2D.position_changed信号无参数 → 已修复为`func()`
+  2. **监控第92轮发现的真正根因**：`p_unit.position_changed.connect(...)`直接报错 **"Invalid access to property or key 'position_changed' on a base object of type 'Node2D (SoulUnit.gd)'"**。SoulUnit虽然extends Node2D，但在Godot 4.7.2中position_changed信号访问失败（可能是类型系统或信号遮蔽问题）。战策第58轮的修复只改了lambda参数，但信号连接本身就崩溃了，所以视觉方块永远不会更新位置。
+  3. **次要问题**：battle_mode默认"manual" → 已改为"auto"
+- **修复内容：**
+  1. ✅ 战策第58轮：battle_mode默认改为"auto"
+  2. ✅ 监控第92轮：**移除position_changed信号连接**，改用`_process()`中每帧同步视觉方块位置（`_player_visual.position = RTSArenaManager.player_unit.position - Vector2(32,32)`），更可靠不依赖信号
+  3. ✅ 监控第92轮：顺带修复了日志中发现的其他脚本错误：
+     - `set_grow_horizontal`/`set_grow_vertical` → Label没有这些方法，已移除
+     - MainMenu `Tween.set_looped()` → `set_loops()`（Godot 4 API）
+     - AudioManager添加`_failed_streams`失败缓存，避免音频加载失败重复刷屏警告
+- **修改文件（监控第92轮commit 6daad3c）：**
+  - scripts/game/RTSArenaController.gd：移除position_changed连接 + _process视觉同步 + 移除set_grow_*
+  - scripts/ui/MainMenu.gd：set_looped→set_loops
+  - scripts/autoload/AudioManager.gd：_failed_streams失败缓存
+- **用户运行日志证据**（godot2026-09-08T06.16.13.log）：
+  - 单位确实创建了：`SoulUnit: 姘寸伒 initialized from soul data` + `Unit spawned - 姘寸伒 (player: true)`
+  - 然后立即报错：`Invalid access to property or key 'position_changed'` → 视觉方块创建了但位置永远不更新
+  - 所以用户看到方块卡在出生点不动
 - **影响：** 阻塞可玩原型验证，用户无法正常体验RTS对战
 - **紧急标记：** D:\Sojourn\battleplan\docs\URGENT_BUG.md（BUG-029修复后仍保留，因BUG-030未解决）
 
