@@ -24,28 +24,33 @@
 - **发现时间：** 2026-09-08
 - **发现者：** 用户试玩反馈
 - **负责方：** battleplan(SoulGame)
-- **状态：** 🟢 代码已修复（监控第92轮找到真正根因并修复，待用户GUI验证）
-- **根因分析（战策第58轮初步排查 + 监控第92轮深入排查确认）：**
+- **状态：** 🟡 部分修复（z-index已修复能看到单位了，但AI单位移动一下就停住，需战策进一步排查）
+- **根因分析（三轮排查逐步深入）：**
   1. **战策第58轮发现的问题**：position_changed信号lambda用了`func(pos)`参数，但Godot 4 Node2D.position_changed信号无参数 → 已修复为`func()`
-  2. **监控第92轮发现的真正根因**：`p_unit.position_changed.connect(...)`直接报错 **"Invalid access to property or key 'position_changed' on a base object of type 'Node2D (SoulUnit.gd)'"**。SoulUnit虽然extends Node2D，但在Godot 4.7.2中position_changed信号访问失败（可能是类型系统或信号遮蔽问题）。战策第58轮的修复只改了lambda参数，但信号连接本身就崩溃了，所以视觉方块永远不会更新位置。
-  3. **次要问题**：battle_mode默认"manual" → 已改为"auto"
+  2. **监控第92轮发现的真正根因**：`p_unit.position_changed.connect(...)`直接报错 **"Invalid access to property or key 'position_changed' on a base object of type 'Node2D (SoulUnit.gd)'"**。SoulUnit虽然extends Node2D，但在Godot 4.7.2中position_changed信号访问失败。战策第58轮的修复只改了lambda参数，但信号连接本身就崩溃了，所以视觉方块永远不会更新位置。
+  3. **监控第93轮发现的第三个问题（关键！）**：**单位视觉被ArenaMap障碍物完全挡住了**。用户截图中看到的彩色方块（紫色、棕色、蓝色）根本不是战斗单位，而是ArenaMap的地图障碍物（4个棕色岩石ROCK + 2个紫灰柱子PILLAR + 1个蓝色水晶CRYSTAL）。战斗单位的视觉（玩家蓝色、AI红色）确实被创建了，但因为ArenaMap是在单位视觉之后才被添加到场景树中的，后添加的节点渲染在上面，把单位视觉完全挡住了。用户之前一直看到的"方块卡着不动"其实是地图障碍物，根本不是战斗单位！
+  4. **次要问题**：battle_mode默认"manual" → 已改为"auto"
 - **修复内容：**
   1. ✅ 战策第58轮：battle_mode默认改为"auto"
-  2. ✅ 监控第92轮：**移除position_changed信号连接**，改用`_process()`中每帧同步视觉方块位置（`_player_visual.position = RTSArenaManager.player_unit.position - Vector2(32,32)`），更可靠不依赖信号
-  3. ✅ 监控第92轮：顺带修复了日志中发现的其他脚本错误：
-     - `set_grow_horizontal`/`set_grow_vertical` → Label没有这些方法，已移除
-     - MainMenu `Tween.set_looped()` → `set_loops()`（Godot 4 API）
-     - AudioManager添加`_failed_streams`失败缓存，避免音频加载失败重复刷屏警告
-- **修改文件（监控第92轮commit 6daad3c）：**
-  - scripts/game/RTSArenaController.gd：移除position_changed连接 + _process视觉同步 + 移除set_grow_*
+  2. ✅ 监控第92轮：**移除position_changed信号连接**，改用`_process()`中每帧同步视觉方块位置
+  3. ✅ 监控第92轮：顺带修复了日志中发现的其他脚本错误（set_grow_horizontal/vertical、Tween.set_looped→set_loops、AudioManager失败缓存）
+  4. ✅ 监控第93轮：**给单位视觉设置z_index=10**，让它渲染在ArenaMap障碍物之上（commit 6948fe8）
+- **用户验证结果（2026-09-08 06:54）：**
+  - ✅ z-index修复生效：能看到红色（AI）和蓝色（玩家）单位了
+  - ❌ 新问题：**红色方块（AI）动了一下然后不动了**，蓝色方块（玩家）似乎也没动
+  - 截图显示：AI单位在上方，玩家单位在下方，中间有柱子和水晶障碍物，两者距离约200-300像素（大于attack_range=102），AI单位应该继续移动但停住了
+  - 可能原因：障碍物碰撞检测导致单位被挡住 / AI决策变成IDLE / 移动逻辑有bug / 玩家单位不移动导致AI走到一半停了
+- **剩余问题（交战策排查修复）：**
+  1. AI单位移动一下就停住的根因（障碍物碰撞？AI决策？移动逻辑？）
+  2. 玩家单位是否在移动（auto模式下玩家AI控制器是否正常工作）
+  3. 障碍物碰撞检测是否过于严格导致单位被卡住
+  4. 移动路径规划（是否需要绕开障碍物）
+- **修改文件：**
+  - scripts/game/RTSArenaController.gd：移除position_changed连接 + _process视觉同步 + 移除set_grow_* + z_index=10
   - scripts/ui/MainMenu.gd：set_looped→set_loops
   - scripts/autoload/AudioManager.gd：_failed_streams失败缓存
-- **用户运行日志证据**（godot2026-09-08T06.16.13.log）：
-  - 单位确实创建了：`SoulUnit: 姘寸伒 initialized from soul data` + `Unit spawned - 姘寸伒 (player: true)`
-  - 然后立即报错：`Invalid access to property or key 'position_changed'` → 视觉方块创建了但位置永远不更新
-  - 所以用户看到方块卡在出生点不动
 - **影响：** 阻塞可玩原型验证，用户无法正常体验RTS对战
-- **紧急标记：** D:\Sojourn\battleplan\docs\URGENT_BUG.md（BUG-029修复后仍保留，因BUG-030未解决）
+- **紧急标记：** D:\Sojourn\battleplan\docs\URGENT_BUG.md（已更新，战策优先排查AI单位移动卡住问题）
 
 ---
 
