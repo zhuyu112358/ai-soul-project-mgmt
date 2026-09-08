@@ -121,3 +121,36 @@
 1. Arboreus: 修复GridMap类名冲突 + .gdextension路径问题 → 重新编译 → 验证Godot加载
 2. Ember: 检查类名冲突（Soul/Emotion等是否与Godot内置类冲突）→ 创建测试项目验证加载
 3. 两个引擎都需要确保类名不与Godot内置类冲突
+
+## 第9轮监控进展（2026-09-08 12:50）
+
+### Arboreus - 问题已修复，待重新验证
+- ✅ **GridMap类名已改为ArboreusGridMap**（避免与Godot内置3D GridMap冲突）
+- ✅ **World类名已改为ArboreusWorld**（避免与Godot内置World冲突）
+- ✅ **.gdextension文件已移到addons/arboreus/目录**
+- ✅ 相关文件已修改：grid_map.cpp/h, pathfinder.cpp/h, world.cpp/h, entity.h, register_types.cpp
+- ✅ **重新编译成功**（arboreus.windows.Release.x86_64.dll, 12:45:28）
+- ⏳ **待重新运行minimal_test验证Godot加载**（当前测试日志还是旧的12:34，仍显示GridMap错误）
+- 下一轮Arboreus应重新运行测试验证修复效果
+
+### Ember - 爆发式进展，10个类完成
+- ✅ **P1 ActionSystem完成**（16384字节）- action queue, cooldowns, costs, result feedback
+- ✅ **P1 GrowthSystem完成**（16564字节）- 成长系统
+- ✅ **共11个.cpp文件，10个注册类**
+- ✅ 注册类列表：SoulData, Personality, EmotionState, CognitiveEngine, MemorySystem, PerceptionSystem, DecisionSystem, ActionSystem, GrowthSystem, Soul
+- ✅ **最新编译成功**（12:47:09，包含ActionSystem和GrowthSystem）
+- ✅ git commit: ffb9326 "feat(ember): P1 ActionSystem"
+- ⏳ GrowthSystem待commit
+- ⏳ 待检查类名冲突（Soul/Emotion等是否与Godot内置类冲突）
+- ⏳ 待创建测试项目验证Godot加载
+
+### 编译产物汇总
+| 引擎 | 最新编译时间 | DLL大小 | 类数量 |
+|------|-------------|---------|--------|
+| Arboreus | 12:45:28 | 487KB | 10个（已改名避免冲突） |
+| Ember | 12:47:09 | 3.25MB | 10个（待检查冲突） |
+
+### 下一步
+1. Arboreus: 重新运行minimal_test验证修复后的GDExtension加载
+2. Ember: commit GrowthSystem → 检查类名冲突 → 创建测试项目验证加载
+3. 两个引擎都通过Godot加载验证后，开始战策集成SDK
