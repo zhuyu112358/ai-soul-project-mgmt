@@ -242,3 +242,74 @@
 2. 🟠 Ember检查类名冲突 → 创建测试项目 → 验证加载
 3. 🟡 两个引擎都通过加载验证后，再继续开发新功能
 4. 🟢 加载验证通过后，开始战策集成SDK
+
+## 第12轮监控进展（2026-09-08 13:35）
+
+### 🎉 重大里程碑：Arboreus GDExtension成功被Godot加载！
+
+**测试时间：** 2026-09-08 13:22:21
+**测试项目：** arboreus/minimal_test
+**测试日志：** C:\Users\72424\AppData\Roaming\Godot\app_userdata\Minimal Arboreus Test\logs\godot2026-09-08T13.22.21.log
+
+**✅ 加载成功：**
+- 11个Arboreus类全部注册成功：
+  - ArboreusEntity, ArboreusEvent, ArboreusEventBus, ArboreusGridMap
+  - ArboreusMovementSystem, ArboreusPathfinder, ArboreusPhysicsSystem
+  - ArboreusSpatialIndex, ArboreusSteeringBehaviors, ArboreusWorld, ArboreusWorldClock
+
+**✅ API测试结果：**
+| 模块 | 状态 | 测试内容 |
+|------|------|---------|
+| ArboreusWorld | ✅ 通过 | 创建实体、获取实体数量 |
+| ArboreusEntity | ✅ 通过 | 设置名称、添加组件 |
+| ArboreusGridMap | ✅ 通过 | 创建网格、可走性、坐标转换 |
+| ArboreusEvent | ✅ 通过 | 创建事件、取消事件（上一轮的is_cancelled错误已修复） |
+| ArboreusEventBus | ✅ 通过 | 订阅事件 |
+| ArboreusPathfinder | ✅ 通过 | A*寻路，路径长度6，从(0.5,0.5)到(5.5,5.5) |
+| ArboreusPhysicsSystem | ⚠️ 部分 | 创建成功，但add_body()参数数量不匹配 |
+| ArboreusMovementSystem | ⏳ 未测到 | 测试在PhysicsSystem处中断 |
+| ArboreusSpatialIndex | ⏳ 未测到 | |
+| ArboreusWorldClock | ⏳ 未测到 | |
+| ArboreusSteeringBehaviors | ⏳ 未测到 | |
+
+**❌ 发现的问题：**
+- `Invalid call to function 'add_body' in base 'ArboreusPhysicsSystem'. Expected 1 argument(s).`
+- 原因：测试脚本传了4个参数（id, position, radius, mass），但C++实现只接受1个参数
+- 修复：修改测试脚本或C++实现，使API参数匹配
+- 这是测试脚本和实现之间的API不匹配问题，**不是GDExtension加载问题**
+
+**测试历史：**
+- 12:57:03 - 第一次测试（10个类，多个错误）
+- 13:07:13 - 第二次测试
+- 13:13:34 - 第三次测试（10个类，is_cancelled错误）
+- 13:22:21 - 第四次测试（11个类，加载成功，只有add_body参数错误）
+
+### Arboreus最新状态
+- ✅ **GDExtension加载验证通过**（重大里程碑）
+- ✅ 11个注册类（全部Arboreus前缀避免冲突）
+- ✅ 新增P1 PerceptionSystem（多模态AI感知）- git commit 8160908
+- ✅ 新增P1 SteeringBehaviors（转向行为）
+- ✅ 最新编译成功（13:21，565KB）
+- ⏳ 待修复PhysicsSystem.add_body()参数匹配问题
+- ⏳ 待完成所有11个类的完整API测试
+
+### Ember最新状态
+- ✅ P1全部5个子系统完成
+- ✅ P2 RelationshipSystem完成（9种关系类型）
+- ✅ P2 SocialSystem完成（群体、声望、地位、影响、规范、网络）- git commit 9393c02
+- ✅ **P2 LearningSystem完成**（技能、知识、练习、掌握、遗忘曲线）- git commit 3b3c376
+- ✅ 共13+个注册类
+- ⏳ **还没有创建测试项目，未验证Godot加载**
+- 建议：Ember应该参考Arboreus的测试方式，创建minimal_test项目验证加载
+
+### 下一步优先级
+1. 🟢 Arboreus修复PhysicsSystem.add_body()参数匹配 → 完成所有11个类的完整API测试
+2. 🟠 Ember创建minimal_test项目 → 验证GDExtension加载（参考Arboreus的成功经验）
+3. 🟡 两个引擎都通过完整API测试后，开始战策集成SDK
+4. 🔵 继续开发新功能（在加载验证通过的前提下）
+
+### 关键经验总结
+- Arboreus的测试方式有效：创建minimal_test Godot项目，把.dll放到addons/arboreus/bin/，用.gdextension配置，运行测试脚本
+- 类名加前缀（ArboreusXXX）有效避免了与Godot内置类的冲突
+- 测试脚本和C++实现之间的API参数匹配需要仔细核对
+- Godot用户日志目录：C:\Users\72424\AppData\Roaming\Godot\app_userdata\{项目名}\logs\
