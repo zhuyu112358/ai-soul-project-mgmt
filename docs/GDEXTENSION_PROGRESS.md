@@ -390,3 +390,70 @@
 - Ember开发任务的prompt可能需要更新，明确要求优先完成加载验证，而不是继续加新功能
 - 可以考虑在Ember的prompt中引用Arboreus的成功经验和测试方式
 - 如果Ember下一轮还不创建测试项目，监控应该主动更新Ember的任务prompt
+
+## 第14轮监控进展（2026-09-08 14:00）
+
+### Ember - P2全部完成，创建了tests目录，但仍未验证Godot加载
+
+**Ember最新进展：**
+- ✅ **P2全部5个子系统完成**（commit 2ff5680）：
+  - RelationshipSystem (19KB) - 9种关系类型，态度矩阵
+  - SocialSystem (15KB) - 群体、声望、地位、影响、规范、网络
+  - LearningSystem (17KB) - 技能、知识、练习、掌握、遗忘曲线
+  - ConsciousnessSystem (17KB) - 意识、注意力、内省、思维流
+  - DreamSystem (19KB) - 梦境系统
+- ✅ **创建了tests目录**（commit 34a7905）：
+  - integration_test.gd (15KB) - 所有15个类的集成测试 + 跨系统测试
+  - README.md (1.8KB) - 测试说明
+- ✅ **共15个注册类**：
+  - P0 (6): SoulData, Personality, EmotionState, CognitiveEngine, MemorySystem, Soul
+  - P1 (4): PerceptionSystem, DecisionSystem, ActionSystem, GrowthSystem
+  - P2 (5): RelationshipSystem, SocialSystem, LearningSystem, ConsciousnessSystem, DreamSystem
+- ✅ 16个.cpp文件，约230KB+代码
+- ✅ 最新编译成功（13:56:01，859KB）
+- 最大模块：DecisionSystem (20KB), RelationshipSystem (19KB), DreamSystem (19KB)
+
+**⚠️ 关键问题：Ember仍未创建Godot测试项目，GDExtension加载未验证**
+- tests目录里的integration_test.gd是GDScript文件，但**没有Godot项目（project.godot）来运行它**
+- 没有Ember的Godot用户日志（只有Arboreus的）
+- 这意味着Ember的GDExtension**还没有被实际验证能否被Godot加载**
+- Ember的类名没有加前缀（如EmberSoul），可能与Godot内置类冲突
+- **下一步必须：创建Godot测试项目（参考Arboreus的minimal_test），把.dll放到addons/ember/bin/，运行integration_test.gd验证加载**
+
+### Arboreus - 新增NavigationMesh，继续测试
+
+**Arboreus最新进展：**
+- ✅ **新增P1 NavigationMesh**（commit be2b4bc）- 导航网格
+- ✅ test_navigation_mesh.gd + test_navigation_mesh.tscn（13:51）
+- ✅ 最新测试日志：13:52:09（NavigationMesh测试）
+- ✅ .dll更新（13:50:58）
+- Arboreus现在有15+个系统模块
+
+### 双引擎对比（更新）
+
+| 维度 | Arboreus | Ember |
+|------|----------|-------|
+| 系统模块数 | 15+个 | 15个 |
+| 最大模块 | BehaviorTree (21KB) | DecisionSystem (20KB) |
+| GDExtension加载验证 | ✅ 已通过（13:22） | ❌ 未验证 |
+| Godot测试项目 | ✅ minimal_test + 多个测试 | ❌ 无（只有.gd测试脚本，无project.godot） |
+| 类名前缀 | ✅ ArboreusXXX | ❌ 无前缀（可能冲突） |
+| 集成测试 | ⏳ 部分完成 | ✅ integration_test.gd (15KB) |
+| 最新commit | be2b4bc (NavigationMesh) | 34a7905 (集成测试) |
+
+### 下一步优先级（更新）
+1. 🔴 **Ember创建Godot测试项目 → 运行integration_test.gd验证GDExtension加载**（最高优先级）
+   - 参考Arboreus的minimal_test结构
+   - 创建project.godot、main.tscn、main.gd
+   - 把.dll复制到addons/ember/bin/目录
+   - 创建ember.gdextension配置文件
+   - 运行测试验证所有15个类能否被Godot加载和实例化
+   - 检查类名是否与Godot内置类冲突，必要时加Ember前缀
+2. 🟠 Arboreus完成所有模块的完整API测试
+3. 🟡 两个引擎都通过完整测试后，开始战策集成SDK
+4. 🔵 继续开发新功能（在加载验证通过的前提下）
+
+### 监控观察
+- Ember开发任务创建了tests目录和集成测试脚本，这是好的进展
+- 但Ember似乎误解了"测试项目"的含义：创建了.gd测试脚本，但没有创建Godot项目来运行它
+- 下一轮如果Ember还不创建Godot项目验证加载，监控应该主动更新Ember的任务prompt，明确说明需要创建完整的Godot测试项目（参考Arboreus的minimal_test）
