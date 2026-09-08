@@ -87,3 +87,37 @@
 4. 战策集成SDK需要等两个引擎的API测试通过后再开始
 5. godot-cpp绑定库编译产物很大（456MB），注意磁盘空间
 6. Ember和Arboreus共享同一个git仓库（D:\Sojourn\gdextension\）
+
+## 第8轮监控发现的问题（2026-09-08）
+
+### Arboreus GDExtension加载测试失败 - 2个关键问题
+
+**问题1: .gdextension文件路径错误**
+- 错误: `GDExtension dynamic library not found: 'res://addons/arboreus/arboreus.gdextension'`
+- 原因: Godot期望.gdextension文件在`addons/arboreus/`目录下，但实际放在项目根目录
+- 修复: 将.gdextension和.dll文件移到`addons/arboreus/`目录，或修改配置
+
+**问题2: GridMap类名与Godot内置类冲突（严重）**
+- 错误: `Attempt to register extension class 'GridMap', which appears to be already registered.`
+- 原因: Godot 4.7已有内置的3D `GridMap`类，Arboreus的2D GridMap类名冲突
+- 影响: GridMap及其所有方法（create/world_to_grid/grid_to_world/get_cell/set_cell/is_walkable等20+方法）全部注册失败
+- 修复: 将Arboreus的GridMap类改名为`ArbGridMap`或`GridMap2D`，避免与Godot内置类冲突
+- 注意: 其他类名（World/Entity/Event/EventBus等）也需要检查是否与Godot内置类冲突
+
+**测试状态:**
+- minimal_test项目已创建（7个文件）
+- main.gd测试脚本已编写（列出注册类 + 实例化World）
+- Godot编辑器能启动，但GDExtension加载失败
+- 修复上述2个问题后应能成功加载
+
+### Ember进展
+- ✅ P1 DecisionSystem完成（20758字节，最大模块）- utility/Bayesian/Q-learning混合决策引擎
+- ✅ 9个.cpp文件，约100000+行代码
+- ✅ 编译成功（release 3.25MB + debug 537KB）
+- ✅ git commit: 5f565de "feat(ember): P1 DecisionSystem"
+- ⏳ 待验证Godot加载（需要检查类名冲突）
+
+### 下一步
+1. Arboreus: 修复GridMap类名冲突 + .gdextension路径问题 → 重新编译 → 验证Godot加载
+2. Ember: 检查类名冲突（Soul/Emotion等是否与Godot内置类冲突）→ 创建测试项目验证加载
+3. 两个引擎都需要确保类名不与Godot内置类冲突
