@@ -313,3 +313,80 @@
 - 类名加前缀（ArboreusXXX）有效避免了与Godot内置类的冲突
 - 测试脚本和C++实现之间的API参数匹配需要仔细核对
 - Godot用户日志目录：C:\Users\72424\AppData\Roaming\Godot\app_userdata\{项目名}\logs\
+
+## 第13轮监控进展（2026-09-08 13:45）
+
+### Arboreus - BehaviorTree测试成功，14个系统模块
+
+**最新测试（13:38:15）：**
+- ✅ **ArboreusBehaviorTree测试成功**
+  - `[OK] ArboreusBehaviorTree class exists`
+  - `[OK] ArboreusBehaviorTree instantiated`
+  - `=== All BehaviorTree Tests Complete ===`
+- 这是第5次测试运行
+
+**Arboreus源码现状：**
+- 14个.cpp文件，约150KB+代码
+- 模块列表：
+  - behavior_tree.cpp (21KB) - 行为树AI决策系统（最大模块）
+  - perception_system.cpp (21KB) - 多模态AI感知系统
+  - pathfinder.cpp (8KB) - A*寻路
+  - grid_map.cpp (7KB) - 网格地图
+  - world.cpp (7KB) - 世界管理
+  - steering_behaviors.cpp (15KB) - 转向行为
+  - physics_system.cpp (6KB) - 物理碰撞
+  - movement_system.cpp (6KB) - 移动系统
+  - event_bus.cpp (6KB) - 事件总线
+  - spatial_index.cpp (6KB) - 空间索引
+  - event.cpp (4KB) - 事件
+  - entity.cpp (4KB) - 实体
+  - world_clock.cpp (4KB) - 世界时钟
+  - register_types.cpp (2KB) - 类注册
+
+**待完成：**
+- ⏳ main.gd中的PhysicsSystem.add_body()参数匹配问题还未修复
+- ⏳ 所有14个类的完整API测试还未完成（目前只单独测试了Perception和BehaviorTree）
+- ⏳ 完整的回归测试套件
+
+### Ember - 13个类完成，但仍未创建测试项目
+
+**Ember源码现状：**
+- 13个注册类：
+  - P0: SoulData, Personality, EmotionState, CognitiveEngine, MemorySystem, Soul
+  - P1: PerceptionSystem, DecisionSystem, ActionSystem, GrowthSystem
+  - P2: RelationshipSystem, SocialSystem, LearningSystem
+- 最新文件：learning_system.cpp (17KB, 13:32)
+- register_types.cpp (13:32)
+
+**⚠️ 关键问题：Ember仍未创建测试项目，未验证Godot加载**
+- 从第10轮到现在，Ember一直在加新功能，但没有创建测试项目
+- Ember的类名没有加前缀（如EmberSoul、EmberEmotionState），可能会与Godot内置类冲突
+- 建议：Ember应该参考Arboreus的成功经验，尽快创建minimal_test项目验证加载
+- Arboreus已经验证了GDExtension方案可行，Ember应该尽快跟进
+
+### 双引擎对比
+
+| 维度 | Arboreus | Ember |
+|------|----------|-------|
+| 系统模块数 | 14个 | 13个 |
+| 最大模块 | BehaviorTree (21KB) | DecisionSystem (20KB) |
+| GDExtension加载验证 | ✅ 已通过 | ❌ 未验证 |
+| 测试项目 | ✅ minimal_test + 多个测试脚本 | ❌ 无 |
+| 类名前缀 | ✅ ArboreusXXX | ❌ 无前缀（可能冲突） |
+| 完整API测试 | ⏳ 部分完成 | ❌ 未开始 |
+| 最新commit | 480ee9a (BehaviorTree) | 3b3c376 (LearningSystem) |
+
+### 下一步优先级（更新）
+1. 🔴 **Ember创建minimal_test项目 → 验证GDExtension加载**（最高优先级，已拖延多轮）
+   - 参考Arboreus的测试方式
+   - 检查类名是否与Godot内置类冲突，必要时加Ember前缀
+   - 复制.dll到addons/ember/bin/目录
+   - 运行测试验证加载
+2. 🟠 Arboreus修复PhysicsSystem.add_body()参数匹配 → 完成所有14个类的完整API测试
+3. 🟡 两个引擎都通过完整测试后，开始战策集成SDK
+4. 🔵 继续开发新功能（在加载验证通过的前提下）
+
+### 监控建议
+- Ember开发任务的prompt可能需要更新，明确要求优先完成加载验证，而不是继续加新功能
+- 可以考虑在Ember的prompt中引用Arboreus的成功经验和测试方式
+- 如果Ember下一轮还不创建测试项目，监控应该主动更新Ember的任务prompt
