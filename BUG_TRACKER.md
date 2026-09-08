@@ -12,7 +12,7 @@
 | 待确认 | 1 |
 | 已派发/修复中 | 2 |
 | 待回归 | 0 |
-| 已关闭 | 27 |
+| 已关闭 | 28 |
 | **总计活跃** | **5** |
 
 ---
@@ -84,6 +84,31 @@
   4. 考虑在AudioManager中添加容错：加载失败时静默跳过而不是刷屏警告
 - **影响：** 游戏无音效和BGM，控制台大量警告影响调试体验
 - **紧急标记：** D:\Sojourn\battleplan\docs\URGENT_BUG.md
+
+---
+
+### BUG-031: Ember ConversationManager.js语法错误导致Guardian服务器无法启动（P0阻塞）
+- **严重程度：** P0
+- **发现时间：** 2026-09-08
+- **发现者：** 监控任务（第94轮，检查服务器状态时发现）
+- **负责方：** ember(SoulArena)
+- **状态：** ✅ 已修复（监控第94轮临时修复，已提交commit 3ce5ce0）
+- **现象：** Guardian服务器启动后立即崩溃，不断重试（STARTUP_FAILURE），端口3000始终无法监听。监控每轮重启都失败。
+- **错误信息：**
+  ```
+  D:\Sojourn\ember\server\soul\ConversationManager.js:865
+      ontologicalSelf: ontologicalSelfContext,
+                     ^
+  SyntaxError: Unexpected token ':'
+  ```
+- **根因：** Ember M14开发引入的语法错误。第864-869行的6个对象属性（reasoningVerifier/ontologicalSelf/hybridMemory/perceptionActionLoop/embodiedConcepts/neuroSymbolicEmbodiedIntegration）被错误地放在了变量定义（第870-875行）和return语句（第877行）之前。这些属性应该属于return对象，但被错误地放置在函数体中间，导致JavaScript语法解析失败。
+- **修复内容（监控第94轮，commit 3ce5ce0）：**
+  1. 将6个变量定义（reasoningVerifierContext等）移到return语句之前
+  2. 将6个对象属性正确放入return对象中（6空格缩进）
+  3. 保持CRLF换行符和原始编码，最小化修改（仅6行插入+6行删除）
+- **验证：** `node -c server/soul/ConversationManager.js` 语法检查通过，Guardian重启后端口3000正常监听
+- **影响：** 阻塞Ember服务器API访问，所有依赖服务器的功能（灵魂数据持久化、对话管理等）不可用。Guardian不断崩溃重启也影响系统稳定性。
+- **注意：** 此bug由Ember开发任务引入，但Ember任务当前降频到每2小时一次且M14已完成，可能需要Ember任务确认此修复是否符合其代码规范，以及是否有其他类似的语法错误潜伏。
 
 ---
 
