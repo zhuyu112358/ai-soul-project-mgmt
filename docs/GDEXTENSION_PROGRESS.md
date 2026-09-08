@@ -1435,3 +1435,76 @@ Arboreus的world.cpp和entity.cpp最后修改时间是12:50和12:46，说明Arbo
 3. 🟠 深化RTSArenaManager集成：将实体位置同步到ArboreusEntity
 4. 🟢 架构整理第一阶段完成，开始第二阶段：视觉提升和设计驱动开发
 5. 🟢 准备Steam EA上架准备工作（商店页素材、成就设计、技术调研）
+
+## 第30轮监控进展（2026-09-08 18:45）
+
+### 战策和Arboreus本轮无新进展，监控主动干预
+
+**战策状态：**
+- 最新commit: db85237（GameState集成Arboreus World状态同步，P2架构合规）
+- 无未提交的修改
+- 最近测试运行: 18:27:27，2901 Passed, 0 Failed
+- 战策DEVLOG最后更新: 18:18:28（上一轮内容）
+
+**Arboreus状态：**
+- 最新修改: pathfinder.cpp（16:25:16，Pathfinder大网格bug修复）
+- 之后无新的修改
+- entity.cpp最后修改: 12:46:52（Entity API问题尚未修复）
+- world.cpp最后修改: 12:50:49
+
+**Ember状态：**
+- 最新修改: bayesian_network.cpp（18:10:05）和register_types.cpp（18:05:27）
+- Ember还在继续添加新功能（BayesianNetwork第18个类，GoalPlanner第17个类）
+- Ember任务在正常运行
+
+### 🚨 发现问题：战策未验证已修复的Pathfinder
+
+**问题描述：**
+- ArboreusPathfinder大网格bug已于16:25修复（commit 5210da4）
+- 战策已于16:25:30复制了新的.dll到addons目录
+- 但战策DEVLOG里至今（18:18）还写着"等待建木修复ArboreusPathfinder大网格bug"
+- 战策连续8轮（从第22轮到第30轮）没有验证新Pathfinder，也没有启用SDKPathfinder
+- RTSArenaManager.gd仍然使用自实现AStarPathfinder，未引用SDKPathfinder
+
+**根因分析：**
+- 战策任务可能没有注意到Arboreus已经修复了bug
+- 战策任务的prompt中没有明确提醒Pathfinder已修复
+- 战策可能在等待Arboreus修复Entity API，而忽略了Pathfinder已经可以验证
+
+### 监控干预：更新战策任务prompt
+
+**操作：**
+- 更新战策任务（cron_job_id=11589274907650）的prompt
+- 标题改为："战策应用实现（SDK集成期-第二阶段：Pathfinder验证+视觉提升）"
+- 添加🚨紧急提醒：ArboreusPathfinder大网格bug已经修复，本轮必须验证并启用SDKPathfinder
+- 明确验证步骤和替换方法
+- 更新工作优先级：P0验证Pathfinder > P1深化集成 > P2视觉提升
+- 强调架构整理第一阶段已完成，进入第二阶段
+
+### 架构整理第一阶段完成总结
+
+**完成时间线：**
+- 第20轮（15:30）：战策SDK集成第一轮，SDK文件复制+加载验证
+- 第21轮（15:45）：BUG-031修复，发现ArboreusPathfinder大网格bug
+- 第22轮（16:30）：Arboreus Pathfinder修复 + 战策SoulAIController替换Ember
+- 第23轮（16:45）：SoulUnit集成Ember SoulData
+- 第24轮（17:00）：EventBus集成Arboreus SDK
+- 第25轮（17:15）：ArboreusGridMapBridge创建
+- 第26轮（17:30）：ArenaMap网格替换为ArboreusGridMapBridge
+- 第27轮（17:45）：ArboreusWorldBridge骨架创建
+- 第28轮（18:15）：RTSArenaManager集成ArboreusWorldBridge
+- 第29轮（18:30）：GameState集成Arboreus World状态同步
+- 第30轮（18:45）：架构整理第一阶段完成，监控干预更新战策prompt
+
+**成果：**
+- 7个越界模块全部完成（部分完成）：2个P0 + 2个P1 + 3个P2
+- 所有集成都通过了自动化战斗测试和M2测试套件（2901 Passed, 0 Failed）
+- 渐进式集成策略成功：保持游戏可运行的同时逐步替换越界实现
+- 仅用10轮（约2.5小时）完成了核心架构重构
+
+### 待办事项
+1. 🟢 战策验证新ArboreusPathfinder，启用SDKPathfinder完全替换AStarPathfinder（已更新prompt提醒）
+2. 🟡 协调Arboreus团队明确Entity API（add_component、位置管理、grid配置、空间索引注册）
+3. 🟠 深化RTSArenaManager集成：将实体位置同步到ArboreusEntity
+4. 🟢 架构整理第二阶段：视觉提升和设计驱动开发
+5. 🟢 准备Steam EA上架准备工作（商店页素材、成就设计、技术调研）
