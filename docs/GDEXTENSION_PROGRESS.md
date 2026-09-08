@@ -1159,3 +1159,59 @@ World, Entity, SpatialIndex, Pathfinder, GridMap, EventBus, Event, PhysicsSystem
 2. 🟡 战策将ArenaMap中的NavigationGrid替换为ArboreusGridMapBridge
 3. 🟠 协调Arboreus团队提供GridMap API文档/示例
 4. 🟢 P2: RTSArenaManager集成ArboreusWorld
+
+## 第26轮监控进展（2026-09-08 17:30）
+
+### 🎉 ArenaMap网格替换为ArboreusGridMapBridge！5个越界模块完成
+
+**Git commit：** 5758863 "ArenaMap网格替换为ArboreusGridMapBridge（P2架构合规）"
+
+**完成内容：**
+
+1. **RTSArenaManager网格替换为ArboreusGridMapBridge**
+   - RTSArenaManager.gd:129: 将load("res://scripts/game/GridMap.gd")替换为load("res://scripts/game/ArboreusGridMapBridge.gd")
+   - 其他代码无需修改（接口完全兼容）
+   - 日志更新为"ArboreusGridMapBridge"标识
+
+2. **修复ArboreusGridMapBridge.get_neighbors格式不匹配**
+   - 问题：NavigationGrid.get_neighbors返回Dictionary数组，ArboreusGridMapBridge最初返回Vector2i数组
+   - AStarPathfinder期望neighbor["cost"]，导致150+个"SCRIPT ERROR: Invalid access to property or key 'cost'"
+   - 修复：重写get_neighbors方法，返回与NavigationGrid完全相同的Dictionary格式
+   - 包含对角线移动的角落切割检查（no corner cutting）
+   - 正交移动cost=1.0，对角线cost=1.414
+
+**测试结果：**
+- 自动化战斗测试: [OK] Both units moved successfully!
+- 无SCRIPT ERROR（修复前有150+个cost访问错误）
+- ArboreusGridMapBridge初始化: 40x19, 82 blocked cells
+- 玩家移动550px, AI移动334px, 最终距离0.8
+- 两个SoulUnit均Ember:true
+
+### Ember也更新了
+
+**Git commit：** e2f6ec2 "feat(ember): P3 Soul binary serialization - to_bytes()/from_bytes()"
+- Ember新增Soul二进制序列化功能
+
+### 🏆 架构合规进度更新
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路 | P0 | ✅ AStarPathfinder + ArboreusGridMapBridge（网格层已用Arboreus SDK） |
+| SoulAIController | P0 | ✅ 已替换为Ember CognitiveEngine+PerceptionSystem |
+| SoulUnit | P1 | ✅ 灵魂数据层已集成Ember SoulData+Personality+EmotionState |
+| EventBus | P1 | ✅ 已集成ArboreusEventBus SDK（渐进式） |
+| ArenaMap网格 | P2 | ✅ 已替换为ArboreusGridMapBridge |
+| RTSArenaManager核心逻辑 | P2 | ⏳ 待替换为ArboreusWorld（实体管理/世界模拟） |
+| GameState | P2 | ⏳ 待替换为Arboreus World状态 |
+
+**7个越界模块中，5个已完成！2个P0 + 2个P1 + 1个P2**
+
+### 注意事项
+1. 战策DEVLOG里还写着"等待建木修复ArboreusPathfinder大网格bug"，但实际上Arboreus已经修复了（commit 5210da4），战策也已经复制了新的.dll（16:25:30）。战策下一轮应该验证新Pathfinder并启用SDKPathfinder，完全替换AStarPathfinder。
+2. 战策现在用的是AStarPathfinder + ArboreusGridMapBridge的组合，网格层已经用了Arboreus SDK，但寻路算法还是战策自实现的。
+
+### 下一步
+1. 🟢 战策验证新ArboreusPathfinder，启用SDKPathfinder完全替换AStarPathfinder
+2. 🟡 P2: RTSArenaManager集成ArboreusWorld（实体管理/世界模拟）
+3. 🟠 P2: GameState集成Arboreus World状态
+4. 🟢 研究ArboreusGridMap API参数，优化Bridge使用SDK原生方法
