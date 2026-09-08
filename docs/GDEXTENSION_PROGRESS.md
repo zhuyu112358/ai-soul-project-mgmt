@@ -1727,3 +1727,108 @@ _arboreus_world.remove_entity(_player_entity_id)
 5. 🟢 架构整理第二阶段：视觉提升和设计驱动开发（P0自定义字体+UI皮肤+三界面升级）
 6. 🟢 准备Steam EA上架准备工作
 7. 🟡 BUG-030音频导入
+
+## 第33轮监控进展（2026-09-08 19:30）
+
+### ✅ SoulAIController类名冲突已修复
+
+**Git commit：** 21b6426 "UI主题系统创建+EventBus API探索+Ember SDK命名冲突修复（视觉提升P0启动）"
+
+**修复内容：**
+- RTSArenaManager.gd: const SoulAIController → const EmberAIController（9处引用）
+- M2IntegrationTest.gd: const SoulAIController → const LegacyAIController（17处引用）
+- preload路径保持不变（RTSArenaManager用EmberSoulAIController.gd，M2IntegrationTest用旧SoulAIController.gd）
+
+**教训记录**：Ember SDK类名会与战策代码中的const名冲突，后续命名需避免使用Ember SDK已注册的类名。
+
+### 🎨 视觉提升P0启动：UI主题系统创建
+
+**设计分析**（参考设计概念图）：
+- 主菜单：像素风+奇幻+金色装饰，星空背景+浮岛+雕像+金色边框按钮
+- RTS竞技场：像素风RTS，顶部状态栏+小地图+技能栏+战斗日志+金色UI装饰
+- 整体配色：深色背景(#1a1428) + 金色(#d4a85c) + 像素风格
+
+**创建的UI主题资源**：
+- assets/ui/battleplan_theme.tres - 主主题文件
+- assets/ui/styles/btn_normal.tres - 按钮正常（深紫背景+金色边框）
+- assets/ui/styles/btn_hover.tres - 按钮悬停（更亮背景+金色发光）
+- assets/ui/styles/btn_pressed.tres - 按钮按下（深色背景+暗金边框）
+- assets/ui/styles/panel.tres - 面板（深紫半透明+金色边框）
+- assets/ui/styles/progress_bg.tres - 进度条背景
+- assets/ui/styles/progress_fill.tres - 进度条填充（绿色）
+
+**应用到MainMenu**：
+- MainMenu.gd新增_apply_ui_theme()方法
+- _ready()中加载并应用主题
+- 按钮、标签、面板、进度条自动使用主题样式
+
+**视觉效果变化**：
+- 主菜单按钮从Godot默认灰色变为深紫背景+金色边框
+- 悬停时有金色发光效果
+- 文字颜色变为金色/米白色
+- 面板有深色半透明背景+金色边框
+- 进度条变为深色背景+绿色填充
+
+### ⚠️ EventBus API探索结果：ArboreusEventBus与战策不兼容
+
+**探索发现**：
+- emit(args: 1) - 只有event_name参数，**不支持data参数**
+- subscribe(args: 2) - 不支持(target, method)分开形式
+- unsubscribe(args: 1) - 只有1个参数
+- 其他方法：subscribe_once, get_subscriber_count, clear, queue_event, process_queue
+
+**结论**：
+- emit()无法完全切换到ArboreusEventBus，因为战策需要传递事件数据(data Dictionary)
+- 当前渐进式集成（subscribe/unsubscribe同时注册到Arboreus，emit使用战策分发）是合理的
+- 之前的"ArboreusEventBus.subscribe参数错误"是因为战策传了3个参数，SDK只接受2个
+
+**[SDK需求]**：ArboreusEventBus需要支持emit(event_name, data)和subscribe(event_name, target, method)，才能完全替换战策EventBus。
+
+### 测试结果
+
+- M2测试套件: **2901 Passed, 0 Failed**
+- SoulAIController类名冲突错误已消除
+- ArboreusEventBus.subscribe参数错误已消除（战策调整了调用方式）
+- 仍有一些Godot 4 API问题（get_theme_font_size_override, set_grow_horizontal, has_sound等），这些是之前就有的，不影响核心功能
+
+### Ember任务状态
+
+- 最新commit: f201171 "test(ember): unified test runner + build script, 235 tests all pass"
+- Ember有**235个测试全部通过**
+- soul_ai_controller.cpp最后修改: 18:54:08
+- Ember还在继续完善测试和构建系统
+
+### Arboreus任务状态
+
+- pathfinder.cpp最后修改: 16:25:16（Pathfinder修复）
+- 之后没有新的修改
+- Arboreus任务似乎没有在做新的工作
+- ArboreusEventBus API需要增强（支持data参数和target/method分开形式）
+
+### 🏆 架构整理第二阶段启动：视觉提升
+
+**已完成**：
+- UI主题系统创建（P0）
+- 主菜单应用主题
+
+**待办**：
+- 将UI主题应用到灵魂选择、设置、RTS竞技场场景
+- 视觉提升P0：自定义字体+UI皮肤图集+三界面完整升级
+- 视觉提升P1：战斗特效+灵魂单位精灵化+战斗UI升级
+- 深化实体战斗逻辑集成：HP/ATK同步到ArboreusEntity组件
+- BUG-030音频导入
+
+### [设计需求] 更新
+- 像素风格字体（中英文）- 当前使用Godot默认字体
+- UI皮肤图集（按钮、面板、边框的像素纹理）
+- 灵魂单位精灵图（代替彩色方块）
+- 主菜单背景图（星空+浮岛+雕像）
+- 技能图标、粒子纹理
+
+### 待办事项
+1. 🟢 战策继续视觉提升P0：将UI主题应用到所有场景
+2. 🟡 协调Arboreus增强EventBus API（支持emit(event_name, data)和subscribe(event_name, target, method)）
+3. 🟠 深化实体战斗逻辑集成：HP/ATK同步到ArboreusEntity组件
+4. 🟢 视觉提升P1：战斗特效+灵魂单位精灵化
+5. 🟢 准备Steam EA上架准备工作
+6. 🟡 BUG-030音频导入
