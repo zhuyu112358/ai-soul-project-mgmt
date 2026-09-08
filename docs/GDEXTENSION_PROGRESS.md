@@ -815,3 +815,60 @@ World, Entity, SpatialIndex, Pathfinder, GridMap, EventBus, Event, PhysicsSystem
 2. 🟡 Ember和Arboreus继续完善P2功能
 3. 🟠 战策替换后需要完整测试，确保游戏可运行
 4. 🔵 按需触发设计任务产出UI原型图
+
+## 第21轮监控进展（2026-09-08 15:45）
+
+### 战策第二轮：BUG-031修复成功 + 发现ArboreusPathfinder SDK bug
+
+**Git commit：** 91b2a01 "fix(M2): BUG-031 AI单位A*寻路未生效 - ATTACKING状态下绕过move_to导致不绕行"
+
+**✅ BUG-031修复成功！**
+- **根本原因**: SoulUnit._update_attack()在ATTACKING状态下，当距离>attack_range时直接设置target_position=attack_target.position，绕过了move_to()函数，导致A*寻路从未被调用
+- **修复方案**: 修改_update_attack()调用move_to()触发A*寻路，简化状态机
+- **验证结果**: AI单位从(1080,300)出发，A*计算27个路径点，成功绕过中心水晶下方，15秒到达玩家附近(221,316)，战斗正常进行，双方HP减少
+
+**⚠️ ArboreusPathfinder SDK集成尝试 - 发现SDK bug**
+- 创建SDKPathfinder.gd适配器类，封装ArboreusGridMap+ArboreusPathfinder
+- 修改SoulUnit.gd和RTSArenaManager.gd支持SDKPathfinder
+- **发现SDK bug**: ArboreusPathfinder在大网格(40x19/cell_size=32)下返回错误路径
+  - 小网格(10x10/cell=1)正常：路径长度6
+  - 大网格(40x19/cell=32)异常：find_path((33,9),(6,9))只返回2个点[(48,16),(16,16)]，对应网格(1,0)和(0,0)，完全错误
+  - 无论是否有障碍物，大网格下都返回同样的错误结果
+- **暂时回退**: 战策暂时保留自实现AStarPathfinder.gd作为临时替代
+- **已记录[SDK需求]**: 需要建木团队修复ArboreusPathfinder的大网格/cell_size>1支持
+
+**创建的测试文件：**
+- tests/arboreus_pf_battle_test.gd - 大网格bug复现测试
+- tests/arboreus_pf_debug_test.gd - Pathfinder详细调试测试
+- tests/arboreus_pf_correct_test.gd - 正确性测试
+
+**M2测试套件: 2901/2901通过，0失败**
+
+### 🔴 需要协调：ArboreusPathfinder大网格bug
+
+**bug详情：**
+- 问题：ArboreusPathfinder.find_path在cell_size>1的大网格下返回错误路径
+- 复现：tests/arboreus_pf_battle_test.gd（战策仓库）
+- 影响：战策无法使用ArboreusPathfinder替换自实现A*
+- 优先级：P0（战策SDK集成的核心阻塞项）
+- 需要：建木团队修复ArboreusPathfinder的大网格/cell_size>1支持
+
+**监控已更新Arboreus任务prompt，添加此bug修复需求。**
+
+### 越界模块替换进度
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路 | P0 | ⚠️ SDK bug发现，暂时回退，等待Arboreus修复 |
+| SoulAIController | P0 | ⏳ 待替换为Ember PerceptionSystem+CognitiveEngine |
+| SoulUnit | P1 | ⏳ 待替换为Ember Soul+SoulData |
+| EventBus | P1 | ⏳ 待替换为ArboreusEventBus |
+| RTSArenaManager | P2 | ⏳ 待替换为Arboreus World |
+| ArenaMap | P2 | ⏳ 待替换为Arboreus GridMap+PhysicsSystem |
+| GameState | P2 | ⏳ 待替换为Arboreus World状态 |
+
+### 下一步
+1. 🔴 Arboreus修复Pathfinder大网格bug（P0阻塞项）
+2. 🟡 战策继续替换SoulAIController为Ember SDK（不依赖Pathfinder bug）
+3. 🟢 Ember继续完善API和测试
+4. 🟠 Arboreus修复后，战策启用SDKPathfinder替换自实现A*
