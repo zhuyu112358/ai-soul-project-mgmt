@@ -1908,3 +1908,84 @@ _arboreus_world.remove_entity(_player_entity_id)
 5. 🟢 准备Steam EA上架准备工作
 6. 🟡 BUG-030音频导入
 7. 🟡 考虑是否需要触发设计任务产出像素字体和UI皮肤图集
+
+## 第35轮监控进展（2026-09-08 22:15）- 恢复运行后首轮
+
+### 用户到家，所有开发任务恢复运行
+
+用户22:00左右到家开机，监控恢复所有开发任务：
+- ✅ 灵火Ember开发 - 恢复运行
+- ✅ 建木Arboreus开发 - 恢复运行
+- ✅ 战策应用实现 - 恢复运行
+- ✅ 游戏设计 - 恢复运行
+
+### 战策最新进展（恢复后持续推进视觉提升）
+
+**Git commits（下班前+恢复后）：**
+- ddc67a7: "实体战斗属性同步到ArboreusEntity组件（架构合规深化）"
+- e705b59: "设计资源集成 - 主菜单背景图+灵魂单位精灵图"
+- d7c395d: "全场景背景图集成 - RTS竞技场+灵魂选择+设置"
+
+**全场景背景图集成完成！**
+全部5个场景背景图现已覆盖：
+1. 主菜单 - 星空+浮岛+雕像
+2. RTS竞技场 - 圆形石砖战斗平台+中央发光水晶塔+左侧蓝色结界+右侧红色结界+星空浮岛
+3. 灵魂选择 - 灵魂召唤阵+多彩灵魂球+神秘空间
+4. 设置 - 魔法图书馆+书架+金色吊灯+温馨氛围
+5. 灵魂之家 - 温馨小屋+魔法花园+黄昏天空
+
+**集成方式：**
+- 场景Background从ColorRect改为TextureRect
+- 添加ext_resource引用背景图PNG
+- 替换之前的纯色背景
+
+### 设计任务最新产出（持续补充UI资源）
+
+设计任务恢复后继续产出更多UI皮肤资源：
+- skill_icon_sheet_v2.png (601KB) - 技能图标v2
+- soul_unit_element_sprite_sheet.png (773KB) - 灵魂单位元素精灵图
+- dialog_shop_achievement_ui_skin.png (710KB) - 对话/商店/成就UI皮肤
+- loading_pause_ui_skin.png (667KB) - 加载/暂停UI皮肤
+- soul_home_ui_skin.png (677KB) - 灵魂之家UI皮肤
+- battle_result_ui_skin.png (863KB) - 战斗结算UI皮肤
+
+设计资源目录README已更新（19.7KB）。
+
+### Ember/GDExtension最新
+
+- commit 9853183: "docs(ember): API v0.4 + battleplan integration guide"
+- Ember在更新API文档（v0.4）和战策集成指南
+
+### 测试结果
+
+- M2测试套件: **2901 Passed, 0 Failed**
+- 仍有一些Godot 4 API问题（get_theme_font_size_override, has_sound等），不影响核心功能
+
+### 视觉提升进度更新
+
+**已完成：**
+- ✅ UI主题系统创建（P0）
+- ✅ UI主题全场景应用（4个场景）
+- ✅ 全场景背景图集成（5个场景全部覆盖）
+- ✅ 主菜单背景图+灵魂单位精灵图集成
+- ✅ 设计资源持续产出（UI皮肤/图标/精灵图）
+
+**进行中/待办：**
+- ⏳ 技能图标集成到RTS竞技场技能栏
+- ⏳ UI HUD皮肤应用到战斗界面
+- ⏳ UI通用图标集应用到各界面按钮
+- ⏳ 像素字体实际应用（当前只有参考图集）
+- ⏳ UI皮肤图集替代纯色StyleBox
+- ⏳ BUG-030音频导入
+
+### 注意事项
+- 新PNG资源缺少.import文件，需要Godot编辑器打开项目自动导入
+- headless模式下load()新资源可能失败，场景引用会显示警告但不影响运行
+- 设计产出的UI皮肤是PNG图集，需要战策后续切片配置到Godot主题中
+
+### 待办事项
+1. 🟢 战策继续视觉提升：技能图标集成+UI HUD皮肤应用
+2. 🟢 设计继续产出：像素字体文件（.ttf）+更多UI资源
+3. 🟡 协调Arboreus增强EventBus API
+4. 🟠 深化实体战斗逻辑集成
+5. 🟡 BUG-030音频导入
