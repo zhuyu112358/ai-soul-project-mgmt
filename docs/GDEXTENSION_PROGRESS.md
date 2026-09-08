@@ -1508,3 +1508,105 @@ Arboreus的world.cpp和entity.cpp最后修改时间是12:50和12:46，说明Arbo
 3. 🟠 深化RTSArenaManager集成：将实体位置同步到ArboreusEntity
 4. 🟢 架构整理第二阶段：视觉提升和设计驱动开发
 5. 🟢 准备Steam EA上架准备工作（商店页素材、成就设计、技术调研）
+
+## 第31轮监控进展（2026-09-08 19:00）
+
+### 🎉 ArboreusMovementSystem集成+实体位置同步！8个越界模块完成
+
+**Git commit：** 3e60fe7 "ArboreusMovementSystem集成+实体位置同步（P2架构合规深化）"
+
+**关键突破：实体位置管理API找到！**
+- 战策发现实体位置不是直接在ArboreusEntity上管理，而是通过**ArboreusMovementSystem**管理
+- ArboreusMovementSystem API：
+  - register_entity(id: int, position: Vector2) - 注册实体到移动系统
+  - set_position(id: int, position: Vector2) - 设置实体位置
+  - get_position(id: int) -> Vector2 - 获取实体位置
+  - unregister_entity(id: int) - 从移动系统注销实体
+- 使用int ID标识实体，不是Object引用
+
+**完成内容：**
+
+1. **ArboreusWorldBridge扩展**
+   - 新增MovementSystem封装方法：register_entity_to_movement, set_entity_position, get_entity_position, unregister_entity_from_movement
+   - 新增组件系统封装方法：entity_add_component, entity_get_component, entity_get_component_types
+
+2. **RTSArenaManager深化集成**
+   - 实体创建时：register_entity_to_movement，初始位置为SoulUnit的位置
+   - 实体添加transform组件：entity_add_component("transform", {position, team})
+   - 每帧_process中：同步SoulUnit位置到ArboreusMovementSystem（表现层→引擎层）
+   - 战斗结束时：unregister_entity_from_movement + remove_entity + stop()世界
+
+**测试结果：**
+- 自动化战斗测试: [OK] Both units moved successfully!
+- 无SCRIPT ERROR（核心逻辑）
+- ArboreusWorld初始化: available=true
+- 实体创建: 玩家(id=1) + AI(id=2)
+- 玩家移动550px, AI移动334px, 最终距离0.3
+- 两个SoulUnit均Ember:true
+- M2测试套件: 2901 Passed, 0 Failed
+
+### ⚠️ 发现问题：remove_entity参数类型错误
+
+**问题描述：**
+- SCRIPT ERROR: Invalid type in function 'remove_entity' in base 'ArboreusWorld'. Cannot convert argument 1 from Object to int.
+- remove_entity期望int参数（entity ID），但战策传了Object
+- 战策DEVLOG里也提到"remove_entity参数类型仍需确认（当前用int ID）"
+
+**影响：**
+- 战斗结束时清理实体可能失败
+- 但不影响核心战斗流程（因为战斗已经结束）
+- 需要战策修复：将remove_entity的参数从Object改为int ID
+
+### 🚨 Pathfinder验证仍未完成（连续9轮）
+
+**问题持续：**
+- ArboreusPathfinder大网格bug已于16:25修复（commit 5210da4）
+- 战策已于16:25:30复制了新的.dll到addons目录
+- 但战策至今（19:00）还没有验证新Pathfinder，也没有启用SDKPathfinder
+- RTSArenaManager仍然使用自实现AStarPathfinder
+- 战策DEVLOG里还写着"等待建木修复ArboreusPathfinder大网格bug"
+
+**分析：**
+- 上一轮（第30轮）我已经更新了战策任务的prompt，添加了紧急提醒
+- 但战策这一轮优先做了实体位置同步（ArboreusMovementSystem集成）
+- 可能是因为prompt更新后战策这一轮已经开始执行了，没有看到更新后的prompt
+- 下一轮战策应该会看到更新后的prompt并验证Pathfinder
+
+### Arboreus任务状态
+
+- entity.cpp最后修改: 12:46:52（Entity API问题尚未修复）
+- world.cpp最后修改: 12:50:49（World API问题尚未修复）
+- Arboreus任务似乎没有在修复Entity API问题
+- 但战策已经通过ArboreusMovementSystem找到了实体位置管理的解决方案
+- remove_entity参数类型问题需要Arboreus修复或战策适配
+
+### Ember任务状态
+
+- 最新commit: 27eeed6 "feat(ember): P2 RLAgent - 19th class, reinforcement learning with experience replay"
+- Ember还在继续添加新功能（RLAgent第19个类）
+- Ember任务在正常运行
+
+### 🏆 架构合规进度更新 - 8个越界模块完成！
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路网格层 | P0 | ✅ ArboreusGridMapBridge（寻路算法待替换为SDK） |
+| SoulAIController | P0 | ✅ 已替换为Ember CognitiveEngine+PerceptionSystem |
+| SoulUnit灵魂数据层 | P1 | ✅ 已集成Ember SoulData+Personality+EmotionState |
+| EventBus | P1 | ✅ 已集成ArboreusEventBus SDK（渐进式） |
+| ArenaMap网格 | P2 | ✅ 已替换为ArboreusGridMapBridge |
+| RTSArenaManager世界模拟层 | P2 | ✅ 已集成ArboreusWorldBridge |
+| GameState世界状态 | P2 | ✅ 已集成ArboreusWorld状态同步 |
+| RTSArenaManager实体位置 | P2 | ✅ 已集成ArboreusMovementSystem（P2深化完成） |
+| 实体战斗逻辑 | P2 | ⏳ 待进一步深化（HP/ATK等属性同步到Entity组件） |
+| A*寻路算法 | P0 | ⏳ 待验证启用ArboreusPathfinder（bug已修复，战策未验证） |
+
+**8个越界模块中，8个已完成（部分完成）！2个P0 + 2个P1 + 4个P2**
+
+### 待办事项
+1. 🟢 战策验证新ArboreusPathfinder，启用SDKPathfinder完全替换AStarPathfinder（prompt已更新，下一轮应该执行）
+2. 🟡 修复remove_entity参数类型错误（int ID vs Object）
+3. 🟡 协调Arboreus团队明确Entity API（remove_entity参数类型确认）
+4. 🟠 深化实体战斗逻辑集成：将HP/ATK等属性同步到ArboreusEntity组件
+5. 🟢 架构整理第二阶段：视觉提升和设计驱动开发
+6. 🟢 准备Steam EA上架准备工作
