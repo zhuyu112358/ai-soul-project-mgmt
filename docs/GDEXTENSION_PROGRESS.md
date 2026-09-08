@@ -1215,3 +1215,71 @@ World, Entity, SpatialIndex, Pathfinder, GridMap, EventBus, Event, PhysicsSystem
 2. 🟡 P2: RTSArenaManager集成ArboreusWorld（实体管理/世界模拟）
 3. 🟠 P2: GameState集成Arboreus World状态
 4. 🟢 研究ArboreusGridMap API参数，优化Bridge使用SDK原生方法
+
+## 第27轮监控进展（2026-09-08 17:45）
+
+### P2继续推进：ArboreusWorldBridge骨架创建 + 发现API问题
+
+**Git commit：** de5f31d "ArboreusWorld API探索+ArboreusWorldBridge骨架（P2准备）"
+
+**完成内容：**
+
+1. **ArboreusWorld详细API探索**
+   - 创建arboreus_world_detailed_test.gd和arboreus_world_simple_test.gd
+   - 已确认API：create(config: Dictionary), start(), stop(), update(delta), create_entity(), get_entity_count(), get_status(), get_pathfinder(), get_physics_system(), get_movement_system(), get_event_bus(), get_world_clock()
+   - get_status()返回完整状态字典：{entity_count, is_running, time, day_count, time_of_day, spatial_entity_count, queued_events}
+
+2. **创建ArboreusWorldBridge骨架（~200行）**
+   - 封装ArboreusWorld SDK，提供战策兼容接口
+   - 实体管理：create_entity/remove_entity/get_entity/get_all_entities
+   - 生命周期：start/stop/update
+   - 子系统访问：get_grid_map/get_pathfinder/get_physics_system等
+   - 战策侧实体ID跟踪（_entities字典映射id->ArboreusEntity）
+
+3. **测试结果**
+   - Bridge初始化: ✓ ArboreusWorld SDK initialized
+   - start(): ✓ World started, is_running=true
+   - create_entity(): ✓ Entity created id=1, count=1
+   - update(0.016): ✓ Update done
+   - get_status(): ✓ 返回完整状态字典
+   - get_pathfinder(): ✓ ArboreusPathfinder实例
+   - get_physics_system(): ✓ ArboreusPhysicsSystem实例
+   - get_grid_map(): ⚠️ 返回null（需单独配置）
+   - remove_entity(): ⚠️ 参数类型不兼容（需进一步探索）
+   - stop(): ✓ World stopped
+
+### ⚠️ [SDK需求] ArboreusWorld API待明确
+
+1. **remove_entity()参数类型**：Object不兼容，可能是int（entity ID）或String
+2. **get_grid_map()返回null**：是否需要在create config中指定grid配置？
+3. **ArboreusEntity方法和属性**：create_entity()返回的实体有哪些方法？
+4. **实体位置/属性如何设置**：create_entity无参数，后续如何设置position？
+
+### Ember也更新了
+
+**Git commit：** 2ea0edb "feat(ember): P2 SoulDebugPanel - real-time soul state inspector"
+- Ember新增SoulDebugPanel实时灵魂状态检查器
+
+### 🏆 架构合规进度更新
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路网格层 | P0 | ✅ ArboreusGridMapBridge（寻路算法待替换） |
+| SoulAIController | P0 | ✅ 已替换为Ember CognitiveEngine+PerceptionSystem |
+| SoulUnit灵魂数据层 | P1 | ✅ 已集成Ember SoulData+Personality+EmotionState |
+| EventBus | P1 | ✅ 已集成ArboreusEventBus SDK（渐进式） |
+| ArenaMap网格 | P2 | ✅ 已替换为ArboreusGridMapBridge |
+| RTSArenaManager核心逻辑 | P2 | 🚧 ArboreusWorldBridge骨架已创建，待集成 |
+| GameState | P2 | ⏳ 待替换为Arboreus World状态 |
+
+**7个越界模块中，5个已完成，1个P2进行中（Bridge骨架已创建）！**
+
+### 注意事项
+1. 战策DEVLOG里还写着"等待建木修复ArboreusPathfinder大网格bug"，但实际上Arboreus已经修复了（commit 5210da4），战策也已经复制了新的.dll（16:25:30）。战策下一轮应该验证新Pathfinder并启用SDKPathfinder，完全替换AStarPathfinder。
+2. 战策发现了ArboreusWorld API的一些问题（remove_entity参数、get_grid_map返回null、ArboreusEntity方法），需要建木团队提供更多API文档或修复。
+
+### 下一步
+1. 🟢 战策验证新ArboreusPathfinder，启用SDKPathfinder完全替换AStarPathfinder
+2. 🟡 协调Arboreus团队明确World API（remove_entity参数、get_grid_map配置、Entity方法）
+3. 🟠 P2: 将RTSArenaManager实体管理替换为ArboreusWorldBridge
+4. 🟢 P2: GameState集成Arboreus World状态
