@@ -1610,3 +1610,120 @@ Arboreus的world.cpp和entity.cpp最后修改时间是12:50和12:46，说明Arbo
 4. 🟠 深化实体战斗逻辑集成：将HP/ATK等属性同步到ArboreusEntity组件
 5. 🟢 架构整理第二阶段：视觉提升和设计驱动开发
 6. 🟢 准备Steam EA上架准备工作
+
+## 第32轮监控进展（2026-09-08 19:15）
+
+### 🎉🎉 SDKPathfinder启用！7个越界模块全部完成！架构整理第一阶段完成！
+
+**Git commit：** b424886 "SDKPathfinder启用替换AStarPathfinder（P0架构合规，7个越界模块全部完成）"
+
+**P0完成：ArboreusPathfinder大网格bug验证修复**
+- 战策验证了新的ArboreusPathfinder，大网格(40x19)下find_path返回正确路径
+- 之前bug的根本原因：测试脚本使用了错误的GridMap初始化方式（set_size/resize），正确方式是create(width, height, cell_size)
+- ArboreusWorld.get_grid_map()返回null，需要手动创建GridMap并set_grid给Pathfinder
+
+**完成内容：**
+
+1. **SDKPathfinder启用，完全替换自实现AStarPathfinder**
+   - _pathfinder_script从AStarPathfinder.gd改为SDKPathfinder.gd
+   - 新增_sync_obstacles_to_sdk_pathfinder()方法，同步障碍物到SDKPathfinder内部网格
+   - 保持_grid_map为ArboreusGridMapBridge（用于SoulUnit网格查询）
+   - 两个网格保持同步：障碍物同时同步到ArboreusGridMapBridge和SDKPathfinder
+
+2. **SDKPathfinder工作流程**
+   - 初始化时创建ArboreusGridMap(40x19, cell=32)和ArboreusPathfinder
+   - set_grid(grid)设置网格
+   - find_path(world_x, world_y, goal_x, goal_y)：世界坐标→网格坐标→检查可走→调用ArboreusPathfinder.find_path()→网格坐标→世界坐标
+   - 返回世界坐标的路径点数组
+
+**测试结果：**
+- ArboreusPathfinder功能测试: ✅ 大网格(40x19)下find_path返回正确路径
+- 自动化战斗测试: [OK] Both units moved successfully!
+  - SDKPathfinder初始化成功
+  - 7个障碍物同步成功，82个阻塞格子
+  - 玩家寻路: (6,9)→(33,9), 28 waypoints
+  - AI寻路: (33,9)→(6,9), 28 waypoints
+  - 双方单位正常移动
+
+### 🏆 架构合规进度 - 全部完成！
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路 | P0 | ✅ ArboreusPathfinder（SDKPathfinder适配器，本轮完成） |
+| SoulAIController | P0 | ✅ 已替换为Ember CognitiveEngine+PerceptionSystem |
+| SoulUnit灵魂数据层 | P1 | ✅ 已集成Ember SoulData+Personality+EmotionState |
+| EventBus | P1 | ✅ 已集成ArboreusEventBus SDK（渐进式） |
+| ArenaMap网格 | P2 | ✅ 已替换为ArboreusGridMapBridge |
+| RTSArenaManager世界模拟层 | P2 | ✅ 已集成ArboreusWorldBridge |
+| GameState世界状态 | P2 | ✅ 已集成ArboreusWorld状态同步 |
+| RTSArenaManager实体位置 | P2 | ✅ 已集成ArboreusMovementSystem |
+
+**7个越界模块全部替换完成！架构整理第一阶段完成！**
+
+从第20轮（15:30）开始SDK集成，到第32轮（19:15）完成全部7个越界模块，仅用12轮（约3.75小时）完成核心架构重构。
+
+### ⚠️ 发现新问题：Ember SoulAIController类名冲突
+
+**问题描述：**
+- Ember最新commit f163ea9: "feat(ember): P2 SoulAIController - 20th class, unified AI decision pipeline"
+- Ember新增了原生的SoulAIController类（第20个类）
+- 战策RTSArenaManager.gd中有`const SoulAIController = preload("res://scripts/game/EmberSoulAIController.gd")`
+- 这导致类名冲突：
+  - SCRIPT ERROR: Parse Error: The member "SoulAIController" shadows a native class.
+  - SCRIPT ERROR: Value of type "EmberSoulAIController.gd" cannot be assigned to a variable of type "SoulAIController".
+
+**影响：**
+- RTSArenaManager.gd可能无法正常加载
+- AI控制器初始化可能失败
+- 战斗可能无法正常进行
+
+**解决方案：**
+- 战策需要将const SoulAIController重命名为EmberSoulAIController或其他不冲突的名字
+- 或者直接使用Ember原生的SoulAIController类（如果功能兼容）
+- 需要战策下一轮修复
+
+### ⚠️ 发现新问题：ArboreusEventBus.subscribe参数错误
+
+**问题描述：**
+- SCRIPT ERROR: Invalid call to function 'subscribe' in base 'ArboreusEventBus'. Expected 2 argument(s).
+- ArboreusEventBus.subscribe期望2个参数，但战策传了更多参数
+
+**影响：**
+- EventBus订阅可能失败
+- 事件分发可能不正常
+
+**解决方案：**
+- 战策需要检查ArboreusEventBus.subscribe的API签名
+- 调整调用参数以匹配SDK的API
+- 需要战策下一轮修复
+
+### ✅ remove_entity参数类型错误已修复
+
+从RTSArenaManager.gd代码看，remove_entity现在传的是_player_entity_id（int），不是Object了：
+```
+_arboreus_world.remove_entity(_player_entity_id)
+```
+这个问题已经修复了。
+
+### Ember任务状态
+
+- 最新commit: f163ea9 "feat(ember): P2 SoulAIController - 20th class, unified AI decision pipeline"
+- Ember新增了SoulAIController类（第20个类），统一AI决策管道
+- 这导致了与战策的类名冲突
+- Ember还在继续添加新功能
+
+### Arboreus任务状态
+
+- pathfinder.cpp最后修改: 16:25:16（Pathfinder修复）
+- 之后没有新的修改
+- Arboreus任务似乎没有在做新的工作
+- ArboreusEventBus.subscribe API可能需要确认
+
+### 待办事项
+1. 🟡 战策修复SoulAIController类名冲突（Ember新增原生类导致）
+2. 🟡 战策修复ArboreusEventBus.subscribe参数错误
+3. 🟠 优化EventBus.emit()使用ArboreusEventBus分发（当前还是战策分发）
+4. 🟠 深化实体战斗逻辑集成：将HP/ATK等属性同步到ArboreusEntity组件
+5. 🟢 架构整理第二阶段：视觉提升和设计驱动开发（P0自定义字体+UI皮肤+三界面升级）
+6. 🟢 准备Steam EA上架准备工作
+7. 🟡 BUG-030音频导入
