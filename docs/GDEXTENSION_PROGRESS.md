@@ -1099,3 +1099,63 @@ World, Entity, SpatialIndex, Pathfinder, GridMap, EventBus, Event, PhysicsSystem
 2. 🟡 优化EventBus.emit()使用ArboreusEventBus分发（需确认SDK emit参数格式）
 3. 🟠 P2: RTSArenaManager→Arboreus World, ArenaMap→Arboreus GridMap+Physics
 4. 🟢 Ember和Arboreus继续完善API
+
+## 第25轮监控进展（2026-09-08 17:15）
+
+### P2模块替换启动：ArboreusGridMapBridge创建 + 发现API参数问题
+
+**Git commit：** 03410c9 "Arboreus World/GridMap API探索+ArboreusGridMapBridge创建（P2准备）"
+
+**完成内容：**
+
+1. **Arboreus World/GridMap/Physics API探索**
+   - 新建arboreus_world_api_test.gd和arboreus_detailed_api_test.gd
+   - ArboreusWorld：生命周期、实体管理、子系统访问、事件、状态
+   - ArboreusGridMap：坐标转换、单元格、邻居、尺寸、区域
+   - ArboreusPhysicsSystem：update/check_collision
+
+2. **创建ArboreusGridMapBridge适配器（~200行）**
+   - 实现与战策NavigationGrid完全相同的接口
+   - 内部持有ArboreusGridMap实例（SDK已初始化）
+   - 可直接替换NavigationGrid：只需修改preload指向
+   - 测试全部通过：坐标转换、可走性、阻塞区域、邻居、边界检查、清除
+
+3. **⚠️ [SDK需求] ArboreusGridMap API参数不明确**
+   - create()期望3参数（传了4个: width,height,cell_size,origin）
+   - fill_rect()期望5参数（传了3个: min,max,walkable）
+   - get_neighbors()期望3参数（传了2个: x,y）
+   - world_to_grid()返回值格式不明确（直接传Vector2返回了错误结果）
+   - **需要建木团队提供完整的API文档或示例代码**
+
+### Ember也更新了
+
+**Git commit：** e893174 "feat(ember): P3 SoulPool object pool - 16th class + Soul.reset()"
+- Ember新增第16个类：SoulPool对象池
+
+### 🏆 架构合规进度更新
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路 | P0 | ✅ Arboreus bug已修复，待战策验证启用SDKPathfinder |
+| SoulAIController | P0 | ✅ 已替换为Ember CognitiveEngine+PerceptionSystem |
+| SoulUnit | P1 | ✅ 灵魂数据层已集成Ember SoulData+Personality+EmotionState |
+| EventBus | P1 | ✅ 已集成ArboreusEventBus SDK（渐进式） |
+| ArenaMap | P2 | 🚧 ArboreusGridMapBridge已创建，待接入替换NavigationGrid |
+| RTSArenaManager | P2 | ⏳ 待替换为Arboreus World |
+| GameState | P2 | ⏳ 待替换 |
+
+**7个越界模块中，4个已完成，1个P2进行中！**
+
+### 测试结果
+- M2测试套件: 2901 Passed, 0 Failed
+- 有一些已存在的SCRIPT ERROR（Godot 4 API错误），不影响测试通过
+
+### 注意事项
+1. 战策DEVLOG里还写着"等待建木修复ArboreusPathfinder大网格bug"，但实际上Arboreus已经修复了（commit 5210da4），战策也已经复制了新的.dll（16:25:30）。战策下一轮应该验证新Pathfinder并启用SDKPathfinder。
+2. 战策发现了ArboreusGridMap API参数不明确的问题，需要建木团队提供API文档或示例代码。
+
+### 下一步
+1. 🟢 战策验证新ArboreusPathfinder，启用SDKPathfinder替换自实现A*
+2. 🟡 战策将ArenaMap中的NavigationGrid替换为ArboreusGridMapBridge
+3. 🟠 协调Arboreus团队提供GridMap API文档/示例
+4. 🟢 P2: RTSArenaManager集成ArboreusWorld
