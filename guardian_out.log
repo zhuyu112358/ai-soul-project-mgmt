@@ -1,0 +1,139 @@
+[2026-09-08T00:08:45.225Z] [GUARDIAN-v3] SoulArena Guardian v3 starting
+[2026-09-08T00:08:45.233Z] [GUARDIAN-v3] Server entry: D:\Sojourn\ember\server\index.js
+[2026-09-08T00:08:45.236Z] [GUARDIAN-v3] Port: 3000, bind-check enabled, TIME_WAIT wait: 10x3s
+[2026-09-08T00:08:45.238Z] [GUARDIAN-v3] Runtime breaker: 10/300s, auto-recover 120s
+[2026-09-08T00:08:45.243Z] [GUARDIAN-v3] Startup breaker: 5 consecutive -> 60s cooldown
+[2026-09-08T00:08:45.511Z] [GUARDIAN-v3] Starting SoulArena server (backoff=2000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌘ enable debugging { debug: true }
+[2026-09-08T00:08:45.871Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=310ms type=STARTUP_FAILURE
+[2026-09-08T00:08:45.873Z] [GUARDIAN-v3] Startup failure #1/5
+[2026-09-08T00:08:45.875Z] [GUARDIAN-v3] Restarting in 2000ms...
+[2026-09-08T00:08:47.889Z] [GUARDIAN-v3] Starting SoulArena server (backoff=4000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[2026-09-08T00:08:48.237Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=307ms type=STARTUP_FAILURE
+[2026-09-08T00:08:48.240Z] [GUARDIAN-v3] Startup failure #2/5
+[2026-09-08T00:08:48.242Z] [GUARDIAN-v3] Restarting in 4000ms...
+[2026-09-08T00:08:52.249Z] [GUARDIAN-v3] Starting SoulArena server (backoff=8000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[2026-09-08T00:08:52.592Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=300ms type=STARTUP_FAILURE
+[2026-09-08T00:08:52.596Z] [GUARDIAN-v3] Startup failure #3/5
+[2026-09-08T00:08:52.598Z] [GUARDIAN-v3] Restarting in 8000ms...
+[2026-09-08T00:09:00.609Z] [GUARDIAN-v3] Starting SoulArena server (backoff=16000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[2026-09-08T00:09:00.958Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=302ms type=STARTUP_FAILURE
+[2026-09-08T00:09:00.962Z] [GUARDIAN-v3] Startup failure #4/5
+[2026-09-08T00:09:00.965Z] [GUARDIAN-v3] Restarting in 16000ms...
+[2026-09-08T00:09:15.532Z] [GUARDIAN-v3] Health check failed: 
+[2026-09-08T00:09:16.979Z] [GUARDIAN-v3] Starting SoulArena server (backoff=30000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[2026-09-08T00:09:17.341Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=315ms type=STARTUP_FAILURE
+[2026-09-08T00:09:17.345Z] [GUARDIAN-v3] Startup failure #5/5
+[2026-09-08T00:09:17.348Z] [GUARDIAN-v3] STARTUP BREAKER: 5 consecutive failures, cooling down for 60s
+[2026-09-08T00:09:45.568Z] [GUARDIAN-v3] Server stable 60s, backoff reset
+[2026-09-08T00:10:17.358Z] [GUARDIAN-v3] Startup breaker cooldown elapsed, resuming
+[2026-09-08T00:10:17.363Z] [GUARDIAN-v3] Starting SoulArena server (backoff=2000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[2026-09-08T00:10:17.712Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=297ms type=STARTUP_FAILURE
+[2026-09-08T00:10:17.716Z] [GUARDIAN-v3] Startup failure #1/5
+[2026-09-08T00:10:17.720Z] [GUARDIAN-v3] Restarting in 2000ms...
+[2026-09-08T00:10:19.736Z] [GUARDIAN-v3] Starting SoulArena server (backoff=4000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[2026-09-08T00:10:20.053Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=270ms type=STARTUP_FAILURE
+[2026-09-08T00:10:20.057Z] [GUARDIAN-v3] Startup failure #2/5
+[2026-09-08T00:10:20.060Z] [GUARDIAN-v3] Restarting in 4000ms...
+[2026-09-08T00:10:24.074Z] [GUARDIAN-v3] Starting SoulArena server (backoff=8000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[2026-09-08T00:10:24.419Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=304ms type=STARTUP_FAILURE
+[2026-09-08T00:10:24.422Z] [GUARDIAN-v3] Startup failure #3/5
+[2026-09-08T00:10:24.424Z] [GUARDIAN-v3] Restarting in 8000ms...
+[2026-09-08T00:10:32.433Z] [GUARDIAN-v3] Starting SoulArena server (backoff=16000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[2026-09-08T00:10:32.763Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=289ms type=STARTUP_FAILURE
+[2026-09-08T00:10:32.767Z] [GUARDIAN-v3] Startup failure #4/5
+[2026-09-08T00:10:32.770Z] [GUARDIAN-v3] Restarting in 16000ms...
+[2026-09-08T00:10:45.528Z] [GUARDIAN-v3] Health check failed: 
+[2026-09-08T00:10:48.780Z] [GUARDIAN-v3] Starting SoulArena server (backoff=30000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[2026-09-08T00:10:49.097Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=273ms type=STARTUP_FAILURE
+[2026-09-08T00:10:49.101Z] [GUARDIAN-v3] Startup failure #5/5
+[2026-09-08T00:10:49.105Z] [GUARDIAN-v3] STARTUP BREAKER: 5 consecutive failures, cooling down for 60s
+[2026-09-08T00:11:17.426Z] [GUARDIAN-v3] Server stable 60s, backoff reset
+[2026-09-08T00:11:49.109Z] [GUARDIAN-v3] Startup breaker cooldown elapsed, resuming
+[2026-09-08T00:11:49.116Z] [GUARDIAN-v3] Starting SoulArena server (backoff=2000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[2026-09-08T00:11:49.706Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=536ms type=STARTUP_FAILURE
+[2026-09-08T00:11:49.710Z] [GUARDIAN-v3] Startup failure #1/5
+[2026-09-08T00:11:49.714Z] [GUARDIAN-v3] Restarting in 2000ms...
+[2026-09-08T00:11:51.727Z] [GUARDIAN-v3] Starting SoulArena server (backoff=4000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[2026-09-08T00:11:52.106Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=334ms type=STARTUP_FAILURE
+[2026-09-08T00:11:52.110Z] [GUARDIAN-v3] Startup failure #2/5
+[2026-09-08T00:11:52.114Z] [GUARDIAN-v3] Restarting in 4000ms...
+[2026-09-08T00:11:56.129Z] [GUARDIAN-v3] Starting SoulArena server (backoff=8000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌘ suppress logs { quiet: true }
+[2026-09-08T00:11:56.490Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=313ms type=STARTUP_FAILURE
+[2026-09-08T00:11:56.494Z] [GUARDIAN-v3] Startup failure #3/5
+[2026-09-08T00:11:56.498Z] [GUARDIAN-v3] Restarting in 8000ms...
+[2026-09-08T00:12:04.508Z] [GUARDIAN-v3] Starting SoulArena server (backoff=16000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[2026-09-08T00:12:04.884Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=327ms type=STARTUP_FAILURE
+[2026-09-08T00:12:04.888Z] [GUARDIAN-v3] Startup failure #4/5
+[2026-09-08T00:12:04.893Z] [GUARDIAN-v3] Restarting in 16000ms...
+[2026-09-08T00:12:15.556Z] [GUARDIAN-v3] Health check failed: 
+[2026-09-08T00:12:20.914Z] [GUARDIAN-v3] Starting SoulArena server (backoff=30000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌘ override existing { override: true }
+[2026-09-08T00:12:21.257Z] [GUARDIAN-v3] Server exited: code=1 signal=null uptime=295ms type=STARTUP_FAILURE
+[2026-09-08T00:12:21.261Z] [GUARDIAN-v3] Startup failure #5/5
+[2026-09-08T00:12:21.264Z] [GUARDIAN-v3] STARTUP BREAKER: 5 consecutive failures, cooling down for 60s
+[2026-09-08T00:12:49.174Z] [GUARDIAN-v3] Server stable 60s, backoff reset
+[2026-09-08T00:13:21.281Z] [GUARDIAN-v3] Startup breaker cooldown elapsed, resuming
+[2026-09-08T00:13:21.289Z] [GUARDIAN-v3] Starting SoulArena server (backoff=2000ms, portBindable=true)
+◇ injected env (11) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[00:13:21] [INFO] [database] initialized
+[00:13:21] [INFO] [llm] real_mode
+[00:13:21] [INFO] [server] llm_client_initialized
+[00:13:21] [INFO] [llm_scheduler] usage_loaded
+[00:13:21] [INFO] [server] llm_scheduler_initialized
+[00:13:21] [INFO] [server] llm_router_initialized
+[00:13:21] [INFO] [conversation] loaded_from_db
+[00:13:21] [INFO] [server] conversation_manager_initialized
+[00:13:21] [INFO] [soul_manager] started
+[00:13:21] [INFO] [server] soul_manager_initialized
+[00:13:21] [INFO] [task_system] loaded_from_db
+[00:13:21] [INFO] [server] task_system_initialized
+[00:13:21] [INFO] [autonomy] engine_started
+[00:13:21] [INFO] [server] autonomy_engine_started
+[00:13:21] [INFO] [server] soul_evaluator_initialized
+[00:13:21] [INFO] [server] conversation_and_knowledge_systems_initialized
+[00:13:21] [INFO] [map_system] builtin_maps_loaded
+[00:13:21] [INFO] [game_registry] game_registered
+[00:13:21] [INFO] [game_registry] active_game_changed
+[00:13:21] [INFO] [game_engine] preset_soul_loaded_from_db
+[00:13:21] [INFO] [neurotransmitter] baselines_set
+[00:13:22] [INFO] [dmn] started
+[00:13:22] [INFO] [soul_manager] soul_awoken soul=soul_mtmtqt4i8svpd4
+[00:13:22] [INFO] [game_engine] preset_soul_loaded_from_db
+[00:13:22] [INFO] [neurotransmitter] baselines_set
+[00:13:22] [INFO] [dmn] started
+[00:13:22] [INFO] [soul_manager] soul_awoken soul=soul_mtmtqt4pm7zdne
+[00:13:22] [INFO] [game_engine] battle_initialized
+[00:13:22] [INFO] [arena_game] initialized
+[00:13:22] [INFO] [server] game_platform_initialized
+[00:13:22] [INFO] [soul_repo] loaded
+[00:13:22] [INFO] [server] server_started
+
+  ╔══════════════════════════════════════════╗
+  ║     SoulArena v5.59.0 - development       ║
+  ╠══════════════════════════════════════════╣
+  ║  Game:    http://localhost:3000              ║
+  ║  Monitor: http://localhost:3000/admin         ║
+  ║  Health:  http://localhost:3000/healthz       ║
+  ║  WS:      ws://localhost:3000/ws              ║
+  ║  Souls:   2                                  ║
+  ║  LLM:     siliconflow           ║
+  ║  Uptime:  0s                        ║
+  ╚══════════════════════════════════════════╝
+  
+[00:13:24] [INFO] [game_engine] game_started
+[00:13:24] [INFO] [snapshot] auto_snapshot_started
+[00:13:24] [INFO] [server] game_engine_started
