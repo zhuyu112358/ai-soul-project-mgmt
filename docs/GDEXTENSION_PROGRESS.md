@@ -457,3 +457,54 @@
 - Ember开发任务创建了tests目录和集成测试脚本，这是好的进展
 - 但Ember似乎误解了"测试项目"的含义：创建了.gd测试脚本，但没有创建Godot项目来运行它
 - 下一轮如果Ember还不创建Godot项目验证加载，监控应该主动更新Ember的任务prompt，明确说明需要创建完整的Godot测试项目（参考Arboreus的minimal_test）
+
+## 第15轮监控进展（2026-09-08 14:15）
+
+### 🔴 监控强制干预：更新Ember任务prompt，要求优先验证Godot加载
+
+**问题：** Ember的GDExtension加载验证已经拖延了5轮以上。Ember一直在继续加新功能（EconomySystem）和文档，但**至今没有创建Godot测试项目，GDExtension加载从未被实际验证**。
+
+**Ember最新状态：**
+- ✅ 新增API文档（commit 85542f0）- all 15 classes documented
+- ✅ 新增P2 EconomySystem（commit 5385346）- resource, production, trade, market
+- ⚠️ CMakeLists.txt有未提交的修改
+- ❌ **还是没有Godot测试项目（project.godot）**
+- ❌ tests目录只有integration_test.gd和README.md，没有Godot项目来运行
+- ❌ 没有Ember的Godot用户日志
+- ❌ GDExtension加载从未被验证
+
+**监控操作：**
+- 主动更新Ember任务prompt（cron_job_id=11660550351618）
+- 标题改为："灵火Ember开发（GDExtension重构中-紧急：优先验证Godot加载）"
+- 明确要求：**在GDExtension加载验证通过之前，禁止继续开发新功能！**
+- 提供了详细的创建Godot测试项目的步骤：
+  1. 创建ember/minimal_test目录（参考Arboreus的结构）
+  2. 创建project.godot、main.tscn、main.gd
+  3. 创建addons/ember/ember.gdextension配置文件
+  4. 复制.dll到addons/ember/bin/目录
+  5. 检查类名冲突，必要时加Ember前缀
+  6. 运行Godot测试验证加载
+  7. 加载验证通过后运行完整的integration_test.gd
+- 提供了Arboreus成功的minimal_test结构作为参考
+- 提供了编译环境和命令参考
+
+**Arboreus最新状态：**
+- ✅ 最新测试日志：14:11:16（新的测试运行）
+- Arboreus继续在做测试和加新功能
+- Arboreus的GDExtension加载已验证通过（13:22）
+
+### 双引擎对比（更新）
+
+| 维度 | Arboreus | Ember |
+|------|----------|-------|
+| 系统模块数 | 16+个 | 16个（含EconomySystem） |
+| GDExtension加载验证 | ✅ 已通过（13:22） | ❌ 未验证（已拖延5轮+） |
+| Godot测试项目 | ✅ minimal_test + 6个测试脚本 | ❌ 无（只有.gd脚本，无project.godot） |
+| 类名前缀 | ✅ ArboreusXXX | ❌ 无前缀（可能冲突） |
+| 监控干预 | 无需 | 🔴 已强制更新prompt |
+
+### 下一步
+1. 🔴 等待Ember下一轮执行，看是否开始创建Godot测试项目
+2. 🟠 如果Ember下一轮还不创建测试项目，考虑进一步措施
+3. 🟡 Arboreus继续完成所有模块的完整API测试
+4. 🔵 两个引擎都通过完整测试后，开始战策集成SDK
