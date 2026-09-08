@@ -1283,3 +1283,79 @@ World, Entity, SpatialIndex, Pathfinder, GridMap, EventBus, Event, PhysicsSystem
 2. 🟡 协调Arboreus团队明确World API（remove_entity参数、get_grid_map配置、Entity方法）
 3. 🟠 P2: 将RTSArenaManager实体管理替换为ArboreusWorldBridge
 4. 🟢 P2: GameState集成Arboreus World状态
+
+## 第28轮监控进展（2026-09-08 18:15）
+
+### 🎉 RTSArenaManager集成ArboreusWorldBridge！6个越界模块完成
+
+**Git commits：**
+- bafd2a8: "ArboreusEntity API探索+ArboreusWorldBridge完善（P2准备）"
+- 3d36b8b: "RTSArenaManager集成ArboreusWorldBridge（P2架构合规）"
+
+**完成内容：**
+
+1. **ArboreusEntity API探索+ArboreusWorldBridge完善**
+   - 探索了ArboreusEntity API
+   - 完善了ArboreusWorldBridge，新增实体名称/组件/标签方法，修复remove_entity
+
+2. **RTSArenaManager渐进式集成ArboreusWorldBridge**
+   - 集成策略：渐进式集成，保持游戏可运行
+   - ArboreusWorld作为**世界模拟层**：时间推进、实体生命周期、事件系统
+   - SoulUnit保持**表现层**：位置管理、视觉渲染、战斗逻辑
+   - 两者通过ArboreusWorldBridge关联
+
+3. **集成点**
+   - 世界初始化：start_battle中创建ArboreusWorldBridge，配置arena_width/arena_height/cell_size
+   - 实体创建：每个SoulUnit生成时同步创建ArboreusEntity
+   - 世界更新：每帧_process中调用bridge.update(delta)
+   - 世界清理：战斗结束时移除实体并stop()
+
+**测试结果：**
+- 自动化战斗测试: [OK] Both units moved successfully!
+- 无SCRIPT ERROR
+- ArboreusWorld初始化: available=true
+- 实体创建: 玩家(id=1) + AI(id=2)
+- 玩家移动550px, AI移动334px, 最终距离0.4
+- 两个SoulUnit均Ember:true
+
+### ⚠️ [SDK需求] ArboreusEntity API待明确
+
+战策在探索Entity API时发现几个问题：
+1. **缺少add_component方法**：ArboreusEntity只有has_component/remove_component，没有add_component。实体如何获得transform/position等组件？
+2. **实体无内置位置属性**：ArboreusEntity无内置位置属性，如何设置/获取实体位置？是否需要通过组件系统？
+3. **get_grid_map返回null**：是否需要在create config中指定grid配置？
+4. **spatial_entity_count=0**：get_status显示spatial_entity_count为0，即使创建了2个实体。实体如何注册到空间索引？
+
+Arboreus的world.cpp和entity.cpp最后修改时间是12:50和12:46，说明Arboreus团队还没有修复这些API问题。
+
+### Ember也更新了
+
+**Git commits：**
+- 3762543: "feat(ember): P2 GoalPlanner (GOAP) - 17th class, A* action planning"
+- 8f4b54c: "feat(ember): P2 BayesianNetwork - 18th class, probabilistic inference"
+- Ember现在有18个类
+
+### 🏆 架构合规进度更新
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路网格层 | P0 | ✅ ArboreusGridMapBridge（寻路算法待替换） |
+| SoulAIController | P0 | ✅ 已替换为Ember CognitiveEngine+PerceptionSystem |
+| SoulUnit灵魂数据层 | P1 | ✅ 已集成Ember SoulData+Personality+EmotionState |
+| EventBus | P1 | ✅ 已集成ArboreusEventBus SDK（渐进式） |
+| ArenaMap网格 | P2 | ✅ 已替换为ArboreusGridMapBridge |
+| RTSArenaManager世界模拟层 | P2 | ✅ 已集成ArboreusWorldBridge（世界模拟层） |
+| RTSArenaManager实体位置/战斗逻辑 | P2 | ⏳ 待ArboreusEntity位置API明确 |
+| GameState | P2 | ⏳ 待替换为Arboreus World状态 |
+
+**7个越界模块中，6个已完成（部分完成）！2个P0 + 2个P1 + 2个P2**
+
+### 注意事项
+1. 战策DEVLOG里还写着"等待建木修复ArboreusPathfinder大网格bug"，但实际上Arboreus已经修复了（commit 5210da4），战策也已经复制了新的.dll（16:25:30）。战策下一轮应该验证新Pathfinder并启用SDKPathfinder，完全替换AStarPathfinder。
+2. 战策发现了ArboreusEntity API的一些问题（缺少add_component、无位置属性、get_grid_map返回null、spatial_entity_count=0），需要建木团队修复或提供API文档。
+
+### 下一步
+1. 🟢 战策验证新ArboreusPathfinder，启用SDKPathfinder完全替换AStarPathfinder
+2. 🟡 协调Arboreus团队明确Entity API（add_component、位置管理、grid配置、空间索引注册）
+3. 🟠 深化RTSArenaManager集成：将实体位置同步到ArboreusEntity
+4. 🟢 P2: GameState集成Arboreus World状态
