@@ -154,3 +154,35 @@
 1. Arboreus: 重新运行minimal_test验证修复后的GDExtension加载
 2. Ember: commit GrowthSystem → 检查类名冲突 → 创建测试项目验证加载
 3. 两个引擎都通过Godot加载验证后，开始战策集成SDK
+
+## 第10轮监控进展（2026-09-08 13:05）
+
+### Arboreus - 代码修复已commit，但测试项目.dll未更新
+- ✅ **类名冲突修复已commit**（654bdc7 "M14 GDExtension: Fix class name conflicts with Godot built-in classes"）
+- ✅ GridMap→ArboreusGridMap, World→ArboreusWorld
+- ✅ 重新编译成功（最新.dll在arboreus/build/bin/，12:45）
+- ⚠️ **关键问题：测试项目里的.dll还是旧的**
+  - test_project/addons/arboreus/里的.dll是12:30的（修复前版本）
+  - minimal_test/addons/arboreus/里的.dll也是旧的
+  - 所以测试日志仍显示GridMap冲突错误（日志时间12:34）
+- ✅ test_project有4个测试脚本：check_gdextension.gd, debug_gdextension.gd, simple_test.gd, test_runner.gd (16KB详细测试)
+- ⏳ **下一步：把新编译的.dll复制到测试项目 → 重新运行测试验证加载**
+
+### Ember - P1全部完成，待创建测试项目
+- ✅ **P1全部5个子系统完成并commit**（da29b53 "feat(ember): P1 complete - GrowthSystem + all 5 P1 subsystems implemented"）
+- ✅ 5个P1子系统：PerceptionSystem, DecisionSystem, ActionSystem, GrowthSystem + （第5个待确认）
+- ✅ 共10个注册类，11个.cpp文件
+- ✅ 最新编译成功
+- ⚠️ **Ember还没有自己的测试项目**（只有godot-cpp自带的test目录）
+- ⏳ **下一步：检查类名冲突（Soul/Emotion等）→ 创建测试项目 → 复制.dll → 验证Godot加载**
+
+### 编译产物位置说明
+- 最新编译的.dll在 `arboreus/build/bin/` 和 `ember/build/bin/` 目录
+- 测试项目需要手动复制.dll到 `addons/arboreus/` 或 `addons/ember/` 目录
+- .gdextension文件配置的库路径需要与实际.dll文件名匹配
+
+### 下一步优先级
+1. **Arboreus**: 复制新.dll到test_project → 运行test_runner.gd验证GDExtension加载和API调用
+2. **Ember**: 检查类名冲突 → 创建minimal_test项目 → 复制.dll → 验证加载
+3. 两个引擎都通过加载验证后，开始编写完整API测试用例
+4. API测试通过后，开始战策集成SDK
