@@ -747,3 +747,71 @@ World, Entity, SpatialIndex, Pathfinder, GridMap, EventBus, Event, PhysicsSystem
 2. 🟡 检查战策是否创建addons目录并复制GDExtension文件
 3. 🟢 Ember和Arboreus继续完善P2功能和API测试
 4. 🟠 如果战策15:30还没开始集成，检查任务是否正常运行
+
+## 第20轮监控进展（2026-09-08 15:30）
+
+### 🎉 战策SDK集成第一轮大获成功！
+
+**战策在启用后的第一轮（15:00-15:30）就完成了SDK集成和加载验证！**
+
+**Git commits：**
+- 725da70: "集成Ember+Arboreus GDExtension SDK到战策项目"
+- 70d9502: "提交GDExtension SDK文件+修复.gitignore"
+
+**✅ 已完成：**
+
+1. **创建addons目录结构**
+   - addons/ember/ember.gdextension (559 bytes)
+   - addons/ember/bin/libember.windows.release.x86_64.dll (862KB)
+   - addons/arboreus/arboreus.gdextension (592 bytes)
+   - addons/arboreus/bin/arboreus.windows.Release.x86_64.dll (1094KB)
+
+2. **SDK加载验证成功**
+   - **Ember: 7/7类加载成功**（SoulData, Personality, EmotionState, CognitiveEngine, MemorySystem, Soul, PerceptionSystem）
+   - **Arboreus: 18/18类加载成功！**（World, Entity, Pathfinder, GridMap, EventBus, Event, PhysicsSystem, MovementSystem, SpatialIndex, WorldClock, BehaviorTree, BuildingSystem, EconomySystem, NavigationMesh, PerceptionSystem, SocialSystem, SteeringBehaviors, TerritorySystem, WeatherSystem）
+   - Soul类可正常实例化
+
+3. **创建了4个测试文件**
+   - tests/gdextension_load_test.gd - GDExtension加载验证
+   - tests/list_custom_classes.gd - 自定义类列表
+   - tests/arboreus_pathfinder_api_test.gd - Pathfinder API探索
+   - tests/arboreus_pathfinder_functional_test.gd - Pathfinder功能测试
+
+4. **探索了Arboreus API**
+   - ArboreusGridMap: create, get_width/height, is_walkable, grid_to_world/world_to_grid
+   - ArboreusPathfinder: set_grid, find_path, set_allow_diagonal, smooth_path, get_path_length
+   - ArboreusWorld, MovementSystem, EventBus, PhysicsSystem, SteeringBehaviors
+
+**下一轮计划（战策已明确）：**
+- [ ] P0: 替换A*寻路为ArboreusPathfinder（修复BUG-031 AI单位不绕行）
+- [ ] P0: 替换SoulAIController为Ember PerceptionSystem+CognitiveEngine
+- [ ] P1: 替换SoulUnit为Ember Soul+SoulData
+- [ ] P1: 替换EventBus为ArboreusEventBus
+- [ ] P2: 替换RTSArenaManager/ArenaMap/GameState
+
+### GDExtension项目最新进展
+
+- ✅ **新增P2 NarrativeSystem**（commit 178027f）- narrative events, story arcs, and characters
+- ✅ **Ember新增Battleplan integration examples + quick reference**（commit 6166a42）- 为战策集成提供示例和快速参考
+- Arboreus现在有19个系统模块（新增WeatherSystem、NarrativeSystem）
+
+### 🏆 架构整理重大进展
+
+| 里程碑 | 状态 | 时间 |
+|--------|------|------|
+| GDExtension项目骨架 | ✅ | 11:09 |
+| Arboreus核心类实现 | ✅ | 12:00-13:00 |
+| Ember核心类实现 | ✅ | 12:00-14:00 |
+| Arboreus加载验证 | ✅ | 13:22 |
+| Ember加载验证 | ✅ | 14:38 |
+| Ember完整集成测试 | ✅ 108/110 | 14:54 |
+| **战策SDK集成** | **✅ 第一轮完成** | **15:00-15:30** |
+| 战策越界实现替换 | ⏳ 进行中 | 下一轮开始 |
+
+**战策SDK集成速度超出预期！** 启用后第一轮就完成了SDK文件复制、加载验证和API探索，下一轮开始实际替换越界实现。
+
+### 下一步
+1. 🟢 战策开始替换越界实现（P0: A*寻路→ArboreusPathfinder, SoulAIController→Ember）
+2. 🟡 Ember和Arboreus继续完善P2功能
+3. 🟠 战策替换后需要完整测试，确保游戏可运行
+4. 🔵 按需触发设计任务产出UI原型图
