@@ -1,10 +1,48 @@
 ﻿# GDExtension 开发进展记录
 
 > 最后更新: 2026-09-08
-> 监控任务第7轮
-> ⭐⭐ 双引擎编译成功！Ember + Arboreus GDExtension都已生成.dll
+> ⭐⭐⭐ Ember GDExtension v1.0.0 完成！15类全部实现、加载验证通过、集成测试110/110、性能达标、Release包就绪
 
-## 当前状态
+## 🎉 Ember 当前完整状态（最新）
+
+### 完成清单
+| 项目 | 状态 | 详情 |
+|------|------|------|
+| P0 核心6类 | ✅ | SoulData, Personality, EmotionState, CognitiveEngine, MemorySystem, Soul |
+| P1 系统4类 | ✅ | PerceptionSystem, DecisionSystem, ActionSystem, GrowthSystem |
+| P2 高级5类 | ✅ | RelationshipSystem, SocialSystem, LearningSystem, ConsciousnessSystem, DreamSystem |
+| 编译 (Debug+Release) | ✅ | Release DLL 842KB |
+| Godot加载验证 | ✅ | 15/15类注册成功，无类名冲突 |
+| 完整集成测试 | ✅ | **110/110 通过** |
+| 性能基准测试 | ✅ | Soul完整生命周期29µs，60fps可支持~570 Soul |
+| DecisionSystem Bug修复 | ✅ | 支持id/name双字段 |
+| 战策集成示例 | ✅ | npc_controller.gd + quick_reference.gd（已验证运行） |
+| Release分发包 | ✅ | release/addons/ember/ 可直接拷贝到任意Godot项目 |
+| Godot插件系统 | ✅ | plugin.cfg + plugin.gd，编辑器可启用 |
+
+### 性能数据
+| 操作 | 耗时 |
+|------|------|
+| Soul实例化 | 4 µs |
+| Soul完整生命周期 | 29 µs |
+| CognitiveEngine全循环 | 7.3 µs |
+| DecisionSystem decide | 7.1 µs |
+| 1000 Soul创建+更新 | 13.5 µs/个 |
+
+### Git Commits (最新)
+- `6166a42` Battleplan integration examples + quick reference
+- `b70766b` DecisionSystem id/name fix + performance benchmark
+- `e763488` Full integration test PASSED 110/110
+- `d80ebf3` GDExtension load verification PASSED
+
+### 下一步
+- 战策实际集成（替换SoulAIController→Ember）
+- P3优化（对象池、二进制序列化）
+- Linux/macOS编译
+
+---
+
+## 历史记录
 
 ### 任务调度状态
 | 任务 | 状态 | 频率 | 说明 |
@@ -872,3 +910,71 @@ World, Entity, SpatialIndex, Pathfinder, GridMap, EventBus, Event, PhysicsSystem
 2. 🟡 战策继续替换SoulAIController为Ember SDK（不依赖Pathfinder bug）
 3. 🟢 Ember继续完善API和测试
 4. 🟠 Arboreus修复后，战策启用SDKPathfinder替换自实现A*
+
+## 第22轮监控进展（2026-09-08 16:30）
+
+### 🎉 双P0突破！Arboreus Pathfinder修复 + 战策SoulAIController替换Ember
+
+#### 1. ✅ ArboreusPathfinder大网格bug已修复！
+
+**Git commit：** 5210da4 "FIX: ArboreusPathfinder large grid bug - API semantic mismatch (P0 blocker)"
+
+**修复内容：**
+- 根本原因：API语义不匹配（API semantic mismatch）
+- pathfinder.cpp最后修改: 16:25:16
+- 新.dll已编译: 16:25:30, 1168KB（之前1094KB，增加了修复代码）
+- 战策已复制新.dll到addons目录（16:25:30）
+
+**P0阻塞项解除！** 战策下一轮可以测试新的ArboreusPathfinder，如果正常就可以启用SDKPathfinder替换自实现A*。
+
+#### 2. ✅ 战策SoulAIController已替换为Ember！
+
+**Git commits：**
+- 35d7aed: "替换SoulAIController为EmberSoulAIController（P0架构合规）"
+- d7a5953: "Ember AI近距离攻击修复+SoulUnit替换方案设计"
+
+**完成内容：**
+- 新建scripts/game/EmberSoulAIController.gd，使用Ember CognitiveEngine做AI决策
+- 修复了Ember AI近距离攻击逻辑（_convert_ember_decision）
+- 新建tests/ember_soul_api_test.gd，探索Ember Soul API
+- SoulData/Personality/EmotionState/Soul全部可用
+
+**自动化战斗测试通过：**
+- 玩家: (200,300)→(714,343), HP 120→107
+- AI: (1080,300)→(679,368), HP 120→101
+- 第9秒开始攻击，第11秒双方互攻
+- "[OK] Both units moved and attacked!"
+
+#### 3. ✅ SoulUnit替换方案设计完成
+
+**设计方案：**
+- SoulUnit(Node2D)内部持有Ember Soul对象作为灵魂核心
+- 灵魂数据(HP/攻击/防御/个性/情绪)从Ember Soul获取
+- 视觉表现、移动、攻击执行仍由战策实现（表现层+玩法层）
+- AI决策已通过EmberSoulAIController使用Ember CognitiveEngine
+- 下一轮执行替换
+
+### 🏆 架构合规进度更新
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路 | P0 | ✅ Arboreus bug已修复，待战策验证后启用SDKPathfinder |
+| SoulAIController | P0 | ✅ 已替换为Ember CognitiveEngine |
+| SoulUnit | P1 | 📋 方案设计完成，下一轮替换 |
+| EventBus | P1 | ⏳ 待替换为ArboreusEventBus |
+| RTSArenaManager | P2 | ⏳ 待替换 |
+| ArenaMap | P2 | ⏳ 待替换 |
+| GameState | P2 | ⏳ 待替换 |
+
+**7个越界模块中，2个P0已完成/解除阻塞，1个P1方案设计完成！**
+
+### GDExtension项目其他进展
+
+- ✅ Ember v1.0.0 release package发布（commit 9846b88）
+- ✅ Ember跨系统集成测试9/9全部通过（commit c779382）
+
+### 下一步
+1. 🟢 战策验证新ArboreusPathfinder，启用SDKPathfinder替换自实现A*
+2. 🟡 战策替换SoulUnit为Ember Soul+SoulData（方案已设计）
+3. 🟢 战策替换EventBus为ArboreusEventBus
+4. 🟠 Ember和Arboreus继续完善API
