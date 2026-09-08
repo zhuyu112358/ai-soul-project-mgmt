@@ -978,3 +978,71 @@ World, Entity, SpatialIndex, Pathfinder, GridMap, EventBus, Event, PhysicsSystem
 2. 🟡 战策替换SoulUnit为Ember Soul+SoulData（方案已设计）
 3. 🟢 战策替换EventBus为ArboreusEventBus
 4. 🟠 Ember和Arboreus继续完善API
+
+## 第23轮监控进展（2026-09-08 16:45）
+
+### 🎉 SoulUnit已集成Ember SoulData！3个越界模块完成
+
+**Git commit：** 45b7675 "SoulUnit集成Ember SoulData+修复personality类型错误"
+
+**完成内容：**
+
+1. **新建EmberSoulDataBridge.gd（230行）** - Ember灵魂数据桥接层
+   - init_from_soul_data()：从灵魂数据初始化Ember对象
+   - _sync_personality_to_ember()：战策0-100数值 → Ember 0-1属性
+   - update_emotion()：更新情绪并同步到Ember EmotionState
+   - get_damage_modifier()/get_defense_modifier()：情绪修正
+   - get_soul_data()/get_personality_obj()/get_emotion_state()：直接SDK访问
+
+2. **SoulUnit集成EmberSoulDataBridge**
+   - 添加EmberSoulDataBridge preload和_ember_bridge属性
+   - 修改init_from_soul()：初始化bridge，将personality/emotion指向bridge的字典
+   - **现有代码无需修改**（personality/emotion仍是Dictionary，只是底层由Ember管理）
+   - 初始化日志显示Ember:true，确认SDK集成成功
+
+3. **修复personality类型错误（已存在bug）**
+   - 支持Dictionary（完整属性数据）和String（预设名）两种类型
+   - 新增_apply_personality_preset()方法，支持brave/aggressive/cautious/wise四种预设
+
+4. **新增Ember编辑器插件**
+   - addons/ember/plugin.cfg + plugin.gd
+
+**属性映射：**
+- 战策aggression/curiosity/loyalty/courage → Ember同名属性
+- 战策patience → Ember conscientiousness
+- 战策intelligence → Ember openness
+- 战策emotion.anger/fear/excitement → Ember EmotionState.anger/fear/joy
+
+**自动化战斗测试通过：**
+- [OK] Both units moved successfully!
+- 无SCRIPT ERROR（修复前有2个类型错误）
+- 玩家: (200,300)→(749,339), 移动550px, Ember:true
+- AI: (1080,300)→(749,339), 移动333px, Ember:true
+- 两单位最终相遇，距离0.0
+
+### Ember也更新了Battleplan API兼容性
+
+**Git commit：** 58d500b "fix(ember): CognitiveEngine Battleplan API compatibility + DLL sync"
+- 战策已复制新的Ember.dll（16:37:12）
+
+### 🏆 架构合规进度更新
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路 | P0 | ✅ Arboreus bug已修复，待战策验证启用SDKPathfinder |
+| SoulAIController | P0 | ✅ 已替换为Ember CognitiveEngine+PerceptionSystem |
+| SoulUnit | P1 | ✅ 灵魂数据层已集成Ember SoulData+Personality+EmotionState |
+| EventBus | P1 | ⏳ 待替换为ArboreusEventBus（下一轮） |
+| RTSArenaManager | P2 | ⏳ 待替换 |
+| ArenaMap | P2 | ⏳ 待替换 |
+| GameState | P2 | ⏳ 待替换 |
+
+**7个越界模块中，3个已完成！2个P0 + 1个P1**
+
+**注意：** 战策DEVLOG里还写着"等待建木修复ArboreusPathfinder大网格bug"，但实际上Arboreus已经修复了（commit 5210da4），战策也已经复制了新的.dll（16:25:30）。战策下一轮应该验证新Pathfinder并启用SDKPathfinder。
+
+### 下一步
+1. 🟢 战策验证新ArboreusPathfinder，启用SDKPathfinder替换自实现A*
+2. 🟡 战策替换EventBus为ArboreusEventBus（P1）
+3. 🟠 优化SoulUnit：战斗属性（HP/攻击/防御）也从Ember SoulData.stats获取
+4. 🟢 Ember和Arboreus继续完善API
