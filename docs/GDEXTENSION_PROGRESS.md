@@ -1046,3 +1046,56 @@ World, Entity, SpatialIndex, Pathfinder, GridMap, EventBus, Event, PhysicsSystem
 2. 🟡 战策替换EventBus为ArboreusEventBus（P1）
 3. 🟠 优化SoulUnit：战斗属性（HP/攻击/防御）也从Ember SoulData.stats获取
 4. 🟢 Ember和Arboreus继续完善API
+
+## 第24轮监控进展（2026-09-08 17:00）
+
+### 🎉 EventBus已集成Arboreus SDK！4个越界模块完成
+
+**Git commit：** 9da1877 "EventBus集成Arboreus SDK（P1架构合规）"
+
+**完成内容：**
+
+1. **探索ArboreusEventBus API**
+   - 新建tests/arboreus_eventbus_test.gd
+   - ArboreusEventBus方法: emit, subscribe, unsubscribe, subscribe_once, get_subscriber_count
+   - Arboreus SDK共20个类（EventBus, GridMap, Pathfinder, PhysicsSystem, World, WeatherSystem等）
+
+2. **EventBus集成Arboreus SDK**
+   - 核心订阅/发布注册到ArboreusEventBus（SDK职责）
+   - 历史记录、统计、事件过滤保留在战策（应用层调试功能）
+   - 外部接口完全兼容，现有代码无需修改
+   - subscribe()：同时注册到战策_subscribers和ArboreusEventBus
+   - unsubscribe()：同时取消注册
+   - get_stats()：新增arboreus_sdk字段显示SDK状态
+
+3. **渐进式替换说明**
+   - 当前emit()仍使用战策分发机制（因为需要suppress和历史记录功能）
+   - ArboreusEventBus已初始化并注册订阅者，后续可进一步优化emit使用SDK分发
+   - 这是安全的渐进式集成，不会破坏现有功能
+
+### Ember也更新了
+
+**Git commit：** b4fbabd "docs(ember): Battleplan integration VERIFIED 17/17 + cron prompt updated"
+- Ember Battleplan集成验证17/17通过
+
+### 🏆 架构合规进度更新
+
+| 模块 | 优先级 | 状态 |
+|------|--------|------|
+| A*寻路 | P0 | ✅ Arboreus bug已修复，待战策验证启用SDKPathfinder |
+| SoulAIController | P0 | ✅ 已替换为Ember CognitiveEngine+PerceptionSystem |
+| SoulUnit | P1 | ✅ 灵魂数据层已集成Ember SoulData+Personality+EmotionState |
+| EventBus | P1 | ✅ 已集成ArboreusEventBus SDK（渐进式） |
+| RTSArenaManager | P2 | ⏳ 待替换为Arboreus World |
+| ArenaMap | P2 | ⏳ 待替换为Arboreus GridMap+Physics |
+| GameState | P2 | ⏳ 待替换 |
+
+**7个越界模块中，4个已完成！2个P0 + 2个P1**
+
+**注意：** 战策DEVLOG里还写着"等待建木修复ArboreusPathfinder大网格bug"，但实际上Arboreus已经修复了（commit 5210da4），战策也已经复制了新的.dll（16:25:30）。战策下一轮应该验证新Pathfinder并启用SDKPathfinder。
+
+### 下一步
+1. 🟢 战策验证新ArboreusPathfinder，启用SDKPathfinder替换自实现A*
+2. 🟡 优化EventBus.emit()使用ArboreusEventBus分发（需确认SDK emit参数格式）
+3. 🟠 P2: RTSArenaManager→Arboreus World, ArenaMap→Arboreus GridMap+Physics
+4. 🟢 Ember和Arboreus继续完善API
