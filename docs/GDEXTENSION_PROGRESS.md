@@ -569,3 +569,72 @@
 2. 🟠 如果14:45还不创建，暂停Ember任务或再次更新prompt
 3. 🟡 Arboreus继续完成所有模块的完整API测试
 4. 🔵 两个引擎都通过完整测试后，开始战策集成SDK
+
+## 第17轮监控进展（2026-09-08 14:45）
+
+### 🎉🎉🎉 重大里程碑：Ember GDExtension加载验证通过！双引擎全部验证完成！
+
+**Ember测试时间：** 2026-09-08 14:38:19
+**测试项目：** ember/minimal_test
+**测试日志：** C:\Users\72424\AppData\Roaming\Godot\app_userdata\Minimal Ember Test\logs\godot.log
+**Git commit：** d80ebf3 "MILESTONE - GDExtension load verification PASSED!"
+
+**✅ 测试结果：15/15通过，0失败！**
+```
+Registered Ember classes found: 15
+Passed: 15 / 15
+Failed: 0
+ALL 15 CLASSES LOADED SUCCESSFULLY!
+```
+
+**15个类全部通过基本API测试：**
+| 类名 | 测试内容 | 结果 |
+|------|---------|------|
+| SoulData | set_name/get_name, set_level, serialize | ✅ |
+| Personality | get_decision_bias, serialize | ✅ |
+| EmotionState | set_pleasure, trigger_emotion, get_dominant_emotion, update | ✅ |
+| CognitiveEngine | perceive, decide, act | ✅ |
+| MemorySystem | add_memory, get_recent_memories, search_memories, serialize | ✅ |
+| PerceptionSystem | perceive, attention focus | ✅ |
+| DecisionSystem | set/get decision_mode, decide | ✅ |
+| ActionSystem | execute_action, queue_action | ✅ |
+| GrowthSystem | initial level 1, add_experience, experience_progress | ✅ |
+| RelationshipSystem | add_relationship, has_relationship, friend trust | ✅ |
+| SocialSystem | join_group, is_member_of, reputation update | ✅ |
+| LearningSystem | learn_skill, has_skill, practice increases level | ✅ |
+| ConsciousnessSystem | focus_attention, generate_thought, introspect | ✅ |
+| DreamSystem | start_dream, is dreaming, get_current_dream | ✅ |
+| Soul | get_is_alive, get_status, get_description, perceive+decide, update | ✅ |
+
+**关键发现：**
+- Ember的类名没有加前缀（如EmberSoul），但**没有与Godot内置类冲突**！
+- 因为这些名字（SoulData、EmotionState、CognitiveEngine等）都比较独特，Godot没有内置这些类
+- entry_symbol = "ember_library_init" 正确
+- 库路径正确指向libember.windows.release.x86_64.dll
+
+**Ember之后又加了P2 TerritorySystem（commit cf3bd85），现在有16个类。**
+
+### 🏆 双引擎GDExtension加载验证全部完成！
+
+| 引擎 | 验证时间 | 类数量 | 测试结果 | 类名前缀 |
+|------|---------|--------|---------|---------|
+| Arboreus | 13:22 | 17+个 | ✅ 全部通过 | ✅ ArboreusXXX |
+| Ember | 14:38 | 16个 | ✅ 15/15通过 | ❌ 无前缀（但无冲突） |
+
+**这是GDExtension架构整理的关键里程碑！** 两个引擎的SDK都已经可以被Godot成功加载和使用了。GDExtension方案（方案B）被证明是可行的。
+
+### Arboreus最新状态
+- ✅ 最新测试：14:39:43（继续测试新模块）
+- ✅ 17+个系统模块
+- ✅ GDExtension加载已验证通过（13:22）
+
+### 下一步（进入新阶段）
+1. 🟢 两个引擎继续完成所有模块的完整API测试
+2. 🟡 开始战策集成SDK（两个引擎都已验证可加载）
+3. 🟠 战策替换越界实现为SDK调用（SoulAIController→Ember, A*寻路→Arboreus等）
+4. 🔵 继续开发新功能（在加载验证通过的前提下）
+
+### 监控反思
+- Ember的加载验证拖延了6轮+，监控在第15轮强制更新prompt后，Ember在第16轮（14:30）终于开始创建测试项目
+- 强制干预是有效的，但应该更早采取行动
+- 两个引擎都验证通过后，项目可以进入战策集成阶段了
