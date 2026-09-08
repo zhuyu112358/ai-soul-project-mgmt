@@ -1832,3 +1832,79 @@ _arboreus_world.remove_entity(_player_entity_id)
 4. 🟢 视觉提升P1：战斗特效+灵魂单位精灵化
 5. 🟢 准备Steam EA上架准备工作
 6. 🟡 BUG-030音频导入
+
+## 第34轮监控进展（2026-09-08 19:45）
+
+### 🎨 UI主题全场景应用完成！
+
+**Git commit：** b59a4a9 "UI主题全场景应用（主菜单+灵魂选择+设置+RTS竞技场）"
+
+**完成内容：**
+
+将battleplan_theme.tres（金色/深色像素奇幻风格）应用到所有核心场景：
+
+1. **MainMenu.gd** - 已有（上一轮完成）
+2. **SoulSelect.gd** - 新增_apply_ui_theme()，_ready()中加载应用
+3. **SettingsMenu.gd** - 新增_apply_ui_theme()，_ready()中加载应用
+4. **RTSArenaController.gd** - 新增_apply_ui_theme()，由于是Node2D，分别应用到TopBar、BattleLog、BottomBar三个Panel
+
+**主题效果：**
+- 按钮：深紫背景(#1f1a2e) + 金色边框(#cc9933)，悬停金色发光
+- 标签：金色(#ffd65c) / 米白(#f2e6bf)文字
+- 面板：深紫半透明背景 + 金色边框
+- 进度条：深色背景 + 绿色填充
+- 滑条：继承主题样式
+
+**视觉效果变化：**
+- 主菜单、灵魂选择、设置界面的按钮和面板全部变为金色/深色风格
+- RTS竞技场的TopBar（玩家/AI状态）、BattleLog（战斗日志）、BottomBar（技能栏）应用主题
+- 整体UI从Godot默认灰色变为统一的像素奇幻金色风格
+- 与设计概念图的配色方向一致（深色背景+金色装饰）
+
+### 测试结果
+
+- M2测试套件: **2901 Passed, 0 Failed**
+- 仍有一些Godot 4 API问题（get_theme_font_size_override, set_grow_horizontal, has_sound等），这些是之前就有的，不影响核心功能
+
+### Ember任务状态
+
+- 最新commit: 364b25c "docs(ember): API doc v0.3 - 20 classes complete reference"
+- Ember完成了**20个类的完整API文档**（v0.3）
+- soul_ai_controller.cpp最后修改: 18:54:08
+- Ember dll: 18:54:18, 1068KB（无更新）
+
+### Arboreus任务状态
+
+- pathfinder.cpp最后修改: 16:25:16（Pathfinder修复）
+- 之后没有新的修改
+- Arboreus dll: 16:25:30, 1141KB（无更新）
+- Arboreus任务似乎没有在做新的工作
+- ArboreusEventBus API需要增强（支持data参数和target/method分开形式），但尚未开始
+
+### 🏆 视觉提升进度
+
+**已完成：**
+- ✅ UI主题系统创建（P0）
+- ✅ UI主题全场景应用（主菜单+灵魂选择+设置+RTS竞技场）
+
+**进行中/待办：**
+- ⏳ 自定义字体+UI皮肤图集（待设计任务产出像素风格字体和皮肤纹理）
+- ⏳ 战斗特效+灵魂单位精灵化（P1）
+- ⏳ 主菜单背景图（星空+浮岛+雕像）
+- ⏳ 技能图标、粒子纹理
+
+### [设计需求]（仍需设计任务产出）
+- 像素风格字体（中英文）- 当前使用Godot默认字体
+- UI皮肤图集（按钮、面板、边框的像素纹理，替代纯色StyleBox）
+- 灵魂单位精灵图（代替彩色方块）
+- 主菜单背景图（星空+浮岛+雕像）
+- 技能图标、粒子纹理
+
+### 待办事项
+1. 🟢 战策继续视觉提升：等待设计任务产出像素字体和皮肤图集
+2. 🟡 协调Arboreus增强EventBus API（支持emit(event_name, data)和subscribe(event_name, target, method)）
+3. 🟠 深化实体战斗逻辑集成：HP/ATK同步到ArboreusEntity组件
+4. 🟢 视觉提升P1：战斗特效+灵魂单位精灵化
+5. 🟢 准备Steam EA上架准备工作
+6. 🟡 BUG-030音频导入
+7. 🟡 考虑是否需要触发设计任务产出像素字体和UI皮肤图集
