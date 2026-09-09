@@ -11749,3 +11749,137 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. GitHub 443端口间歇性不可用：commit保留本地，网络恢复时推送，不重试超过2次
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用rainbow/color等可能触发审核的关键词
+
+---
+
+## 第137轮 - 2026-09-09 - M2奖励/弹窗UI组件产出P0（6项）
+
+### 轮次概要
+- **轮次**: 第137轮
+- **日期**: 2026-09-09
+- **方向**: 方向2：M2实际需要的UI资源（P0）— 奖励/弹窗UI组件
+- **产出**: 6项M2奖励/弹窗UI组件
+- **新元素扩展**: 🎉 已达100元素，正式停止新元素扩展！
+- **M2 UI组件合计**: 72项（战斗HUD 6 + 其他界面 6 + 主要界面细化 6 + 战斗特效 6 + 社交 6 + 辅助界面 6 + 游戏系统 6 + 对战模式 6 + 运营系统 6 + 社交交互 6 + 设置/系统 6 + 奖励/弹窗 6）
+
+### 战策DEVLOG检查
+- **DEVLOG行数**: 7799行（与上一轮相同）
+- **最新章节**: "P0修复续：AI决策延迟导致单位在攻击范围内不攻击"
+- **攻击系统完整修复链（4个bug叠加）全部完成**: ✅
+  1. SoulUnit.move_to()清除attack_target → 添加p_clear_attack_target参数
+  2. EmberSoulAIController移动时清除attack_target → 保留attack_target
+  3. _update_cooldowns不递减attack_cooldown → 添加递减逻辑
+  4. AI决策延迟导致在范围内不攻击 → execute_decision优先级覆盖
+- **修复后验证**: 5秒内战斗结束，双方持续攻击直到一方被击败
+- **M2测试**: 2884 Passed, 0 Failed
+- **BUG-030已关闭**: ✅ 526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- **BUG-033已修复**: ✅ 灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已修复(commit 370134c+ec18a48)，已关闭31个，活跃2个
+- **历史[设计需求]已基本满足**: ✅ 像素字体参考、UI皮肤图集、灵魂单位精灵图、主菜单背景图、技能图标、粒子纹理均已产出；唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- **无新[设计需求]**: ✅
+
+### Git状态
+- **上一轮commit**: e6adae9（第136轮M2设置/系统UI组件，7文件）
+- **push状态**: ⚠️ push失败（Connection was reset），GitHub网络间歇性不可用，commit保留本地
+- **本轮开始时**: 本地领先远程1个commit（e6adae9），工作树干净
+- **art文件数**: 608 → 613（+6项M2奖励/弹窗UI组件）
+- **audio文件数**: 837（无变化，本轮无wav产出）
+
+### 产出资源清单（6项M2奖励/弹窗UI组件，P0）
+
+#### 1. 游戏内成就弹窗UI (achievement_unlock_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 633KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央大型成就解锁弹窗面板900x700（金色华丽边框+深紫背景）居中，顶部横幅ACHIEVEMENT UNLOCKED!大号金色像素字体发光效果+奖杯图标+金色五彩纸屑粒子落下，下方大成就图标220x220金色圆形框发光效果（像素风金色奖杯带星星和魔法光环），下方成就名First Victory+描述Win your first ranked match in Battleplan+稀有度标签Rare蓝色，下方成就奖励行3个奖励物品（500 Gold Coins金币图标+100 Soul Shards紫色灵魂碎片图标++50 XP星星图标），下方进度信息Achievements 12/50 Unlocked+金色进度条24%，下方2个大按钮（CLAIM REWARDS领取奖励金色发光+CLOSE关闭），右侧Next Achievement Preview面板（下一个成就图标灰色锁定+Win 10 Matches+进度1/10），左侧Recent Unlocks面板（3个最近成就图标+名字+时间），面板周围金色闪光和五彩纸屑
+
+#### 2. 等级提升弹窗UI (level_up_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 808KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景+金色光线，中央大型等级提升弹窗面板900x750（金色华丽边框+深紫背景）居中+强烈金色发光和闪光，顶部横幅LEVEL UP!超大号金色像素字体发光效果+星星图标+金色光线和粒子向外爆发，下方大等级数字显示LV. 25（巨大金色像素字体发光效果+动画闪光+金色圆形框带魔法符文），下方玩家头像140x140金色圆形框发光效果（像素风角色肖像蓝发神秘光环），下方玩家名Player123，下方XP进度条（大金色进度条XP 2500/3000 83%+上一级标记+下一级标记+Next Level: LV.26），下方Unlocked Rewards!标题，下方解锁奖励网格3x2=6个奖励槽（Skill Point +1星星图标+500 Gold Coins金币图标+New Skill Fire Storm火焰技能图标+Title Rising Star称号图标+Soul Shard +50紫色灵魂碎片图标+Stat Boost +5 ATK剑图标，每个带NEW!标签），下方属性提升面板（4列属性前后值ATK 120→125 +5、DEF 80→83 +3、HP 500→520 +20、MP 200→210 +10，每个带上箭头），下方2个大按钮（CONTINUE继续金色发光+VIEW DETAILS查看详情），右侧Skill Tree Preview面板（技能树图新解锁技能高亮金色），左侧Recent Level Ups面板（3个最近升级条目），金色光线、闪光和五彩纸屑从面板爆发
+
+#### 3. 每日奖励领取UI (daily_reward_claim_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 744KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央大型每日奖励面板1000x750（金色华丽边框+深紫背景）居中，顶部标题DAILY REWARDS大号金色像素字体发光效果+日历图标，下方奖励信息（Current Streak 7 Days火焰图标+This Month 23/30 Days+Next Milestone 14 Days+Month September 2026），下方7天每周奖励日历网格（7个天单元格一排，每个120x160带日期数字、奖励图标、奖励名和状态：Day1-6已完成绿色对勾+对应奖励，Day7 TODAY高亮金色发光边框+脉冲动画+Legendary Chest传说宝箱奖励+闪光效果+CLAIM按钮），下方每月奖励日历网格5x7=35天（每个天单元格60x60带日期数字，已完成金色对勾，错过灰色，今天高亮金色，里程碑日7/14/21/28特殊奖励图标），下方选中奖励详情面板（大奖励图标+奖励名Legendary Chest+稀有度Legendary橙色标签+描述+可能奖励预览3个物品图标带问号+CLAIM按钮金色发光），右侧Streak Rewards面板（4个里程碑奖励3天500金币已完成、7天稀有宝箱当前高亮、14天史诗灵魂皮肤、30天传说称号），左侧Login History面板（最近7天登录状态绿/红点），底部3个按钮（CLAIM TODAY领取今日金色发光+CLAIM MISSED补领错过+CLOSE关闭），面板周围金色闪光
+
+#### 4. 赛季结算UI (season_end_rewards_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 851KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景+金色庆祝粒子，中央大型赛季结算面板1100x800（金色华丽边框+深紫背景）居中，顶部横幅SEASON 1 END大号金色像素字体发光效果+奖杯图标+赛季名Soul Awakening+日期Sep 1 - Sep 30，下方最终段位显示（大段位徽章200x200金色圆形框发光效果-GOLD III金色像素字体+段位图标3颗金星+动画闪光和魔法光环），下方玩家统计摘要面板（4列统计Ranked Matches 156、Wins 98、Win Rate 62.8%、Best Streak 12，每个带图标和值），下方Season Rewards!标题，下方赛季奖励网格4x2=8个奖励槽（5000 Gold Coins普通、500 Soul Shards优秀、Epic Soul Skin Phoenix Spirit史诗紫色、Legendary Title Season 1 Champion传说橙色、3 Skill Points稀有、Rare Chest x5稀有、Banner Frame Golden Dawn稀有、Emote Pack Celebration优秀，每个带金色边框和发光效果+CLAIM ALL按钮），下方段位进度面板（Next Season Placement+Your MMR: 2450+Placement Matches: 10+Start Next Season按钮金色发光），右侧Leaderboard Preview面板（TOP 5 PLAYERS+5个玩家条目带排名数字、头像、名字、段位、MMR，第5名YOU Player123 Gold III 2450高亮），左侧Season Stats面板（Total Damage 125,000+Total Healing 32,000+Most Used Soul Fire Spirit+Favorite Map Arena of Souls+Best KDA 5/1/2），底部3个按钮（CLAIM ALL REWARDS领取全部金色发光+VIEW LEADERBOARD查看排行榜+CONTINUE继续），金色五彩纸屑、闪光和庆祝粒子围绕面板
+
+#### 5. 排行榜赛季UI (leaderboard_season_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 824KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 中央大型排行榜面板（金色华丽边框+深紫背景），顶部标题LEADERBOARD大号金色像素字体发光效果+奖杯图标，下方排行榜信息（Season 1 Soul Awakening+Season End in 3 Days+Your Rank #156+Your MMR 2450+Update Time 5 min ago），下方4个分类标签（RANKED排名标签高亮选中金色+SOUL ARENA灵魂竞技场+FRIENDS好友+GLOBAL全球），下方前3名领奖台展示（第1名中心抬高+大金冠图标+玩家头像100x100金色圆形框+名字PlayerLegend+段位Gold I+MMR 2890+CHAMPION标签，第2名左侧+银冠+头像+名字PlayerMaster+段位Gold II+MMR 2750，第3名右侧+铜冠+头像+名字PlayerPro+段位Gold III+MMR 2680），下方排行榜列表10个玩家条目（每行带排名数字、玩家头像48x48、玩家名、段位徽章、MMR值、胜率，#156 YOU Player123 Gold III 2450 62.8%高亮金色边框+YOU标签），下方你的段位详情面板（Your Rank #156+Your MMR 2450+Rank Progress to Gold II 2450/2500金色进度条80%+50 MMR to next rank+Win Rate 62.8%+Best Rank Gold I+Season High 2480），右侧Rank Tiers面板（7个段位带图标和MMR范围Bronze 0-1000、Silver 1000-1500、Gold 1500-2000当前高亮、Platinum 2000-2500、Diamond 2500-3000、Master 3000-3500、Grandmaster 3500+），左侧Season Rewards面板（段位奖励预览Top 100传说称号、Top 500史诗皮肤、Top 1000稀有宝箱、All Participants参与奖励），底部3个按钮（REFRESH刷新+VIEW REPLAYS查看回放+BACK返回）
+
+#### 6. 玩家名片UI (player_profile_card_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 764KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央大型玩家名片1000x800（金色华丽边框+深紫背景）居中，顶部横幅（玩家等级LV. 25金色像素字体+经验条2500/3000 83%+玩家称号Rising Star金色+称号图标），下方大玩家头像180x180金色圆形框发光效果+魔法光环（像素风角色肖像蓝发神秘能量），下方玩家名Player123超大号金色像素字体，下方玩家信息行（段位Gold III段位徽章+MMR 2450+Region Asia+Join Date 2026-08-15），下方统计面板金色边框（6列统计Total Matches 156、Wins 98、Win Rate 62.8%、Best Streak 12、Total Damage 125,000、Total Healing 32,000，每个带图标和值），下方FAVORITE SOUL UNITS标题，下方最爱灵魂单位展示（3个灵魂单位卡片一排，每个带单位图标、单位名、等级、熟练度百分比Fire Spirit LV.15 Mastery 85%、Water Spirit LV.12 Mastery 72%、Earth Spirit LV.10 Mastery 60%，每个卡片金色边框+元素颜色强调），下方ACHIEVEMENTS标题，下方成就展示（6个成就图标一排+名字First Victory、Soul Collector、Battle Hardened、Perfect Match、Team Player、Speed Demon，已完成成就金色发光，锁定成就灰色带锁图标），下方RECENT MATCHES标题，下方最近比赛列表（3个比赛条目带比赛类型、结果Win/Loss、KDA、时长、日期，胜利绿色边框，失败红色边框），右侧玩家名片自定义面板（CUSTOMIZE标题+头像框选择器3个框Default Gold/Epic Purple/Legendary Orange+横幅选择器3个+称号选择器+名片背景选择器+SAVE按钮），左侧社交面板（SOCIAL标题+Friends Online 12/45+Guild Soul Reapers+Followers 1,234+Following 56+ADD FRIEND按钮+MESSAGE按钮+REPORT按钮），底部3个按钮（EDIT PROFILE编辑名片铅笔图标+SHARE PROFILE分享名片分享图标+CLOSE关闭），名片周围金色闪光
+
+### 风格质量检查
+- **2D像素风**: ✅ 全部6项均为2D像素风格，清晰像素块边缘
+- **深紫+金色调**: ✅ 背景深紫#1a1428，金色边框#d4a85c，高亮#f0c878
+- **禁止3D等距**: ✅ 无3D等距视角，无3D建模渲染
+- **卡片式UI布局**: ✅ 全部采用卡片式面板布局，金色边框装饰
+- **数据可视化**: ✅ 进度条、段位徽章、统计图标、奖励图标等可视化表现
+- **奇幻魔法主题**: ✅ 魔法光环、符文、神秘元素
+- **ART_STYLE_GUIDE.md合规**: ✅ 符合第十节质量检查清单
+
+### 累计资源（第137轮后）
+- **音效**: 837个（management仓库assets/audio/）
+- **P0音效**: 17/17全部完成 ✅
+- **P1音效**: 24/24全部完成 ✅ 🎉
+- **核心音效合计**: 41个全部完成 ✅ 🎉
+- **P1背景音乐**: 7/7全部完成 ✅ 🎉
+- **P2音效**: 300个（6环境+6社交+288新元素技能）
+- **概念图**: 613张（management仓库art目录，本轮新增6项M2奖励/弹窗UI组件）
+- **M3内容扩展第一批~第四十八批**: 各14项全部完成 ✅
+- **M3内容扩展合计**: 672项（96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档）
+- **新元素系统**: 100元素 🎉 已达到目标，正式停止新元素扩展！
+- **Steam商店页素材**: 12项（第123轮6项+第124轮6项）
+- **过场动画/启动画面/CG**: 6项（第125轮6项）
+- **M2战斗HUD UI组件**: 6项（第126轮6项）
+- **M2其他界面UI组件**: 6项（第127轮6项）
+- **M2主要界面细化UI**: 6项（第128轮6项）
+- **M2战斗特效UI组件**: 6项（第129轮6项）
+- **M2社交UI组件**: 6项（第130轮6项）
+- **M2辅助界面UI组件**: 6项（第131轮6项）
+- **M2游戏系统UI组件**: 6项（第132轮6项）
+- **M2对战模式UI组件**: 6项（第133轮6项）
+- **M2运营系统UI组件**: 6项（第134轮6项）
+- **M2社交交互UI组件**: 6项（第135轮6项）
+- **M2设置/系统UI组件**: 6项（第136轮6项）
+- **M2奖励/弹窗UI组件**: 6项（第137轮6项，本轮）
+- **M2 UI组件合计**: **72项**（战斗HUD 6 + 其他界面 6 + 主要界面细化 6 + 战斗特效 6 + 社交 6 + 辅助界面 6 + 游戏系统 6 + 对战模式 6 + 运营系统 6 + 社交交互 6 + 设置/系统 6 + 奖励/弹窗 6）
+- **设计文档**: 10份
+
+### WAV修复
+- **本轮无wav文件产出**: ✅ 无需运行WAV修复脚本
+- **WAV修复脚本**: D:\Sojourn\management\scripts\fix_wav_sizes.ps1（已连续31轮主动运行成功，本轮无wav跳过）
+
+### Git提交与推送
+- **上一轮commit**: e6adae9（第136轮M2设置/系统UI组件，7文件）
+- **push状态**: ⚠️ push失败（Connection was reset），GitHub网络间歇性不可用，commit保留本地
+- **本轮开始时**: 本地领先远程1个commit（e6adae9），工作树干净
+- **本轮push尝试**: ⚠️ 失败（Connection was reset），GitHub网络间歇性不可用
+- **GitHub 443端口**: 间歇性不可用，commit保留本地，网络恢复时推送，不重试超过2次
+
+### 下一轮计划
+1. 🎉 新元素系统已达到100个元素，正式停止新元素扩展！
+2. 继续方向2：M2实际需要的UI资源（P0）：更多M2界面UI组件（游戏内商城弹窗UI/物品详情弹窗UI/技能详情弹窗UI/段位提升弹窗UI/赛季通行证奖励弹窗UI/新手引导步骤弹窗UI）
+3. 方向4：现有资源优化（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. 继续方向1：Steam商店页素材（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. 继续方向3：过场动画/启动画面/CG（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. ⭐每轮生成wav后必须运行WAV size修复脚本
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. GitHub 443端口间歇性不可用：commit保留本地，网络恢复时推送，不重试超过2次
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
+12. 网络恢复时推送本地commit（e6adae9 + 本轮commit）
