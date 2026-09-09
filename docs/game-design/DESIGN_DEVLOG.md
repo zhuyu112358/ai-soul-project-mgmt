@@ -14250,3 +14250,96 @@ label.add_theme_color_override("font_color", Color(0.8, 0.6, 0.2))
 2. 开始产出最后一个P1任务：16个新增音效（增益/减益/按钮悬停/战术指令/技能就绪/灵魂升级/界面打开/界面关闭/错误提示/水域/魔法机关/补给点/宝箱/升降桥/能量水晶/灵魂选择BGM）
 3. 持续更新DESIGN_DEVLOG
 4. 定期commit+push
+
+---
+
+## 第166轮设计任务（2026-09-10）— 🔊 P1全部完成！16个新增音效产出（8-bit芯片音乐风格），GDD附录G音效清单全部满足！
+
+### 一、上轮push重试结果
+
+第165轮两个仓库push因GitHub 443端口连接超时失败，本轮重试：
+- battleplan: 5c2858d..7463427 ✅ push成功
+- management: 9de874f..58727f9 ✅ push成功
+
+### 二、本轮产出：16个新增音效（8-bit芯片音乐风格）
+
+保存路径：D:\Sojourn\battleplan\assets\audio\
+
+| 序号 | 名称 | 文件 | 大小 | 时长 | 说明 |
+|------|------|------|------|------|------|
+| 1 | 按钮悬停 | button_hover.wav | 156KB | 1s | 短促高音方波"嘀"声 |
+| 2 | 界面打开 | ui_open.wav | 156KB | 1s | 上升琶音，窗口打开提示 |
+| 3 | 界面关闭 | ui_close.wav | 156KB | 1s | 下降琶音，窗口关闭提示 |
+| 4 | 错误提示 | error.wav | 156KB | 1s | 低音嗡嗡方波+噪声 |
+| 5 | 技能就绪 | skill_ready.wav | 312KB | 2s | 明亮上升琶音+持续闪光 |
+| 6 | 战术指令 | tactical_command.wav | 312KB | 2s | 锐利双音号角般方波 |
+| 7 | 增益 | buff.wav | 312KB | 2s | 温暖上升大调和弦琶音 |
+| 8 | 减益 | debuff.wav | 312KB | 2s | 下降不协和小调和弦+噪声 |
+| 9 | 灵魂升级 | soul_levelup.wav | 468KB | 3s | 胜利上升大调音阶+三角波闪光 |
+| 10 | 水域 | water_terrain.wav | 312KB | 2s | 柔和流水噪声+三角波底音 |
+| 11 | 魔法机关 | magic_mechanism.wav | 312KB | 2s | 神秘上升振荡器扫频+方波琶音 |
+| 12 | 补给点 | supply_point.wav | 312KB | 2s | 愉悦金币般钟声+上升方波 |
+| 13 | 宝箱 | treasure_chest.wav | 312KB | 2s | 木质吱嘎声+闪光上升三角波琶音 |
+| 14 | 升降桥 | drawbridge.wav | 468KB | 3s | 节奏木质叮当+链条噪声+方波机械脉冲 |
+| 15 | 能量水晶 | energy_crystal.wav | 312KB | 2s | 神秘振荡正弦波+闪光方波泛音+柔和脉冲 |
+| 16 | 灵魂选择BGM | soul_select_bgm.wav | 2.3MB | 15s | 宁静神秘环境循环，三角波旋律+方波和声+噪声打击，80BPM |
+| **总计** | **16个文件** | — | **约6.5MB** | — | 8-bit芯片音乐风格，全部WAV格式 |
+
+### 三、WAV修复脚本执行
+
+`
+WAV size fix complete:
+  Total: 836
+  Fixed: 0
+  Already OK: 836
+  Errors: 0
+`
+
+所有836个WAV文件RIFF头size字段正确，无需修复。新增16个音效格式正确。
+
+### 四、技术方案
+
+| 步骤 | 方法 | 说明 |
+|------|------|------|
+| 1. 生成音效 | text_to_audio_plus，8-bit芯片音乐风格描述 | 分4批并行生成，每批4个 |
+| 2. 下载保存 | Invoke-WebRequest下载到assets/audio/ | 16个文件全部下载成功 |
+| 3. WAV修复 | fix_wav_sizes.ps1 | 836个文件全部OK，0个需要修复 |
+| 4. 验证 | 文件大小检查 | 所有文件非空，大小符合时长预期 |
+
+### 五、音效分类
+
+**UI交互（4个）**: button_hover, ui_open, ui_close, error
+**战斗/技能（4个）**: skill_ready, tactical_command, buff, debuff
+**成长/奖励（2个）**: soul_levelup, supply_point
+**场景/环境（3个）**: water_terrain, magic_mechanism, energy_crystal
+**互动/机关（3个）**: treasure_chest, drawbridge, （supply_point已归类）
+**背景音乐（1个）**: soul_select_bgm
+
+### 六、P1任务全部完成！
+
+| P1任务 | 状态 | 完成轮次 | 产出 |
+|--------|------|----------|------|
+| UI皮肤图集 | ✅ 完成 | 第164轮 | 9个文件（完整图集+8个单独元素），约957KB |
+| 像素字体文件 | ✅ 完成 | 第165轮 | 3个文件（.ttf字体+参考图+设计规范），约377KB |
+| 16个新增音效 | ✅ 完成 | 本轮 | 16个WAV文件，约6.5MB |
+
+**P0+P1任务全部完成！**
+- P0: 8个透明背景精灵图（第162轮）+ 8个地图瓦片（第163轮）
+- P1: UI皮肤图集（第164轮）+ 像素字体（第165轮）+ 16个音效（本轮）
+
+### 七、音效总数统计
+
+- 本轮新增: 16个
+- 战策audio目录现有: 182 + 16 = 198个WAV文件
+- 项目总音效（含management）: 836个WAV文件
+
+### 八、下一轮计划
+
+1. commit+push两个仓库（16个音效+DEVLOG更新）
+2. P0+P1任务全部完成，可转向：
+   - 现有资源优化（P2）：细化已有UI资源、补全缺失帧、统一风格
+   - 检查战策DEVLOG是否有新的[设计需求]
+   - GDD待决策问题跟进（附录K的6个待确认问题）
+   - Steam商店页素材优化
+3. 持续更新DESIGN_DEVLOG
+4. 定期commit+push
