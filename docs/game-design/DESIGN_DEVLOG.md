@@ -13877,3 +13877,71 @@ AI难度3级：简单（决策2秒）/普通（决策1秒）/困难（决策0.5�
    - P1：UI皮肤图集（像素纹理替代纯色）
    - P1：像素字体文件（.ttf/.otf）
    - P1：16个新增音效
+
+---
+
+## 第161轮设计任务（2026-09-10）— ⚡ GDD v1.0已push成功！开始产出P0缺失资源：雷元素透明背景精灵图完成！5/8游戏可用精灵图！
+
+### 一、Git状态更新
+
+| 项目 | 状态 |
+|------|------|
+| GDD v1.0 push | ✅ 成功！本地与远程同步（Everything up-to-date） |
+| management仓库 | 最新commit已push到GitHub |
+| battleplan仓库 | 待commit（雷元素精灵图） |
+
+### 二、本轮产出：雷元素透明背景精灵图
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\game_sprite_thunder_idle.png |
+| 尺寸 | 1024x256（4帧，每帧256x256） |
+| 格式 | Format32bppArgb（带alpha透明通道） |
+| 大小 | 465,969 bytes（约455KB） |
+| 背景 | 完全透明（角落A=0） |
+| 帧内容 | 4/4帧都有角色（opaque pixels 143/157/165/150） |
+| 风格 | 2D像素风，电蓝金色能量体，闪电弧光，深紫金调 |
+| 技术方案 | image_gen生成4096x1024深紫背景图→PowerShell .NET System.Drawing NearestNeighbor缩放到1024x256→LockBits快速像素处理，颜色距离法去除背景（背景色R:58 G:24 B:65，阈值65，边缘半透明过渡30）→保存Format32bppArgb PNG→验证PixelFormat+角落A=0+帧中心有角色 |
+
+### 三、处理过程中的问题与修复
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 第一次处理背景去除不彻底（角落A=208） | 背景色参数设置错误（用了R:26 G:20 B:40，实际是R:58 G:24 B:65） | 重新下载，使用正确的背景色R:58 G:24 B:65，阈值65，边缘阈值30 |
+| 第二次处理成功 | 背景色参数正确 | 角落A=0，4帧都有角色 ✅ |
+
+### 四、游戏可用精灵图进度（8个M2预设灵魂）
+
+| 元素 | 文件 | 状态 | 尺寸 | 格式 |
+|------|------|------|------|------|
+| 火(fire) | game_sprite_fire_idle.png | ✅ 完成（第149轮） | 1024x256 | Format32bppArgb |
+| 水(water) | game_sprite_water_idle.png | ✅ 完成（第149轮） | 1024x256 | Format32bppArgb |
+| 土(earth) | game_sprite_earth_idle.png | ✅ 完成（第149轮） | 1024x256 | Format32bppArgb |
+| 风(wind) | game_sprite_wind_idle.png | ✅ 完成（第149轮） | 1024x256 | Format32bppArgb |
+| 雷(thunder) | game_sprite_thunder_idle.png | ✅ 完成（本轮） | 1024x256 | Format32bppArgb |
+| 冰(ice) | game_sprite_ice_idle.png | ⏳ 待产出 | — | — |
+| 暗(shadow) | game_sprite_shadow_idle.png | ⏳ 待产出 | — | — |
+| 光(light) | game_sprite_light_idle.png | ⏳ 待产出 | — | — |
+| **进度** | **5/8完成** | **62.5%** | — | — |
+
+### 五、GDD v1.0状态确认
+
+| 项目 | 状态 |
+|------|------|
+| GDD版本 | v1.0正式版 |
+| 文件大小 | 129KB（132,014 bytes） |
+| 总行数 | 2,585行 |
+| 一级章节 | 26个（1目录+11核心+14附录） |
+| 附录 | 14个（A-N全部完成） |
+| 开发任务 | 34项任务240工时 |
+| Git push | ✅ 已推送到GitHub |
+| 最终审查 | ✅ 通过（第160轮） |
+
+### 六、下一轮计划
+
+1. 继续产出剩余3个P0透明背景精灵图（冰/暗/光）
+2. 完成8个M2预设灵魂的游戏可用精灵图
+3. 然后产出P0地图瓦片图集（可平铺+碰撞）
+4. 然后产出P1 UI皮肤图集/像素字体/16个新增音效
+5. 持续更新DESIGN_DEVLOG
+6. 定期commit+push management和battleplan仓库
