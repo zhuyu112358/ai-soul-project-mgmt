@@ -13945,3 +13945,99 @@ AI难度3级：简单（决策2秒）/普通（决策1秒）/困难（决策0.5�
 4. 然后产出P1 UI皮肤图集/像素字体/16个新增音效
 5. 持续更新DESIGN_DEVLOG
 6. 定期commit+push management和battleplan仓库
+
+---
+
+## 第162轮设计任务（2026-09-10）— 🎉 全部8个M2预设灵魂游戏可用透明背景精灵图完成！冰/暗/光3个精灵图产出，8/8全部完成！P0精灵图任务完成！
+
+### 一、Git状态
+
+| 项目 | 状态 |
+|------|------|
+| management仓库push | ✅ 成功！84e9fa6..70f8840 |
+| battleplan仓库push | ✅ 成功！ff2ed86..59ea4c3 |
+| 上一轮commit已全部推送到GitHub | ✅ |
+
+### 二、本轮产出：3个透明背景精灵图
+
+#### 1. 冰元素精灵图
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\game_sprite_ice_idle.png |
+| 尺寸 | 1024x256（4帧，每帧256x256） |
+| 格式 | Format32bppArgb（带alpha透明通道） |
+| 大小 | 449,149 bytes（约439KB） |
+| 背景 | 完全透明（角落A=0） |
+| 帧内容 | 4/4帧都有角色（opaque pixels 134/170/168/152） |
+| 风格 | 2D像素风，冰蓝白色晶体，雪花粒子，冰霜光环 |
+
+#### 2. 暗元素精灵图
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\game_sprite_shadow_idle.png |
+| 尺寸 | 1024x256（4帧，每帧256x256） |
+| 格式 | Format32bppArgb（带alpha透明通道） |
+| 大小 | 367,293 bytes（约359KB） |
+| 背景 | 完全透明（角落A=0） |
+| 帧内容 | 4/4帧都有角色（opaque pixels 59/50/59/33，暗元素与背景接近所以像素较少） |
+| 风格 | 2D像素风，深紫黑色阴影体，紫色发光眼睛，烟雾触须，黑暗光环 |
+| 特殊处理 | 暗元素颜色与背景接近，使用更大阈值（threshold=80, edgeThreshold=35）避免去除角色 |
+
+#### 3. 光元素精灵图
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\game_sprite_light_idle.png |
+| 尺寸 | 1024x256（4帧，每帧256x256） |
+| 格式 | Format32bppArgb（带alpha透明通道） |
+| 大小 | 456,700 bytes（约446KB） |
+| 背景 | 完全透明（角落A=0） |
+| 帧内容 | 4/4帧都有角色（opaque pixels 159/157/159/159） |
+| 风格 | 2D像素风，金色白色发光体，光线，闪光粒子，神圣光环，天使翅膀 |
+
+### 三、全部8个游戏可用精灵图完成清单
+
+| 序号 | 元素 | 文件 | 大小 | 状态 | 完成轮次 |
+|------|------|------|------|------|----------|
+| 1 | 火(fire) | game_sprite_fire_idle.png | 281,513 bytes | ✅ | 第149轮 |
+| 2 | 水(water) | game_sprite_water_idle.png | 365,876 bytes | ✅ | 第149轮 |
+| 3 | 土(earth) | game_sprite_earth_idle.png | 284,850 bytes | ✅ | 第149轮 |
+| 4 | 风(wind) | game_sprite_wind_idle.png | 347,847 bytes | ✅ | 第149轮 |
+| 5 | 雷(thunder) | game_sprite_thunder_idle.png | 465,969 bytes | ✅ | 第161轮 |
+| 6 | 冰(ice) | game_sprite_ice_idle.png | 449,149 bytes | ✅ | 本轮 |
+| 7 | 暗(shadow) | game_sprite_shadow_idle.png | 367,293 bytes | ✅ | 本轮 |
+| 8 | 光(light) | game_sprite_light_idle.png | 456,700 bytes | ✅ | 本轮 |
+| **总计** | **8个** | — | **3,019,197 bytes（约2.9MB）** | **✅ 8/8完成** | — |
+
+### 四、技术方案总结（已验证可复用）
+
+| 步骤 | 方法 | 参数 |
+|------|------|------|
+| 1. 生成原图 | image_gen | 4096x1024，4帧水平排列，深紫背景#1a1428，无文字 |
+| 2. 下载 | Invoke-WebRequest | 保存到临时文件 |
+| 3. 缩放 | .NET System.Drawing Graphics | NearestNeighbor插值，缩放到1024x256 |
+| 4. 去背景 | LockBits快速像素处理 | 颜色距离法，背景色R:58 G:24 B:65 |
+| 5. 阈值 | 标准元素threshold=65, edge=30；暗元素threshold=80, edge=35 | 边缘半透明过渡 |
+| 6. 保存 | Bitmap.Save | Format32bppArgb PNG格式 |
+| 7. 验证 | PixelFormat检查+角落A=0+帧中心有角色 | 确保透明通道有效 |
+
+### 五、P0任务完成状态
+
+| P0任务 | 状态 | 说明 |
+|--------|------|------|
+| 8个透明背景精灵图 | ✅ 完成 | 火水土风雷冰暗光全部完成，全部Format32bppArgb，角落A=0 |
+| 地图瓦片图集 | ⏳ 待产出 | 下一个P0任务 |
+| UI皮肤图集 | ⏳ 待产出 | P1任务 |
+| 像素字体文件 | ⏳ 待产出 | P1任务 |
+| 16个新增音效 | ⏳ 待产出 | P1任务 |
+
+### 六、下一轮计划
+
+1. commit+push两个仓库（冰/暗/光3个精灵图+DEVLOG更新）
+2. 开始产出下一个P0任务：地图瓦片图集（暗森林主题，可平铺+碰撞，64x64或128x128）
+3. 地图瓦片包括：地面瓦片（可平铺）、石头、树木、水晶柱等障碍物
+4. 保存到D:\Sojourn\battleplan\assets\art\tiles\
+5. 持续更新DESIGN_DEVLOG
+6. 定期commit+push
