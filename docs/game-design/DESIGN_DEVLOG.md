@@ -11341,3 +11341,117 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. GitHub网络稳定，后续commit可正常push
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
+
+---
+
+## 2026-09-09 - 设计任务第133轮：M2对战模式UI组件产出（P0）— 匹配界面+房间大厅+观战模式+回放系统+自定义游戏+训练模式
+
+### 完成工作
+
+#### M2对战模式UI组件产出（6项，P0）
+
+**🎉 新元素系统已达到100个元素（第122轮完成），正式停止新元素扩展！Steam商店页素材累计12项+过场动画/CG 6项+M2战斗HUD UI组件6项+M2其他界面UI组件6项+M2主要界面细化UI 6项+M2战斗特效UI组件6项+M2社交UI组件6项+M2辅助界面UI组件6项+M2游戏系统UI组件6项已产出。本轮继续方向2：M2实际需要的UI资源（P0）— 对战模式UI组件。**
+
+**M2对战模式UI组件（6项）**：
+1. **匹配界面UI**（1920x1080）
+   - 文件：matchmaking_ui.png（873.9KB）
+   - 内容：中央大型匹配面板（金色华丽边框+深紫背景），顶部标题MATCHMAKING大号金色像素字体发光效果+交叉剑图标，下方玩家信息（Player Name+Account Level 25+当前灵魂Fire Spirit+Rank Gold III排名徽章），下方3个游戏模式标签（RANKED排位标签高亮选中+CASUAL休闲标签+CUSTOM自定义标签），下方排位模式选择（Solo 1v1按钮高亮选中金色发光+Duo 2v2按钮+Team 3v3按钮），下方匹配设置面板（金色边框）：Region选择器（Asia Pacific选中）+Ping限制滑块（100ms）+Auto accept开关（ON金色）+灵魂单位选择器显示3个已选灵魂单位（Fire Spirit, Water Spirit, Earth Spirit）带交换按钮，中央大型匹配状态区：动画搜索指示器（金色旋转沙漏像素动画）+文字Searching for opponent...+预计等待时间0:45+在线玩家1,234+当前队列56玩家，下方取消按钮（金色边框X图标CANCEL MATCH），右侧最近比赛面板（金色边框）：5场最近比赛带结果图标（胜利金色奖杯/失败红色骷髅）+对手名+日期+排名+比赛时长，底部3个按钮（BACK返回左箭头图标+SETTINGS设置齿轮图标+FRIENDS好友人物图标）
+   - 风格：2D像素风，深紫+金色
+
+2. **房间大厅UI**（1920x1080）
+   - 文件：lobby_ui.png（942.5KB）
+   - 内容：中央大型房间大厅面板（金色华丽边框+深紫背景），顶部标题LOBBY大号金色像素字体发光效果+门图标，下方房间信息（Room Name Epic Battle Room+Room Code ABC123+Host Player Name+Max Players 2/2+Game Mode Ranked 1v1+Map Arena of Souls），下方玩家槽显示2个玩家槽（金色边框面板）：Slot 1（Host主机+Player Name+Rank Gold III+已选灵魂Fire Spirit灵魂单位精灵+准备状态READY金色对勾+皇冠主机图标）、Slot 2（空槽带+ Invite Player按钮，或对手Player Name+Rank Silver I+已选灵魂Water Spirit+准备状态NOT READY红色X），下方聊天面板（金色边框）：5条聊天消息（Player Name:消息+系统消息金色）+聊天输入框带SEND按钮，右侧房间设置面板（金色边框）：Game Mode选择器（Ranked 1v1）+Map选择器（Arena of Souls带预览缩略图）+Time Limit（10 min）+Soul Ban List（3个被禁灵魂图标）+Spectators开关（ON）+Password开关（OFF）+Kick Player按钮+Transfer Host按钮，下方设置：灵魂单位选择显示3个已选灵魂单位（Fire Spirit, Water Spirit, Earth Spirit）带交换按钮+灵魂收藏计数12/100，底部4个按钮（READY准备对勾图标金色发光大按钮+INVITE FRIENDS邀请好友人物图标+LEAVE ROOM离开房间门图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+3. **观战模式UI**（1920x1080）
+   - 文件：spectator_ui.png（1021.8KB）
+   - 内容：中央大型观战面板（金色华丽边框+深紫背景），顶部标题SPECTATOR大号金色像素字体发光效果+眼睛图标，下方比赛信息（Match ID #12345+Player A蓝色vs Player B红色+Game Mode Ranked 1v1+Map Arena of Souls+Match Time 04:32+Spectators watching 234），下方顶部状态栏：Player A名+排名Gold III+灵魂Fire Spirit+HP条75%绿色+能量条60%蓝色，VS图标在中央，Player B名+排名Silver I+灵魂Water Spirit+HP条45%黄色+能量条80%蓝色，中央战斗视口区：2D像素风俯视角RTS竞技场，玩家A单位（蓝色）在左侧，玩家B单位（红色）在右侧，灵魂单位战斗，技能特效，伤害数字飘字，小地图在视口右上角，下方观战控制：PLAY/PAUSE按钮+REWIND 10s按钮+FAST FORWARD 2x按钮+SLOW MOTION 0.5x按钮+JUMP TO按钮+TIMELINE时间轴滑块带关键事件标记（first blood, skill use, unit death），右侧观战信息面板（金色边框）：Live chat带5条观战消息+Player stats（kills, deaths, damage dealt, gold earned）+双方单位组成（各3个灵魂单位带图标）+Event log显示5条最近战斗事件（First Blood!, Fireball hit!, Unit destroyed!, Healing used!, Critical hit!），下方信息面板：相机控制（FOLLOW PLAYER A按钮+FOLLOW PLAYER B按钮+FREE CAMERA按钮+ZOOM IN/OUT按钮），底部3个按钮（EXIT SPECTATOR退出观战门图标+SHARE REPLAY分享回放分享图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+4. **回放系统UI**（1920x1080）
+   - 文件：replays_ui.png（1033.1KB）
+   - 内容：中央大型回放面板（金色华丽边框+深紫背景），顶部标题REPLAYS大号金色像素字体发光效果+胶片卷轴图标，下方回放统计（Total Replays 24+Favorite Replays 5+Cloud Storage 2.4GB/10GB），下方4个分类标签（ALL全部标签高亮选中+WINS胜利标签+LOSSES失败标签+FAVORITES收藏标签），下方回放列表显示6个回放（金色边框行每个1024x80）：Replay 1（缩略图预览+match ID #12345+Player A vs Player B+Win金色奖杯+Ranked 1v1+duration 08:32+date 2026-09-08+VIEW按钮+SAVE按钮+DELETE按钮）、Replay 2（缩略图+#12344+Win+Ranked 1v1+05:15+2026-09-08+VIEW+SAVE+DELETE）、Replay 3（缩略图+#12343+Loss红色骷髅+Casual 1v1+12:45+2026-09-07+VIEW+SAVE+DELETE）、Replay 4（缩略图+#12342+Win+Ranked 1v1+06:20+2026-09-07+VIEW+SAVE+DELETE）、Replay 5（缩略图+#12341+Loss+Ranked 1v1+09:10+2026-09-06+VIEW+SAVE+DELETE）、Replay 6（缩略图+#12340+Win+Casual 1v1+04:55+2026-09-06+VIEW+SAVE+DELETE），右侧选中回放详情面板（金色边框）：大缩略图预览+match ID+玩家带排名+游戏模式+地图+时长+日期+结果+玩家统计（kills, deaths, damage, gold）+关键事件时间轴带标记（First Blood at 0:32, Skill Combo at 2:15, Unit Destroyed at 4:30, Victory at 8:32）+VIEW REPLAY按钮金色发光+SHARE按钮+RENAME按钮+EXPORT按钮，底部4个按钮（PLAY SELECTED播放选中播放图标大按钮金色发光+UPLOAD REPLAY上传回放上传图标+DELETE ALL全部删除垃圾桶图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+5. **自定义游戏UI**（1920x1080）
+   - 文件：custom_game_ui.png（935.6KB）
+   - 内容：中央大型自定义游戏面板（金色华丽边框+深紫背景），顶部标题CUSTOM GAME大号金色像素字体发光效果+齿轮图标，下方游戏设置信息（Game Name My Custom Match+Game Code XYZ789+Host Player Name），下方4个设置分类标签（BASIC基础标签高亮选中+RULES规则标签+SOULS灵魂标签+ADVANCED高级标签），下方基础设置面板（金色边框）：Game Mode选择器（1v1 Ranked, 1v1 Casual, 2v2, 3v3, Free for All）+Map选择器带6个地图缩略图（Arena of Souls选中, Crystal Cavern, Shadow Realm, Golden Temple, Frost Peak, Volcano）+Max Players选择器（2, 4, 6）+Time Limit选择器（5 min, 10 min, 15 min, 30 min, Unlimited）+Starting Resources选择器（Low, Normal, High）+Spectators开关（ON/OFF）+Password开关（ON/OFF带密码输入），右侧规则设置面板（金色边框）：Friendly Fire开关（OFF）+Unit Cap选择器（10, 20, 30, Unlimited）+Respawn开关（ON/OFF）+Respawn Time选择器（5s, 10s, 15s）+Gold Per Second选择器（Low, Normal, High）+Starting Gold选择器（100, 200, 500, 1000）+Fog of War开关（ON/OFF）+Random Map开关（OFF），下方规则：灵魂禁用面板（金色边框）：Banned Souls（3个被禁灵魂图标：Fire Spirit, Water Spirit, Earth Spirit）+Allowed Souls计数97/100+BAN按钮+CLEAR BANS按钮，底部玩家槽显示2个槽（Host Player Name ready+空槽带INVITE按钮），和4个按钮（START GAME开始游戏播放图标大按钮金色发光+INVITE FRIENDS邀请好友人物图标+SAVE PRESET保存预设保存图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+6. **训练模式UI**（1920x1080）
+   - 文件：training_ui.png（910.6KB）
+   - 内容：中央大型训练面板（金色华丽边框+深紫背景），顶部标题TRAINING大号金色像素字体发光效果+哑铃图标，下方玩家进度（Training Level 8+XP 1,250/2,000带金色进度条+Training Points 15星图标），下方4个训练分类标签（TUTORIALS教程标签高亮选中+DRILLS训练标签+PRACTICE练习标签+CHALLENGES挑战标签），下方训练列表显示6个训练模块（金色边框面板每个320x200）：Module 1（Basic Movement教程图标+名称Basic Movement+描述Learn to move and select units+difficulty Beginner+duration 5 min+progress 100% completed金色对勾+START按钮）、Module 2（Combat Basics教程图标+名称Combat Basics+描述Learn to attack and use skills+difficulty Beginner+duration 8 min+progress 100% completed+START按钮）、Module 3（Resource Management教程图标+名称Resource Management+描述Learn to gather gold and build units+difficulty Intermediate+duration 10 min+progress 75%金色进度条+CONTINUE按钮）、Module 4（Advanced Tactics教程图标+名称Advanced Tactics+描述Learn flanking, kiting, and unit combos+difficulty Advanced+duration 15 min+progress 0% locked灰色带锁图标+requires Resource Management completed）、Module 5（Soul Unit Mastery训练图标+名称Soul Unit Mastery+描述Practice with each soul unit type+difficulty Intermediate+duration 20 min+progress 0% locked）、Module 6（Speed Challenge挑战图标+名称Speed Challenge+描述Win against AI in under 5 minutes+difficulty Expert+duration unlimited+progress 0% locked+reward 500 Gold + Rare Soul），右侧选中训练详情面板（金色边框）：大训练图标+训练名+描述文字+难度等级+预计时长+目标列表带对勾（Objective 1 completed, Objective 2 completed, Objective 3 in progress）+奖励（XP 100, Training Points 5, Gold 200）+先决条件+START TRAINING按钮金色发光+PRACTICE MODE按钮，下方详情面板：训练统计（Total Training Time 2h 30m+Modules Completed 3/12+Best Drill Score 8,500+Challenges Completed 0/5），底部3个按钮（FREE PRACTICE自由练习剑图标金色发光+AI BATTLE AI对战机器人图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+全部严格遵循2D像素风+深紫金色调，禁止3D等距，符合ART_STYLE_GUIDE.md规范。
+
+### 🎉 新元素系统已达100元素，正式停止新元素扩展！
+
+- **当前进度**：**100个元素**（第122轮完成）✅ 达到目标！
+- **停止新元素的灵魂单位/地图/音效产出** ✅
+- **本轮起转向以下更有价值的方向**（按优先级排序）：
+  1. **Steam商店页素材**（P1）← 第123-124轮已产出12项
+  2. **M2实际需要的UI资源**（P0）← **第126轮6项战斗HUD + 第127轮6项其他界面 + 第128轮6项主要界面细化 + 第129轮6项战斗特效 + 第130轮6项社交 + 第131轮6项辅助界面 + 第132轮6项游戏系统 + 本轮6项对战模式 = 48项M2 UI组件**
+  3. **过场动画/启动画面/CG**（P1）← 第125轮已产出6项
+  4. **现有资源优化**（P2）
+
+### 战策DEVLOG最新进展（7783行）
+
+- **P0修复续：AI决策延迟导致单位在攻击范围内不攻击已完成**
+  - 修复后5秒内战斗结束，双方持续攻击直到一方被击败
+  - M2测试: 2884 Passed, 0 Failed
+- **攻击系统完整修复链（4个bug叠加）全部完成**
+- **BUG-030已关闭**：526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- **BUG-032 wav size字段错误已修复**
+- **战策侧新增BUG-033已修复**：灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已修复(commit 370134c+ec18a48)，已关闭31个，活跃2个
+- **历史[设计需求]已基本满足**：像素字体参考、UI皮肤图集、灵魂单位精灵图、主菜单背景图、技能图标、粒子纹理均已产出；唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- 无新[设计需求]
+
+### Git状态
+
+- 上一轮commit d77e3bb（第132轮M2游戏系统UI组件产出P0）push成功
+- 战策侧监控任务commit 2dfa37d（监控第131轮更新 - 战斗画面资源集成调试v4进展）
+- 本地与远程同步，工作树干净
+- GitHub网络稳定，后续commit可正常push
+
+### 累计资源（第133轮后）
+
+| 类型 | 数量 | 说明 |
+|------|------|------|
+| 音效 | **843个** | management仓库assets/audio/ |
+| P0音效 | **17/17** | 全部完成 |
+| P1音效 | **24/24** | 全部完成 |
+| 核心音效合计 | **41个** | 全部完成 |
+| P1背景音乐 | **7/7** | 全部完成 |
+| P2音效 | 300个 | 6环境+6社交+288新元素技能 |
+| 概念图 | **590张** | management仓库art目录（本轮新增6项M2对战模式UI组件） |
+| M3内容扩展第一批~第四十八批 | **各14项** | 全部完成 |
+| M3内容扩展合计 | **672项** | 96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档 |
+| **新元素系统** | **100元素** 🎉 | 已达到目标，正式停止新元素扩展！ |
+| **Steam商店页素材** | **12项** | 第123轮6项 + 第124轮6项 |
+| **过场动画/启动画面/CG** | **6项** | 第125轮6项 |
+| **M2战斗HUD UI组件** | **6项** | 第126轮6项（顶部状态栏+技能栏+小地图+战斗日志+单位信息面板+控制按钮） |
+| **M2其他界面UI组件** | **6项** | 第127轮6项（暂停界面+教程界面+对话框+商店界面+成就界面+加载界面） |
+| **M2主要界面细化UI** | **6项** | 第128轮6项（灵魂选择界面+战斗结算界面+设置界面+主菜单+灵魂之家+战斗开始倒计时） |
+| **M2战斗特效UI组件** | **6项** | 第129轮6项（伤害飘字+单位选中指示器+技能冷却指示器+战斗特效+天气环境+后处理） |
+| **M2社交UI组件** | **6项** | 第130轮6项（排行榜+邮件+好友+玩家资料+每日任务+活动） |
+| **M2辅助界面UI组件** | **6项** | 第131轮6项（游戏内聊天+公告+反馈+帮助+关于+版权法律信息） |
+| **M2游戏系统UI组件** | **6项** | 第132轮6项（游戏内商店+物品栏+技能树+天赋+成就详情+统计数据） |
+| **M2对战模式UI组件** | **6项（本轮）** | 匹配界面+房间大厅+观战模式+回放系统+自定义游戏+训练模式 |
+| **M2 UI组件合计** | **48项** | 战斗HUD 6项 + 其他界面 6项 + 主要界面细化 6项 + 战斗特效 6项 + 社交 6项 + 辅助界面 6项 + 游戏系统 6项 + 对战模式 6项 |
+| 设计文档 | **10份** | |
+| **风格** | — | 严格2D像素奇幻（Pixel Fantasy），深紫+金色，遵循ART_STYLE_GUIDE.md v1.0 |
+
+### 下一轮计划（🎉 新元素扩展已停止！继续M2 UI资源/现有资源优化）
+
+1. **🎉 新元素系统已达到100个元素，正式停止新元素扩展！**
+2. **继续方向2：M2实际需要的UI资源**（P0）：更多M2界面UI组件（赛季通行证UI/战斗通行证UI/每日签到UI/成就解锁弹窗UI/新手引导弹窗UI/通知中心UI）
+3. **方向4：现有资源优化**（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. **继续方向1：Steam商店页素材**（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. **继续方向3：过场动画/启动画面/CG**（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. **⭐每轮生成wav后必须运行WAV size修复脚本**（D:\Sojourn\management\scripts\fix_wav_sizes.ps1）
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. GitHub网络稳定，后续commit可正常push
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
