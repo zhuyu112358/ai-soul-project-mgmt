@@ -11228,3 +11228,116 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. GitHub网络稳定，后续commit可正常push
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
+
+---
+
+## 2026-09-09 - 设计任务第132轮：M2游戏系统UI组件产出（P0）— 游戏内商店+物品栏+技能树+天赋+成就详情+统计数据
+
+### 完成工作
+
+#### M2游戏系统UI组件产出（6项，P0）
+
+**🎉 新元素系统已达到100个元素（第122轮完成），正式停止新元素扩展！Steam商店页素材累计12项+过场动画/CG 6项+M2战斗HUD UI组件6项+M2其他界面UI组件6项+M2主要界面细化UI 6项+M2战斗特效UI组件6项+M2社交UI组件6项+M2辅助界面UI组件6项已产出。本轮继续方向2：M2实际需要的UI资源（P0）— 游戏系统UI组件。**
+
+**M2游戏系统UI组件（6项）**：
+1. **游戏内商店UI**（1920x1080）
+   - 文件：shop_ui.png（894.5KB）
+   - 内容：中央大型商店面板（金色华丽边框+深紫背景），顶部标题SHOP大号金色像素字体发光效果+购物袋图标，下方玩家货币显示（Gold 2500金币图标+Soul Shards 15水晶图标+Gems 5宝石图标），下方5个分类标签（ALL全部标签高亮选中+SOULS灵魂标签+ITEMS物品标签+COSMETICS外观标签+BOOSTS增益标签），下方商店物品网格显示8个物品（金色边框面板每个320x280）：Fire Spirit灵魂单位精灵+名称+类型Soul Unit+价格500 Gold+稀有度Rare金色边框+BUY按钮、Water Spirit、Earth Spirit、Wind Spirit、Health Potion红色药水+价格50 Gold+Common、Mana Potion蓝色药水+价格50 Gold、Golden Profile Frame外观+价格10 Soul Shards+Epic紫色边框、2x EXP Boost 1hr增益+价格100 Gold+Uncommon，右侧选中物品详情面板（金色边框）：大物品图+物品名+类型+稀有度+描述+属性+价格+BUY按钮金色发光+数量选择器+拥有数量，底部3个按钮（INVENTORY背包图标+REFRESH刷新图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+2. **物品栏UI**（1920x1080）
+   - 文件：inventory_ui.png（893.8KB）
+   - 内容：中央大型物品栏面板（金色华丽边框+深紫背景），顶部标题INVENTORY大号金色像素字体发光效果+背包图标，下方玩家信息（Player Name+Level 15+当前灵魂Fire Spirit），下方4个分类标签（ALL全部标签高亮选中+CONSUMABLES消耗品标签+EQUIPMENT装备标签+MATERIALS材料标签），下方物品栏网格显示24个物品槽（金色边框面板每个96x96，4行x6列）：Health Potion红色药水x5+Common、Mana Potion蓝色药水x3、Revive Potion绿色药水x1+Rare金色边框、Fire Essence红色水晶x10、Water Essence蓝色水晶x8、Earth Essence棕色水晶x6、Wind Essence绿色水晶x7、Soul Shard紫色水晶x15+Rare、Golden Key金色钥匙x2+Epic紫色边框、Mystic Scroll卷轴x4+Uncommon、其余空槽灰色虚线边框，右侧选中物品详情面板（金色边框）：大物品图+物品名+类型+稀有度+描述+效果属性+数量+USE按钮金色发光+EQUIP按钮+DROP按钮，下方装备槽（Weapon武器槽空+Armor护甲槽空+Accessory饰品槽空+Soul灵魂槽Fire Spirit已装备），底部3个按钮（SORT排序图标+SELL出售金币图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+3. **技能树UI**（1920x1080）
+   - 文件：skill_tree_ui.png（911.3KB）
+   - 内容：中央大型技能树面板（金色华丽边框+深紫背景），顶部标题SKILL TREE大号金色像素字体发光效果+树图标，下方灵魂单位选择器（Fire Spirit灵魂单位精灵+名称+等级15+可用技能点3星图标），下方3个技能分支标签（FIRE火焰分支高亮选中+DEFENSE防御分支+SUPPORT辅助分支），下方技能树可视化显示节点通过金色线连接成树结构：根节点Fireball技能图标已解锁金色发光等级3/3连接3个子节点、Flame Burst已解锁等级2/2、Fire Shield已解锁等级1/1、Inferno锁定灰色等级0/1需要Flame Burst等级2、Burning Aura锁定灰色需要Fire Shield等级1、Meteor Strike终极技能锁定灰色紫色Epic边框需要Inferno等级1+Burning Aura等级1、Ember已解锁等级1/1基础被动、Blaze Mastery锁定灰色等级0/2被动伤害提升，每个技能节点显示技能图标金色圆圈+技能名+等级x/最大，已解锁节点金色发光，锁定节点灰色带锁图标，连接线金色表示已解锁路径灰色表示锁定路径，右侧选中技能详情面板（金色边框）：大技能图标+技能名+技能类型（Active/Passive/Ultimate）+当前等级+最大等级+描述+效果属性（伤害/冷却/法力消耗）+升级消耗（技能点x1）+UPGRADE按钮金色发光+RESET按钮，底部3个按钮（RESET TREE重置树刷新图标+AUTO ASSIGN自动分配魔杖图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+4. **天赋UI**（1920x1080）
+   - 文件：talents_ui.png（921.7KB）
+   - 内容：中央大型天赋面板（金色华丽边框+深紫背景），顶部标题TALENTS大号金色像素字体发光效果+星图标，下方玩家信息（Player Name+Account Level 25+可用天赋点5星图标），下方3个天赋树标签（ATTACK攻击树高亮选中+DEFENSE防御树+UTILITY辅助树），下方天赋网格显示12个天赋节点（4x3网格布局+金色连接线）：第1行Tier1基础天赋Power Strike剑图标已解锁金色发光等级3/3+15%攻击伤害、Critical Eye星图标已解锁等级2/3+10%暴击率、Rapid Attack闪电图标锁定灰色等级0/3+10%攻击速度需要Power Strike等级2；第2行Tier2进阶天赋Burning Blade火焰图标已解锁等级1/2攻击附加燃烧、Vampiric Strike血滴图标锁定灰色等级0/2吸血需要Critical Eye等级2、Thunder Strike雷电图标锁定灰色等级0/2几率眩晕需要Rapid Attack等级2；第3行Tier3精英天赋Inferno Blade火剑图标锁定灰色紫色Epic边框等级0/1终极攻击增益需要Burning Blade等级2、Blood Frenzy血剑锁定灰色等级0/1低血量攻击速度提升需要Vampiric Strike等级2、Storm Lord风暴锁定灰色等级0/1攻击连锁闪电需要Thunder Strike等级2；第4行Tier4终极Avatar of War终极天赋金色战士图标锁定灰色金色Legendary边框等级0/1变身战争化身需要所有Tier3天赋，每个天赋节点显示天赋图标金色圆圈+天赋名+等级x/最大，已解锁节点金色发光，锁定节点灰色带锁图标，连接线金色表示已解锁路径灰色表示锁定路径，右侧选中天赋详情面板（金色边框）：大天赋图标+天赋名+天赋等级（Basic/Advanced/Elite/Ultimate）+当前等级+最大等级+描述+效果属性+先决条件列表+升级消耗（天赋点x1）+UPGRADE按钮金色发光+REFUND按钮，底部3个按钮（RESET TALENTS重置天赋刷新图标+AUTO BUILD自动构建魔杖图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+5. **成就详情UI**（1920x1080）
+   - 文件：achievements_ui.png（981.6KB）
+   - 内容：中央大型成就面板（金色华丽边框+深紫背景），顶部标题ACHIEVEMENTS大号金色像素字体发光效果+奖杯图标，下方成就统计（Total Achievements 24+Unlocked 12+Locked 12+Completion 50%金色进度条），下方4个分类标签（ALL全部标签高亮选中+COMBAT战斗标签+PROGRESS进度标签+SOCIAL社交标签），下方成就列表显示8个成就（金色边框行每个1024x80）：First Blood奖杯图标金色已解锁金色发光+描述Win your first battle+解锁日期2026-09-05+稀有度Common+积分10+已解锁金对勾、Soul Collector已解锁+Collect 10 different soul units+2026-09-06+Uncommon+25、Battle Master已解锁+Win 10 battles+2026-09-07+Rare+50、Elemental Master已解锁+Use all 4 elements in battle+2026-09-08+Rare+50、Undefeated锁定灰色奖杯图标带锁+Win 100 battles in a row+进度0/100+Epic紫色边框+100、Soul Lord锁定+Collect all 100 soul units+进度12/100+Legendary金色边框+250、Speed Demon锁定+Win a battle in under 30 seconds+进度0/1+Epic+100、Perfect Game锁定+Win without losing any units+进度0/10+Rare+50，右侧选中成就详情面板（金色边框）：大成就奖杯图标金色发光+成就名+稀有度（Common/Uncommon/Rare/Epic/Legendary）+描述+要求列表带对勾+解锁日期（或锁定）+积分奖励+相关成就+SHARE按钮金色发光，底部3个按钮（FILTER筛选图标+SORT排序图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+6. **统计数据UI**（1920x1080）
+   - 文件：statistics_ui.png（698.9KB）
+   - 内容：中央大型统计面板（金色华丽边框+深紫背景），顶部标题STATISTICS大号金色像素字体发光效果+图表图标，下方玩家信息（Player Name+Account Level 25+当前灵魂Fire Spirit+游戏时长24h），下方4个分类标签（OVERVIEW概览标签高亮选中+COMBAT战斗标签+SOULS灵魂标签+ACHIEVEMENTS成就标签），下方统计网格显示各种统计面板（金色边框）：Battle Stats战斗统计金色标题+Total Battles 120剑图标+Wins 78奖杯图标+Losses 42骷髅图标+Win Rate 65%星图标+Current Streak 3火焰图标+Best Streak 7皇冠图标；Damage Stats伤害统计+Total Damage Dealt 1,245,680剑图标+Total Damage Taken 820,450盾牌图标+Total Healing Done 320,100心图标+Critical Hits 1,234星图标+Average Damage per Battle 10,380；Soul Collection灵魂收集+Souls Collected 12/100灵魂球图标+Favorite Soul Fire Spirit灵魂单位精灵+Most Used Soul Fire Spirit 45 battles+Highest Level Soul Fire Spirit Lv15+Soul Types Used 4/4 elements；Time Stats时间统计+Total Playtime 24h 30m时钟图标+This Week 5h 15m+Today 1h 20m+Longest Battle 15m 30s+Shortest Win 45s；Rank Stats排名统计+Current Rank Gold III排名徽章+Peak Rank Platinum I+Rank Points 1,250+Season Wins 45+Season Losses 28；Skill Stats技能统计+Skills Used 456火焰图标+Most Used Skill Fireball 180 times+Skill Accuracy 78%+Combo Max 12 hits+Ultimate Uses 24，右侧图表面板（金色边框）：Win/Loss饼图（金色胜利红色失败）+Damage柱状图（最近10场战斗伤害）+Rank progression折线图（最近30天排名积分）+最近战斗列表显示5场最近战斗带结果图标+对手+日期，底部3个按钮（EXPORT STATS导出统计下载图标+SHARE分享图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+全部严格遵循2D像素风+深紫金色调，禁止3D等距，符合ART_STYLE_GUIDE.md规范。
+
+### 🎉 新元素系统已达100元素，正式停止新元素扩展！
+
+- **当前进度**：**100个元素**（第122轮完成）✅ 达到目标！
+- **停止新元素的灵魂单位/地图/音效产出** ✅
+- **本轮起转向以下更有价值的方向**（按优先级排序）：
+  1. **Steam商店页素材**（P1）← 第123-124轮已产出12项
+  2. **M2实际需要的UI资源**（P0）← **第126轮6项战斗HUD + 第127轮6项其他界面 + 第128轮6项主要界面细化 + 第129轮6项战斗特效 + 第130轮6项社交 + 第131轮6项辅助界面 + 本轮6项游戏系统 = 42项M2 UI组件**
+  3. **过场动画/启动画面/CG**（P1）← 第125轮已产出6项
+  4. **现有资源优化**（P2）
+
+### 战策DEVLOG最新进展（7783行）
+
+- **P0修复续：AI决策延迟导致单位在攻击范围内不攻击已完成**
+  - 修复后5秒内战斗结束，双方持续攻击直到一方被击败
+  - M2测试: 2884 Passed, 0 Failed
+- **攻击系统完整修复链（4个bug叠加）全部完成**
+- **BUG-030已关闭**：526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- **BUG-032 wav size字段错误已修复**
+- **战策侧新增BUG-033已修复**：灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已修复(commit 370134c+ec18a48)，已关闭31个，活跃2个
+- **历史[设计需求]已基本满足**：像素字体参考、UI皮肤图集、灵魂单位精灵图、主菜单背景图、技能图标、粒子纹理均已产出；唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- 无新[设计需求]
+
+### Git状态
+
+- 上一轮commit 58f0dc0（第131轮M2辅助界面UI组件产出P0）push成功
+- 战策侧监控任务commit a8912c3（监控第130轮更新 - 待解决事项刷新）
+- 本地与远程同步，工作树干净
+- GitHub网络稳定，后续commit可正常push
+
+### 累计资源（第132轮后）
+
+| 类型 | 数量 | 说明 |
+|------|------|------|
+| 音效 | **843个** | management仓库assets/audio/ |
+| P0音效 | **17/17** | 全部完成 |
+| P1音效 | **24/24** | 全部完成 |
+| 核心音效合计 | **41个** | 全部完成 |
+| P1背景音乐 | **7/7** | 全部完成 |
+| P2音效 | 300个 | 6环境+6社交+288新元素技能 |
+| 概念图 | **584张** | management仓库art目录（本轮新增6项M2游戏系统UI组件） |
+| M3内容扩展第一批~第四十八批 | **各14项** | 全部完成 |
+| M3内容扩展合计 | **672项** | 96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档 |
+| **新元素系统** | **100元素** 🎉 | 已达到目标，正式停止新元素扩展！ |
+| **Steam商店页素材** | **12项** | 第123轮6项 + 第124轮6项 |
+| **过场动画/启动画面/CG** | **6项** | 第125轮6项 |
+| **M2战斗HUD UI组件** | **6项** | 第126轮6项（顶部状态栏+技能栏+小地图+战斗日志+单位信息面板+控制按钮） |
+| **M2其他界面UI组件** | **6项** | 第127轮6项（暂停界面+教程界面+对话框+商店界面+成就界面+加载界面） |
+| **M2主要界面细化UI** | **6项** | 第128轮6项（灵魂选择界面+战斗结算界面+设置界面+主菜单+灵魂之家+战斗开始倒计时） |
+| **M2战斗特效UI组件** | **6项** | 第129轮6项（伤害飘字+单位选中指示器+技能冷却指示器+战斗特效+天气环境+后处理） |
+| **M2社交UI组件** | **6项** | 第130轮6项（排行榜+邮件+好友+玩家资料+每日任务+活动） |
+| **M2辅助界面UI组件** | **6项** | 第131轮6项（游戏内聊天+公告+反馈+帮助+关于+版权法律信息） |
+| **M2游戏系统UI组件** | **6项（本轮）** | 游戏内商店+物品栏+技能树+天赋+成就详情+统计数据 |
+| **M2 UI组件合计** | **42项** | 战斗HUD 6项 + 其他界面 6项 + 主要界面细化 6项 + 战斗特效 6项 + 社交 6项 + 辅助界面 6项 + 游戏系统 6项 |
+| 设计文档 | **10份** | |
+| **风格** | — | 严格2D像素奇幻（Pixel Fantasy），深紫+金色，遵循ART_STYLE_GUIDE.md v1.0 |
+
+### 下一轮计划（🎉 新元素扩展已停止！继续M2 UI资源/现有资源优化）
+
+1. **🎉 新元素系统已达到100个元素，正式停止新元素扩展！**
+2. **继续方向2：M2实际需要的UI资源**（P0）：更多M2界面UI组件（匹配界面UI/房间大厅UI/观战模式UI/回放系统UI/自定义游戏UI/训练模式UI）
+3. **方向4：现有资源优化**（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. **继续方向1：Steam商店页素材**（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. **继续方向3：过场动画/启动画面/CG**（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. **⭐每轮生成wav后必须运行WAV size修复脚本**（D:\Sojourn\management\scripts\fix_wav_sizes.ps1）
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. GitHub网络稳定，后续commit可正常push
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
