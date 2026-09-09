@@ -11650,3 +11650,102 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. GitHub 443端口间歇性不可用：commit保留本地，网络恢复时推送，不重试超过2次
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用rainbow/color等可能触发审核的关键词
+
+---
+
+## 第136轮设计任务 - M2设置/系统UI组件产出P0（2026-09-09）
+
+### 本轮概述
+- 🎉 新元素系统已达到100个元素，正式停止新元素扩展！
+- Steam商店页素材累计12项 + 过场动画/CG 6项 + M2战斗HUD UI组件6项 + M2其他界面UI组件6项 + M2主要界面细化UI 6项 + M2战斗特效UI组件6项 + M2社交UI组件6项 + M2辅助界面UI组件6项 + M2游戏系统UI组件6项 + M2对战模式UI组件6项 + M2运营系统UI组件6项 + M2社交交互UI组件6项已产出
+- 本轮继续方向2：M2实际需要的UI资源（P0）— 设置/系统UI组件
+- 产出6项M2设置/系统UI组件：游戏内语音聊天UI + 观战弹幕UI + 比赛回放控制UI + 自定义按键设置UI + 画面设置UI + 音频设置UI
+- M2 UI组件合计66项！
+- 全部严格遵循2D像素风+深紫金色调，禁止3D等距，符合ART_STYLE_GUIDE.md规范
+- 战策DEVLOG 7799行，无新[设计需求]，攻击系统完整修复链4个bug叠加全部完成，M2测试2884 Passed，BUG-030已关闭，BUG-033已修复
+- 本轮无wav文件，无需运行WAV修复脚本
+
+### 战策DEVLOG最新进展
+- 最新章节：P0修复续：AI决策延迟导致单位在攻击范围内不攻击
+- 攻击系统完整修复链（4个bug叠加）全部完成：
+  1. SoulUnit.move_to()清除attack_target → 添加p_clear_attack_target参数
+  2. EmberSoulAIController移动时清除attack_target → 保留attack_target
+  3. _update_cooldowns不递减attack_cooldown → 添加递减逻辑
+  4. AI决策延迟导致在范围内不攻击 → execute_decision优先级覆盖
+- 修复后：5秒内战斗结束，双方持续攻击直到一方被击败
+- M2测试：2884 Passed, 0 Failed
+- BUG-030已关闭：526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- BUG-033已修复：灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已关闭31个，活跃2个
+- 历史[设计需求]已基本满足，唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- 无新[设计需求]
+
+### 本轮产出资源（6项M2设置/系统UI组件，P0）
+
+| 序号 | 素材 | 尺寸 | 文件名 | 大小 | 内容 |
+|------|------|------|--------|------|------|
+| 1 | 游戏内语音聊天UI | 1920x1080 | in_game_voice_chat_ui.png | 724.2KB | 半透明暗色覆盖背景，中央语音聊天面板800x700（金色华丽边框+深紫背景）居中，顶部横幅VOICE CHAT大号金色像素字体发光效果+麦克风图标，下方语音频道信息（频道名Party Voice+频道模式Push to Talk+参与者4/6+延迟32ms），下方语音参与者列表6个槽，每个带玩家头像64x64金色圆形框、玩家名、等级、排名和语音状态指示器：参与者1 PlayerLeader说话中绿色动画声波条+发光环，参与者2 Player123说话中绿色声波条，参与者3 Player456静音红色静音图标+灰色，参与者4 Player789聆听中蓝色空闲环，参与者5 EMPTY空槽+plus图标，参与者6 EMPTY空槽+plus图标，每个参与者带小音量滑块和静音按钮，下方你自己的语音状态面板（金色边框）：你的头像+你的名字+你的等级+麦克风状态Mic: On绿点+扬声器状态Speaker: On绿点+按键说话键V高亮，下方语音控制行4个大按钮（MICROPHONE麦克风切换按钮金色发光+SPEAKER扬声器切换按钮+PUSH TO TALK按键说话模式按钮+CHANNEL SETTINGS频道设置按钮），下方语音设置面板（金色边框）：麦克风音量滑块75%+扬声器音量滑块80%+降噪开关On+回声消除开关On+语音活动检测阈值滑块50%+测试麦克风按钮，右侧小Voice Channels语音频道面板（金色边框）：3个语音频道（Party Voice当前高亮、Team Voice、Guild Voice）带参与者数和加入按钮，左侧小Recent Voice Activity最近语音活动面板（金色边框）：3个最近语音事件带玩家名、时间和活动类型，底部3个按钮（LEAVE VOICE离开语音按钮+INVITE TO VOICE邀请按钮+CLOSE关闭按钮），面板周围金色闪光 |
+| 2 | 观战弹幕UI | 1920x1080 | spectator_danmaku_chat_ui.png | 847.1KB | 半透明暗色覆盖背景显示战斗竞技场场景（像素风RTS竞技场灵魂单位战斗，深紫金色调），中央观战弹幕聊天覆盖层，左上观战信息面板（金色边框）：SPECTATOR MODE标题金色像素字体+比赛Player123 vs AI Boss+观战人数1,247+观看时间12:34+比赛状态In Progress，右上观战控制面板（金色边框）：4个按钮（FULLSCREEN全屏按钮+SETTINGS设置按钮+EXIT SPECTATOR退出按钮+CHAT TOGGLE聊天切换按钮），中左弹幕覆盖区域：多条浮动文字评论在屏幕不同高度水平滚动，每条评论不同颜色（金、白、蓝、绿、紫、粉）像素字体：GG!金色、Nice skill!蓝色、Wow that was close!白色、Fire spirit OP!橙色、Heal needed!绿色、666紫色、What a comeback!粉色、RIP灰色、Let's go!金色、Amazing play!蓝色，评论带轻微发光效果和半透明背景，底部中央聊天输入面板（金色边框）：聊天模式标签（ALL全部聊天高亮+TEAM队伍聊天+SPECTATOR观战聊天+DANMAKU弹幕模式开关On）+消息输入框占位符Type a message...+SEND发送按钮金色发光+表情按钮+弹幕颜色选择器6个色块，右下观战聊天面板（金色边框可滚动）：8条聊天消息带玩家头像、名字、时间和消息，系统消息金色：Player456 sent a gift: Soul Orb x1，左下快捷操作面板（金色边框）：4个快捷操作按钮（CHEER欢呼按钮+GIFT礼物按钮+FOLLOW关注按钮+SHARE分享按钮），UI周围金色闪光 |
+| 3 | 比赛回放控制UI | 1920x1080 | match_replay_control_ui.png | 878.5KB | 半透明暗色覆盖背景显示暂停的战斗竞技场场景（像素风RTS竞技场灵魂单位冻结战斗，深紫金色调），中央回放控制覆盖层，顶部回放信息面板（金色边框全宽）：REPLAY MODE标题大号金色像素字体+播放图标+比赛名Ranked Match #12345+玩家Player123 (Blue) vs AI Boss (Red)+地图Arena of Souls+日期2026-09-09+时长05:32+回放速度1.0x，下方中央大时间轴拖动条（金色边框）：全宽进度条金色填充显示当前位置02:15/05:32，时间轴标记关键事件（0:00 Match Start、0:45 First Blood、1:30 Skill Combo、2:15 Current Position高亮金色、3:00 Team Fight、4:30 Final Push、5:32 Match End），可拖动播放头金色圆圈，下方中央播放控制行7个大按钮一排（SKIP BACK后退10秒按钮+PREVIOUS FRAME上一帧按钮+PLAY/PAUSE播放/暂停按钮金色发光当前暂停显示播放图标+NEXT FRAME下一帧按钮+SKIP FORWARD前进10秒按钮+SLOW MOTION慢动作按钮0.5x+SPEED UP加速按钮2.0x），下方中央速度控制行：速度滑块0.25x到4.0x当前1.0x高亮+预设速度按钮（0.25x、0.5x、1.0x选中金色、1.5x、2.0x、4.0x），下方中央视图选项行4个切换按钮（FREE CAMERA自由相机切换+FOLLOW PLAYER跟随玩家切换On+SHOW HP BARS显示血条切换On+SHOW DAMAGE NUMBERS显示伤害数字切换On），右侧回放事件面板（金色边框可滚动）：KEY EVENTS标题+8个事件条目带时间戳、事件图标和描述（0:00 Match Start旗帜图标、0:12 Player123 moves to center移动图标、0:45 First Blood! AI Boss unit defeated骷髅图标、1:30 Skill Combo! Fireball + Windblade技能图标、2:15 Team Fight! 4 units engaged剑图标当前高亮金色、3:00 Heal! Player123 uses heal skill加号图标、4:30 Final Push! Player123 attacks base箭头图标、5:32 Victory! Player123 wins奖杯图标），左侧玩家统计面板（金色边框）：PLAYER STATS标题+Player123统计（KDA 5/1/2、伤害12,500、治疗3,200、金币4,500）+AI Boss统计（KDA 1/5/0、伤害8,300、治疗0、金币2,100）+单位对比条，底部4个按钮（SAVE REPLAY保存回放按钮+EXPORT CLIP导出剪辑按钮+SHARE REPLAY分享按钮+EXIT REPLAY退出按钮），UI周围金色闪光 |
+| 4 | 自定义按键设置UI | 1920x1080 | custom_keybinding_settings_ui.png | 804.5KB | 中央大型按键设置面板（金色华丽边框+深紫背景），顶部标题KEYBINDINGS大号金色像素字体发光效果+键盘图标，下方按键设置信息（当前配置Default+配置下拉+3个按钮NEW PROFILE新配置+RENAME PROFILE重命名+DELETE PROFILE删除），下方4个分类标签（MOVEMENT移动标签高亮选中金色+COMBAT战斗标签+UI标签+CHAT聊天标签），下方按键绑定列表12个条目，每个条目行带动作名左侧、主键绑定中央金色键帽样式、次键绑定右侧灰色键帽样式和RESET重置按钮：移动类：Move Up W/Arrow Up、Move Down S/Arrow Down、Move Left A/Arrow Left、Move Right D/Arrow Right、Attack/Interact Left Mouse Button/J、Skill 1 (Fireball) Q/1、Skill 2 (Waterjet) E/2、Skill 3 (Rock Spike) R/3、Skill 4 (Windblade) F/4、Heal Skill T/5、Shield Skill G/6、Stop/Hold Position H/Space，每个键帽显示按键像素字体金色边框深色背景，悬停/选中键帽金色发光，下方选中按键绑定详情面板（金色边框）：动作名Move Up+分类Movement+描述Move selected unit upward+主键W高亮点击更改+次键Arrow Up+Press any key to bind...提示带动画光标+CONFIRM确认按钮金色发光+CANCEL取消按钮，下方冲突警告面板（金色边框）：WARNING: Key W is already bound to Move Up!带冲突动作名+OVERWRITE覆盖按钮+CANCEL取消按钮，右侧输入设备面板（金色边框）：INPUT DEVICES标题+键盘状态Connected绿点+鼠标状态Connected绿点+手柄状态Not Connected灰点+控制器布局预览（像素风手柄轮廓带按钮标签），下方按键绑定预设面板（金色边框）：3个预设按钮（DEFAULT默认预设+FPS STYLE fps风格+MOBA STYLE moba风格）+APPLY应用按钮，底部4个按钮（RESET ALL全部重置+IMPORT导入+EXPORT导出+BACK返回箭头） |
+| 5 | 画面设置UI | 1920x1080 | graphics_settings_ui.png | 839.2KB | 中央大型画面设置面板（金色华丽边框+深紫背景），顶部标题GRAPHICS大号金色像素字体发光效果+显示器图标，下方画面信息（当前预设Custom+预设下拉Low/Medium/High/Ultra/Custom+3个按钮APPLY应用金色发光+RESET重置+DETECT检测硬件），下方4个分类区域：DISPLAY显示区域、QUALITY质量区域、EFFECTS效果区域、ADVANCED高级区域，DISPLAY区域（金色边框）：分辨率下拉1920x1080 (Recommended)+显示模式下拉Fullscreen（Fullscreen/Borderless/Windowed）+刷新率下拉60Hz+垂直同步开关On+帧率限制滑块60 FPS（30/60/120/144/Unlimited）+显示器下拉Primary Monitor，QUALITY区域（金色边框）：整体质量滑块High（Low/Medium/High/Ultra）+纹理质量下拉High+阴影质量下拉Medium+模型质量下拉High+抗锯齿下拉MSAA 4x（Off/FXAA/MSAA 2x/MSAA 4x/MSAA 8x）+各向异性过滤下拉8x（2x/4x/8x/16x），EFFECTS区域（金色边框）：粒子效果下拉High+后处理开关On+泛光效果开关On+色彩校正开关On+运动模糊滑块50%+景深开关Off+镜头光晕开关On+屏幕震动开关On+天气效果开关On，ADVANCED区域（金色边框）：GPU选择下拉NVIDIA GeForce RTX 3060+GPU使用限制滑块100%+纹理流送开关On+多线程渲染开关On+硬件加速开关On+调试FPS计数器开关Off+显示性能统计开关Off，右侧性能预览面板（金色边框）：PERFORMANCE PREVIEW标题+预估FPS ~120 FPS大号金色数字+FPS条形图显示60/120/144标记+GPU使用45%+显存使用2.1GB/8GB+CPU使用35%+内存使用4.2GB/16GB+温度65C+质量影响指示器（每个设置显示Low/Medium/High/Ultra对性能影响带彩色条），下方预览对比面板（金色边框）：2个小预览窗口并排-左Low Quality低质量预览显示像素风场景基础渲染，右High Quality高质量预览显示同一场景增强效果，中间箭头，底部4个按钮（SAVE SETTINGS保存设置金色发光+RESET TO DEFAULT重置默认+EXPORT CONFIG导出配置+BACK返回箭头） |
+| 6 | 音频设置UI | 1920x1080 | audio_settings_ui.png | 678.8KB | 中央大型音频设置面板（金色华丽边框+深紫背景），顶部标题AUDIO大号金色像素字体发光效果+扬声器图标，下方音频信息（音频预设Custom+预设下拉Default/Music Focused/SFX Focused/Competitive/Custom+3个按钮APPLY应用金色发光+RESET重置+TEST AUDIO测试音频），下方4个分类区域：VOLUME音量区域、OUTPUT输出区域、INPUT输入区域、ADVANCED高级区域，VOLUME区域（金色边框）：主音量滑块80%金色填充+扬声器图标、音乐音量滑块65%+音符图标、音效音量滑块90%+爆炸图标、语音聊天音量滑块75%+麦克风图标、UI音效音量滑块85%+按钮点击图标、环境音量滑块70%+风图标、过场音量滑块100%+胶片图标，每个滑块显示百分比数字和静音切换按钮，OUTPUT区域（金色边框）：输出设备下拉Default - Speakers (Realtek High Definition Audio)+输出模式下拉Stereo（Mono/Stereo/5.1 Surround/7.1 Surround）+采样率下拉44100 Hz（22050/44100/48000/96000）+位深下拉16-bit（16-bit/24-bit/32-bit）+空间音频开关Off+动态范围压缩开关On+响度均衡开关Off，INPUT区域（金色边框）：输入设备下拉Default - Microphone (Realtek High Definition Audio)+输入模式下拉Push to Talk（Open Mic/Push to Talk/Voice Activity）+按键说话键V高亮金色键帽+麦克风音量滑块75%+麦克风增益滑块+10dB（0/+10/+20/+30）+降噪下拉High（Off/Low/Medium/High）+回声消除开关On+语音活动检测阈值滑块50%+测试麦克风按钮+实时麦克风电平表显示绿/黄/红条，ADVANCED区域（金色边框）：音频缓冲区大小下拉Medium（Small/Medium/Large）+音频线程优先级下拉Normal（Low/Normal/High）+HRTF开关Off+遮挡开关On+混响开关On+音乐交叉淡入淡出滑块3秒（0-10）+音效冷却限制开关On+调试音频可视化器开关Off，右侧音频可视化器面板（金色边框）：AUDIO VISUALIZER标题+实时频谱可视化器显示32个垂直条金/绿/蓝颜色动画+当前音频电平显示（主80%、音乐65%、音效90%、语音75%）+峰值电平指示器+削波警告（红色如果削波），下方音频测试面板（金色边框）：AUDIO TEST标题+4个测试声音按钮（TEST MUSIC测试音乐+TEST SFX测试音效+TEST VOICE测试语音+TEST UI测试UI）+音频平衡测试（左/右扬声器测试带L/R按钮和中心平衡滑块），底部4个按钮（SAVE SETTINGS保存设置金色发光+RESET TO DEFAULT重置默认+EXPORT CONFIG导出配置+BACK返回箭头） |
+
+### 风格质量检查（按ART_STYLE_GUIDE.md第十节检查清单）
+- ✅ 2D像素风，非3D等距视角
+- ✅ 深紫(#1a1428)背景+金色(#d4a85c)边框装饰
+- ✅ 奇幻魔法主题，带东方神秘元素
+- ✅ 卡片式UI布局，金色边框装饰
+- ✅ 数据可视化（滑块、进度条、图标+数字、电平表）
+- ✅ 玩家方蓝色/AI方红色配色规范
+- ✅ 分辨率1920x1080符合UI界面规范
+- ✅ 无3D等距视角，无写实风格，无卡通Q版3D渲染
+- ✅ 无工业软件风/纯数据列表式UI
+- ✅ AI生成无版权问题
+
+### 累计资源（本轮后）
+| 类型 | 数量 | 说明 |
+|------|------|------|
+| 音效 | 837个 | management仓库assets/audio/ |
+| P0音效 | 17/17 | 全部完成 |
+| P1音效 | 24/24 | 全部完成 |
+| 核心音效合计 | 41个 | 全部完成 |
+| P1背景音乐 | 7/7 | 全部完成 |
+| P2音效 | 300个 | 6环境+6社交+288新元素技能 |
+| 概念图 | **608张** | management仓库art目录（本轮新增6项M2设置/系统UI组件） |
+| M3内容扩展第一批~第四十八批 | 各14项 | 全部完成 |
+| M3内容扩展合计 | 672项 | 96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档 |
+| 新元素系统 | 100元素 | 已达到目标，正式停止新元素扩展！ |
+| Steam商店页素材 | 12项 | 第123轮6项 + 第124轮6项 |
+| 过场动画/启动画面/CG | 6项 | 第125轮6项 |
+| M2战斗HUD UI组件 | 6项 | 第126轮6项 |
+| M2其他界面UI组件 | 6项 | 第127轮6项 |
+| M2主要界面细化UI | 6项 | 第128轮6项 |
+| M2战斗特效UI组件 | 6项 | 第129轮6项 |
+| M2社交UI组件 | 6项 | 第130轮6项 |
+| M2辅助界面UI组件 | 6项 | 第131轮6项 |
+| M2游戏系统UI组件 | 6项 | 第132轮6项 |
+| M2对战模式UI组件 | 6项 | 第133轮6项 |
+| M2运营系统UI组件 | 6项 | 第134轮6项 |
+| M2社交交互UI组件 | 6项 | 第135轮6项 |
+| M2设置/系统UI组件 | **6项（本轮）** | 游戏内语音聊天+观战弹幕+比赛回放控制+自定义按键设置+画面设置+音频设置 |
+| M2 UI组件合计 | **66项** | 战斗HUD 6 + 其他界面 6 + 主要界面细化 6 + 战斗特效 6 + 社交 6 + 辅助界面 6 + 游戏系统 6 + 对战模式 6 + 运营系统 6 + 社交交互 6 + 设置/系统 6 |
+| 设计文档 | 10份 | |
+| 风格 | — | 严格2D像素奇幻（Pixel Fantasy），深紫+金色，遵循ART_STYLE_GUIDE.md v1.0 |
+
+### Git提交
+- management仓库：commit待提交（6个新UI文件 + DESIGN_DEVLOG.md更新）
+- 上一轮commit：ca1968f（第135轮M2社交交互UI组件，已push成功 12f8b33..ca1968f main -> main）
+- 战策侧监控任务commit：3762867（监控第132轮更新 - 战斗画面资源集成调试v4等待用户反馈）
+
+### 下一轮计划（🎉 新元素扩展已停止！继续M2 UI资源/现有资源优化）
+1. 🎉 新元素系统已达到100个元素，正式停止新元素扩展！
+2. 继续方向2：M2实际需要的UI资源（P0）：更多M2界面UI组件（游戏内成就弹窗UI/等级提升弹窗UI/每日奖励领取UI/赛季结算UI/排行榜赛季UI/玩家名片UI）
+3. 方向4：现有资源优化（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. 继续方向1：Steam商店页素材（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. 继续方向3：过场动画/启动画面/CG（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. ⭐每轮生成wav后必须运行WAV size修复脚本（D:\Sojourn\management\scripts\fix_wav_sizes.ps1）
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. GitHub 443端口间歇性不可用：commit保留本地，网络恢复时推送，不重试超过2次
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用rainbow/color等可能触发审核的关键词
