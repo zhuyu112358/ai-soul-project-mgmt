@@ -12016,3 +12016,138 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. ✅ GitHub网络已恢复，继续正常push
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
+
+---
+
+## 第139轮 - 2026-09-09 - M2通用弹窗UI组件产出P0（6项）
+
+### 轮次概要
+- **轮次**: 第139轮
+- **日期**: 2026-09-09
+- **方向**: 方向2：M2实际需要的UI资源（P0）— 通用弹窗UI组件
+- **产出**: 6项M2通用弹窗UI组件
+- **新元素扩展**: 🎉 已达100元素，正式停止新元素扩展！
+- **M2 UI组件合计**: 84项（战斗HUD 6 + 其他界面 6 + 主要界面细化 6 + 战斗特效 6 + 社交 6 + 辅助界面 6 + 游戏系统 6 + 对战模式 6 + 运营系统 6 + 社交交互 6 + 设置/系统 6 + 奖励/弹窗 6 + 详情/弹窗 6 + 通用弹窗 6）
+
+### 战策DEVLOG检查
+- **DEVLOG行数**: 7836行（比上一轮7820行增加16行）
+- **最新章节**: "P0修复续：AI决策延迟导致单位在攻击范围内不攻击"
+- **攻击系统完整修复链（4个bug叠加）全部完成**: ✅
+  1. SoulUnit.move_to()清除attack_target → 添加p_clear_attack_target参数
+  2. EmberSoulAIController移动时清除attack_target → 保留attack_target
+  3. _update_cooldowns不递减attack_cooldown → 添加递减逻辑
+  4. AI决策延迟导致在范围内不攻击 → execute_decision优先级覆盖
+- **修复后验证**: 5秒内战斗结束，双方持续攻击直到一方被击败
+- **M2测试**: 2884 Passed, 0 Failed
+- **BUG-030已关闭**: ✅ 526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- **BUG-033已修复**: ✅ 灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已关闭31个，活跃2个
+- **战策待办**: UI皮肤图集替换纯色StyleBox（ui_skin_sheet.png）、自定义像素字体（无.ttf/.otf文件，需设计产出）
+- **历史[设计需求]已基本满足**: ✅ 唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- **无新[设计需求]**: ✅
+
+### Git状态
+- **上一轮commit**: 2698601（第138轮M2详情/弹窗UI组件，7文件）
+- **push状态**: ✅ 已push（445e620..2698601 main -> main）
+- **本轮开始时**: 本地与远程同步，工作树干净
+- **art文件数**: 619 → 625（+6项M2通用弹窗UI组件）
+- **audio文件数**: 837（无变化，本轮无wav产出）
+
+### 产出资源清单（6项M2通用弹窗UI组件，P0）
+
+#### 1. 游戏内确认弹窗UI (confirmation_dialog_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 581KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央确认弹窗面板700x500（金色华丽边框+深紫背景）+金色发光，顶部标题CONFIRM大号金色像素字体发光+对勾图标，大确认图标120x120金色圆形框发光（像素风问号图标带金色闪光和魔法光环，动画脉冲效果），确认消息（Are you sure you want to purchase Epic Soul Skin Phoenix Spirit for 500 Gems? This action cannot be undone.米白色像素字体，金色边框文本框），物品详情面板（物品图标64x64+物品名Epic Soul Skin Phoenix Spirit+稀有度Epic紫色标签+价格500 Gems紫色宝石图标），费用明细面板（COST BREAKDOWN标题+当前Gems 350+购买后Gems -150红色+剩余Gems 200金色），警告提示面板（WARNING黄色警告图标+This purchase is final. No refunds will be provided.），2个大按钮并排（CONFIRM确认按钮金色发光+对勾图标左按钮更大更突出，CANCEL取消按钮+X图标右按钮灰色样式），底部小字（Press ENTER to confirm, ESC to cancel），面板周围金色闪光
+
+#### 2. 游戏内警告弹窗UI (warning_dialog_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 624KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景+微妙红色调，中央警告弹窗面板700x550（金色华丽边框+深紫背景）+金色发光+微妙红色警告发光，顶部标题WARNING大号金色像素字体发光+警告三角图标+微妙红色轮廓，大警告图标140x140金色圆形框发光+红色警告光环（像素风警告三角图标带感叹号，三角黄/金色带红色轮廓，感叹号白色，动画脉冲和震动效果，警告光线从三角发出），警告消息（Your connection is unstable. High latency detected (350ms). You may experience lag, disconnection, or input delay during battle. It is recommended to check your network connection before continuing.米白色像素字体，金色边框文本框+微妙红色背景调），警告严重程度面板（SEVERITY标题+严重程度HIGH红色像素字体+红色边框+延迟350ms红色+丢包2.5%橙色+抖动85ms橙色），受影响功能面板（AFFECTED FEATURES标题+3个受影响功能条目带警告图标-实时战斗输入延迟红色、语音聊天质量下降橙色、匹配可能缓慢黄色），建议面板（RECOMMENDATIONS标题+3个建议条目带对勾图标-检查网络连接、靠近WiFi路由器、关闭带宽占用应用），3个按钮并排（CONTINUE ANYWAY继续按钮橙色边框+警告图标左按钮，RECONNECT重连按钮金色发光+刷新图标中按钮突出，CANCEL取消按钮+X图标右按钮灰色样式），底部小字（This warning will auto-dismiss in 30 seconds if no action is taken），面板周围金色闪光和微妙红色警告粒子
+
+#### 3. 游戏内错误弹窗UI (error_dialog_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 592KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景+强烈红色调，中央错误弹窗面板750x600（金色华丽边框+深紫背景）+金色发光+强烈红色错误发光，顶部标题ERROR大号红色像素字体发光+红色X图标+红色轮廓和发光，大错误图标150x150红色圆形框发光+红色错误光环（像素风红色X图标带白色背景圆，X粗红色笔画，动画脉冲和震动效果，红色错误光线从图标发出，圆周围破碎/裂纹效果），错误代码面板（ERROR CODE标题+错误代码ERR_NETWORK_DISCONNECT_0x4A2F红色等宽像素字体+错误时间戳2026-09-09 14:32:15灰色），错误消息（Connection to server lost. The game client has been disconnected from the battle server. This may be caused by network instability, server maintenance, or client version mismatch. Please check your connection and try again.米白色像素字体，金色边框文本框+红色背景调），错误详情面板（ERROR DETAILS标题+4个详情条目带图标-服务器区域Asia金色、最后ping 350ms红色、重连尝试3/5橙色、会话ID sess_8f3a2b1c灰色），故障排除面板（TROUBLESHOOTING标题+3个故障排除步骤带编号图标-步骤1检查网络连接对勾、步骤2重启游戏客户端待处理、步骤3如持续联系支持待处理），3个按钮并排（RECONNECT重连按钮金色发光+刷新图标左按钮突出，REPORT ERROR报告错误按钮+警告图标中按钮，OK确定按钮+对勾图标右按钮灰色样式），底部小字（Error report will be automatically sent to support team. Session ID: sess_8f3a2b1c），红色错误粒子和金色闪光围绕面板
+
+#### 4. 游戏内输入弹窗UI (input_dialog_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 500KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央输入弹窗面板700x550（金色华丽边框+深紫背景）+金色发光，顶部标题ENTER NAME大号金色像素字体发光+铅笔/编辑图标，大输入图标100x100金色圆形框发光（像素风铅笔和纸图标带金色闪光，铅笔动画书写效果），输入字段标签（Player Name金色像素字体+星号表示必填），大文本输入字段500x80金色边框+深紫背景居中（输入字段金色发光边框表示焦点，光标在文本末尾闪烁，占位符文本Enter your name...灰色像素字体，当前文本Player123米白色像素字体，字符计数器10/20金色文本在输入字段右下角，输入字段微妙内阴影和顶部边缘金色高光），输入验证面板（VALIDATION标题+3个验证规则带状态图标-必须3-20字符绿对勾通过、除_和-外无特殊字符绿对勾通过、必须以字母开头绿对勾通过，全部规则通过显示绿对勾），输入建议面板（SUGGESTIONS标题+3个名字建议按钮带用户图标-SoulReaper、FireMaster、WindWalker，每个建议按钮金色边框和悬停效果），输入类型选择器面板（INPUT TYPE标题+3个输入类型按钮-TEXT文本输入选中金色发光、NUMBER数字输入、PASSWORD密码输入带锁图标），2个大按钮并排（CONFIRM确认按钮金色发光+对勾图标左按钮更大更突出，CANCEL取消按钮+X图标右按钮灰色样式），底部小字（Press ENTER to confirm, ESC to cancel），面板周围金色闪光
+
+#### 5. 游戏内选择弹窗UI (selection_dialog_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 757KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央选择弹窗面板800x650（金色华丽边框+深紫背景）+金色发光，顶部标题SELECT SOUL UNIT大号金色像素字体发光+选择/手图标，选择说明（Choose a soul unit to deploy in battle. You can select up to 3 units.米白色像素字体），选择信息面板（SELECTION INFO标题+已选数量1/3金色文本+剩余槽位2灰色文本+确认状态Ready to confirm?），选择网格3x2=6个灵魂单位卡片（每个卡片200x220金色边框，单位图标80x80，单位名，元素图标，属性ATK/HP，稀有度边框颜色，选择指示器-卡片1 Fire Spirit红边框火元素图标ATK 120 HP 500 Rare已选中金色发光边框+对勾覆盖，卡片2 Water Spirit蓝边框水元素图标ATK 80 HP 700 Rare未选中，卡片3 Earth Spirit棕边框土元素图标ATK 100 HP 600 Common未选中，卡片4 Wind Spirit绿边框风元素图标ATK 110 HP 550 Rare未选中，卡片5 Thunder Spirit黄边框雷元素图标ATK 130 HP 480 Epic锁定带锁图标+灰色，卡片6 Light Spirit白/金边框光元素图标ATK 90 HP 650 Epic锁定带锁图标+灰色），已选单位详情面板（大已选单位图标100x100+单位名Fire Spirit+元素Fire火图标+稀有度Rare蓝色标签+属性ATK 120 HP 500+技能Fireball (Q)+Flame Shield (E)+描述A fiery spirit with high attack power and fire-based skills.），筛选/排序面板（FILTER & SORT标题+4个筛选按钮ALL全部选中金色、FIRE火、WATER水、EARTH土+排序下拉BY POWER按战力选中+搜索输入字段带放大镜图标），3个按钮并排（CONFIRM SELECTION确认选择按钮金色发光+对勾图标左按钮更大更突出已启用因为选了1个单位，CLEAR SELECTION清除选择按钮+X图标中按钮，CANCEL取消按钮右按钮灰色样式），底部小字（Press ENTER to confirm, ESC to cancel），面板周围金色闪光
+
+#### 6. 游戏内加载弹窗UI (loading_dialog_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 600KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景+微妙动画魔法粒子漂浮，中央加载弹窗面板700x550（金色华丽边框+深紫背景）+金色发光，顶部标题LOADING大号金色像素字体发光+沙漏/加载图标+动画闪光效果，大加载动画图标150x150金色圆形框发光+魔法旋转符文（像素风魔法加载旋转器带金色符文围绕中心灵魂球旋转，灵魂球脉冲发光和魔法能量漩涡，符文顺时针旋转动画效果，金色闪光从球发出），加载进度条500x40金色边框+深紫背景居中（进度条金色渐变填充显示67%完成，进度条动画闪光效果在填充上移动，进度条前缘金色发光，百分比文本67%金色像素字体居中在进度条上），加载状态文本（Loading battle assets... Loading soul unit sprites... Loading map textures...米白色像素字体+动画省略号点），加载详情面板（LOADING DETAILS标题+4个加载阶段带状态图标-阶段1初始化引擎绿对勾完成，阶段2加载资源绿对勾完成，阶段3加载战斗场景金色旋转图标进行中，阶段4连接服务器灰色锁图标待处理，每个阶段有进度指示器和预计时间），加载提示面板（TIP标题+电灯泡图标+提示文本Fire units deal bonus damage to earth units. Use elemental advantages to win battles!米白色像素字体，提示动画循环效果），加载取消选项（Press ESC to cancel loading灰色像素字体+微妙警告图标），底部小字（Asset 134/200 loaded | Network: Connected | Ping: 32ms），金色魔法粒子、旋转符文和闪光围绕面板
+
+### 风格质量检查
+- **2D像素风**: ✅ 全部6项均为2D像素风格，清晰像素块边缘
+- **深紫+金色调**: ✅ 背景深紫#1a1428，金色边框#d4a85c，高亮#f0c878
+- **禁止3D等距**: ✅ 无3D等距视角，无3D建模渲染
+- **卡片式UI布局**: ✅ 全部采用卡片式面板布局，金色边框装饰
+- **数据可视化**: ✅ 进度条、状态图标、验证规则、加载阶段等可视化表现
+- **奇幻魔法主题**: ✅ 魔法光环、符文、神秘元素
+- **ART_STYLE_GUIDE.md合规**: ✅ 符合第十节质量检查清单
+
+### 累计资源（第139轮后）
+- **音效**: 837个（management仓库assets/audio/）
+- **P0音效**: 17/17全部完成 ✅
+- **P1音效**: 24/24全部完成 ✅ 🎉
+- **核心音效合计**: 41个全部完成 ✅ 🎉
+- **P1背景音乐**: 7/7全部完成 ✅ 🎉
+- **P2音效**: 300个（6环境+6社交+288新元素技能）
+- **概念图**: 625张（management仓库art目录，本轮新增6项M2通用弹窗UI组件）
+- **M3内容扩展第一批~第四十八批**: 各14项全部完成 ✅
+- **M3内容扩展合计**: 672项（96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档）
+- **新元素系统**: 100元素 🎉 已达到目标，正式停止新元素扩展！
+- **Steam商店页素材**: 12项（第123轮6项+第124轮6项）
+- **过场动画/启动画面/CG**: 6项（第125轮6项）
+- **M2战斗HUD UI组件**: 6项（第126轮6项）
+- **M2其他界面UI组件**: 6项（第127轮6项）
+- **M2主要界面细化UI**: 6项（第128轮6项）
+- **M2战斗特效UI组件**: 6项（第129轮6项）
+- **M2社交UI组件**: 6项（第130轮6项）
+- **M2辅助界面UI组件**: 6项（第131轮6项）
+- **M2游戏系统UI组件**: 6项（第132轮6项）
+- **M2对战模式UI组件**: 6项（第133轮6项）
+- **M2运营系统UI组件**: 6项（第134轮6项）
+- **M2社交交互UI组件**: 6项（第135轮6项）
+- **M2设置/系统UI组件**: 6项（第136轮6项）
+- **M2奖励/弹窗UI组件**: 6项（第137轮6项）
+- **M2详情/弹窗UI组件**: 6项（第138轮6项）
+- **M2通用弹窗UI组件**: 6项（第139轮6项，本轮）
+- **M2 UI组件合计**: **84项**（战斗HUD 6 + 其他界面 6 + 主要界面细化 6 + 战斗特效 6 + 社交 6 + 辅助界面 6 + 游戏系统 6 + 对战模式 6 + 运营系统 6 + 社交交互 6 + 设置/系统 6 + 奖励/弹窗 6 + 详情/弹窗 6 + 通用弹窗 6）
+- **设计文档**: 10份
+
+### WAV修复
+- **本轮无wav文件产出**: ✅ 无需运行WAV修复脚本
+- **WAV修复脚本**: D:\Sojourn\management\scripts\fix_wav_sizes.ps1（已连续33轮主动运行成功，本轮无wav跳过）
+
+### Git提交与推送
+- **上一轮commit**: 2698601（第138轮M2详情/弹窗UI组件，7文件）
+- **push状态**: ✅ 已push（445e620..2698601 main -> main）
+- **本轮开始时**: 本地与远程同步，工作树干净
+- **GitHub网络**: ✅ 已恢复，正常push
+
+### 下一轮计划
+1. 🎉 新元素系统已达到100个元素，正式停止新元素扩展！
+2. 继续方向2：M2实际需要的UI资源（P0）：更多M2界面UI组件（游戏内通知弹窗UI/游戏内礼物弹窗UI/游戏内邮件弹窗UI/游戏内好友请求弹窗UI/游戏内组队邀请弹窗UI/游戏内交易弹窗UI）
+3. 方向4：现有资源优化（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. 继续方向1：Steam商店页素材（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. 继续方向3：过场动画/启动画面/CG（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. ⭐每轮生成wav后必须运行WAV size修复脚本
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. 🎉 GitHub网络正常，继续正常push
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
