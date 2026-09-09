@@ -11552,3 +11552,101 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. GitHub网络稳定，后续commit可正常push
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用rainbow/color等可能触发审核的关键词
+
+---
+
+## 第135轮设计任务 - M2社交交互UI组件产出P0（2026-09-09）
+
+### 本轮概述
+- 🎉 新元素系统已达到100个元素，正式停止新元素扩展！
+- Steam商店页素材累计12项 + 过场动画/CG 6项 + M2战斗HUD UI组件6项 + M2其他界面UI组件6项 + M2主要界面细化UI 6项 + M2战斗特效UI组件6项 + M2社交UI组件6项 + M2辅助界面UI组件6项 + M2游戏系统UI组件6项 + M2对战模式UI组件6项 + M2运营系统UI组件6项已产出
+- 本轮继续方向2：M2实际需要的UI资源（P0）— 社交交互UI组件
+- 产出6项M2社交交互UI组件：游戏内邮箱UI + 好友请求弹窗UI + 组队邀请弹窗UI + 交易系统UI + 拍卖行UI + 公会系统UI
+- M2 UI组件合计60项！
+- 全部严格遵循2D像素风+深紫金色调，禁止3D等距，符合ART_STYLE_GUIDE.md规范
+- 战策DEVLOG 7799行，无新[设计需求]，攻击系统完整修复链4个bug叠加全部完成，M2测试2884 Passed，BUG-030已关闭，BUG-033已修复
+- 本轮无wav文件，无需运行WAV修复脚本
+
+### 战策DEVLOG最新进展
+- 最新章节：P0修复续：AI决策延迟导致单位在攻击范围内不攻击
+- 攻击系统完整修复链（4个bug叠加）全部完成：
+  1. SoulUnit.move_to()清除attack_target → 添加p_clear_attack_target参数
+  2. EmberSoulAIController移动时清除attack_target → 保留attack_target
+  3. _update_cooldowns不递减attack_cooldown → 添加递减逻辑
+  4. AI决策延迟导致在范围内不攻击 → execute_decision优先级覆盖
+- 修复后：5秒内战斗结束，双方持续攻击直到一方被击败
+- M2测试：2884 Passed, 0 Failed
+- BUG-030已关闭：526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- BUG-033已修复：灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已关闭31个，活跃2个
+- 历史[设计需求]已基本满足，唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- 无新[设计需求]
+
+### 本轮产出资源（6项M2社交交互UI组件，P0）
+
+| 序号 | 素材 | 尺寸 | 文件名 | 大小 | 内容 |
+|------|------|------|--------|------|------|
+| 1 | 游戏内邮箱UI | 1920x1080 | in_game_mail_ui.png | 597.3KB | 中央大型邮箱面板（金色华丽边框+深紫背景），顶部标题MAIL大号金色像素字体发光效果+信封图标，下方邮箱统计（总数24+未读5+已读19），下方4个分类标签（INBOX收件箱标签高亮选中金色+SYSTEM系统标签+SOCIAL社交标签+SENT已发送标签），下方邮件列表6封邮件，每封邮件行带图标、发件人、主题、预览、时间和已读/未读状态：邮件1未读金色边框系统图标+Battleplan Team+Welcome to Battleplan!+2 hours ago+红色未读点，邮件2未读礼物图标+Daily Login Reward+CLAIM按钮，邮件3未读好友图标+Friend Request Accepted，邮件4未读奖杯图标+Achievement Unlocked+VIEW按钮，邮件5已读灰色系统图标+Server Maintenance Notice，邮件6已读灰色社交图标+Challenge Invitation+ACCEPT+DECLINE按钮，下方选中邮件详情面板（金色边框）：大邮件图标+发件人名称+主题+完整邮件正文+时间戳+附件区带奖励图标（500 Gold+100 Soul Shards）+CLAIM ALL按钮，右侧邮件操作面板（金色边框）：COMPOSE MAIL+REPLY+FORWARD+DELETE+MARK AS READ按钮+邮箱存储使用24/100，底部3个按钮（COMPOSE撰写邮件按钮带铅笔图标+DELETE ALL全部删除按钮带垃圾桶图标+BACK返回箭头图标） |
+| 2 | 好友请求弹窗UI | 1920x1080 | friend_request_popup_ui.png | 687.0KB | 半透明暗色覆盖背景，中央大型好友请求弹窗面板700x800（金色华丽边框+深紫背景）居中，顶部横幅FRIEND REQUEST大号金色像素字体发光效果+person-plus图标，下方大玩家头像180x180金色圆形框发光效果：像素风角色肖像蓝发神秘光环，下方玩家名Player123大号金色像素字体，下方玩家信息行（等级42+排名Gold III+胜率62%+比赛156场），下方玩家统计面板（金色边框）：3个统计列（KDA 2.5, 平均伤害3200, 最爱灵魂Fire Spirit带图标），下方共同好友数（3 mutual friends带小好友图标），下方请求消息米白色像素字体：Hi! I saw your match replay, want to team up?，下方2个大按钮（ACCEPT接受按钮金色发光带对勾图标+DECLINE拒绝按钮带X图标），下方小文字：You can also BLOCK or REPORT this player带BLOCK按钮+REPORT按钮，右侧小Recent Friend Requests最近好友请求面板（金色边框）：3个最近请求带玩家头像、名称、时间和ACCEPT/DECLINE迷你按钮，左侧小Your Friend List你的好友列表面板（金色边框）：4个在线好友带绿点状态、头像、名称和等级，弹窗周围金色闪光 |
+| 3 | 组队邀请弹窗UI | 1920x1080 | party_invite_popup_ui.png | 668.0KB | 半透明暗色覆盖背景，中央大型组队邀请弹窗面板800x700（金色华丽边框+深紫背景）居中，顶部横幅PARTY INVITATION大号金色像素字体发光效果+users图标，下方邀请者信息：大玩家头像120x120金色圆形框+邀请者名Player456+等级38+排名Platinum II，下方队伍信息面板（金色边框）：队伍名Soul Hunters+队伍模式Ranked 2v2+地图Arena of Souls+队伍人数2/4，下方队伍成员列表：4个成员槽，每个带头像、名称、排名和状态：槽1队长Player456已准备对勾，槽2Player789已准备对勾，槽3EMPTY空槽带plus图标，槽4YOU高亮金色发光环+You have been invited!文字，下方邀请消息米白色像素字体：Player456 invited you to join their party for a ranked 2v2 match!，下方倒计时：Invitation expires in 0:45带金色沙漏动画，下方2个大按钮（ACCEPT接受按钮金色发光带对勾图标+DECLINE拒绝按钮带X图标），下方小选项：Send message to inviter带消息输入框+SEND按钮，右侧小Your Current Party你当前队伍面板（金色边框）：显示是否已在队伍中带离开队伍警告，左侧小Recent Party Invites最近组队邀请面板（金色边框）：3个最近邀请带邀请者名称、队伍模式、时间和ACCEPT/DECLINE迷你按钮，弹窗周围金色闪光 |
+| 4 | 交易系统UI | 1920x1080 | trade_system_ui.png | 846.3KB | 中央大型交易面板（金色华丽边框+深紫背景），顶部标题TRADE大号金色像素字体发光效果+exchange arrows图标，下方交易信息（交易对象Player789+交易状态In Progress+交易计时器02:30），下方两个交易槽并排：左槽YOUR ITEMS你的物品金色边框蓝色强调，右槽THEIR ITEMS对方物品金色边框红色强调，每个槽6个物品槽3x2网格，每个物品槽显示物品图标、名称、数量和稀有度边框颜色（普通灰色、优秀绿色、稀有蓝色、史诗紫色、传说橙色），你的物品：Fire Spirit Soul Shard x10（稀有）、500 Gold Coins（普通）、Healing Potion x3（优秀）、3个空槽，对方物品：Water Spirit Soul Shard x15（稀有）、Epic Weapon Skin（史诗）、200 Soul Gems（优秀）、3个空槽，下方每个槽：ADD ITEM按钮+REMOVE ALL按钮，下方中央：大交易箭头图标在两个槽之间，下方交易确认区：YOUR CONFIRMATION你的确认复选框（未勾选）+THEIR CONFIRMATION对方确认复选框（已勾选绿色对勾）+警告文字Both players must confirm to complete trade，下方2个大按钮（CONFIRM TRADE确认交易按钮金色发光带对勾图标+CANCEL TRADE取消交易按钮带X图标），右侧交易历史面板（金色边框）：4个最近交易带玩家名称、交易物品、日期和状态（已完成/进行中/已取消），左侧你的物品快捷栏面板（金色边框）：8个物品槽带物品图标和数量，点击添加到交易，底部3个按钮（TRADE HISTORY交易历史按钮+BLOCK PLAYER屏蔽玩家按钮+CLOSE关闭按钮） |
+| 5 | 拍卖行UI | 1920x1080 | auction_house_ui.png | 852.3KB | 中央大型拍卖行面板（金色华丽边框+深紫背景），顶部标题AUCTION HOUSE大号金色像素字体发光效果+gavel图标，下方拍卖行信息（你的金币12,500+你的宝石350+当前上架3/10+拍卖行税5%），下方4个分类标签（ALL ITEMS全部物品标签高亮选中金色+SOUL SHARDS灵魂碎片标签+EQUIPMENT装备标签+CONSUMABLES消耗品标签），下方搜索栏带搜索图标+筛选按钮+排序下拉（Price Low to High），下方物品列表网格4x3=12个物品，每个物品卡片200x250金色边框：物品图标、物品名、稀有度颜色边框、卖家名称、当前竞价、一口价、剩余时间和BID+BUYOUT按钮，物品包括Fire Spirit Shard（稀有）当前竞价500一口价800剩余2h，Water Spirit Shard（稀有）450/700/1h，Epic Weapon Skin（史诗）2000/3500/5h，Rare Armor Set（稀有）800/1200/3h，Healing Potion x10（优秀）100/200/30m，Soul Gem x5（优秀）150/250/45m，Legendary Title（传说）5000/8000/12h，Player Icon Pack（稀有）300/500/6h，Banner Frame（稀有）250/400/8h，Emote Pack（优秀）80/150/20m，Crafting Material x20（普通）50/100/15m，Mystery Box（史诗）1500/2500/10h，下方选中物品详情面板（金色边框）：大物品图标+物品名+稀有度标签+描述文字+卖家信息+当前竞价+一口价+剩余时间+竞价历史（3个最近竞价）+PLACE BID按钮金色发光+BUYOUT按钮，右侧你的上架面板（金色边框）：3个当前上架带物品图标、价格、剩余时间和CANCEL LISTING按钮+CREATE LISTING按钮，左侧分类面板（金色边框）：6个分类图标带物品数量，底部3个按钮（CREATE LISTING创建上架按钮带plus图标+YOUR BIDS你的竞价按钮+BACK返回箭头图标） |
+| 6 | 公会系统UI | 1920x1080 | guild_system_ui.png | 922.0KB | 中央大型公会面版（金色华丽边框+深紫背景），顶部标题GUILD大号金色像素字体发光效果+shield图标，下方公会信息（公会名Soul Reapers+公会等级12+公会标签[SR]+成员24/30+公会长PlayerLeader+创建日期），下方5个标签（OVERVIEW概览标签高亮选中金色+MEMBERS成员标签+GUILD WARS公会战标签+GUILD SHOP公会商店标签+GUILD LOG公会日志标签），下方公会横幅区800x200：像素风公会横幅深紫背景金色边框公会徽章（交叉剑带灵魂宝珠）公会名金色像素字体公会座右铭Souls of the Reapers Rise，下方公会统计面板（金色边框）：4个统计列（公会战力125,000+总胜场1,250+周活跃度85%+公会资金45,000金币），下方公会成员列表：6个成员显示带头像、名称、职位（公会长/官员/成员）、等级、在线状态（绿点在线/灰点离线）和最后活跃时间，成员1公会长PlayerLeader等级50在线，成员2官员Player123等级42在线，成员3官员Player456等级38在线，成员4成员Player789等级35离线2h前，成员5成员Player012等级30离线1d前，成员6成员Player345等级28离线3d前，下方选中成员详情面板（金色边框）：大头像+名称+职位+等级+加入日期+贡献点数+统计（胜场、KDA、最爱灵魂）+PROMOTE/DEMOTE/KICK按钮（官员可用），右侧公会战面板（金色边框）：当前战争Soul Reapers vs Dark Knights+战争状态Active+比分1250 vs 980+剩余时间1d 12h+JOIN WAR按钮金色发光，下方公会商店预览面板（金色边框）：3个精选物品带图标、名称、公会货币价格和BUY按钮，左侧公会活动面板（金色边框）：4个最近活动带图标、描述和时间（Player123捐赠500金币、公会战开始、新成员加入、公会升级到12级），底部4个按钮（GUILD CHAT公会聊天按钮带聊天图标+INVITE MEMBER邀请成员按钮+LEAVE GUILD离开公会按钮+BACK返回箭头图标） |
+
+### 风格质量检查（按ART_STYLE_GUIDE.md第十节检查清单）
+- ✅ 2D像素风，非3D等距视角
+- ✅ 深紫(#1a1428)背景+金色(#d4a85c)边框装饰
+- ✅ 奇幻魔法主题，带东方神秘元素
+- ✅ 卡片式UI布局，金色边框装饰
+- ✅ 数据可视化（进度条、图标+数字、奖励图标）
+- ✅ 玩家方蓝色/AI方红色配色规范
+- ✅ 分辨率1920x1080符合UI界面规范
+- ✅ 无3D等距视角，无写实风格，无卡通Q版3D渲染
+- ✅ 无工业软件风/纯数据列表式UI
+- ✅ AI生成无版权问题
+
+### 累计资源（本轮后）
+| 类型 | 数量 | 说明 |
+|------|------|------|
+| 音效 | 837个 | management仓库assets/audio/ |
+| P0音效 | 17/17 | 全部完成 |
+| P1音效 | 24/24 | 全部完成 |
+| 核心音效合计 | 41个 | 全部完成 |
+| P1背景音乐 | 7/7 | 全部完成 |
+| P2音效 | 300个 | 6环境+6社交+288新元素技能 |
+| 概念图 | **602张** | management仓库art目录（本轮新增6项M2社交交互UI组件） |
+| M3内容扩展第一批~第四十八批 | 各14项 | 全部完成 |
+| M3内容扩展合计 | 672项 | 96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档 |
+| 新元素系统 | 100元素 | 已达到目标，正式停止新元素扩展！ |
+| Steam商店页素材 | 12项 | 第123轮6项 + 第124轮6项 |
+| 过场动画/启动画面/CG | 6项 | 第125轮6项 |
+| M2战斗HUD UI组件 | 6项 | 第126轮6项 |
+| M2其他界面UI组件 | 6项 | 第127轮6项 |
+| M2主要界面细化UI | 6项 | 第128轮6项 |
+| M2战斗特效UI组件 | 6项 | 第129轮6项 |
+| M2社交UI组件 | 6项 | 第130轮6项 |
+| M2辅助界面UI组件 | 6项 | 第131轮6项 |
+| M2游戏系统UI组件 | 6项 | 第132轮6项 |
+| M2对战模式UI组件 | 6项 | 第133轮6项 |
+| M2运营系统UI组件 | 6项 | 第134轮6项 |
+| M2社交交互UI组件 | **6项（本轮）** | 游戏内邮箱+好友请求弹窗+组队邀请弹窗+交易系统+拍卖行+公会系统 |
+| M2 UI组件合计 | **60项** | 战斗HUD 6 + 其他界面 6 + 主要界面细化 6 + 战斗特效 6 + 社交 6 + 辅助界面 6 + 游戏系统 6 + 对战模式 6 + 运营系统 6 + 社交交互 6 |
+| 设计文档 | 10份 | |
+| 风格 | — | 严格2D像素奇幻（Pixel Fantasy），深紫+金色，遵循ART_STYLE_GUIDE.md v1.0 |
+
+### Git提交
+- management仓库：commit待提交（6个新UI文件 + DESIGN_DEVLOG.md更新）
+- 上一轮commit：12f8b33（第134轮M2运营系统UI组件，已push成功 b634565..12f8b33 main -> main）
+- 战策侧监控任务commit：3762867（监控第132轮更新 - 战斗画面资源集成调试v4等待用户反馈）
+
+### 下一轮计划（🎉 新元素扩展已停止！继续M2 UI资源/现有资源优化）
+1. 🎉 新元素系统已达到100个元素，正式停止新元素扩展！
+2. 继续方向2：M2实际需要的UI资源（P0）：更多M2界面UI组件（游戏内语音聊天UI/观战弹幕UI/比赛回放控制UI/自定义按键设置UI/画面设置UI/音频设置UI）
+3. 方向4：现有资源优化（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. 继续方向1：Steam商店页素材（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. 继续方向3：过场动画/启动画面/CG（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. ⭐每轮生成wav后必须运行WAV size修复脚本（D:\Sojourn\management\scripts\fix_wav_sizes.ps1）
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. GitHub 443端口间歇性不可用：commit保留本地，网络恢复时推送，不重试超过2次
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用rainbow/color等可能触发审核的关键词
