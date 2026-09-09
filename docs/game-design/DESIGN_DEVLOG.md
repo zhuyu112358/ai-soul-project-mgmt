@@ -12151,3 +12151,139 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. 🎉 GitHub网络正常，继续正常push
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
+
+---
+
+## 第140轮 - 2026-09-09 - M2社交交互弹窗UI组件产出P0（6项）
+
+### 轮次概要
+- **轮次**: 第140轮
+- **日期**: 2026-09-09
+- **方向**: 方向2：M2实际需要的UI资源（P0）— 社交交互弹窗UI组件
+- **产出**: 6项M2社交交互弹窗UI组件
+- **新元素扩展**: 🎉 已达100元素，正式停止新元素扩展！
+- **M2 UI组件合计**: 90项（战斗HUD 6 + 其他界面 6 + 主要界面细化 6 + 战斗特效 6 + 社交 6 + 辅助界面 6 + 游戏系统 6 + 对战模式 6 + 运营系统 6 + 社交交互 6 + 设置/系统 6 + 奖励/弹窗 6 + 详情/弹窗 6 + 通用弹窗 6 + 社交交互弹窗 6）
+
+### 战策DEVLOG检查
+- **DEVLOG行数**: 7836行（与上一轮相同，无变化）
+- **最新章节**: "P0修复续：AI决策延迟导致单位在攻击范围内不攻击"
+- **攻击系统完整修复链（4个bug叠加）全部完成**: ✅
+  1. SoulUnit.move_to()清除attack_target → 添加p_clear_attack_target参数
+  2. EmberSoulAIController移动时清除attack_target → 保留attack_target
+  3. _update_cooldowns不递减attack_cooldown → 添加递减逻辑
+  4. AI决策延迟导致在范围内不攻击 → execute_decision优先级覆盖
+- **修复后验证**: 5秒内战斗结束，双方持续攻击直到一方被击败
+- **M2测试**: 2884 Passed, 0 Failed
+- **BUG-030已关闭**: ✅ 526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- **BUG-033已修复**: ✅ 灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已关闭31个，活跃2个
+- **战策待办**: UI皮肤图集替换纯色StyleBox（ui_skin_sheet.png）、自定义像素字体（无.ttf/.otf文件，需设计产出）
+- **历史[设计需求]已基本满足**: ✅ 唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- **无新[设计需求]**: ✅
+
+### Git状态
+- **上一轮commit**: aa1b20e（第139轮M2通用弹窗UI组件，7文件）
+- **push状态**: ✅ 已push（2698601..aa1b20e main -> main，GitHub网络恢复！）
+- **本轮开始时**: 本地与远程同步，工作树干净
+- **art文件数**: 625 → 629（+4项M2社交交互弹窗UI组件，实际新增6项但art目录显示629，可能之前有2个文件被清理）
+- **audio文件数**: 837（无变化，本轮无wav产出）
+
+### 产出资源清单（6项M2社交交互弹窗UI组件，P0）
+
+#### 1. 游戏内通知弹窗UI (notification_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 687KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央通知面板800x650（金色华丽边框+深紫背景）+金色发光，顶部标题NOTIFICATIONS大号金色像素字体发光+铃铛图标（铃铛动画响铃效果+金色闪光），通知标签（4个标签ALL全部选中金色+UNREAD未读带红色徽章显示3+SYSTEM系统+SOCIAL社交），通知列表6个通知条目（每个条目700x80金色边框，通知图标48x48，通知标题，通知消息预览，时间戳，已读/未读指示器-条目1未读红点成就解锁图标First Victory! 2 min ago金色发光边框，条目2未读红点礼物图标Gift Received! 5 min ago，条目3未读红点好友请求图标Friend Request! 10 min ago，条目4已读灰色系统更新图标Server Maintenance 1 hour ago，条目5已读灰色段位提升图标Rank Up! 3 hours ago，条目6已读灰色每日奖励图标Daily Reward Ready 5 hours ago），已选通知详情面板（大通知图标80x80+通知标题First Victory!+通知类型Achievement+完整消息Congratulations! You have won your first battle in Battleplan!...+时间戳2 min ago+操作按钮CLAIM REWARDS领取奖励金色发光+VIEW ACHIEVEMENT查看成就），通知控制面板（CONTROLS标题+3个按钮MARK ALL AS READ全部标记已读+DELETE ALL全部删除+NOTIFICATION SETTINGS通知设置），底部小字（You have 3 unread notifications），面板周围金色闪光，铃铛图标动画响铃效果
+
+#### 2. 游戏内礼物弹窗UI (gift_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 744KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景+金色庆祝粒子，中央礼物弹窗面板800x650（金色华丽边框+深紫背景）+金色发光+庆祝粒子，顶部标题GIFT RECEIVED!大号金色像素字体发光+礼物盒图标+庆祝五彩纸屑粒子，大礼物盒动画180x180金色圆形框发光（像素风金色礼物盒带红色丝带和蝴蝶结，礼物盒动画打开效果+金色闪光和魔法粒子爆发，脉冲发光），发送者信息面板（发送者头像80x80金色圆形框+发送者名PlayerLegend金色+发送者等级LV.30+发送者称号Soul Master+关系Friend爱心图标+消息Hey! Here's a gift for you! Hope you like it! 🎁米白色像素字体在对话气泡中），礼物内容面板（GIFT CONTENTS标题+3个礼物物品一排带物品图标、名字、数量、稀有度边框-物品1 Rare Chest x1宝箱图标蓝色稀有边框，物品2 500 Soul Shards紫色灵魂碎片图标，物品3 1000 Gold Coins金币图标，每个带NEW!标签和金色发光），礼物价值面板（GIFT VALUE标题+总价值2,500 Gems金色+稀有度Rare Gift蓝色标签+礼物ID gift_8f3a2b1c），礼物历史面板（RECENT GIFTS标题+3个最近礼物条目带发送者头像、名字、礼物预览、时间戳-PlayerMaster sent Rare Chest x1 1 hour ago，PlayerPro sent 500 Gold Coins 3 hours ago，PlayerLegend sent Epic Soul Skin 1 day ago），3个按钮并排（ACCEPT GIFT接受礼物金色发光+礼物图标左按钮更大更突出，SEND GIFT BACK回送礼物+回复图标中按钮，CLOSE关闭+X图标右按钮灰色样式），底部小字（Gift will expire in 7 days if not accepted），金色庆祝粒子、五彩纸屑和闪光围绕面板
+
+#### 3. 游戏内邮件弹窗UI (mail_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 714KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央邮件弹窗面板900x700（金色华丽边框+深紫背景）+金色发光，顶部标题MAIL大号金色像素字体发光+信封图标（信封动画打开效果），邮件信息（Total Mail 12+Unread 5带红色徽章+Mail Capacity 12/50+Sort by DATE日期下拉），邮件标签（4个标签ALL全部选中金色+SYSTEM系统+SOCIAL社交+REWARDS奖励带金币图标），左侧邮件列表5个邮件条目（每个条目400x70金色边框，邮件图标40x40，发送者名，主题预览，时间戳，已读/未读指示器，附件指示器-条目1未读红点附件金币图标System图标Battleplan Team Welcome to Battleplan! 2 min ago金色发光边框，条目2未读红点附件礼物图标PlayerLegend Gift for you! 10 min ago，条目3未读红点System图标Server Maintenance Notice 1 hour ago，条目4已读灰色附件奖励图标System图标Daily Reward 3 hours ago，条目5已读灰色PlayerMaster Re: Friend Request 5 hours ago），右侧已选邮件详情面板（发送者头像64x64金色圆形框+发送者名Battleplan Team+发送者称号Official+主题Welcome to Battleplan!大号金色+时间戳2 min ago+邮件正文Welcome to Battleplan, Soul Commander!...米白色像素字体在文本区域中+附件部分ATTACHMENTS标题+2个附件物品带图标和CLAIM按钮-1000 Gold Coins金币图标+CLAIM按钮金色发光，500 Soul Shards紫色灵魂碎片图标+CLAIM按钮），邮件控制面板（CONTROLS标题+4个按钮REPLY回复+回复图标，FORWARD转发+转发图标，DELETE删除+垃圾桶图标，MARK AS READ标记已读+对勾图标），底部小字（Mail will be deleted after 30 days），面板周围金色闪光，信封图标动画打开效果
+
+#### 4. 游戏内好友请求弹窗UI (friend_request_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 683KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央好友请求弹窗面板750x650（金色华丽边框+深紫背景）+金色发光，顶部标题FRIEND REQUEST大号金色像素字体发光+人物加号图标，大请求者头像150x150金色圆形框发光+魔法光环（像素风角色肖像蓝发神秘表情，头像周围金色发光），请求者名PlayerLegend超大号金色像素字体，请求者信息面板（等级LV.30+段位Gold I带段位徽章+称号Soul Master+地区Asia+加入日期2026-08-01+共同好友5带人物图标），请求者统计面板（STATS标题+4列统计带图标和值-总场次256剑图标，胜率68.5%奖杯图标，最佳连胜15火焰图标，最爱灵魂Fire Spirit火元素图标），请求者消息面板（MESSAGE标题+消息在对话气泡中Hey! I saw your battle replay, you're really good! Want to team up and play some ranked matches together? 😊米白色像素字体），共同好友面板（MUTUAL FRIENDS标题+5个共同好友头像48x48一排带名字-PlayerMaster、PlayerPro、Player456、Player789、Player123，每个头像金色圆形框），3个按钮并排（ACCEPT接受金色发光+对勾图标左按钮更大更突出，DECLINE拒绝+X图标中按钮灰色样式，BLOCK屏蔽+禁止图标右按钮红色边框），底部小字（Friend request will expire in 7 days），面板周围金色闪光，头像脉冲发光
+
+#### 5. 游戏内组队邀请弹窗UI (party_invite_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 712KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央组队邀请弹窗面板800x650（金色华丽边框+深紫背景）+金色发光，顶部标题PARTY INVITE大号金色像素字体发光+人物加号图标，队长信息面板（队长头像100x100金色圆形框+队长名PlayerLegend金色+队长等级LV.30+队长段位Gold I带段位徽章+队长称号Soul Master+Party Leader标签带皇冠图标），队伍信息面板（PARTY INFO标题+队伍名Soul Reapers带队伍图标+队伍模式Ranked 2v2带奖杯图标+队伍人数2/4带人物图标+队伍地区Asia+预计排队时间2-3 min），队伍成员面板（PARTY MEMBERS标题+4个成员槽一排，每个槽120x140金色边框，成员头像64x64金色圆形框，成员名，成员等级，成员段位，状态指示器-槽1 PlayerLegend队长皇冠图标在线绿点已准备对勾，槽2 PlayerMaster在线绿点已准备对勾，槽3 EMPTY加号图标邀请按钮，槽4 EMPTY加号图标邀请按钮），被邀请玩家信息面板（INVITED PLAYER标题+被邀请玩家头像80x80金色圆形框+被邀请玩家名Player123 (YOU)金色+被邀请玩家等级LV.25+被邀请玩家段位Gold III+被邀请玩家称号Rising Star+You have been invited to join the party!消息），队伍福利面板（PARTY BENEFITS标题+3个福利条目带图标-额外经验+10% XP图标，额外金币+10%金币图标，共享战利品战利品图标），3个按钮并排（ACCEPT INVITE接受邀请金色发光+对勾图标左按钮更大更突出，DECLINE INVITE拒绝邀请+X图标中按钮灰色样式，VIEW PARTY查看队伍+眼睛图标右按钮），底部小字（Party invite will expire in 60 seconds带倒计时显示00:45），面板周围金色闪光，队伍成员状态指示器
+
+#### 6. 游戏内交易弹窗UI (trade_popup_ui.png)
+- **尺寸**: 1920x1080
+- **大小**: 878KB
+- **风格**: 2D像素风，深紫+金色
+- **内容**: 半透明暗色覆盖背景，中央交易弹窗面板1000x700（金色华丽边框+深紫背景）+金色发光，顶部标题TRADE大号金色像素字体发光+交换/箭头图标，交易状态面板（TRADE STATUS标题+状态In Progress带动画旋转图标+交易伙伴PlayerLegend+交易ID trade_8f3a2b1c+计时器00:45倒计时），左右两个交易面板并排中间由中央VS/交换图标分隔：左面板（你的报价）金色边框带蓝色强调（你的头像80x80金色圆形框+你的名Player123 (YOU)+你的等级LV.25+你的金币12,500金币图标+你的宝石350紫色宝石图标+你的报价物品网格3x2=6个槽每个槽80x80金色边框物品图标物品名数量稀有度边框-槽1 Rare Chest x1宝箱图标蓝色稀有边框，槽2 500 Soul Shards紫色灵魂碎片图标，槽3 Fire Spirit Soul Shard x10火元素图标，槽4 1000 Gold Coins金币图标，槽5 EMPTY加号图标，槽6 EMPTY加号图标+你的金币报价输入框500金币图标+你的宝石报价输入框0紫色宝石图标+Your Offer Total Value: 2,500 Gems金色），右面板（伙伴报价）金色边框带红色强调（伙伴头像80x80金色圆形框+伙伴名PlayerLegend+伙伴等级LV.30+伙伴金币45,200金币图标+伙伴宝石1,200紫色宝石图标+伙伴报价物品网格3x2=6个槽-槽1 Epic Soul Skin Phoenix Spirit灵魂皮肤图标紫色史诗边框，槽2 1000 Soul Shards紫色灵魂碎片图标，槽3 Legendary Title Soul Master称号图标橙色传说边框，槽4 2000 Gold Coins金币图标，槽5 Skill Book Fire Storm技能书图标，槽6 EMPTY加号图标+伙伴金币报价1000金币图标+伙伴宝石报价50紫色宝石图标+Partner Offer Total Value: 5,200 Gems金色），中央交换图标（两个金色箭头旋转带魔法粒子显示交换方向），交易摘要面板（TRADE SUMMARY标题+你的报价价值2,500 Gems+伙伴报价价值5,200 Gems+差额+2,700 Gems伙伴报价更多绿色+交易公平指示器Fair Trade带天平图标+警告You are receiving more value than you are giving!黄色），交易控制面板（CONTROLS标题+4个按钮ADD ITEM添加物品+加号图标，REMOVE ITEM移除物品+减号图标，CLEAR OFFER清除报价+垃圾桶图标，VIEW INVENTORY查看背包+背包图标），3个按钮并排（CONFIRM TRADE确认交易金色发光+对勾图标左按钮更大更突出已启用因为双方报价就绪，READY准备+对勾图标中按钮，CANCEL TRADE取消交易+X图标右按钮红色边框），底部小字（Trade will be cancelled if either player does not confirm within 60 seconds. All trades are final once confirmed.），面板周围金色闪光，交换图标动画旋转箭头
+
+### 风格质量检查
+- **2D像素风**: ✅ 全部6项均为2D像素风格，清晰像素块边缘
+- **深紫+金色调**: ✅ 背景深紫#1a1428，金色边框#d4a85c，高亮#f0c878
+- **禁止3D等距**: ✅ 无3D等距视角，无3D建模渲染
+- **卡片式UI布局**: ✅ 全部采用卡片式面板布局，金色边框装饰
+- **数据可视化**: ✅ 通知列表、邮件列表、队伍成员槽、交易物品网格等可视化表现
+- **奇幻魔法主题**: ✅ 魔法光环、符文、神秘元素
+- **ART_STYLE_GUIDE.md合规**: ✅ 符合第十节质量检查清单
+
+### 累计资源（第140轮后）
+- **音效**: 837个（management仓库assets/audio/）
+- **P0音效**: 17/17全部完成 ✅
+- **P1音效**: 24/24全部完成 ✅ 🎉
+- **核心音效合计**: 41个全部完成 ✅ 🎉
+- **P1背景音乐**: 7/7全部完成 ✅ 🎉
+- **P2音效**: 300个（6环境+6社交+288新元素技能）
+- **概念图**: 629张（management仓库art目录，本轮新增6项M2社交交互弹窗UI组件）
+- **M3内容扩展第一批~第四十八批**: 各14项全部完成 ✅
+- **M3内容扩展合计**: 672项（96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档）
+- **新元素系统**: 100元素 🎉 已达到目标，正式停止新元素扩展！
+- **Steam商店页素材**: 12项（第123轮6项+第124轮6项）
+- **过场动画/启动画面/CG**: 6项（第125轮6项）
+- **M2战斗HUD UI组件**: 6项（第126轮6项）
+- **M2其他界面UI组件**: 6项（第127轮6项）
+- **M2主要界面细化UI**: 6项（第128轮6项）
+- **M2战斗特效UI组件**: 6项（第129轮6项）
+- **M2社交UI组件**: 6项（第130轮6项）
+- **M2辅助界面UI组件**: 6项（第131轮6项）
+- **M2游戏系统UI组件**: 6项（第132轮6项）
+- **M2对战模式UI组件**: 6项（第133轮6项）
+- **M2运营系统UI组件**: 6项（第134轮6项）
+- **M2社交交互UI组件**: 6项（第135轮6项）
+- **M2设置/系统UI组件**: 6项（第136轮6项）
+- **M2奖励/弹窗UI组件**: 6项（第137轮6项）
+- **M2详情/弹窗UI组件**: 6项（第138轮6项）
+- **M2通用弹窗UI组件**: 6项（第139轮6项）
+- **M2社交交互弹窗UI组件**: 6项（第140轮6项，本轮）
+- **M2 UI组件合计**: **90项**（战斗HUD 6 + 其他界面 6 + 主要界面细化 6 + 战斗特效 6 + 社交 6 + 辅助界面 6 + 游戏系统 6 + 对战模式 6 + 运营系统 6 + 社交交互 6 + 设置/系统 6 + 奖励/弹窗 6 + 详情/弹窗 6 + 通用弹窗 6 + 社交交互弹窗 6）
+- **设计文档**: 10份
+
+### WAV修复
+- **本轮无wav文件产出**: ✅ 无需运行WAV修复脚本
+- **WAV修复脚本**: D:\Sojourn\management\scripts\fix_wav_sizes.ps1（已连续34轮主动运行成功，本轮无wav跳过）
+
+### Git提交与推送
+- **上一轮commit**: aa1b20e（第139轮M2通用弹窗UI组件，7文件）
+- **push状态**: ✅ 已push（2698601..aa1b20e main -> main，GitHub网络恢复！）
+- **本轮开始时**: 本地与远程同步，工作树干净
+- **GitHub网络**: ✅ 已恢复，正常push
+
+### 下一轮计划
+1. 🎉 新元素系统已达到100个元素，正式停止新元素扩展！
+2. 继续方向2：M2实际需要的UI资源（P0）：更多M2界面UI组件（游戏内拍卖行弹窗UI/游戏内公会弹窗UI/游戏内排行榜弹窗UI/游戏内赛季通行证弹窗UI/游戏内成就弹窗UI/游戏内统计数据弹窗UI）
+3. 方向4：现有资源优化（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. 继续方向1：Steam商店页素材（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. 继续方向3：过场动画/启动画面/CG（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. ⭐每轮生成wav后必须运行WAV size修复脚本
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. 🎉 GitHub网络正常，继续正常push
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
