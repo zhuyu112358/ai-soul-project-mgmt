@@ -12,12 +12,33 @@
 | 待确认 | 0 |
 | 已派发/修复中 | 0 |
 | 待回归 | 0 |
-| 已关闭 | 30 |
+| 已关闭 | 31 |
 | **总计活跃** | **2**（BUG-026 flaky连续10轮未复现 + BUG-029 P0 v3修复待GUI验证） |
 
 ---
 
 ## 活跃Bug
+
+### BUG-033: 灵魂选择界面卡片布局拥挤 + 第三个卡片名字显示'main_menu'（P1 UI）— ✅ **已修复**（监控第116轮，2026-09-09，用户反馈后直接修复）
+- **严重程度：** P1
+- **发现时间：** 2026-09-09
+- **发现者：** 用户反馈（截图显示灵魂选择卡片内文字与进度条挤在一起，第三个卡片名字为'main_menu'）
+- **负责方：** 监控任务（直接修复）
+- **状态：** ✅ 已修复（commit 370134c + ec18a48）
+- **现象：**
+  1. 灵魂选择界面每个卡片高度70px不足，name_label+stats_label重叠拥挤
+  2. 第三个卡片名字显示为 `'main_menu'` 而非正常灵魂名
+- **根因：**
+  1. Button作为容器布局不可靠，子节点anchor/size_flags未被正确处理，HBoxContainer offset未设为0
+  2. PlatformSDK mock模式下 `_mock_get_soul()` 用不存在的soul_id自动创建假灵魂，名字=soul_id；某处误传'main_menu'作为soul_id导致假灵魂混入list_souls()
+  3. PlatformSDK `get_summary()` 不返回hp/attack/defense战斗属性，导致显示为0
+- **修复内容：**
+  1. 卡片结构重构为 Control+PanelContainer+透明Button 三层，PanelContainer正确布局子节点，内容边距12/10px
+  2. 卡片高度110px，名字22号金色，属性16号，元素色条14px，间距合理
+  3. `_load_available_souls()` 添加无效灵魂过滤（跳过名字为场景名的假灵魂）
+  4. 给来自PlatformSDK的灵魂自动补充hp/attack/defense战斗属性
+  5. hover/pulse效果应用到卡片根节点而非透明按钮
+- **验证：** Godot headless场景加载无SCRIPT ERROR，SoulSelect正常初始化
 
 ### BUG-032: wav文件RIFF头和data chunk size字段错误导致Godot导入崩溃（P0阻塞）— ✅ **已修复**（监控第97轮，2026-09-09，批量修正526个文件后导入验证通过）
 - **严重程度：** P0
