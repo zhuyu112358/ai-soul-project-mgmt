@@ -11117,3 +11117,114 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. GitHub网络稳定，后续commit可正常push
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
+
+---
+
+## 2026-09-09 - 设计任务第131轮：M2辅助界面UI组件产出（P0）— 游戏内聊天+公告+反馈+帮助+关于+版权法律信息
+
+### 完成工作
+
+#### M2辅助界面UI组件产出（6项，P0）
+
+**🎉 新元素系统已达到100个元素（第122轮完成），正式停止新元素扩展！Steam商店页素材累计12项+过场动画/CG 6项+M2战斗HUD UI组件6项+M2其他界面UI组件6项+M2主要界面细化UI 6项+M2战斗特效UI组件6项+M2社交UI组件6项已产出。本轮继续方向2：M2实际需要的UI资源（P0）— 辅助界面UI组件。**
+
+**M2辅助界面UI组件（6项）**：
+1. **游戏内聊天UI**（1920x1080）
+   - 文件：chat_ui.png（986.3KB）
+   - 内容：中央大型聊天面板（金色华丽边框+深紫背景），顶部标题CHAT大号金色像素字体发光效果+对话气泡图标，下方3个标签（ALL全部标签高亮选中+TEAM队伍标签+SYSTEM系统标签），下方聊天消息区显示10条聊天消息（金色边框行）：Message1玩家头像金色圆圈+玩家名DragonSlayer蓝色文字+消息Good game everyone!+时间00:05、Message2 ShadowHunter+Nice strategy!+00:08、Message3系统图标金色+SYSTEM金色文字+Battle started! Good luck!+00:10系统消息金色边框、Message4 StormBringer+Watch out for the fire spirit!+00:15、Message5 AI头像红圈+AI Opponent红色文字+You will not win!+00:20 AI消息红色文字、Message6系统+Critical hit! 490 damage!+00:25、Message7 FlameWarden+Heal me please!+00:30、Message8 IceQueen+Coming to help!+00:32、Message9系统+Unit destroyed!+00:35、Message10 EarthGuardian+Almost there!+00:40，右侧在线玩家面板（金色边框）：Online Players 8+8个玩家头像金色圆圈+名+状态（In Battle/In Menu/Online）+玩家状态指示器（绿点在线/黄点离开/灰点离线），底部聊天输入区（金色边框）：文本输入框占位符Type your message...+SEND发送按钮纸飞机图标金色发光+EMOTE表情按钮笑脸图标+CHANNEL频道下拉（ALL/TEAM/WHISPER）
+   - 风格：2D像素风，深紫+金色
+
+2. **公告UI**（1920x1080）
+   - 文件：announcements_ui.png（1047.8KB）
+   - 内容：中央大型公告面板（金色华丽边框+深紫背景），顶部标题ANNOUNCEMENTS大号金色像素字体发光效果+扩音器图标，下方3个标签（NEWS新闻标签高亮选中+UPDATES更新标签+EVENTS活动标签），下方公告列表显示5条公告（金色边框面板每个1024x160）：Announcement1 IMPORTANT金色徽章+标题v1.1 Update Released!+日期2026-09-09+作者Developer+预览New souls added, balance changes, bug fixes...+READ MORE按钮金色发光重要公告金色边框、Announcement2 NEW金色徽章+Soul Festival Event Starts!+2026-09-08+Event Team+Double EXP and Gold for all battles! Join now...+READ MORE、Announcement3 UPDATE金色徽章+Balance Patch Notes+2026-09-07+Balance Team+Fire Spirit damage reduced 10%, Water Spirit heal increased...+READ MORE、Announcement4 MAINTENANCE金色徽章+Scheduled Server Maintenance+2026-09-06+Ops Team+Servers will be down for maintenance on Saturday 2-4 AM...+READ MORE、Announcement5 COMMUNITY金色徽章+Community Tournament Signup Open!+2026-09-05+Community Team+Sign up for the first Battleplan community tournament!...+READ MORE，右侧精选公告面板（金色边框）：大精选横幅图（灵魂战斗竞技场场景）+精选标题v1.1 Update - New Souls!+精选描述全文+精选图+SHARE分享按钮+DISCORD按钮，底部3个按钮（SUBSCRIBE订阅铃铛图标金色发光+MARK ALL READ全部已读对勾图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+3. **反馈UI**（1920x1080）
+   - 文件：feedback_ui.png（965.6KB）
+   - 内容：中央大型反馈面板（金色华丽边框+深紫背景），顶部标题FEEDBACK大号金色像素字体发光效果+消息气泡图标，下方3个标签（SUBMIT提交标签高亮选中+HISTORY历史标签+FAQ常见问题标签），下方反馈提交表单（金色边框面板）：Category分类下拉（BUG REPORT/FEATURE REQUEST/GENERAL FEEDBACK/ACCOUNT ISSUE金色边框选中BUG REPORT）、Priority优先级下拉（LOW/MEDIUM/HIGH/CRITICAL金色边框选中MEDIUM）、Title标题输入框（金色边框占位符Enter a brief title...）、Description描述文本区（金色边框多行占位符Describe your feedback in detail... Include steps to reproduce for bugs...）、Attachment附件区（金色边框回形针图标Drag and drop screenshots or files here, MAX 5 files）、Reproduction steps复现步骤（金色边框编号列表Step1 Step2 Step3）、Expected result预期结果（金色边框输入框）、Actual result实际结果（金色边框输入框），右侧反馈指南面板（金色边框）：Guidelines标题+要点（Be specific and detailed, Include screenshots when possible, Describe steps to reproduce, One issue per report, Be respectful and constructive）+联系信息（Email support@battleplan.com, Discord server link）+响应时间（We typically respond within 48 hours），底部3个按钮（SUBMIT FEEDBACK提交反馈纸飞机图标金色发光+SAVE DRAFT保存草稿保存图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+4. **帮助UI**（1920x1080）
+   - 文件：help_ui.png（980.2KB）
+   - 内容：中央大型帮助面板（金色华丽边框+深紫背景），顶部标题HELP大号金色像素字体发光效果+问号图标，下方4个标签（BASICS基础标签高亮选中+COMBAT战斗标签+SOULS灵魂标签+ADVANCED高级标签），下方帮助内容区显示教程章节（金色边框面板）：Section1 Getting Started金色标题+要点（Use WASD or arrow keys to move camera, Left click to select units, Right click to move or attack, Press Space to center on selected units, Press Esc to open pause menu）、Section2 Battle Controls+要点（Q/W/E/R to use skills, 1-4 to select control groups, Tab to cycle through units, F1-F4 for quick commands, Hold Shift for queue commands）、Section3 Soul Units+要点（Each soul has unique element and skills, Fire = high damage, Water = healing, Earth = tank, Wind = speed, Level up souls in Soul Home）、Section4 Game Modes+要点（Quick Match - casual 1v1, Ranked - competitive ladder, Custom - private matches, Tutorial - learn basics, Practice - vs AI），右侧快速参考面板（金色边框）：键盘快捷键网格（WASD Move, LMB Select, RMB Attack, Q Skill1, W Skill2, E Skill3, R Ultimate, Space Center, Esc Pause, Tab Cycle, 1-4 Groups, F1-F4 Commands）+提示区（Tip: Use terrain to your advantage, Tip: Combine elements for powerful combos, Tip: Watch your mana carefully）+视频教程按钮（Watch Tutorial按钮金色发光+View Guide按钮），底部3个按钮（TUTORIAL教程播放图标金色发光+SUPPORT支持耳机图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+5. **关于UI**（1920x1080）
+   - 文件：about_ui.png（1053.3KB）
+   - 内容：中央大型关于面板（金色华丽边框+深紫背景），顶部标题ABOUT大号金色像素字体发光效果+信息图标，下方游戏Logo区：大BATTLEPLAN Logo金色像素字体发光效果+副标题RTS SOUL BATTLE ARENA+开发者名Sojourn Studios+游戏版本v1.1.0 (Early Access)+发布日期September 2026，下方游戏描述区（金色边框面板）：About Battleplan段落文字（Battleplan is a fast-paced RTS soul battle arena where players command elemental soul units in strategic 1v1 combat. Collect and upgrade over 100 unique soul units, master elemental combos, and climb the competitive ladder. Set in the mystical world of Sojourn, where ancient souls awaken to battle for glory.）+特性列表（100+ Unique Soul Units, 4 Core Elements, Strategic RTS Combat, Soul Collection and Upgrade, Competitive Ranked Mode, Custom Matches, Daily Quests and Events, Steam Achievements, Controller Support, Online Multiplayer），右侧鸣谢面板（金色边框）：Game Design, Programming, Art, Audio, QA, Special Thanks章节含人名+社交媒体链接（Twitter/X图标, Discord图标, YouTube图标, Steam图标）+网站URL www.battleplan-game.com+支持邮箱support@battleplan-game.com，底部3个按钮（WEBSITE网站地球图标金色发光+CREDITS鸣谢人物图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+6. **版权/法律信息UI**（1920x1080）
+   - 文件：legal_ui.png（981.7KB）
+   - 内容：中央大型法律面板（金色华丽边框+深紫背景），顶部标题LEGAL大号金色像素字体发光效果+天平图标，下方4个标签（EULA最终用户许可协议标签高亮选中+PRIVACY隐私标签+COPYRIGHT版权标签+LICENSES许可证标签），下方法律内容区显示EULA文本（金色边框可滚动面板）：End User License Agreement标题+Section1 Acceptance（By installing or using Battleplan, you agree to be bound by the terms of this Agreement...）+Section2 License Grant（Sojourn Studios grants you a personal, non-exclusive, non-transferable license to use the Game...）+Section3 Restrictions（You may not reverse engineer, decompile, or disassemble the Game... You may not modify, adapt, or create derivative works...）+Section4 Ownership（The Game and all intellectual property rights are owned by Sojourn Studios...）+Section5 Warranty Disclaimer（The Game is provided AS IS without warranty of any kind...）+Section6 Limitation of Liability（In no event shall Sojourn Studios be liable for any damages...）+Section7 Termination（This Agreement terminates automatically if you breach any terms...）+Section8 Governing Law（This Agreement shall be governed by the laws of...），右侧快速链接面板（金色边框）：Privacy Policy链接, Terms of Service链接, Cookie Policy链接, Contact Us链接, Report Abuse链接, DMCA链接, Refund Policy链接+年龄分级（ESRB Teen, PEGI 12）+内容分级图标，底部3个按钮（ACCEPT接受对勾图标金色发光+DECLINE拒绝X图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+全部严格遵循2D像素风+深紫金色调，禁止3D等距，符合ART_STYLE_GUIDE.md规范。
+
+### 🎉 新元素系统已达100元素，正式停止新元素扩展！
+
+- **当前进度**：**100个元素**（第122轮完成）✅ 达到目标！
+- **停止新元素的灵魂单位/地图/音效产出** ✅
+- **本轮起转向以下更有价值的方向**（按优先级排序）：
+  1. **Steam商店页素材**（P1）← 第123-124轮已产出12项
+  2. **M2实际需要的UI资源**（P0）← **第126轮6项战斗HUD + 第127轮6项其他界面 + 第128轮6项主要界面细化 + 第129轮6项战斗特效 + 第130轮6项社交 + 本轮6项辅助界面 = 36项M2 UI组件**
+  3. **过场动画/启动画面/CG**（P1）← 第125轮已产出6项
+  4. **现有资源优化**（P2）
+
+### 战策DEVLOG最新进展（7767行）
+
+- **P0修复续：AI决策延迟导致单位在攻击范围内不攻击已完成**
+  - 修复后5秒内战斗结束，双方持续攻击直到一方被击败
+  - M2测试: 2884 Passed, 0 Failed
+- **攻击系统完整修复链（4个bug叠加）全部完成**
+- **BUG-030已关闭**：526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- **BUG-032 wav size字段错误已修复**
+- **战策侧新增BUG-033已修复**：灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已修复(commit 370134c+ec18a48)，已关闭31个，活跃2个
+- **历史[设计需求]已基本满足**：像素字体参考、UI皮肤图集、灵魂单位精灵图、主菜单背景图、技能图标、粒子纹理均已产出；唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- 无新[设计需求]
+
+### Git状态
+
+- 上一轮commit e7d8a22（第130轮M2社交UI组件产出P0）push成功
+- 本地与远程同步，工作树干净
+- GitHub网络稳定，后续commit可正常push
+
+### 累计资源（第131轮后）
+
+| 类型 | 数量 | 说明 |
+|------|------|------|
+| 音效 | **843个** | management仓库assets/audio/ |
+| P0音效 | **17/17** | 全部完成 |
+| P1音效 | **24/24** | 全部完成 |
+| 核心音效合计 | **41个** | 全部完成 |
+| P1背景音乐 | **7/7** | 全部完成 |
+| P2音效 | 300个 | 6环境+6社交+288新元素技能 |
+| 概念图 | **578张** | management仓库art目录（本轮新增6项M2辅助界面UI组件） |
+| M3内容扩展第一批~第四十八批 | **各14项** | 全部完成 |
+| M3内容扩展合计 | **672项** | 96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档 |
+| **新元素系统** | **100元素** 🎉 | 已达到目标，正式停止新元素扩展！ |
+| **Steam商店页素材** | **12项** | 第123轮6项 + 第124轮6项 |
+| **过场动画/启动画面/CG** | **6项** | 第125轮6项 |
+| **M2战斗HUD UI组件** | **6项** | 第126轮6项（顶部状态栏+技能栏+小地图+战斗日志+单位信息面板+控制按钮） |
+| **M2其他界面UI组件** | **6项** | 第127轮6项（暂停界面+教程界面+对话框+商店界面+成就界面+加载界面） |
+| **M2主要界面细化UI** | **6项** | 第128轮6项（灵魂选择界面+战斗结算界面+设置界面+主菜单+灵魂之家+战斗开始倒计时） |
+| **M2战斗特效UI组件** | **6项** | 第129轮6项（伤害飘字+单位选中指示器+技能冷却指示器+战斗特效+天气环境+后处理） |
+| **M2社交UI组件** | **6项** | 第130轮6项（排行榜+邮件+好友+玩家资料+每日任务+活动） |
+| **M2辅助界面UI组件** | **6项（本轮）** | 游戏内聊天+公告+反馈+帮助+关于+版权法律信息 |
+| **M2 UI组件合计** | **36项** | 战斗HUD 6项 + 其他界面 6项 + 主要界面细化 6项 + 战斗特效 6项 + 社交 6项 + 辅助界面 6项 |
+| 设计文档 | **10份** | |
+| **风格** | — | 严格2D像素奇幻（Pixel Fantasy），深紫+金色，遵循ART_STYLE_GUIDE.md v1.0 |
+
+### 下一轮计划（🎉 新元素扩展已停止！继续M2 UI资源/现有资源优化）
+
+1. **🎉 新元素系统已达到100个元素，正式停止新元素扩展！**
+2. **继续方向2：M2实际需要的UI资源**（P0）：更多M2界面UI组件（游戏内商店UI/物品栏UI/技能树UI/天赋UI/成就详情UI/统计数据UI）
+3. **方向4：现有资源优化**（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. **继续方向1：Steam商店页素材**（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. **继续方向3：过场动画/启动画面/CG**（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. **⭐每轮生成wav后必须运行WAV size修复脚本**（D:\Sojourn\management\scripts\fix_wav_sizes.ps1）
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. GitHub网络稳定，后续commit可正常push
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
