@@ -10683,3 +10683,110 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. GitHub网络稳定，后续commit可正常push
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
+
+---
+
+## 2026-09-09 - 设计任务第127轮：M2其他界面UI组件产出（P0）— 暂停界面+教程界面+对话框+商店界面+成就界面+加载界面
+
+### 完成工作
+
+#### M2其他界面UI组件产出（6项，P0）
+
+**🎉 新元素系统已达到100个元素（第122轮完成），正式停止新元素扩展！Steam商店页素材累计12项+过场动画/CG 6项+M2战斗HUD UI组件6项已产出。本轮继续方向2：M2实际需要的UI资源（P0）— 其他界面UI组件。**
+
+**M2其他界面UI组件（6项）**：
+1. **暂停界面UI皮肤**（1920x1080）
+   - 文件：pause_menu_ui_skin.png（761.1KB）
+   - 内容：中央大型暂停菜单面板（金色华丽边框+深紫背景），顶部标题PAUSED大号金色像素字体发光效果+暂停图标（两竖条），下方5个菜单按钮（金色边框面板每个512x80）：RESUME按钮（播放三角形图标+标签RESUME+高亮状态金色发光）、SETTINGS按钮（齿轮图标+标签SETTINGS）、SOUL HOME按钮（房子图标+标签SOUL HOME）、MAIN MENU按钮（主页图标+标签MAIN MENU）、QUIT GAME按钮（退出图标+标签QUIT GAME+红色边框警告状态），每个按钮含金色边框+深紫背景+图标左+标签居中+悬停/激活状态金色发光效果，左侧游戏统计面板（当前战斗统计Time 02:34/Player HP 85%/AI HP 45%/Units 5 vs 4金色边框），右侧控制帮助面板（键盘快捷键WASD移动/Q/W/E/R技能/Space暂停/Esc菜单金色边框），背景变暗战斗竞技场场景+深色遮罩+金色华丽角饰+发光魔法粒子
+   - 风格：2D像素风，深紫+金色
+
+2. **教程界面UI皮肤**（1920x1080）
+   - 文件：tutorial_ui_skin_v2.png（852.7KB）
+   - 内容：中央大型教程面板（金色华丽边框+深紫背景），顶部标题TUTORIAL大号金色像素字体发光效果+书本图标，下方教程步骤指示器（Step 3 of 8金色圆点），中央教程内容区（当前步骤左侧大图灵魂单位移动箭头路径+右侧文字说明Select your soul units by clicking and dragging a selection box. Then right-click on the ground to move them. Use WASD to pan the camera.），下方3个教程提示框（金色边框）：Tip1 Use elemental advantages! Fire beats Wind, Water beats Fire, Earth beats Water, Wind beats Earth、Tip2 Manage your mana! Skills cost mana, wait for it to regenerate、Tip3 Use the minimap to track enemy movements!，底部导航按钮（金色边框）：PREVIOUS按钮（左箭头图标）、NEXT按钮（右箭头图标+高亮）、SKIP TUTORIAL按钮（跳过图标）
+   - 风格：2D像素风，深紫+金色
+
+3. **对话框UI皮肤**（1920x1080）
+   - 文件：dialog_box_ui_skin.png（880.5KB）
+   - 内容：中央大型对话框面板（金色华丽边框+深紫背景），左上角色肖像区（灵魂单位精灵金色边框框FIRE SPIRIT等级15），右上角色名FIRE SPIRIT金色像素字体+元素类型FIRE图标，中央对话文本区（NPC对话Greetings, brave soul! I am the Fire Spirit, guardian of the eternal flames. You have proven yourself worthy in battle. Accept my power and let the flames guide your path!+打字机效果指示器闪烁光标），下方3个对话选择按钮（金色边框）：Choice1 Accept your power, Fire Spirit!（高亮）、Choice2 Tell me more about the eternal flames、Choice3 I must go, farewell，右下继续按钮（右箭头图标+标签CONTINUE）
+   - 风格：2D像素风，深紫+金色
+
+4. **商店界面UI皮肤**（1920x1080）
+   - 文件：shop_ui_skin.png（919.3KB）
+   - 内容：中央大型商店面板（金色华丽边框+深紫背景），顶部标题SOUL SHOP大号金色像素字体发光效果+购物袋图标，右上货币显示（Gold 2500金币图标+Soul Shards 150紫水晶图标+Gems 25蓝宝石图标），下方3个分类标签（金色边框）：ITEMS标签（剑图标+高亮）、SOULS标签（灵魂球图标）、UPGRADES标签（箭头向上图标），中央物品网格（6个物品金色边框面板每个256x320）：Item1 Fire Potion（红药水瓶图标+名称+价格100 Gold+描述Restores 50 HP+BUY按钮）、Item2 Mana Crystal（蓝水晶图标+名称+价格150 Gold+描述Restores 30 MP+BUY按钮）、Item3 Soul Essence（紫球图标+名称+价格50 Soul Shards+描述+10 ATK permanent+BUY按钮）、Item4 Defense Charm（盾牌图标+名称+价格200 Gold+描述+5 DEF for battle+BUY按钮）、Item5 Speed Boots（靴子图标+名称+价格180 Gold+描述+10% movement speed+BUY按钮）、Item6 Legendary Soul（金色灵魂图标+名称+价格500 Gems+描述Rare powerful soul unit+BUY按钮金色发光），底部玩家物品栏面板（已拥有物品金色边框）+BACK按钮（左箭头图标）
+   - 风格：2D像素风，深紫+金色
+
+5. **成就界面UI皮肤**（1920x1080）
+   - 文件：achievements_ui_skin.png（888.4KB）
+   - 内容：中央大型成就面板（金色华丽边框+深紫背景），顶部标题ACHIEVEMENTS大号金色像素字体发光效果+奖杯图标，右上进度显示12/24 unlocked+金色进度条，下方3个过滤标签（金色边框）：ALL标签（星图标+高亮）、LOCKED标签（锁图标）、UNLOCKED标签（对勾图标），中央成就网格（6个成就金色边框面板每个512x160）：Achievement1 First Blood（剑图标+名称+描述Defeat your first enemy unit+已解锁状态金色发光+日期2026-09-08）、Achievement2 Victory（皇冠图标+名称+描述Win your first battle+已解锁+日期2026-09-08）、Achievement3 Perfect Win（星图标+名称+描述Win without losing any units+未解锁状态灰色遮罩）、Achievement4 Speed Demon（闪电图标+名称+描述Win a battle in under 60 seconds+未解锁）、Achievement5 Element Master（火焰图标+名称+描述Use all 4 element types in one battle+已解锁+日期2026-09-09）、Achievement6 Soul Collector（灵魂球图标+名称+描述Collect 10 different soul units+进度6/10部分金色条），每个成就含图标左+名称和描述居中+解锁状态右，底部BACK按钮（左箭头图标）
+   - 风格：2D像素风，深紫+金色
+
+6. **加载界面UI皮肤**（1920x1080）
+   - 文件：loading_screen_ui_skin.png（914.5KB）
+   - 内容：中央大型加载面板（金色华丽边框+深紫背景），顶部金色BATTLEPLAN Logo大号像素字体发光效果+灵魂球图标+RTS SOUL BATTLE ARENA副标题，中央大型金色魔法阵地面旋转符文+古代金色柱子环绕+发光符文依次激活+魔法能量聚集中心+灵魂球漂浮+魔法粒子从魔法阵上升+金色光束发出，魔法阵下方加载进度条（金色边框蓝色填充65%+65%百分比文字+LOADING文字），进度条下方加载提示面板（金色边框+Tip: Use elemental advantages to deal more damage! Fire beats Wind, Water beats Fire, Earth beats Water, Wind beats Earth.+灯泡图标），底部Sojourn Studios开发者名金色像素字体
+   - 风格：2D像素风，深紫+金色
+
+全部严格遵循2D像素风+深紫金色调，禁止3D等距，符合ART_STYLE_GUIDE.md规范。
+
+### 🎉 新元素系统已达100元素，正式停止新元素扩展！
+
+- **当前进度**：**100个元素**（第122轮完成）✅ 达到目标！
+- **停止新元素的灵魂单位/地图/音效产出** ✅
+- **本轮起转向以下更有价值的方向**（按优先级排序）：
+  1. **Steam商店页素材**（P1）← 第123-124轮已产出12项
+  2. **M2实际需要的UI资源**（P0）← **第126轮6项战斗HUD UI组件 + 本轮6项其他界面UI组件 = 12项M2 UI组件**
+  3. **过场动画/启动画面/CG**（P1）← 第125轮已产出6项
+  4. **现有资源优化**（P2）
+
+### 战策DEVLOG最新进展（7729行）
+
+- **P0修复续：AI决策延迟导致单位在攻击范围内不攻击已完成**
+  - 修复后5秒内战斗结束，双方持续攻击直到一方被击败
+  - M2测试: 2884 Passed, 0 Failed
+- **攻击系统完整修复链（4个bug叠加）全部完成**
+- **BUG-030已关闭**：526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- **BUG-032 wav size字段错误已修复**
+- **战策侧新增BUG-033已修复**：灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已修复(commit 370134c+ec18a48)，已关闭31个，活跃2个
+- **历史[设计需求]已基本满足**：像素字体参考、UI皮肤图集、灵魂单位精灵图、主菜单背景图、技能图标、粒子纹理均已产出；唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- 无新[设计需求]
+
+### Git状态
+
+- 上一轮commit b4f2c87（第126轮M2战斗HUD UI组件产出P0）push成功
+- 本地与远程同步，工作树干净
+- GitHub网络稳定，后续commit可正常push
+
+### 累计资源（第127轮后）
+
+| 类型 | 数量 | 说明 |
+|------|------|------|
+| 音效 | **843个** | management仓库assets/audio/ |
+| P0音效 | **17/17** | 全部完成 |
+| P1音效 | **24/24** | 全部完成 |
+| 核心音效合计 | **41个** | 全部完成 |
+| P1背景音乐 | **7/7** | 全部完成 |
+| P2音效 | 300个 | 6环境+6社交+288新元素技能 |
+| 概念图 | **554张** | management仓库art目录（本轮新增6项M2其他界面UI组件） |
+| M3内容扩展第一批~第四十八批 | **各14项** | 全部完成 |
+| M3内容扩展合计 | **672项** | 96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档 |
+| **新元素系统** | **100元素** 🎉 | 已达到目标，正式停止新元素扩展！ |
+| **Steam商店页素材** | **12项** | 第123轮6项 + 第124轮6项 |
+| **过场动画/启动画面/CG** | **6项** | 第125轮6项 |
+| **M2战斗HUD UI组件** | **6项** | 第126轮6项（顶部状态栏+技能栏+小地图+战斗日志+单位信息面板+控制按钮） |
+| **M2其他界面UI组件** | **6项（本轮）** | 暂停界面+教程界面+对话框+商店界面+成就界面+加载界面 |
+| **M2 UI组件合计** | **12项** | 战斗HUD 6项 + 其他界面 6项 |
+| 设计文档 | **10份** | |
+| **风格** | — | 严格2D像素奇幻（Pixel Fantasy），深紫+金色，遵循ART_STYLE_GUIDE.md v1.0 |
+
+### 下一轮计划（新元素扩展已停止！继续M2 UI资源/现有资源优化）
+
+1. **🎉 新元素系统已达到100个元素，正式停止新元素扩展！**
+2. **继续方向2：M2实际需要的UI资源**（P0）：更多M2界面UI组件（灵魂选择界面细化/战斗结算界面细化/设置界面细化/主菜单细化/灵魂之家细化）
+3. **方向4：现有资源优化**（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. **继续方向1：Steam商店页素材**（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. **继续方向3：过场动画/启动画面/CG**（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. **⭐每轮生成wav后必须运行WAV size修复脚本**（D:\Sojourn\management\scripts\fix_wav_sizes.ps1）
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. GitHub网络稳定，后续commit可正常push
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
