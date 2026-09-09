@@ -11007,3 +11007,113 @@
 9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
 10. GitHub网络稳定，后续commit可正常push
 11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
+
+---
+
+## 2026-09-09 - 设计任务第130轮：M2社交UI组件产出（P0）— 排行榜+邮件+好友+玩家资料+每日任务+活动
+
+### 完成工作
+
+#### M2社交UI组件产出（6项，P0）
+
+**🎉 新元素系统已达到100个元素（第122轮完成），正式停止新元素扩展！Steam商店页素材累计12项+过场动画/CG 6项+M2战斗HUD UI组件6项+M2其他界面UI组件6项+M2主要界面细化UI 6项+M2战斗特效UI组件6项已产出。本轮继续方向2：M2实际需要的UI资源（P0）— 社交UI组件。**
+
+**M2社交UI组件（6项）**：
+1. **排行榜UI**（1920x1080）
+   - 文件：leaderboard_ui.png（879.6KB）
+   - 内容：中央大型排行榜面板（金色华丽边框+深紫背景），顶部标题LEADERBOARD大号金色像素字体发光效果+奖杯图标，下方3个标签（GLOBAL全球标签高亮选中+FRIENDS好友标签+SEASONAL赛季标签），下方排行榜排名列表显示前10名玩家（金色边框行）：Rank1金冠图标+玩家名DragonSlayer+等级50+胜率85%+战斗1200+当前灵魂Fire Spirit+金色发光行第一名、Rank2银牌图标+ShadowHunter+等级48+胜率82%+战斗980+Water Spirit、Rank3铜牌图标+StormBringer+等级45+胜率78%+战斗850+Wind Spirit、Rank4-10数字图标+玩家名+等级+胜率+战斗+当前灵魂，右侧玩家自己排名面板（金色边框）：Your Rank #156+玩家名+等级15+胜率65%+战斗120+当前灵魂Fire Spirit+排名进度条（金色边框蓝色填充显示晋级进度）+前三名玩家头像金色圆圈，底部3个按钮（REFRESH刷新+FILTER筛选+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+2. **邮件UI**（1920x1080）
+   - 文件：mail_ui.png（894.4KB）
+   - 内容：中央大型邮件面板（金色华丽边框+深紫背景），顶部标题MAIL大号金色像素字体发光效果+信封图标，下方3个标签（INBOX收件箱标签高亮选中显示未读5封+SYSTEM系统标签+SOCIAL社交标签），左侧邮件列表显示6封邮件（金色边框行）：Email1未读金点+发件人System Admin+主题Welcome to Battleplan!+预览+时间2h前+金色发光行未读、Email2未读+Reward System+Daily Reward Claimed!+5h前、Email3未读+Friend Request+DragonSlayer sent you a friend request+1d前、Email4已读+Achievement System+Achievement Unlocked First Blood!+2d前、Email5已读+Seasonal Event+New Season Starting Soon!+3d前、Email6已读+Developer+Patch Notes v1.1+5d前，右侧选中邮件详情面板（金色边框）：发件人名+主题+邮件正文+附件（奖励物品）+CLAIM REWARD领取奖励按钮金色发光+DELETE删除按钮，底部3个按钮（COMPOSE撰写+DELETE ALL READ删除已读+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+3. **好友UI**（1920x1080）
+   - 文件：friends_ui.png（732.8KB）
+   - 内容：中央大型好友面板（金色华丽边框+深紫背景），顶部标题FRIENDS大号金色像素字体发光效果+人物图标，下方3个标签（ONLINE在线标签高亮选中显示在线8人+ALL全部标签+PENDING待处理标签显示待处理2人），左侧好友列表显示8个好友（金色边框行）：Friend1在线绿点+头像金色圆圈+名DragonSlayer+等级50+状态In Battle+当前灵魂Fire Spirit+金色发光行在线、Friend2在线+ShadowHunter+等级48+In Menu+Water Spirit、Friend3在线+StormBringer+等级45+In Soul Home+Wind Spirit、Friend4在线+FlameWarden+等级42+Online+Fire Spirit、Friend5离线灰点+IceQueen+等级40+Last seen 2h ago+Ice Spirit、Friend6离线+EarthGuardian+等级38+Last seen 1d ago+Earth Spirit、Friend7待处理黄点+NewPlayer123+Friend Request Received、Friend8待处理+ProGamer99+Friend Request Sent，右侧选中好友详情面板（金色边框）：好友头像+名+等级+状态+当前灵魂+胜率+战斗+统计+4个动作按钮（CHAT聊天+CHALLENGE挑战+VIEW PROFILE查看资料+REMOVE FRIEND删除好友），底部3个按钮（ADD FRIEND添加好友+SEARCH搜索+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+4. **玩家资料UI**（1920x1080）
+   - 文件：player_profile_ui.png（914.0KB）
+   - 内容：中央大型玩家资料面板（金色华丽边框+深紫背景），顶部标题PLAYER PROFILE大号金色像素字体发光效果+用户图标，左侧玩家头像区（金色边框）：大头像圆圈灵魂单位精灵+玩家名PlayerName金色像素字体+等级15徽章+当前称号Soul Apprentice+当前灵魂Fire Spirit元素图标+玩家排名#156排名图标，下方玩家统计面板（金色边框）：Total Battles 120剑图标+Wins 78奖杯图标+Losses 42骷髅图标+Win Rate 65%星图标+Current Streak 3火焰图标+Best Streak 7皇冠图标，中央4个标签（OVERVIEW概览标签高亮选中+ACHIEVEMENTS成就标签+SOULS灵魂标签+HISTORY历史标签），下方概览面板：排名进度条（金色边框蓝色填充65%晋级）+最喜欢的灵魂单位（3个灵魂单位精灵金色圆圈+名+等级）+最近成就（3个成就图标+名+日期）+游戏时长统计（总时长24h+本周5h+今日1h），右侧灵魂收藏面板（金色边框）：灵魂收藏进度12/100已收集+灵魂单位网格显示已收集灵魂（6个灵魂单位精灵金色边框方块+元素图标+等级）+未解锁灵魂显示灰色剪影+锁图标，底部3个按钮（EDIT PROFILE编辑资料+SHARE分享+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+5. **每日任务UI**（1920x1080）
+   - 文件：daily_quests_ui.png（1016.6KB）
+   - 内容：中央大型每日任务面板（金色华丽边框+深紫背景），顶部标题DAILY QUESTS大号金色像素字体发光效果+卷轴图标，下方每日重置计时器显示Reset in 12:34:56时钟图标+每日进度显示3/5任务完成金色进度条，下方5个每日任务（金色边框行）：Quest1已完成金对勾+任务图标剑+标题Win 3 Battles+描述+进度3/3金色填满+奖励Gold 100金币图标+EXP 50星图标+CLAIM领取按钮金色发光已完成、Quest2已完成+火焰图标+Use 10 Skills+进度10/10+奖励Gold 50+Soul Shard 1水晶图标+CLAIM、Quest3进行中+人物图标+Play with Friends+进度1/2蓝色部分填充+奖励Gold 150+EXP 100+IN PROGRESS按钮灰色、Quest4进行中+奖杯图标+Get 5 Critical Hits+进度2/5+奖励Gold 80+Skill Point 1图标+IN PROGRESS、Quest5未开始+盾牌图标+Win Without Losing Units+进度0/1空+奖励Gold 200+Rare Item宝箱图标+NOT STARTED按钮灰色，右侧每周任务面板（金色边框）：Weekly Progress 8/15+3个每周任务（Win 20 Battles+Collect 5 Soul Units+Reach Rank 100）+周末奖励宝箱，底部3个按钮（CLAIM ALL全部领取金色发光+REFRESH刷新+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+6. **活动UI**（1920x1080）
+   - 文件：events_ui.png（1002.7KB）
+   - 内容：中央大型活动面板（金色华丽边框+深紫背景），顶部标题EVENTS大号金色像素字体发光效果+日历图标，下方3个标签（ACTIVE进行中标签高亮选中显示进行中3个+UPCOMING即将开始标签+PAST历史标签），下方活动卡片网格显示4个活动卡片（金色边框面板每个512x320）：Event1进行中金色发光边框+活动横幅图灵魂战斗竞技场+活动标题Soul Festival+描述Double EXP and Gold for all battles!+活动时长3天剩余倒计时+活动进度条65%+活动奖励预览Gold 500+EXP 200+Rare Soul+JOIN EVENT按钮金色发光进行中、Event2进行中+活动横幅元素水晶+Elemental Challenge+描述Battle with specific elements for bonus rewards!+5天剩余+进度40%+奖励Soul Shards 10+Skill Points 5+PARTICIPATE、Event3进行中+活动横幅金色宝箱+Treasure Hunt+描述Find hidden treasures in the arena!+1天剩余+进度80%+奖励Rare Item+Gold 1000+JOIN、Event4即将开始灰色边框+活动横幅深色剪影+Seasonal Championship+描述Compete for top ranks and exclusive rewards!+开始日期Starts in 2 days+预览奖励Exclusive Title+Avatar Frame+Soul Skin+NOTIFY ME按钮，右侧活动详情面板（金色边框）：选中活动横幅+活动标题+完整描述+活动规则列表+奖励等级（Tier1+Tier2+Tier3含奖励）+排行榜预览（前三名玩家）+活动倒计时，底部3个按钮（EVENT SHOP活动商店购物袋图标+NOTIFICATIONS通知铃铛图标+BACK返回）
+   - 风格：2D像素风，深紫+金色
+
+全部严格遵循2D像素风+深紫金色调，禁止3D等距，符合ART_STYLE_GUIDE.md规范。
+
+### 🎉 新元素系统已达100元素，正式停止新元素扩展！
+
+- **当前进度**：**100个元素**（第122轮完成）✅ 达到目标！
+- **停止新元素的灵魂单位/地图/音效产出** ✅
+- **本轮起转向以下更有价值的方向**（按优先级排序）：
+  1. **Steam商店页素材**（P1）← 第123-124轮已产出12项
+  2. **M2实际需要的UI资源**（P0）← **第126轮6项战斗HUD + 第127轮6项其他界面 + 第128轮6项主要界面细化 + 第129轮6项战斗特效 + 本轮6项社交 = 30项M2 UI组件**
+  3. **过场动画/启动画面/CG**（P1）← 第125轮已产出6项
+  4. **现有资源优化**（P2）
+
+### 战策DEVLOG最新进展（7767行）
+
+- **P0修复续：AI决策延迟导致单位在攻击范围内不攻击已完成**
+  - 修复后5秒内战斗结束，双方持续攻击直到一方被击败
+  - M2测试: 2884 Passed, 0 Failed
+- **攻击系统完整修复链（4个bug叠加）全部完成**
+- **BUG-030已关闭**：526个wav RIFF头和data chunk size全部修正，Godot导入0错误528步骤全通过
+- **BUG-032 wav size字段错误已修复**
+- **战策侧新增BUG-033已修复**：灵魂选择UI布局拥挤+main_menu假灵魂数据bug，已修复(commit 370134c+ec18a48)，已关闭31个，活跃2个
+- **历史[设计需求]已基本满足**：像素字体参考、UI皮肤图集、灵魂单位精灵图、主菜单背景图、技能图标、粒子纹理均已产出；唯一未完成的是实际像素字体文件（.ttf/.otf），待战策决定
+- 无新[设计需求]
+
+### Git状态
+
+- 上一轮commit a6076b3（第129轮M2战斗特效UI组件产出P0）push成功
+- 本地与远程同步，工作树干净
+- GitHub网络稳定，后续commit可正常push
+
+### 累计资源（第130轮后）
+
+| 类型 | 数量 | 说明 |
+|------|------|------|
+| 音效 | **843个** | management仓库assets/audio/ |
+| P0音效 | **17/17** | 全部完成 |
+| P1音效 | **24/24** | 全部完成 |
+| 核心音效合计 | **41个** | 全部完成 |
+| P1背景音乐 | **7/7** | 全部完成 |
+| P2音效 | 300个 | 6环境+6社交+288新元素技能 |
+| 概念图 | **572张** | management仓库art目录（本轮新增6项M2社交UI组件） |
+| M3内容扩展第一批~第四十八批 | **各14项** | 全部完成 |
+| M3内容扩展合计 | **672项** | 96新灵魂单位+96新地图+288技能音效+6社交UI图集+3社交高保真UI+1社交设计文档 |
+| **新元素系统** | **100元素** 🎉 | 已达到目标，正式停止新元素扩展！ |
+| **Steam商店页素材** | **12项** | 第123轮6项 + 第124轮6项 |
+| **过场动画/启动画面/CG** | **6项** | 第125轮6项 |
+| **M2战斗HUD UI组件** | **6项** | 第126轮6项（顶部状态栏+技能栏+小地图+战斗日志+单位信息面板+控制按钮） |
+| **M2其他界面UI组件** | **6项** | 第127轮6项（暂停界面+教程界面+对话框+商店界面+成就界面+加载界面） |
+| **M2主要界面细化UI** | **6项** | 第128轮6项（灵魂选择界面+战斗结算界面+设置界面+主菜单+灵魂之家+战斗开始倒计时） |
+| **M2战斗特效UI组件** | **6项** | 第129轮6项（伤害飘字+单位选中指示器+技能冷却指示器+战斗特效+天气环境+后处理） |
+| **M2社交UI组件** | **6项（本轮）** | 排行榜+邮件+好友+玩家资料+每日任务+活动 |
+| **M2 UI组件合计** | **30项** | 战斗HUD 6项 + 其他界面 6项 + 主要界面细化 6项 + 战斗特效 6项 + 社交 6项 |
+| 设计文档 | **10份** | |
+| **风格** | — | 严格2D像素奇幻（Pixel Fantasy），深紫+金色，遵循ART_STYLE_GUIDE.md v1.0 |
+
+### 下一轮计划（新元素扩展已停止！继续M2 UI资源/现有资源优化）
+
+1. **🎉 新元素系统已达到100个元素，正式停止新元素扩展！**
+2. **继续方向2：M2实际需要的UI资源**（P0）：更多M2界面UI组件（游戏内聊天UI/公告UI/反馈UI/帮助UI/关于UI/版权UI）
+3. **方向4：现有资源优化**（P2）：对已有UI资源进行细化、补全缺失帧、统一风格
+4. **继续方向1：Steam商店页素材**（P1）：Steam商店页描述文案优化、更多游戏截图、成就图标补充
+5. **继续方向3：过场动画/启动画面/CG**（P1）：更多过场动画概念图、战斗开始CG、平局CG
+6. 继续查看战策DEVLOG，了解[设计需求]和UI资源集成进展
+7. **⭐每轮生成wav后必须运行WAV size修复脚本**（D:\Sojourn\management\scripts\fix_wav_sizes.ps1）
+8. 持续配合战策视觉提升P0/P1/P2，确保所有资源严格遵循ART_STYLE_GUIDE.md规范
+9. 战策攻击系统完整修复链4个bug叠加全部完成+BUG-030已关闭+BUG-033已修复后，关注战策更多用户体验优化
+10. GitHub网络稳定，后续commit可正常push
+11. 注意image_gen工具限制：一次只能生成1张图片，避免使用"rainbow/color"等可能触发审核的关键词
