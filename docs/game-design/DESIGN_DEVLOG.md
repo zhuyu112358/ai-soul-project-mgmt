@@ -16002,3 +16002,100 @@ GDD从v1.0的129KB/2585行/11章节，深化到v2.0的约332KB/5965行/24章节+
 
 - management仓库：本轮修改待commit（结构修复+版本更新+整体总结）
 - GitHub 443端口：上一轮恢复稳定，push成功
+
+---
+
+## 第185轮：P2游戏界面预览图产出（战斗结算/设置界面/灵魂之家）！3张预览图完成
+
+**日期**：2026-09-10
+**任务**：战策Battleplan游戏设计 - P2游戏界面预览图产出
+**轮次**：第185轮
+
+### 本轮产出
+
+#### 1. 战斗结算界面预览图 (battle_results_preview_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\battle_results_preview_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 752.8 KB |
+| 模式 | RGB |
+
+**界面元素**：
+- 中央金色"VICTORY!"大标题，发光效果
+- 左侧面板：战斗统计（击杀60/死亡5/伤害6,120/治疗820/技能10,180）
+- 右侧面板：4个灵魂头像+经验条+等级（Lv.12/Lv.10/Lv.15/Lv.11）
+- 底部：奖励展示（5个金币+道具+成就解锁提示"Arena Veteran Unlocked"）
+- 右下角：3个按钮（PLAY AGAIN/MAIN MENU/VIEW REPLAY）
+- 背景：模糊的暗森林竞技场+粒子特效+魔法光晕
+- 深紫金色调，2D像素风，华丽金色边框
+
+#### 2. 设置界面预览图 (settings_menu_preview_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\settings_menu_preview_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 505 KB |
+| 模式 | RGB |
+
+**界面元素**：
+- 左侧边栏：6个分类标签（Display/Audio/Input/Gameplay/Language/About），带像素图标，选中项金色高亮
+- 右侧主区域：显示设置（分辨率1920x1080/全屏ON/画质High/垂直同步ON/帧率限制60/144/亮度滑块）
+- 底部：3个按钮（SAVE/CANCEL/RESET TO DEFAULT）
+- 顶部中央："Settings"标题
+- 深紫渐变背景+微妙魔法粒子
+- 华丽金色边框，像素字体风格
+
+#### 3. 灵魂之家界面预览图 (soul_home_preview_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\soul_home_preview_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 892.5 KB |
+| 模式 | RGB |
+
+**界面元素**：
+- 温馨的房间内部：木地板+石墙+温暖魔法灯光
+- 家具：紫色窗帘床+木质书桌椅子+发光书架+魔法植物盆栽+金色灯笼+魔法图案地毯
+- 2个灵魂角色：一个在书桌前看书，一个在房间中走动
+- 顶部栏："SOUL HOME"金色标题+灵魂状态（HP/能量/心情）+金币4900
+- 底部栏：4个功能按钮（TRAINING GROUNDS/SOUL ROOM/SHOP/BACK）
+- 温馨氛围+漂浮魔法粒子
+- 深紫金色调，2D像素风，等距视角
+
+### 预览图总览（已完成7张）
+
+| 序号 | 预览图 | 文件 | 大小 | 完成轮次 |
+|------|--------|------|------|----------|
+| 1 | 战斗场景 | battle_scene_preview_v1.png | 943KB | 第167轮 |
+| 2 | 主菜单 | main_menu_preview_v1.png | 598KB | 第168轮 |
+| 3 | 灵魂选择 | soul_select_preview_v1.png | 717KB | 第168轮 |
+| 4 | 战斗配置 | battle_config_preview_v1.png | 673KB | 第169轮 |
+| 5 | **战斗结算** | **battle_results_preview_v1.png** | **753KB** | **本轮** |
+| 6 | **设置界面** | **settings_menu_preview_v1.png** | **505KB** | **本轮** |
+| 7 | **灵魂之家** | **soul_home_preview_v1.png** | **893KB** | **本轮** |
+
+### 待产出预览图（P2）
+
+- 捏脸界面
+- 对战模式选择
+- 开场CG分镜
+- 世界观概念图
+
+### 战策应用开发状态
+
+- 战策DEVLOG显示应用开发已在进行中
+- 攻击系统已完整修复（4个bug叠加）
+- M2测试套件：2884 Passed, 0 Failed
+- UI主题加载已集成到4个场景（MainMenu/SoulSelect/SettingsMenu/RTSArenaController）
+- 字体加载器FontLoader已创建
+- 设计需求（像素字体/UI皮肤/灵魂精灵图）大部分已完成
+
+### Git状态
+
+- battleplan仓库：本轮3张预览图待commit
+- management仓库：DESIGN_DEVLOG更新待commit
+- GitHub 443端口：上一轮恢复稳定，push成功
