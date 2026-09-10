@@ -16878,3 +16878,78 @@ GDD v2.0深化已正式完成（346KB/24章+14附录），设计任务转为**�
 - battleplan仓库：本轮1个进化图+1个图集+18个单独图标待commit
 - management仓库：DESIGN_DEVLOG更新待commit
 - GitHub 443端口：上一轮恢复稳定，push成功
+
+---
+
+## 第194轮：资源产出模式！P1 Steam商店页素材产出（主宣传图+游戏战斗截图，共2张Steam商店页素材）
+
+**日期**：2026-09-10
+**任务**：战策Battleplan游戏设计 - 资源产出模式（P1 Steam商店页素材）
+**轮次**：第194轮
+
+### 本轮产出
+
+#### 1. Steam商店页主宣传图 (steam_main_capsule_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\steam_main_capsule_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 911 KB |
+
+**设计内容**：
+- 游戏标题：BATTLEPLAN战策（金色华丽像素字体，发光效果）
+- 副标题：Soul Commander Strategy Battle
+- 8元素灵魂角色：火/水/土/风/雷/冰/暗/光，动态战斗阵型
+- 3个核心卖点图标：AI Soul Intelligence / Tactical Command / Soul Evolution
+- 背景：深紫渐变魔法森林，漂浮水晶，发光符文，神秘氛围
+- 视觉风格：2D像素风，深紫金色调，暗森林主题
+
+**用途**：
+- Steam商店页主宣传图（Main Capsule）
+- 游戏官网首页横幅
+- 社交媒体宣传图
+- 游戏预告片封面
+
+#### 2. Steam商店页游戏战斗截图 (steam_battle_screenshot_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\steam_battle_screenshot_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 879.6 KB |
+
+**设计内容**（展示实际游戏画面和完整UI布局）：
+- 顶部HUD：玩家血条/灵魂单位头像/计时器/资源计数器
+- 底部HUD：技能栏6个技能图标/战术指令按钮/物品栏
+- 右侧：战术指令面板/灵魂AI状态/情绪指示器/个性特征
+- 右上角：小地图（60x40战场/战争迷雾/单位位置/地形特征）
+- 中央战场：8元素灵魂单位在暗森林竞技场战斗/技能特效/地形障碍物/漂浮水晶/发光符文
+- 伤害数字/状态效果图标/每个单位上方血条
+
+**用途**：
+- Steam商店页游戏截图（Screenshots）
+- 游戏官网游戏展示
+- 社交媒体游戏画面分享
+- 游戏预告片素材
+
+### Steam商店页素材总览（累计）
+
+| 素材类型 | 数量 | 目录 | 完成轮次 |
+|----------|------|------|----------|
+| 主宣传图 | 1张 | assets/art/ | 本轮 |
+| 游戏战斗截图 | 1张 | assets/art/ | 本轮 |
+| **合计** | **2张** | | |
+
+### 战策应用开发状态
+
+- 攻击系统已完整修复（4个bug叠加）
+- M2测试套件：2884 Passed, 0 Failed
+- 战策DEVLOG：8117行（有新更新）
+- 暂无新的设计需求标记
+
+### Git状态
+
+- battleplan仓库：本轮2张Steam商店页素材待commit
+- management仓库：DESIGN_DEVLOG更新待commit
+- GitHub 443端口：上一轮恢复稳定，push成功
