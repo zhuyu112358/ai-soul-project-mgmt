@@ -16198,3 +16198,99 @@ GDD v2.0深化已正式完成（346KB/24章+14附录），设计任务转为**�
 - battleplan仓库：本轮2张预览图待commit
 - management仓库：DESIGN_DEVLOG更新待commit
 - GitHub 443端口：上一轮恢复稳定，push成功
+
+---
+
+## 第187轮：资源产出模式！捏脸界面+对战模式选择界面（2张P2预览图完成，预览图总计11张）
+
+**日期**：2026-09-10
+**任务**：战策Battleplan游戏设计 - 资源产出模式（P2 UI界面预览图）
+**轮次**：第187轮
+
+### 本轮产出
+
+#### 1. 捏脸界面预览图 (soul_creator_preview_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\soul_creator_preview_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 785.8 KB |
+| 模式 | RGB |
+
+**界面元素**（对应GDD第十一章捏脸系统设计）：
+- **左侧**：大尺寸灵魂角色预览区（冰蓝色元素灵魂，带金色装饰边框，魔法阵底座）
+- **中间**：7个分类标签（Body/Clothing/Head/Hairstyle/Face/Accessories/Element Effects），当前选中Clothing，金色高亮
+- **右侧**：当前分类选项网格（8个服装部件缩略图），选中项金色边框
+- **底部**：颜色选择器（色相滑块+预设色板）+4个按钮（RANDOMIZE/RESET/SAVE/CONFIRM）
+- **顶部**："SOUL CREATOR"金色标题+灵魂名字输入框（Soul name）
+- **设计特点**：7图层系统（身体→服装→头部→发型→面部→装饰→元素特效），部件级自定义，2D像素图层组合
+
+#### 2. 对战模式选择界面预览图 (battle_mode_preview_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\battle_mode_preview_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 739.5 KB |
+| 模式 | RGB |
+
+**界面元素**（对应GDD第十六章对战模式大扩展设计）：
+- **顶部栏**："BATTLE MODE"金色标题+玩家信息面板（等级12/段位Gold/胜率58%）
+- **中间区域**：5个模式卡片（2行布局，3上2下）
+  - **TRAINING MODE**（训练对战）：剑图标，"Practice against AI, no penalties"，UNLOCKED
+  - **QUICK MATCH**（随机对战）：交叉剑图标，"Match against random opponents"，UNLOCKED
+  - **FRIEND BATTLE**（好友对战）：握手图标，"Battle with friends"，LOCKED (M3)
+  - **SOUL SOCIAL**（灵魂社交）：双灵魂图标，"Casual soul interaction"，LOCKED (M3)
+  - **RANKED**（天梯排位）：奖杯图标，"Competitive ranked matches"，LOCKED (M4)
+- **底部**：BACK按钮
+- **背景**：深紫渐变+魔法粒子+漂浮灵魂剪影
+- **设计特点**：M2实现训练对战+随机对战，好友对战/灵魂社交留M3，天梯排位留M4
+
+### 预览图总览（已完成11张）
+
+| 序号 | 预览图 | 文件 | 大小 | 完成轮次 |
+|------|--------|------|------|----------|
+| 1 | 战斗场景 | battle_scene_preview_v1.png | 943KB | 第167轮 |
+| 2 | 主菜单 | main_menu_preview_v1.png | 598KB | 第168轮 |
+| 3 | 灵魂选择 | soul_select_preview_v1.png | 717KB | 第168轮 |
+| 4 | 战斗配置 | battle_config_preview_v1.png | 673KB | 第169轮 |
+| 5 | 战斗结算 | battle_results_preview_v1.png | 753KB | 第185轮 |
+| 6 | 设置界面 | settings_menu_preview_v1.png | 505KB | 第185轮 |
+| 7 | 灵魂之家 | soul_home_preview_v1.png | 893KB | 第185轮 |
+| 8 | 开场CG分镜 | opening_cg_storyboard_preview_v1.png | 1091KB | 第186轮 |
+| 9 | 世界观概念图 | worldview_concept_preview_v1.png | 1209KB | 第186轮 |
+| 10 | **捏脸界面** | **soul_creator_preview_v1.png** | **786KB** | **本轮** |
+| 11 | **对战模式选择** | **battle_mode_preview_v1.png** | **740KB** | **本轮** |
+
+### P2预览图完成状态
+
+| 预览图 | 状态 |
+|--------|------|
+| 战斗场景 | ✅ 完成 |
+| 主菜单 | ✅ 完成 |
+| 灵魂选择 | ✅ 完成 |
+| 战斗配置 | ✅ 完成 |
+| 战斗结算 | ✅ 完成 |
+| 设置界面 | ✅ 完成 |
+| 灵魂之家 | ✅ 完成 |
+| 捏脸界面 | ✅ 完成（本轮） |
+| 对战模式选择 | ✅ 完成（本轮） |
+| 开场CG分镜 | ✅ 完成 |
+| 世界观概念图 | ✅ 完成 |
+
+**P2预览图全部11张完成！**
+
+### 战策应用开发状态
+
+- 攻击系统已完整修复（4个bug叠加）
+- M2测试套件：2884 Passed, 0 Failed
+- UI主题加载已集成到4个场景
+- 字体加载器FontLoader已创建
+- 战策DEVLOG暂无新的设计需求
+
+### Git状态
+
+- battleplan仓库：本轮2张预览图待commit
+- management仓库：DESIGN_DEVLOG更新待commit
+- GitHub 443端口：上一轮恢复稳定，push成功
