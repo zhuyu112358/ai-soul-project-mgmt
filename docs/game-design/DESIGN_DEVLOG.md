@@ -17980,3 +17980,76 @@ GDD v2.0深化已正式完成（346KB/24章+14附录），设计任务转为**�
 - battleplan仓库：本轮1张空中单位与垂直层次概念图待commit
 - management仓库：DESIGN_DEVLOG更新待commit
 - GitHub 443端口：上一轮恢复稳定，push成功
+
+---
+
+## 第210轮：资源产出模式！P0 M2.3地图系统补充（16个新地图瓦片，12种地形+4种新障碍物，地图瓦片累计24个）
+
+**日期**：2026-09-10
+**任务**：战策Battleplan游戏设计 - 资源产出模式（P0 M2.3地图系统补充）
+**轮次**：第210轮
+
+### 本轮产出
+
+#### 1. 新地图瓦片图集 (tile_sheet_v2.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\tiles\tile_sheet_v2.png |
+| 尺寸 | 1024x1024 |
+| 大小 | 549.7 KB |
+| 布局 | 4行x4列=16个瓦片，每个256x256 |
+
+#### 2. 16个单独地图瓦片（已切割）
+
+**12种地形瓦片（Row 1-3）**：
+
+| 序号 | 文件名 | 地形名称 | 视觉描述 |
+|------|--------|----------|----------|
+| 1 | tile_ground_stone.png | 石地 Stone Ground | 灰色岩石纹理带裂缝 |
+| 2 | tile_ground_water.png | 水域 Water Terrain | 蓝色动画波浪带涟漪 |
+| 3 | tile_ground_lava.png | 熔岩 Lava Terrain | 橙红色发光岩浆带气泡 |
+| 4 | tile_ground_grass.png | 草丛 Grass Terrain | 深紫绿色草地带小植物 |
+| 5 | tile_ground_highland.png | 高地 Highland | 高架平台金色边缘石质顶部 |
+| 6 | tile_ground_lowland.png | 低地 Lowland | 下沉坑黑暗阴影裂缝边缘 |
+| 7 | tile_ground_magic_circle.png | 魔法阵 Magic Circle | 发光金色符文深色石地 |
+| 8 | tile_ground_ice.png | 冰面 Ice Terrain | 浅蓝色冰冻表面带裂缝霜 |
+| 9 | tile_ground_sand.png | 沙地 Sand Terrain | 金黄色沙漠纹理带小沙丘 |
+| 10 | tile_ground_poison_swamp.png | 毒沼 Poison Swamp | 深绿色冒泡有毒带水坑 |
+| 11 | tile_ground_holy.png | 神圣之地 Holy Ground | 神圣金白色发光神圣之光 |
+| 12 | tile_ground_void.png | 虚空区域 Void Terrain | 深紫黑色深渊旋转能量 |
+
+**4种新障碍物瓦片（Row 4）**：
+
+| 序号 | 文件名 | 障碍物名称 | 视觉描述 |
+|------|--------|------------|----------|
+| 13 | tile_obstacle_ancient_pillar.png | 古代石柱 Ancient Pillar | 破碎石柱带藤蔓 |
+| 14 | tile_obstacle_magic_barrier.png | 魔法屏障 Magic Barrier | 发光紫色能量墙带符文 |
+| 15 | tile_obstacle_treasure_chest.png | 宝箱 Treasure Chest | 金色华丽关闭宝箱带光 |
+| 16 | tile_obstacle_magic_crystal.png | 魔法水晶 Magic Crystal | 大型紫蓝水晶簇带光 |
+
+### 地图瓦片总览（累计24个）
+
+| 类型 | 数量 | 完成轮次 |
+|------|------|----------|
+| 地面瓦片（v1） | 4个 | 第163轮 |
+| 障碍物瓦片（v1） | 4个 | 第163轮 |
+| 地形瓦片（v2） | 12个 | 本轮 |
+| 障碍物瓦片（v2） | 4个 | 本轮 |
+| **合计** | **24个** | |
+
+**注**：GDD设计12种地形全部覆盖（石地/水域/熔岩/草丛/高地/低地/魔法阵/冰面/沙地/毒沼/神圣之地/虚空区域），障碍物累计8种（岩石/枯树/水晶/灌木/古代石柱/魔法屏障/宝箱/魔法水晶）。
+
+### 战策应用开发状态
+
+- 攻击系统已完整修复（4个bug叠加）
+- M2测试套件：2884 Passed, 0 Failed
+- 战策DEVLOG：6831行（有变化）
+- 暂无新的设计需求标记
+- 上一轮本地commit已成功推送（Everything up-to-date）
+
+### Git状态
+
+- battleplan仓库：本轮16个新地图瓦片+1个图集待commit
+- management仓库：DESIGN_DEVLOG更新待commit
+- GitHub 443端口：当前恢复稳定
