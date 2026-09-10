@@ -16099,3 +16099,102 @@ GDD从v1.0的129KB/2585行/11章节，深化到v2.0的约332KB/5965行/24章节+
 - battleplan仓库：本轮3张预览图待commit
 - management仓库：DESIGN_DEVLOG更新待commit
 - GitHub 443端口：上一轮恢复稳定，push成功
+
+---
+
+## 第186轮：资源产出模式！开场CG分镜图+世界观概念图（2张P2预览图完成）
+
+**日期**：2026-09-10
+**任务**：战策Battleplan游戏设计 - 资源产出模式（P2 CG动画素材+世界观概念图）
+**轮次**：第186轮
+
+### 模式转换
+
+GDD v2.0深化已正式完成（346KB/24章+14附录），设计任务转为**资源产出模式**，为应用开发提供UI资源、概念图、音效、CG素材等支持。
+
+### 现有资源盘点
+
+| 资源类型 | 数量 | 说明 |
+|----------|------|------|
+| 音效 | 380个 | WAV格式，全部AI生成无版权 |
+| 概念图 | 186+张 | concept目录 |
+| UI组件 | 300+项 | 各种界面UI/弹窗/皮肤 |
+| 地图 | 200+张 | 概念图+瓦片图集 |
+| 灵魂单位 | 100+个 | 概念图+精灵图集 |
+| 游戏可用精灵图 | 8个 | game_sprite_{element}_idle.png，透明背景 |
+| 地图瓦片 | 8个 | 4地面+4障碍物 |
+| UI皮肤图集 | 1个 | ui_skin_sheet.png |
+| 像素字体 | 1个 | PressStart2P-Regular.ttf（SIL OFL 1.1授权） |
+| 界面预览图 | 7张 | 战斗场景/主菜单/灵魂选择/战斗配置/战斗结算/设置/灵魂之家 |
+| Steam商店页素材 | 15+项 | banner/capsule/header/screenshots/trailer |
+
+### 本轮产出
+
+#### 1. 开场CG分镜图 (opening_cg_storyboard_preview_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\opening_cg_storyboard_preview_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 1091 KB |
+| 模式 | RGB |
+
+**8格分镜内容**（对应GDD第十三章开场CG设计）：
+1. **黑屏标题**：金色"BATTLEPLAN"logo发光
+2. **灵界全景**：神秘Aether Realm，浮岛，紫色天空金色云
+3. **灵魂日常**：温馨魔法小镇，灵魂行走交谈
+4. **竞技场**：宏伟竞技场，魔法屏障，灵魂观众
+5. **战斗蒙太奇**：多灵魂战斗，元素特效（火/水/雷/冰）
+6. **灵魂特写**：灵魂角色坚定眼神，金色眼睛发光
+7. **伸手邀请**：灵魂向观众伸手，魔法光芒
+8. **主菜单**："PRESS START"标题画面
+
+**情感曲线**：宏大→温暖→期待→激烈→感动→期待
+
+#### 2. 世界观概念图 (worldview_concept_preview_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\worldview_concept_preview_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 1208.7 KB |
+| 模式 | RGB |
+
+**画面内容**（对应WORLDVIEW.md世界观设计）：
+- **天空**：紫色天空+金色云朵+多个浮岛
+- **中央**：宏伟魔法城市，水晶塔+金色尖顶
+- **左侧**：温馨灵魂之家社区，暖光房屋+魔法花园
+- **右侧**：宏伟竞技场，发光魔法屏障
+- **底部**：繁华集市街道+游乐场（摩天轮+魔法游乐设施）+学校建筑
+- **灵魂角色**：发光元素生命体在各处行走、交谈、互动
+- **氛围**：漂浮魔法粒子+金色光线+神秘氛围
+
+**核心概念体现**：整个游戏不是"一个RTS"，是"一个灵魂生活的世界"，RTS只是灵魂参与的一个竞技活动。
+
+### 预览图总览（已完成9张）
+
+| 序号 | 预览图 | 文件 | 大小 | 完成轮次 |
+|------|--------|------|------|----------|
+| 1 | 战斗场景 | battle_scene_preview_v1.png | 943KB | 第167轮 |
+| 2 | 主菜单 | main_menu_preview_v1.png | 598KB | 第168轮 |
+| 3 | 灵魂选择 | soul_select_preview_v1.png | 717KB | 第168轮 |
+| 4 | 战斗配置 | battle_config_preview_v1.png | 673KB | 第169轮 |
+| 5 | 战斗结算 | battle_results_preview_v1.png | 753KB | 第185轮 |
+| 6 | 设置界面 | settings_menu_preview_v1.png | 505KB | 第185轮 |
+| 7 | 灵魂之家 | soul_home_preview_v1.png | 893KB | 第185轮 |
+| 8 | **开场CG分镜** | **opening_cg_storyboard_preview_v1.png** | **1091KB** | **本轮** |
+| 9 | **世界观概念图** | **worldview_concept_preview_v1.png** | **1209KB** | **本轮** |
+
+### 战策应用开发状态
+
+- 攻击系统已完整修复（4个bug叠加）
+- M2测试套件：2884 Passed, 0 Failed
+- UI主题加载已集成到4个场景
+- 字体加载器FontLoader已创建
+- 设计需求（UI皮肤/像素字体）已完成
+
+### Git状态
+
+- battleplan仓库：本轮2张预览图待commit
+- management仓库：DESIGN_DEVLOG更新待commit
+- GitHub 443端口：上一轮恢复稳定，push成功
