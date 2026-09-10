@@ -17167,3 +17167,75 @@ GDD v2.0深化已正式完成（346KB/24章+14附录），设计任务转为**�
 - battleplan仓库：本轮2张Steam商店页游戏截图待commit
 - management仓库：DESIGN_DEVLOG更新待commit
 - GitHub 443端口：上一轮恢复稳定，push成功
+
+---
+
+## 第198轮：资源产出模式！P1 Steam商店页标准尺寸素材产出（Header Capsule 460x215 + Library Capsule 600x900，共2张标准尺寸素材，Steam商店页素材累计10张）
+
+**日期**：2026-09-10
+**任务**：战策Battleplan游戏设计 - 资源产出模式（P1 Steam商店页标准尺寸素材）
+**轮次**：第198轮
+
+### 本轮产出
+
+#### 1. Steam商店页头图 (steam_header_capsule_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\steam_header_capsule_v1.png |
+| 尺寸 | 460x215（Steam Header Capsule标准尺寸） |
+| 大小 | 188.4 KB |
+
+**设计内容**（Steam商店页顶部横幅）：
+- 中央：BATTLEPLAN战策金色标题（华丽像素字体，发光效果）
+- 左侧：4元素灵魂角色（火/水/土/风）动态战斗姿势
+- 右侧：4元素灵魂角色（雷/冰/暗/光）动态战斗姿势
+- 背景：深紫渐变魔法暗森林竞技场/漂浮水晶/发光符文/神秘氛围
+- 底部：Soul Commander Strategy Battle标语
+
+**用途**：Steam商店页Header Capsule / 社交媒体横幅 / 官网顶部横幅
+
+#### 2. Steam商店页Library Capsule (steam_library_capsule_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\steam_library_capsule_v1.png |
+| 尺寸 | 600x900（Steam Library Capsule标准尺寸） |
+| 大小 | 774.3 KB |
+
+**设计内容**（Steam游戏库竖版封面）：
+- 顶部：BATTLEPLAN战策金色标题（华丽像素字体，发光效果）
+- 中央：8元素灵魂角色（火/水/土/风/雷/冰/暗/光）环形战斗阵型，魔法能量效果，技能投射物，漂浮水晶，发光符文
+- 底部：Soul Commander Strategy Battle标语，Sojourn开发者logo
+- 背景：深紫渐变魔法氛围，神秘粒子，金色光线
+
+**用途**：Steam游戏库Library Capsule / 游戏封面 / 数字版封面 / 社交媒体竖版宣传图
+
+### Steam商店页素材总览（累计10张）
+
+| 素材类型 | 数量 | 尺寸 | 完成轮次 |
+|----------|------|------|----------|
+| 主宣传图 | 1张 | 1920x1080 | 第194轮 |
+| 游戏战斗截图 | 1张 | 1920x1080 | 第194轮 |
+| 灵魂之家截图 | 1张 | 1920x1080 | 第195轮 |
+| 捏脸系统截图 | 1张 | 1920x1080 | 第195轮 |
+| 对战模式截图 | 1张 | 1920x1080 | 第196轮 |
+| 进化系统截图 | 1张 | 1920x1080 | 第196轮 |
+| 教学剧情截图 | 1张 | 1920x1080 | 第197轮 |
+| 成就系统截图 | 1张 | 1920x1080 | 第197轮 |
+| Header Capsule | 1张 | 460x215 | 本轮 |
+| Library Capsule | 1张 | 600x900 | 本轮 |
+| **合计** | **10张** | | |
+
+### 战策应用开发状态
+
+- 攻击系统已完整修复（4个bug叠加）
+- M2测试套件：2884 Passed, 0 Failed
+- 战策DEVLOG：8241行（有新更新）
+- 暂无新的设计需求标记
+
+### Git状态
+
+- battleplan仓库：本轮2张Steam商店页标准尺寸素材待commit
+- management仓库：DESIGN_DEVLOG更新待commit
+- GitHub 443端口：上一轮恢复稳定，push成功
