@@ -18053,3 +18053,78 @@ GDD v2.0深化已正式完成（346KB/24章+14附录），设计任务转为**�
 - battleplan仓库：本轮16个新地图瓦片+1个图集待commit
 - management仓库：DESIGN_DEVLOG更新待commit
 - GitHub 443端口：当前恢复稳定
+
+---
+
+## 第211轮：资源产出模式！P0 M2.5垂直层次补充（2个空中单位飞行状态精灵图，风元素+雷元素，4帧翅膀扇动动画，透明背景，飞行状态精灵图累计2个）
+
+**日期**：2026-09-10
+**任务**：战策Battleplan游戏设计 - 资源产出模式（P0 M2.5垂直层次补充）
+**轮次**：第211轮
+
+### 本轮产出
+
+#### 1. 风元素飞行状态精灵图 (game_sprite_wind_flying.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\game_sprite_wind_flying.png |
+| 尺寸 | 1024x256（4帧x256x256） |
+| 大小 | 355.8 KB |
+| 格式 | PNG，RGBA带alpha透明通道 |
+| 动画 | 4帧翅膀扇动循环（翅膀上/前/下/后） |
+
+**视觉描述**：青白色旋风灵魂带羽毛翅膀，空中悬浮，风粒子环绕，发光光环，4帧翅膀扇动动画。
+
+**验证结果**：
+- PixelFormat: RGBA（带alpha通道）
+- 角落alpha: [0, 0, 0, 0]（四角全透明，背景去除成功）
+- 每帧中心40x40区域opaque像素: 1600/1600/1600/1546（每帧都有角色）
+
+#### 2. 雷元素飞行状态精灵图 (game_sprite_thunder_flying.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\game_sprite_thunder_flying.png |
+| 尺寸 | 1024x256（4帧x256x256） |
+| 大小 | 385.7 KB |
+| 格式 | PNG，RGBA带alpha透明通道 |
+| 动画 | 4帧翅膀扇动循环（翅膀上/前/下/后） |
+
+**视觉描述**：电蓝黄色闪电灵魂带能量翅膀，空中悬浮，闪电弧光环绕，发光光环，4帧翅膀扇动动画。
+
+**验证结果**：
+- PixelFormat: RGBA（带alpha通道）
+- 角落alpha: [0, 0, 0, 0]（四角全透明，背景去除成功）
+- 每帧中心40x40区域opaque像素: 1547/1552/1582/1580（每帧都有角色）
+
+### 技术方案（已验证10次成功）
+
+1. image_gen生成4096x1024深紫背景图（4帧水平排列，背景色RGB 58,24,65）
+2. PowerShell .NET System.Drawing NearestNeighbor缩放到1024x256
+3. LockBits快速像素处理，颜色距离法去除背景（threshold=65, edge=30）
+4. 保存Format32bppArgb PNG
+5. 验证PixelFormat=RGBA + 角落A=0 + 帧中心opaque像素>1000
+
+### 飞行状态精灵图总览（累计2个）
+
+| 元素 | 文件名 | 大小 | 完成轮次 |
+|------|--------|------|----------|
+| 风元素 Wind | game_sprite_wind_flying.png | 355.8 KB | 本轮 |
+| 雷元素 Thunder | game_sprite_thunder_flying.png | 385.7 KB | 本轮 |
+| **合计** | | **741.5 KB** | |
+
+**注**：GDD设计风/雷元素为空中单位，飞行状态精灵图用于M2.5垂直层次空中单位显示。其他元素（火/冰/暗/光）为地面+短暂飞行，土/水为地面，暂不需要飞行状态精灵图。
+
+### 战策应用开发状态
+
+- 攻击系统已完整修复（4个bug叠加）
+- M2测试套件：2884 Passed, 0 Failed
+- 战策DEVLOG：8689行（有新更新）
+- 暂无新的设计需求标记
+
+### Git状态
+
+- battleplan仓库：本轮2个飞行状态精灵图待commit
+- management仓库：DESIGN_DEVLOG更新待commit
+- GitHub 443端口：上一轮恢复稳定，push成功
