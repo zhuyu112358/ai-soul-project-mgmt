@@ -17022,3 +17022,76 @@ GDD v2.0深化已正式完成（346KB/24章+14附录），设计任务转为**�
 - battleplan仓库：本轮2张Steam商店页游戏截图待commit
 - management仓库：DESIGN_DEVLOG更新待commit
 - GitHub 443端口：上一轮恢复稳定，push成功
+
+---
+
+## 第196轮：资源产出模式！P1 Steam商店页游戏截图产出（对战模式+进化系统，共2张游戏截图，Steam商店页素材累计6张）
+
+**日期**：2026-09-10
+**任务**：战策Battleplan游戏设计 - 资源产出模式（P1 Steam商店页游戏截图）
+**轮次**：第196轮
+
+### 本轮产出
+
+#### 1. Steam商店页对战模式游戏截图 (steam_battle_mode_screenshot_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\steam_battle_mode_screenshot_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 807.6 KB |
+
+**设计内容**（展示5种对战模式和匹配界面）：
+- 顶部HUD：BATTLE MODE标题/玩家等级徽章/玩家头像和等级/货币计数器/返回按钮
+- 中央：5种对战模式卡片十字布局
+  - 训练对战（剑图标，Practice against AI，Solo，已解锁）
+  - 随机对战（交叉剑图标，Match with random players，Online，已解锁，发光高亮）
+  - 好友对战（人物图标，Battle with friends，M3 Update，锁定）
+  - 灵魂社交（心形图标，Socialize and battle，M3 Update，锁定）
+  - 天梯排位（奖杯图标，Competitive ranking，M4 Update，锁定）
+- 底部：玩家统计面板（胜率/当前等级/最喜欢的灵魂/最近比赛）
+- 右侧：好友列表（在线好友头像/状态指示器/邀请按钮）
+
+**用途**：Steam商店页Screenshots / 官网游戏展示 / 社交媒体游戏画面分享 / 游戏预告片素材
+
+#### 2. Steam商店页进化系统游戏截图 (steam_evolution_screenshot_v1.png)
+
+| 项目 | 详情 |
+|------|------|
+| 文件 | D:\Sojourn\battleplan\assets\art\steam_evolution_screenshot_v1.png |
+| 尺寸 | 1920x1080 |
+| 大小 | 800.7 KB |
+
+**设计内容**（展示灵魂升级和5阶段进化系统）：
+- 顶部HUD：SOUL EVOLUTION标题/灵魂名Inferno/当前等级25/经验条/返回按钮
+- 左侧面板：5阶段进化垂直排列（幼魂/成长魂/成熟魂当前/精英魂/传说魂）
+- 中央：大火元素成熟魂角色预览/进化进度条65%/EVOLVE按钮
+- 右侧面板：属性（攻击/防御/速度/HP/MP）当前值和下一阶段预览值/技能列表/天赋树
+- 底部：属性升级按钮/灵魂点数/重置按钮
+
+**用途**：Steam商店页Screenshots / 官网游戏展示 / 社交媒体游戏画面分享 / 游戏预告片素材
+
+### Steam商店页素材总览（累计6张）
+
+| 素材类型 | 数量 | 完成轮次 |
+|----------|------|----------|
+| 主宣传图 | 1张 | 第194轮 |
+| 游戏战斗截图 | 1张 | 第194轮 |
+| 灵魂之家截图 | 1张 | 第195轮 |
+| 捏脸系统截图 | 1张 | 第195轮 |
+| 对战模式截图 | 1张 | 本轮 |
+| 进化系统截图 | 1张 | 本轮 |
+| **合计** | **6张** | |
+
+### 战策应用开发状态
+
+- 攻击系统已完整修复（4个bug叠加）
+- M2测试套件：2884 Passed, 0 Failed
+- 战策DEVLOG：8177行（有新更新）
+- 暂无新的设计需求标记
+
+### Git状态
+
+- battleplan仓库：本轮2张Steam商店页游戏截图待commit
+- management仓库：DESIGN_DEVLOG更新待commit
+- GitHub 443端口：上一轮恢复稳定，push成功
